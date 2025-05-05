@@ -38,7 +38,8 @@ model User {
   isBlocked  Boolean? @default(false) // статус блокировки
   documents  String[] @default([]) // документы
 
-  cargos Cargo[]
+  cargos   Cargo[]
+  wishList WishList[]
 
   @@map("user")
 }
@@ -104,6 +105,8 @@ model Cargo {
   views   Views?  @relation(fields: [viewsId], references: [id], onDelete: Cascade)
   viewsId String?
 
+  wishList WishList[]
+
   @@map("cargo")
 }
 
@@ -117,6 +120,21 @@ model Views {
   cargo Cargo[]
 
   @@map("views")
+}
+
+model WishList {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String? // id юзера
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  cargoId String? // id груза
+  cargo   Cargo?  @relation(fields: [cargoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, cargoId])
+  @@map("wish_list")
 }
 
 model CurrencyRate {

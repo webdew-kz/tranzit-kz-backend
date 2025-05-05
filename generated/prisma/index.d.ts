@@ -29,6 +29,11 @@ export type Cargo = $Result.DefaultSelection<Prisma.$CargoPayload>
  */
 export type Views = $Result.DefaultSelection<Prisma.$ViewsPayload>
 /**
+ * Model WishList
+ * 
+ */
+export type WishList = $Result.DefaultSelection<Prisma.$WishListPayload>
+/**
  * Model CurrencyRate
  * 
  */
@@ -461,6 +466,16 @@ export class PrismaClient<
     * ```
     */
   get views(): Prisma.ViewsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.wishList`: Exposes CRUD operations for the **WishList** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WishLists
+    * const wishLists = await prisma.wishList.findMany()
+    * ```
+    */
+  get wishList(): Prisma.WishListDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.currencyRate`: Exposes CRUD operations for the **CurrencyRate** model.
@@ -914,6 +929,7 @@ export namespace Prisma {
     User: 'User',
     Cargo: 'Cargo',
     Views: 'Views',
+    WishList: 'WishList',
     CurrencyRate: 'CurrencyRate'
   };
 
@@ -933,7 +949,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cargo" | "views" | "currencyRate"
+      modelProps: "user" | "cargo" | "views" | "wishList" | "currencyRate"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1159,6 +1175,80 @@ export namespace Prisma {
           }
         }
       }
+      WishList: {
+        payload: Prisma.$WishListPayload<ExtArgs>
+        fields: Prisma.WishListFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WishListFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WishListFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          findFirst: {
+            args: Prisma.WishListFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WishListFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          findMany: {
+            args: Prisma.WishListFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>[]
+          }
+          create: {
+            args: Prisma.WishListCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          createMany: {
+            args: Prisma.WishListCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WishListCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>[]
+          }
+          delete: {
+            args: Prisma.WishListDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          update: {
+            args: Prisma.WishListUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          deleteMany: {
+            args: Prisma.WishListDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WishListUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WishListUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>[]
+          }
+          upsert: {
+            args: Prisma.WishListUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishListPayload>
+          }
+          aggregate: {
+            args: Prisma.WishListAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWishList>
+          }
+          groupBy: {
+            args: Prisma.WishListGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WishListGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WishListCountArgs<ExtArgs>
+            result: $Utils.Optional<WishListCountAggregateOutputType> | number
+          }
+        }
+      }
       CurrencyRate: {
         payload: Prisma.$CurrencyRatePayload<ExtArgs>
         fields: Prisma.CurrencyRateFieldRefs
@@ -1320,6 +1410,7 @@ export namespace Prisma {
     user?: UserOmit
     cargo?: CargoOmit
     views?: ViewsOmit
+    wishList?: WishListOmit
     currencyRate?: CurrencyRateOmit
   }
 
@@ -1416,10 +1507,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     cargos: number
+    wishList: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | UserCountOutputTypeCountCargosArgs
+    wishList?: boolean | UserCountOutputTypeCountWishListArgs
   }
 
   // Custom InputTypes
@@ -1438,6 +1531,44 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCargosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CargoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountWishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishListWhereInput
+  }
+
+
+  /**
+   * Count Type CargoCountOutputType
+   */
+
+  export type CargoCountOutputType = {
+    wishList: number
+  }
+
+  export type CargoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    wishList?: boolean | CargoCountOutputTypeCountWishListArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CargoCountOutputType without action
+   */
+  export type CargoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CargoCountOutputType
+     */
+    select?: CargoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CargoCountOutputType without action
+   */
+  export type CargoCountOutputTypeCountWishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishListWhereInput
   }
 
 
@@ -1753,6 +1884,7 @@ export namespace Prisma {
     isBlocked?: boolean
     documents?: boolean
     cargos?: boolean | User$cargosArgs<ExtArgs>
+    wishList?: boolean | User$wishListArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1834,6 +1966,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "email" | "phone" | "hash" | "name" | "surname" | "city" | "avatar" | "role" | "whatsappNumbers" | "telegramNumbers" | "viberNumbers" | "skypeNumbers" | "otherNumbers" | "subscriptionStartDate" | "subscriptionEndDate" | "subscriptionStatus" | "isVerified" | "isBlocked" | "documents", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | User$cargosArgs<ExtArgs>
+    wishList?: boolean | User$wishListArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1843,6 +1976,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       cargos: Prisma.$CargoPayload<ExtArgs>[]
+      wishList: Prisma.$WishListPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2262,6 +2396,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cargos<T extends User$cargosArgs<ExtArgs> = {}>(args?: Subset<T, User$cargosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    wishList<T extends User$wishListArgs<ExtArgs> = {}>(args?: Subset<T, User$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2722,6 +2857,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CargoScalarFieldEnum | CargoScalarFieldEnum[]
+  }
+
+  /**
+   * User.wishList
+   */
+  export type User$wishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    where?: WishListWhereInput
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    cursor?: WishListWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
   }
 
   /**
@@ -3247,6 +3406,8 @@ export namespace Prisma {
     viewsId?: boolean
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
+    wishList?: boolean | Cargo$wishListArgs<ExtArgs>
+    _count?: boolean | CargoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cargo"]>
 
   export type CargoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3404,6 +3565,8 @@ export namespace Prisma {
   export type CargoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
+    wishList?: boolean | Cargo$wishListArgs<ExtArgs>
+    _count?: boolean | CargoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CargoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Cargo$userArgs<ExtArgs>
@@ -3419,6 +3582,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs> | null
       views: Prisma.$ViewsPayload<ExtArgs> | null
+      wishList: Prisma.$WishListPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3863,6 +4027,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends Cargo$userArgs<ExtArgs> = {}>(args?: Subset<T, Cargo$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     views<T extends Cargo$viewsArgs<ExtArgs> = {}>(args?: Subset<T, Cargo$viewsArgs<ExtArgs>>): Prisma__ViewsClient<$Result.GetResult<Prisma.$ViewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    wishList<T extends Cargo$wishListArgs<ExtArgs> = {}>(args?: Subset<T, Cargo$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4369,6 +4534,30 @@ export namespace Prisma {
      */
     include?: ViewsInclude<ExtArgs> | null
     where?: ViewsWhereInput
+  }
+
+  /**
+   * Cargo.wishList
+   */
+  export type Cargo$wishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    where?: WishListWhereInput
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    cursor?: WishListWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
   }
 
   /**
@@ -5482,6 +5671,1110 @@ export namespace Prisma {
 
 
   /**
+   * Model WishList
+   */
+
+  export type AggregateWishList = {
+    _count: WishListCountAggregateOutputType | null
+    _min: WishListMinAggregateOutputType | null
+    _max: WishListMaxAggregateOutputType | null
+  }
+
+  export type WishListMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    cargoId: string | null
+  }
+
+  export type WishListMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    userId: string | null
+    cargoId: string | null
+  }
+
+  export type WishListCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    userId: number
+    cargoId: number
+    _all: number
+  }
+
+
+  export type WishListMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    cargoId?: true
+  }
+
+  export type WishListMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    cargoId?: true
+  }
+
+  export type WishListCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    userId?: true
+    cargoId?: true
+    _all?: true
+  }
+
+  export type WishListAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WishList to aggregate.
+     */
+    where?: WishListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishLists to fetch.
+     */
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WishListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WishLists
+    **/
+    _count?: true | WishListCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WishListMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WishListMaxAggregateInputType
+  }
+
+  export type GetWishListAggregateType<T extends WishListAggregateArgs> = {
+        [P in keyof T & keyof AggregateWishList]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWishList[P]>
+      : GetScalarType<T[P], AggregateWishList[P]>
+  }
+
+
+
+
+  export type WishListGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishListWhereInput
+    orderBy?: WishListOrderByWithAggregationInput | WishListOrderByWithAggregationInput[]
+    by: WishListScalarFieldEnum[] | WishListScalarFieldEnum
+    having?: WishListScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WishListCountAggregateInputType | true
+    _min?: WishListMinAggregateInputType
+    _max?: WishListMaxAggregateInputType
+  }
+
+  export type WishListGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    userId: string | null
+    cargoId: string | null
+    _count: WishListCountAggregateOutputType | null
+    _min: WishListMinAggregateOutputType | null
+    _max: WishListMaxAggregateOutputType | null
+  }
+
+  type GetWishListGroupByPayload<T extends WishListGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WishListGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WishListGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WishListGroupByOutputType[P]>
+            : GetScalarType<T[P], WishListGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WishListSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    cargoId?: boolean
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }, ExtArgs["result"]["wishList"]>
+
+  export type WishListSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    cargoId?: boolean
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }, ExtArgs["result"]["wishList"]>
+
+  export type WishListSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    cargoId?: boolean
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }, ExtArgs["result"]["wishList"]>
+
+  export type WishListSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userId?: boolean
+    cargoId?: boolean
+  }
+
+  export type WishListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "cargoId", ExtArgs["result"]["wishList"]>
+  export type WishListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }
+  export type WishListIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }
+  export type WishListIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | WishList$userArgs<ExtArgs>
+    cargo?: boolean | WishList$cargoArgs<ExtArgs>
+  }
+
+  export type $WishListPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WishList"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      cargo: Prisma.$CargoPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      userId: string | null
+      cargoId: string | null
+    }, ExtArgs["result"]["wishList"]>
+    composites: {}
+  }
+
+  type WishListGetPayload<S extends boolean | null | undefined | WishListDefaultArgs> = $Result.GetResult<Prisma.$WishListPayload, S>
+
+  type WishListCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WishListFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WishListCountAggregateInputType | true
+    }
+
+  export interface WishListDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WishList'], meta: { name: 'WishList' } }
+    /**
+     * Find zero or one WishList that matches the filter.
+     * @param {WishListFindUniqueArgs} args - Arguments to find a WishList
+     * @example
+     * // Get one WishList
+     * const wishList = await prisma.wishList.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WishListFindUniqueArgs>(args: SelectSubset<T, WishListFindUniqueArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WishList that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WishListFindUniqueOrThrowArgs} args - Arguments to find a WishList
+     * @example
+     * // Get one WishList
+     * const wishList = await prisma.wishList.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WishListFindUniqueOrThrowArgs>(args: SelectSubset<T, WishListFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WishList that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListFindFirstArgs} args - Arguments to find a WishList
+     * @example
+     * // Get one WishList
+     * const wishList = await prisma.wishList.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WishListFindFirstArgs>(args?: SelectSubset<T, WishListFindFirstArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WishList that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListFindFirstOrThrowArgs} args - Arguments to find a WishList
+     * @example
+     * // Get one WishList
+     * const wishList = await prisma.wishList.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WishListFindFirstOrThrowArgs>(args?: SelectSubset<T, WishListFindFirstOrThrowArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WishLists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WishLists
+     * const wishLists = await prisma.wishList.findMany()
+     * 
+     * // Get first 10 WishLists
+     * const wishLists = await prisma.wishList.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const wishListWithIdOnly = await prisma.wishList.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WishListFindManyArgs>(args?: SelectSubset<T, WishListFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WishList.
+     * @param {WishListCreateArgs} args - Arguments to create a WishList.
+     * @example
+     * // Create one WishList
+     * const WishList = await prisma.wishList.create({
+     *   data: {
+     *     // ... data to create a WishList
+     *   }
+     * })
+     * 
+     */
+    create<T extends WishListCreateArgs>(args: SelectSubset<T, WishListCreateArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WishLists.
+     * @param {WishListCreateManyArgs} args - Arguments to create many WishLists.
+     * @example
+     * // Create many WishLists
+     * const wishList = await prisma.wishList.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WishListCreateManyArgs>(args?: SelectSubset<T, WishListCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WishLists and returns the data saved in the database.
+     * @param {WishListCreateManyAndReturnArgs} args - Arguments to create many WishLists.
+     * @example
+     * // Create many WishLists
+     * const wishList = await prisma.wishList.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WishLists and only return the `id`
+     * const wishListWithIdOnly = await prisma.wishList.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WishListCreateManyAndReturnArgs>(args?: SelectSubset<T, WishListCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WishList.
+     * @param {WishListDeleteArgs} args - Arguments to delete one WishList.
+     * @example
+     * // Delete one WishList
+     * const WishList = await prisma.wishList.delete({
+     *   where: {
+     *     // ... filter to delete one WishList
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WishListDeleteArgs>(args: SelectSubset<T, WishListDeleteArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WishList.
+     * @param {WishListUpdateArgs} args - Arguments to update one WishList.
+     * @example
+     * // Update one WishList
+     * const wishList = await prisma.wishList.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WishListUpdateArgs>(args: SelectSubset<T, WishListUpdateArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WishLists.
+     * @param {WishListDeleteManyArgs} args - Arguments to filter WishLists to delete.
+     * @example
+     * // Delete a few WishLists
+     * const { count } = await prisma.wishList.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WishListDeleteManyArgs>(args?: SelectSubset<T, WishListDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WishLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WishLists
+     * const wishList = await prisma.wishList.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WishListUpdateManyArgs>(args: SelectSubset<T, WishListUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WishLists and returns the data updated in the database.
+     * @param {WishListUpdateManyAndReturnArgs} args - Arguments to update many WishLists.
+     * @example
+     * // Update many WishLists
+     * const wishList = await prisma.wishList.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WishLists and only return the `id`
+     * const wishListWithIdOnly = await prisma.wishList.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WishListUpdateManyAndReturnArgs>(args: SelectSubset<T, WishListUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WishList.
+     * @param {WishListUpsertArgs} args - Arguments to update or create a WishList.
+     * @example
+     * // Update or create a WishList
+     * const wishList = await prisma.wishList.upsert({
+     *   create: {
+     *     // ... data to create a WishList
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WishList we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WishListUpsertArgs>(args: SelectSubset<T, WishListUpsertArgs<ExtArgs>>): Prisma__WishListClient<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WishLists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListCountArgs} args - Arguments to filter WishLists to count.
+     * @example
+     * // Count the number of WishLists
+     * const count = await prisma.wishList.count({
+     *   where: {
+     *     // ... the filter for the WishLists we want to count
+     *   }
+     * })
+    **/
+    count<T extends WishListCountArgs>(
+      args?: Subset<T, WishListCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WishListCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WishList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WishListAggregateArgs>(args: Subset<T, WishListAggregateArgs>): Prisma.PrismaPromise<GetWishListAggregateType<T>>
+
+    /**
+     * Group by WishList.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishListGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WishListGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WishListGroupByArgs['orderBy'] }
+        : { orderBy?: WishListGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WishListGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWishListGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WishList model
+   */
+  readonly fields: WishListFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WishList.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WishListClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends WishList$userArgs<ExtArgs> = {}>(args?: Subset<T, WishList$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    cargo<T extends WishList$cargoArgs<ExtArgs> = {}>(args?: Subset<T, WishList$cargoArgs<ExtArgs>>): Prisma__CargoClient<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WishList model
+   */
+  interface WishListFieldRefs {
+    readonly id: FieldRef<"WishList", 'String'>
+    readonly createdAt: FieldRef<"WishList", 'DateTime'>
+    readonly updatedAt: FieldRef<"WishList", 'DateTime'>
+    readonly userId: FieldRef<"WishList", 'String'>
+    readonly cargoId: FieldRef<"WishList", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WishList findUnique
+   */
+  export type WishListFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter, which WishList to fetch.
+     */
+    where: WishListWhereUniqueInput
+  }
+
+  /**
+   * WishList findUniqueOrThrow
+   */
+  export type WishListFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter, which WishList to fetch.
+     */
+    where: WishListWhereUniqueInput
+  }
+
+  /**
+   * WishList findFirst
+   */
+  export type WishListFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter, which WishList to fetch.
+     */
+    where?: WishListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishLists to fetch.
+     */
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WishLists.
+     */
+    cursor?: WishListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WishLists.
+     */
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * WishList findFirstOrThrow
+   */
+  export type WishListFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter, which WishList to fetch.
+     */
+    where?: WishListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishLists to fetch.
+     */
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WishLists.
+     */
+    cursor?: WishListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishLists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WishLists.
+     */
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * WishList findMany
+   */
+  export type WishListFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter, which WishLists to fetch.
+     */
+    where?: WishListWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishLists to fetch.
+     */
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WishLists.
+     */
+    cursor?: WishListWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishLists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishLists.
+     */
+    skip?: number
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * WishList create
+   */
+  export type WishListCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WishList.
+     */
+    data: XOR<WishListCreateInput, WishListUncheckedCreateInput>
+  }
+
+  /**
+   * WishList createMany
+   */
+  export type WishListCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WishLists.
+     */
+    data: WishListCreateManyInput | WishListCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WishList createManyAndReturn
+   */
+  export type WishListCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * The data used to create many WishLists.
+     */
+    data: WishListCreateManyInput | WishListCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WishList update
+   */
+  export type WishListUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WishList.
+     */
+    data: XOR<WishListUpdateInput, WishListUncheckedUpdateInput>
+    /**
+     * Choose, which WishList to update.
+     */
+    where: WishListWhereUniqueInput
+  }
+
+  /**
+   * WishList updateMany
+   */
+  export type WishListUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WishLists.
+     */
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyInput>
+    /**
+     * Filter which WishLists to update
+     */
+    where?: WishListWhereInput
+    /**
+     * Limit how many WishLists to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WishList updateManyAndReturn
+   */
+  export type WishListUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * The data used to update WishLists.
+     */
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyInput>
+    /**
+     * Filter which WishLists to update
+     */
+    where?: WishListWhereInput
+    /**
+     * Limit how many WishLists to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WishList upsert
+   */
+  export type WishListUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WishList to update in case it exists.
+     */
+    where: WishListWhereUniqueInput
+    /**
+     * In case the WishList found by the `where` argument doesn't exist, create a new WishList with this data.
+     */
+    create: XOR<WishListCreateInput, WishListUncheckedCreateInput>
+    /**
+     * In case the WishList was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WishListUpdateInput, WishListUncheckedUpdateInput>
+  }
+
+  /**
+   * WishList delete
+   */
+  export type WishListDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    /**
+     * Filter which WishList to delete.
+     */
+    where: WishListWhereUniqueInput
+  }
+
+  /**
+   * WishList deleteMany
+   */
+  export type WishListDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WishLists to delete
+     */
+    where?: WishListWhereInput
+    /**
+     * Limit how many WishLists to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WishList.user
+   */
+  export type WishList$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * WishList.cargo
+   */
+  export type WishList$cargoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cargo
+     */
+    select?: CargoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cargo
+     */
+    omit?: CargoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CargoInclude<ExtArgs> | null
+    where?: CargoWhereInput
+  }
+
+  /**
+   * WishList without action
+   */
+  export type WishListDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CurrencyRate
    */
 
@@ -6580,6 +7873,17 @@ export namespace Prisma {
   export type ViewsScalarFieldEnum = (typeof ViewsScalarFieldEnum)[keyof typeof ViewsScalarFieldEnum]
 
 
+  export const WishListScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId',
+    cargoId: 'cargoId'
+  };
+
+  export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
+
+
   export const CurrencyRateScalarFieldEnum: {
     id: 'id',
     createdAt: 'createdAt',
@@ -6895,6 +8199,7 @@ export namespace Prisma {
     isBlocked?: BoolNullableFilter<"User"> | boolean | null
     documents?: StringNullableListFilter<"User">
     cargos?: CargoListRelationFilter
+    wishList?: WishListListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6921,6 +8226,7 @@ export namespace Prisma {
     isBlocked?: SortOrderInput | SortOrder
     documents?: SortOrder
     cargos?: CargoOrderByRelationAggregateInput
+    wishList?: WishListOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -6950,6 +8256,7 @@ export namespace Prisma {
     isBlocked?: BoolNullableFilter<"User"> | boolean | null
     documents?: StringNullableListFilter<"User">
     cargos?: CargoListRelationFilter
+    wishList?: WishListListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -7060,6 +8367,7 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Cargo"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
   }
 
   export type CargoOrderByWithRelationInput = {
@@ -7111,6 +8419,7 @@ export namespace Prisma {
     viewsId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     views?: ViewsOrderByWithRelationInput
+    wishList?: WishListOrderByRelationAggregateInput
   }
 
   export type CargoWhereUniqueInput = Prisma.AtLeast<{
@@ -7165,6 +8474,7 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Cargo"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
   }, "id">
 
   export type CargoOrderByWithAggregationInput = {
@@ -7325,6 +8635,65 @@ export namespace Prisma {
     count?: IntWithAggregatesFilter<"Views"> | number
   }
 
+  export type WishListWhereInput = {
+    AND?: WishListWhereInput | WishListWhereInput[]
+    OR?: WishListWhereInput[]
+    NOT?: WishListWhereInput | WishListWhereInput[]
+    id?: StringFilter<"WishList"> | string
+    createdAt?: DateTimeFilter<"WishList"> | Date | string
+    updatedAt?: DateTimeFilter<"WishList"> | Date | string
+    userId?: StringNullableFilter<"WishList"> | string | null
+    cargoId?: StringNullableFilter<"WishList"> | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
+  }
+
+  export type WishListOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    cargoId?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    cargo?: CargoOrderByWithRelationInput
+  }
+
+  export type WishListWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_cargoId?: WishListUserIdCargoIdCompoundUniqueInput
+    AND?: WishListWhereInput | WishListWhereInput[]
+    OR?: WishListWhereInput[]
+    NOT?: WishListWhereInput | WishListWhereInput[]
+    createdAt?: DateTimeFilter<"WishList"> | Date | string
+    updatedAt?: DateTimeFilter<"WishList"> | Date | string
+    userId?: StringNullableFilter<"WishList"> | string | null
+    cargoId?: StringNullableFilter<"WishList"> | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
+  }, "id" | "userId_cargoId">
+
+  export type WishListOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    cargoId?: SortOrderInput | SortOrder
+    _count?: WishListCountOrderByAggregateInput
+    _max?: WishListMaxOrderByAggregateInput
+    _min?: WishListMinOrderByAggregateInput
+  }
+
+  export type WishListScalarWhereWithAggregatesInput = {
+    AND?: WishListScalarWhereWithAggregatesInput | WishListScalarWhereWithAggregatesInput[]
+    OR?: WishListScalarWhereWithAggregatesInput[]
+    NOT?: WishListScalarWhereWithAggregatesInput | WishListScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WishList"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"WishList"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WishList"> | Date | string
+    userId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
+    cargoId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
+  }
+
   export type CurrencyRateWhereInput = {
     AND?: CurrencyRateWhereInput | CurrencyRateWhereInput[]
     OR?: CurrencyRateWhereInput[]
@@ -7401,6 +8770,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoCreateNestedManyWithoutUserInput
+    wishList?: WishListCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7427,6 +8797,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
+    wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7453,6 +8824,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUpdateManyWithoutUserNestedInput
+    wishList?: WishListUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7479,6 +8851,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
+    wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7603,6 +8976,7 @@ export namespace Prisma {
     userPhone?: string | null
     user?: UserCreateNestedOneWithoutCargosInput
     views?: ViewsCreateNestedOneWithoutCargoInput
+    wishList?: WishListCreateNestedManyWithoutCargoInput
   }
 
   export type CargoUncheckedCreateInput = {
@@ -7652,6 +9026,7 @@ export namespace Prisma {
     userName?: string | null
     userPhone?: string | null
     viewsId?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
 
   export type CargoUpdateInput = {
@@ -7701,6 +9076,7 @@ export namespace Prisma {
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutCargosNestedInput
     views?: ViewsUpdateOneWithoutCargoNestedInput
+    wishList?: WishListUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoUncheckedUpdateInput = {
@@ -7750,6 +9126,7 @@ export namespace Prisma {
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoCreateManyInput = {
@@ -7950,6 +9327,60 @@ export namespace Prisma {
     count?: IntFieldUpdateOperationsInput | number
   }
 
+  export type WishListCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutWishListInput
+    cargo?: CargoCreateNestedOneWithoutWishListInput
+  }
+
+  export type WishListUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+  }
+
+  export type WishListUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutWishListNestedInput
+    cargo?: CargoUpdateOneWithoutWishListNestedInput
+  }
+
+  export type WishListUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+  }
+
+  export type WishListUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishListUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type CurrencyRateCreateInput = {
     id?: string
     createdAt?: Date | string
@@ -8084,12 +9515,22 @@ export namespace Prisma {
     none?: CargoWhereInput
   }
 
+  export type WishListListRelationFilter = {
+    every?: WishListWhereInput
+    some?: WishListWhereInput
+    none?: WishListWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type CargoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WishListOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8624,6 +10065,40 @@ export namespace Prisma {
     count?: SortOrder
   }
 
+  export type CargoNullableScalarRelationFilter = {
+    is?: CargoWhereInput | null
+    isNot?: CargoWhereInput | null
+  }
+
+  export type WishListUserIdCargoIdCompoundUniqueInput = {
+    userId: string
+    cargoId: string
+  }
+
+  export type WishListCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    cargoId?: SortOrder
+  }
+
+  export type WishListMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    cargoId?: SortOrder
+  }
+
+  export type WishListMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userId?: SortOrder
+    cargoId?: SortOrder
+  }
+
   export type CurrencyRateCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
@@ -8679,11 +10154,25 @@ export namespace Prisma {
     connect?: CargoWhereUniqueInput | CargoWhereUniqueInput[]
   }
 
+  export type WishListCreateNestedManyWithoutUserInput = {
+    create?: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput> | WishListCreateWithoutUserInput[] | WishListUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutUserInput | WishListCreateOrConnectWithoutUserInput[]
+    createMany?: WishListCreateManyUserInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
   export type CargoUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
     createMany?: CargoCreateManyUserInputEnvelope
     connect?: CargoWhereUniqueInput | CargoWhereUniqueInput[]
+  }
+
+  export type WishListUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput> | WishListCreateWithoutUserInput[] | WishListUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutUserInput | WishListCreateOrConnectWithoutUserInput[]
+    createMany?: WishListCreateManyUserInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8754,6 +10243,20 @@ export namespace Prisma {
     deleteMany?: CargoScalarWhereInput | CargoScalarWhereInput[]
   }
 
+  export type WishListUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput> | WishListCreateWithoutUserInput[] | WishListUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutUserInput | WishListCreateOrConnectWithoutUserInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutUserInput | WishListUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WishListCreateManyUserInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutUserInput | WishListUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutUserInput | WishListUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
   export type CargoUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
@@ -8766,6 +10269,20 @@ export namespace Prisma {
     update?: CargoUpdateWithWhereUniqueWithoutUserInput | CargoUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CargoUpdateManyWithWhereWithoutUserInput | CargoUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CargoScalarWhereInput | CargoScalarWhereInput[]
+  }
+
+  export type WishListUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput> | WishListCreateWithoutUserInput[] | WishListUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutUserInput | WishListCreateOrConnectWithoutUserInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutUserInput | WishListUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WishListCreateManyUserInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutUserInput | WishListUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutUserInput | WishListUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
   }
 
   export type CargoCreateplacesLoadingInput = {
@@ -8822,6 +10339,20 @@ export namespace Prisma {
     create?: XOR<ViewsCreateWithoutCargoInput, ViewsUncheckedCreateWithoutCargoInput>
     connectOrCreate?: ViewsCreateOrConnectWithoutCargoInput
     connect?: ViewsWhereUniqueInput
+  }
+
+  export type WishListCreateNestedManyWithoutCargoInput = {
+    create?: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput> | WishListCreateWithoutCargoInput[] | WishListUncheckedCreateWithoutCargoInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutCargoInput | WishListCreateOrConnectWithoutCargoInput[]
+    createMany?: WishListCreateManyCargoInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type WishListUncheckedCreateNestedManyWithoutCargoInput = {
+    create?: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput> | WishListCreateWithoutCargoInput[] | WishListUncheckedCreateWithoutCargoInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutCargoInput | WishListCreateOrConnectWithoutCargoInput[]
+    createMany?: WishListCreateManyCargoInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -8935,6 +10466,34 @@ export namespace Prisma {
     update?: XOR<XOR<ViewsUpdateToOneWithWhereWithoutCargoInput, ViewsUpdateWithoutCargoInput>, ViewsUncheckedUpdateWithoutCargoInput>
   }
 
+  export type WishListUpdateManyWithoutCargoNestedInput = {
+    create?: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput> | WishListCreateWithoutCargoInput[] | WishListUncheckedCreateWithoutCargoInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutCargoInput | WishListCreateOrConnectWithoutCargoInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutCargoInput | WishListUpsertWithWhereUniqueWithoutCargoInput[]
+    createMany?: WishListCreateManyCargoInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutCargoInput | WishListUpdateWithWhereUniqueWithoutCargoInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutCargoInput | WishListUpdateManyWithWhereWithoutCargoInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
+  export type WishListUncheckedUpdateManyWithoutCargoNestedInput = {
+    create?: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput> | WishListCreateWithoutCargoInput[] | WishListUncheckedCreateWithoutCargoInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutCargoInput | WishListCreateOrConnectWithoutCargoInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutCargoInput | WishListUpsertWithWhereUniqueWithoutCargoInput[]
+    createMany?: WishListCreateManyCargoInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutCargoInput | WishListUpdateWithWhereUniqueWithoutCargoInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutCargoInput | WishListUpdateManyWithWhereWithoutCargoInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
   export type CargoCreateNestedManyWithoutViewsInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
@@ -8975,6 +10534,38 @@ export namespace Prisma {
     update?: CargoUpdateWithWhereUniqueWithoutViewsInput | CargoUpdateWithWhereUniqueWithoutViewsInput[]
     updateMany?: CargoUpdateManyWithWhereWithoutViewsInput | CargoUpdateManyWithWhereWithoutViewsInput[]
     deleteMany?: CargoScalarWhereInput | CargoScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutWishListInput = {
+    create?: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWishListInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CargoCreateNestedOneWithoutWishListInput = {
+    create?: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: CargoCreateOrConnectWithoutWishListInput
+    connect?: CargoWhereUniqueInput
+  }
+
+  export type UserUpdateOneWithoutWishListNestedInput = {
+    create?: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWishListInput
+    upsert?: UserUpsertWithoutWishListInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWishListInput, UserUpdateWithoutWishListInput>, UserUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type CargoUpdateOneWithoutWishListNestedInput = {
+    create?: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: CargoCreateOrConnectWithoutWishListInput
+    upsert?: CargoUpsertWithoutWishListInput
+    disconnect?: CargoWhereInput | boolean
+    delete?: CargoWhereInput | boolean
+    connect?: CargoWhereUniqueInput
+    update?: XOR<XOR<CargoUpdateToOneWithWhereWithoutWishListInput, CargoUpdateWithoutWishListInput>, CargoUncheckedUpdateWithoutWishListInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -9308,6 +10899,7 @@ export namespace Prisma {
     userName?: string | null
     userPhone?: string | null
     views?: ViewsCreateNestedOneWithoutCargoInput
+    wishList?: WishListCreateNestedManyWithoutCargoInput
   }
 
   export type CargoUncheckedCreateWithoutUserInput = {
@@ -9356,6 +10948,7 @@ export namespace Prisma {
     userName?: string | null
     userPhone?: string | null
     viewsId?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
 
   export type CargoCreateOrConnectWithoutUserInput = {
@@ -9365,6 +10958,30 @@ export namespace Prisma {
 
   export type CargoCreateManyUserInputEnvelope = {
     data: CargoCreateManyUserInput | CargoCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WishListCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cargo?: CargoCreateNestedOneWithoutWishListInput
+  }
+
+  export type WishListUncheckedCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cargoId?: string | null
+  }
+
+  export type WishListCreateOrConnectWithoutUserInput = {
+    where: WishListWhereUniqueInput
+    create: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput>
+  }
+
+  export type WishListCreateManyUserInputEnvelope = {
+    data: WishListCreateManyUserInput | WishListCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -9436,6 +11053,33 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Cargo"> | string | null
   }
 
+  export type WishListUpsertWithWhereUniqueWithoutUserInput = {
+    where: WishListWhereUniqueInput
+    update: XOR<WishListUpdateWithoutUserInput, WishListUncheckedUpdateWithoutUserInput>
+    create: XOR<WishListCreateWithoutUserInput, WishListUncheckedCreateWithoutUserInput>
+  }
+
+  export type WishListUpdateWithWhereUniqueWithoutUserInput = {
+    where: WishListWhereUniqueInput
+    data: XOR<WishListUpdateWithoutUserInput, WishListUncheckedUpdateWithoutUserInput>
+  }
+
+  export type WishListUpdateManyWithWhereWithoutUserInput = {
+    where: WishListScalarWhereInput
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type WishListScalarWhereInput = {
+    AND?: WishListScalarWhereInput | WishListScalarWhereInput[]
+    OR?: WishListScalarWhereInput[]
+    NOT?: WishListScalarWhereInput | WishListScalarWhereInput[]
+    id?: StringFilter<"WishList"> | string
+    createdAt?: DateTimeFilter<"WishList"> | Date | string
+    updatedAt?: DateTimeFilter<"WishList"> | Date | string
+    userId?: StringNullableFilter<"WishList"> | string | null
+    cargoId?: StringNullableFilter<"WishList"> | string | null
+  }
+
   export type UserCreateWithoutCargosInput = {
     id?: string
     createdAt?: Date | string
@@ -9459,6 +11103,7 @@ export namespace Prisma {
     isVerified?: boolean | null
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
+    wishList?: WishListCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCargosInput = {
@@ -9484,6 +11129,7 @@ export namespace Prisma {
     isVerified?: boolean | null
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
+    wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCargosInput = {
@@ -9508,6 +11154,30 @@ export namespace Prisma {
   export type ViewsCreateOrConnectWithoutCargoInput = {
     where: ViewsWhereUniqueInput
     create: XOR<ViewsCreateWithoutCargoInput, ViewsUncheckedCreateWithoutCargoInput>
+  }
+
+  export type WishListCreateWithoutCargoInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutWishListInput
+  }
+
+  export type WishListUncheckedCreateWithoutCargoInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+  }
+
+  export type WishListCreateOrConnectWithoutCargoInput = {
+    where: WishListWhereUniqueInput
+    create: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput>
+  }
+
+  export type WishListCreateManyCargoInputEnvelope = {
+    data: WishListCreateManyCargoInput | WishListCreateManyCargoInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutCargosInput = {
@@ -9544,6 +11214,7 @@ export namespace Prisma {
     isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
+    wishList?: WishListUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCargosInput = {
@@ -9569,6 +11240,7 @@ export namespace Prisma {
     isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
+    wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ViewsUpsertWithoutCargoInput = {
@@ -9594,6 +11266,22 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WishListUpsertWithWhereUniqueWithoutCargoInput = {
+    where: WishListWhereUniqueInput
+    update: XOR<WishListUpdateWithoutCargoInput, WishListUncheckedUpdateWithoutCargoInput>
+    create: XOR<WishListCreateWithoutCargoInput, WishListUncheckedCreateWithoutCargoInput>
+  }
+
+  export type WishListUpdateWithWhereUniqueWithoutCargoInput = {
+    where: WishListWhereUniqueInput
+    data: XOR<WishListUpdateWithoutCargoInput, WishListUncheckedUpdateWithoutCargoInput>
+  }
+
+  export type WishListUpdateManyWithWhereWithoutCargoInput = {
+    where: WishListScalarWhereInput
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyWithoutCargoInput>
   }
 
   export type CargoCreateWithoutViewsInput = {
@@ -9642,6 +11330,7 @@ export namespace Prisma {
     userName?: string | null
     userPhone?: string | null
     user?: UserCreateNestedOneWithoutCargosInput
+    wishList?: WishListCreateNestedManyWithoutCargoInput
   }
 
   export type CargoUncheckedCreateWithoutViewsInput = {
@@ -9690,6 +11379,7 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
 
   export type CargoCreateOrConnectWithoutViewsInput = {
@@ -9716,6 +11406,338 @@ export namespace Prisma {
   export type CargoUpdateManyWithWhereWithoutViewsInput = {
     where: CargoScalarWhereInput
     data: XOR<CargoUpdateManyMutationInput, CargoUncheckedUpdateManyWithoutViewsInput>
+  }
+
+  export type UserCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
+    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
+    viberNumbers?: UserCreateviberNumbersInput | string[]
+    skypeNumbers?: UserCreateskypeNumbersInput | string[]
+    otherNumbers?: UserCreateotherNumbersInput | string[]
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
+    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
+    viberNumbers?: UserCreateviberNumbersInput | string[]
+    skypeNumbers?: UserCreateskypeNumbersInput | string[]
+    otherNumbers?: UserCreateotherNumbersInput | string[]
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutWishListInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
+  }
+
+  export type CargoCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    price: number
+    currency: $Enums.Currency
+    note?: string | null
+    placesLoading?: CargoCreateplacesLoadingInput | string[]
+    placesUnloading?: CargoCreateplacesUnloadingInput | string[]
+    distance?: number | null
+    tariff?: number | null
+    routeLink?: string | null
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: CargoCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: CargoCreateloadingTypeInput | $Enums.LoadingType[]
+    paymentMethod?: CargoCreatepaymentMethodInput | $Enums.PaymentMethod[]
+    paymentPeriod?: CargoCreatepaymentPeriodInput | $Enums.PaymentPeriod[]
+    paymentOther?: CargoCreatepaymentOtherInput | $Enums.PaymentOther[]
+    paymentPrepaymentPercent?: string | null
+    paymentDeferredDays?: string | null
+    optionDocuments?: CargoCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    optionLoadings?: CargoCreateoptionLoadingsInput | $Enums.Loadings[]
+    optionLoadingsTimeLoading?: string | null
+    optionLoadingsTimeUnloading?: string | null
+    optionLoadingsDateUnloading?: Date | string | null
+    optionLoadingsPlaceLoading?: string | null
+    optionLoadingsPlaceUnloading?: string | null
+    optionLoadingsBigBag?: string | null
+    optionTerms?: CargoCreateoptionTermsInput | $Enums.Terms[]
+    optionTermsTemperature?: string | null
+    optionTermsQtyPallets?: string | null
+    optionTermsCorners?: string | null
+    optionTermsBelts?: string | null
+    optionTermsPalletsType?: $Enums.TermsPalletsType | null
+    optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
+    userName?: string | null
+    userPhone?: string | null
+    user?: UserCreateNestedOneWithoutCargosInput
+    views?: ViewsCreateNestedOneWithoutCargoInput
+  }
+
+  export type CargoUncheckedCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    title: string
+    price: number
+    currency: $Enums.Currency
+    note?: string | null
+    placesLoading?: CargoCreateplacesLoadingInput | string[]
+    placesUnloading?: CargoCreateplacesUnloadingInput | string[]
+    distance?: number | null
+    tariff?: number | null
+    routeLink?: string | null
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: CargoCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: CargoCreateloadingTypeInput | $Enums.LoadingType[]
+    paymentMethod?: CargoCreatepaymentMethodInput | $Enums.PaymentMethod[]
+    paymentPeriod?: CargoCreatepaymentPeriodInput | $Enums.PaymentPeriod[]
+    paymentOther?: CargoCreatepaymentOtherInput | $Enums.PaymentOther[]
+    paymentPrepaymentPercent?: string | null
+    paymentDeferredDays?: string | null
+    optionDocuments?: CargoCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    optionLoadings?: CargoCreateoptionLoadingsInput | $Enums.Loadings[]
+    optionLoadingsTimeLoading?: string | null
+    optionLoadingsTimeUnloading?: string | null
+    optionLoadingsDateUnloading?: Date | string | null
+    optionLoadingsPlaceLoading?: string | null
+    optionLoadingsPlaceUnloading?: string | null
+    optionLoadingsBigBag?: string | null
+    optionTerms?: CargoCreateoptionTermsInput | $Enums.Terms[]
+    optionTermsTemperature?: string | null
+    optionTermsQtyPallets?: string | null
+    optionTermsCorners?: string | null
+    optionTermsBelts?: string | null
+    optionTermsPalletsType?: $Enums.TermsPalletsType | null
+    optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    viewsId?: string | null
+  }
+
+  export type CargoCreateOrConnectWithoutWishListInput = {
+    where: CargoWhereUniqueInput
+    create: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
+  }
+
+  export type UserUpsertWithoutWishListInput = {
+    update: XOR<UserUpdateWithoutWishListInput, UserUncheckedUpdateWithoutWishListInput>
+    create: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutWishListInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutWishListInput, UserUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type UserUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
+    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
+    viberNumbers?: UserUpdateviberNumbersInput | string[]
+    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
+    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
+    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
+    viberNumbers?: UserUpdateviberNumbersInput | string[]
+    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
+    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CargoUpsertWithoutWishListInput = {
+    update: XOR<CargoUpdateWithoutWishListInput, CargoUncheckedUpdateWithoutWishListInput>
+    create: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
+    where?: CargoWhereInput
+  }
+
+  export type CargoUpdateToOneWithWhereWithoutWishListInput = {
+    where?: CargoWhereInput
+    data: XOR<CargoUpdateWithoutWishListInput, CargoUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type CargoUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: CargoUpdateplacesLoadingInput | string[]
+    placesUnloading?: CargoUpdateplacesUnloadingInput | string[]
+    distance?: NullableIntFieldUpdateOperationsInput | number | null
+    tariff?: NullableIntFieldUpdateOperationsInput | number | null
+    routeLink?: NullableStringFieldUpdateOperationsInput | string | null
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: CargoUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: CargoUpdateloadingTypeInput | $Enums.LoadingType[]
+    paymentMethod?: CargoUpdatepaymentMethodInput | $Enums.PaymentMethod[]
+    paymentPeriod?: CargoUpdatepaymentPeriodInput | $Enums.PaymentPeriod[]
+    paymentOther?: CargoUpdatepaymentOtherInput | $Enums.PaymentOther[]
+    paymentPrepaymentPercent?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentDeferredDays?: NullableStringFieldUpdateOperationsInput | string | null
+    optionDocuments?: CargoUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    optionLoadings?: CargoUpdateoptionLoadingsInput | $Enums.Loadings[]
+    optionLoadingsTimeLoading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsTimeUnloading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsDateUnloading?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    optionLoadingsPlaceLoading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsPlaceUnloading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsBigBag?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTerms?: CargoUpdateoptionTermsInput | $Enums.Terms[]
+    optionTermsTemperature?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsQtyPallets?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsCorners?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsBelts?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsPalletsType?: NullableEnumTermsPalletsTypeFieldUpdateOperationsInput | $Enums.TermsPalletsType | null
+    optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutCargosNestedInput
+    views?: ViewsUpdateOneWithoutCargoNestedInput
+  }
+
+  export type CargoUncheckedUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    title?: StringFieldUpdateOperationsInput | string
+    price?: IntFieldUpdateOperationsInput | number
+    currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: CargoUpdateplacesLoadingInput | string[]
+    placesUnloading?: CargoUpdateplacesUnloadingInput | string[]
+    distance?: NullableIntFieldUpdateOperationsInput | number | null
+    tariff?: NullableIntFieldUpdateOperationsInput | number | null
+    routeLink?: NullableStringFieldUpdateOperationsInput | string | null
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: CargoUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: CargoUpdateloadingTypeInput | $Enums.LoadingType[]
+    paymentMethod?: CargoUpdatepaymentMethodInput | $Enums.PaymentMethod[]
+    paymentPeriod?: CargoUpdatepaymentPeriodInput | $Enums.PaymentPeriod[]
+    paymentOther?: CargoUpdatepaymentOtherInput | $Enums.PaymentOther[]
+    paymentPrepaymentPercent?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentDeferredDays?: NullableStringFieldUpdateOperationsInput | string | null
+    optionDocuments?: CargoUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    optionLoadings?: CargoUpdateoptionLoadingsInput | $Enums.Loadings[]
+    optionLoadingsTimeLoading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsTimeUnloading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsDateUnloading?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    optionLoadingsPlaceLoading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsPlaceUnloading?: NullableStringFieldUpdateOperationsInput | string | null
+    optionLoadingsBigBag?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTerms?: CargoUpdateoptionTermsInput | $Enums.Terms[]
+    optionTermsTemperature?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsQtyPallets?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsCorners?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsBelts?: NullableStringFieldUpdateOperationsInput | string | null
+    optionTermsPalletsType?: NullableEnumTermsPalletsTypeFieldUpdateOperationsInput | $Enums.TermsPalletsType | null
+    optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CargoCreateManyUserInput = {
@@ -9766,6 +11788,13 @@ export namespace Prisma {
     viewsId?: string | null
   }
 
+  export type WishListCreateManyUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cargoId?: string | null
+  }
+
   export type CargoUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9812,6 +11841,7 @@ export namespace Prisma {
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     views?: ViewsUpdateOneWithoutCargoNestedInput
+    wishList?: WishListUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoUncheckedUpdateWithoutUserInput = {
@@ -9860,6 +11890,7 @@ export namespace Prisma {
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoUncheckedUpdateManyWithoutUserInput = {
@@ -9908,6 +11939,55 @@ export namespace Prisma {
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cargo?: CargoUpdateOneWithoutWishListNestedInput
+  }
+
+  export type WishListUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListCreateManyCargoInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+  }
+
+  export type WishListUpdateWithoutCargoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutWishListNestedInput
+  }
+
+  export type WishListUncheckedUpdateWithoutCargoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListUncheckedUpdateManyWithoutCargoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CargoCreateManyViewsInput = {
@@ -10004,6 +12084,7 @@ export namespace Prisma {
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutCargosNestedInput
+    wishList?: WishListUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoUncheckedUpdateWithoutViewsInput = {
@@ -10052,6 +12133,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
 
   export type CargoUncheckedUpdateManyWithoutViewsInput = {

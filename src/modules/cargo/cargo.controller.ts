@@ -124,4 +124,43 @@ export class CargoController {
     async addView(@Body() { id }: { id: string }) {
         return await this.cargoService.addView(id);
     }
+
+    @Post("add-to-wishlist")
+    @HttpCode(200)
+    async addToWishlist(
+        @CurrentUser("id") userId: string,
+        @Body() { cargoId }: { cargoId: string }
+    ) {
+        return await this.cargoService.addToWishlist(userId, cargoId);
+    }
+
+    @Post("remove-from-wishlist")
+    @HttpCode(200)
+    async removeFromWishlist(
+        @CurrentUser("id") userId: string,
+        @Body() { cargoId }: { cargoId: string }
+    ) {
+        return await this.cargoService.removeFromWishlist(userId, cargoId);
+    }
+
+    @Post("remove-all-from-wishlist")
+    @HttpCode(200)
+    async removeAllFromWishlist(@CurrentUser("id") userId: string) {
+        return await this.cargoService.removeAllFromWishlist(userId);
+    }
+
+    @Post("wishlist")
+    @HttpCode(200)
+    async getWishlist(@CurrentUser("id") userId: string) {
+        return await this.cargoService.getWishList(userId);
+    }
+
+    @Post("is-in-wishlist")
+    @HttpCode(200)
+    async isInWishlist(
+        @CurrentUser("id") userId: string,
+        @Body() cargoId: string
+    ) {
+        return await this.cargoService.isInWishlist(userId, cargoId);
+    }
 }

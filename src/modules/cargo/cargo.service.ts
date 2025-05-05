@@ -2,6 +2,7 @@
 import axios from "axios";
 import {
     BadRequestException,
+    ConflictException,
     Injectable,
     NotFoundException,
 } from "@nestjs/common";
@@ -302,8 +303,6 @@ export class CargoService {
             },
         });
 
-        console.log(cargos);
-
         return {
             cargos,
             hasMore: page * perPage < total,
@@ -430,8 +429,6 @@ export class CargoService {
     }
 
     async findActiveByUserId(userId: string) {
-        console.log("findActiveByUserId", userId);
-
         const cargos = await this.prisma.cargo.findMany({
             where: {
                 userId,
@@ -481,6 +478,117 @@ export class CargoService {
         });
 
         return { message: "Просмотр добавлен" };
+    }
+
+    async addToWishlist(userId: string, cargoId: string) {
+        if (!cargoId || !userId) {
+            throw new BadRequestException(
+                "Не указаны id груза или пользователя"
+            );
+        }
+
+        const wishCargo = await this.prisma.wishList.findUnique({
+            where: {
+                userId_cargoId: {
+                    userId,
+                    cargoId,
+                },
+            },
+        });
+
+        if (wishCargo) {
+            await this.removeFromWishlist(userId, cargoId);
+        }
+
+        await this.prisma.wishList.create({
+            data: {
+                cargoId,
+                userId,
+            },
+        });
+
+        return { message: "Груз добавлен в избранное" };
+    }
+
+    async removeFromWishlist(userId: string, cargoId: string) {
+        const wishListItem = await this.prisma.wishList.findUnique({
+            where: {
+                userId_cargoId: {
+                    userId,
+                    cargoId,
+                },
+            },
+        });
+
+        if (!wishListItem) {
+            await this.addToWishlist(userId, cargoId);
+        }
+
+        await this.prisma.wishList.delete({
+            where: {
+                userId_cargoId: {
+                    userId,
+                    cargoId,
+                },
+            },
+        });
+
+        return { message: "Груз удален из избранного" };
+    }
+
+    async removeAllFromWishlist(userId: string) {
+        await this.prisma.wishList.deleteMany({
+            where: {
+                userId,
+            },
+        });
+
+        return { message: "Все грузы удалены из избранного" };
+    }
+
+    async getWishList(userId: string) {
+        const cargos = await this.prisma.wishList.findMany({
+            where: { userId },
+            include: {
+                cargo: {
+                    include: {
+                        user: {
+                            select: {
+                                isVerified: true,
+                                name: true,
+                                phone: true,
+                                whatsappNumbers: true,
+                                telegramNumbers: true,
+                                skypeNumbers: true,
+                                viberNumbers: true,
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        if (!cargos.length) {
+            return { cargos: [], message: "Грузы не найдены в избранном" };
+        }
+
+        // Возвращаем только массив cargo
+        return {
+            cargos: cargos.map((item) => item.cargo),
+        };
+    }
+
+    async isInWishlist(cargoId: string, userId: string) {
+        const wishListItem = await this.prisma.wishList.findUnique({
+            where: {
+                userId_cargoId: {
+                    userId,
+                    cargoId,
+                },
+            },
+        });
+
+        return !!wishListItem;
     }
 
     private async calculateTotalDistanceForTruck(

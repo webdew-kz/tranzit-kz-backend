@@ -201,6 +201,14 @@ exports.Prisma.ViewsScalarFieldEnum = {
   count: 'count'
 };
 
+exports.Prisma.WishListScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  cargoId: 'cargoId'
+};
+
 exports.Prisma.CurrencyRateScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
@@ -404,6 +412,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   Cargo: 'Cargo',
   Views: 'Views',
+  WishList: 'WishList',
   CurrencyRate: 'CurrencyRate'
 };
 
