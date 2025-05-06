@@ -73,7 +73,7 @@ export class UserController {
     }
 
     @Auth()
-    @Patch()
+    @Post("end-register")
     async update(
         @CurrentUser("id") userId: string,
         @Body() dto: UpdateUserDto
