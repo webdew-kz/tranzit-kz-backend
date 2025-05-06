@@ -10,6 +10,9 @@ export class EmailService {
     constructor(private readonly mailerService: MailerService) {}
 
     async sendVerificationCode(email: string, code: string) {
+        console.log("Sending email to:", email);
+        console.log("Verification code:", code);
+
         try {
             await this.mailerService.sendMail({
                 to: email,

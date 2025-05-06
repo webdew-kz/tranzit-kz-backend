@@ -14,7 +14,7 @@ import { EmailService } from "./email.service";
             useFactory: (config: ConfigService) => ({
                 transport: {
                     host: "live.smtp.mailtrap.io",
-                    port: 2525,
+                    port: 587,
                     secure: false,
                     auth: {
                         user: config.getOrThrow("MAILTRAP_USER"),

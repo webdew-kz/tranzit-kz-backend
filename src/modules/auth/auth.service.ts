@@ -87,14 +87,14 @@ export class AuthService {
         });
 
         if (user) {
-            // throw new ConflictException(
-            //     "Пользователь с таким email уже существует"
-            // );
-
-            return "Пользователь с таким email уже существует";
+            throw new ConflictException(
+                "Пользователь с таким email уже существует"
+            );
         }
 
-        return await this.sendVerificationCode(email);
+        const code = await this.sendVerificationCode(email);
+
+        return code;
     }
 
     async isExistingUserForEmailReset(email: string): Promise<string> {
