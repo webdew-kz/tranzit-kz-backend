@@ -16,8 +16,8 @@ import { join } from "path";
             useFactory: (config: ConfigService) => ({
                 transport: {
                     host: "smtp.gmail.com",
-                    port: 587,
-                    secure: false,
+                    port: 465,
+                    secure: true,
                     auth: {
                         user: config.getOrThrow<string>("GOOGLE_SMTP_LOGIN"),
                         pass: config.getOrThrow<string>("GOOGLE_SMTP_PASSWORD"),
