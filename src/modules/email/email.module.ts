@@ -15,22 +15,17 @@ import { join } from "path";
             inject: [ConfigService],
             useFactory: (config: ConfigService) => ({
                 transport: {
-                    host: "smtp.gmail.com",
-                    port: 465,
-                    secure: true,
+                    host: "live.smtp.mailtrap.io",
+                    port: 587,
+                    secure: false, // Mailtrap на 587 не требует SSL
                     auth: {
-                        user: config.getOrThrow<string>("GOOGLE_SMTP_LOGIN"),
-                        pass: config.getOrThrow<string>("GOOGLE_SMTP_PASSWORD"),
+                        user: config.getOrThrow("MAILTRAP_USER"),
+                        pass: config.getOrThrow("MAILTRAP_PASS"),
                     },
                 },
                 defaults: {
-                    from: `"Tranzit" <${config.getOrThrow<string>("GOOGLE_SMTP_LOGIN")}>`,
+                    from: `"Tranzit" <noreply@tranzit.kz>`, // или любой валидный email
                 },
-                // template: {
-                //     dir: join(__dirname, "..", "..", "..", "templates"),
-                //     adapter: new HandlebarsAdapter(),
-                //     options: { strict: true },
-                // },
             }),
         }),
     ],
