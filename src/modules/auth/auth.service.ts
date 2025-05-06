@@ -191,7 +191,6 @@ export class AuthService {
             httpOnly: true,
             secure: true,
             sameSite: "lax",
-            domain: ".itranzit.kz",
             expires: expiresIn,
             domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
