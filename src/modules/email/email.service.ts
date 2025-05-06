@@ -12,10 +12,14 @@ export class EmailService {
         await this.mailerService.sendMail({
             to: email,
             subject: "Подтверждение Email",
-            template: "confirmation",
-            context: {
-                code,
-            },
+            html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2>Подтверждение Email</h2>
+                <p>Ваш код подтверждения:</p>
+                <p style="font-size: 24px; font-weight: bold;">${code}</p>
+                <p>Срок действия: 5 минут</p>
+            </div>
+        `,
         });
     }
 
