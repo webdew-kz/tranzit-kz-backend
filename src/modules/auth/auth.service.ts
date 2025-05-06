@@ -42,7 +42,7 @@ export class AuthService {
         const tokens = this.issueTokens(user.id);
 
         this.setRefreshToken(tokens.refreshToken, res);
-        this.setAccessToken(tokens.accessToken, res);
+        // this.setAccessToken(tokens.accessToken, res);
 
         // res.cookie("accessToken", tokens.accessToken, {
         //     httpOnly: true,
@@ -50,17 +50,17 @@ export class AuthService {
         //     sameSite: "lax",
         //     path: "/",
         //     maxAge: 1000 * 60 * 60 * 24,
-        //     domain: `.${this.config.get("COOKIE_DOMAIN")}`,
+        //     // domain: `.${this.config.get("COOKIE_DOMAIN")}`,
         // });
 
-        res.cookie("userId", user.id, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            path: "/",
-            maxAge: 1000 * 60 * 60 * 24,
-            domain: `.${this.config.get("COOKIE_DOMAIN")}`,
-        });
+        // res.cookie("userId", user.id, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     sameSite: "lax",
+        //     path: "/",
+        //     maxAge: 1000 * 60 * 60 * 24,
+        //     // domain: `.${this.config.get("COOKIE_DOMAIN")}`,
+        // });
 
         return {
             user,

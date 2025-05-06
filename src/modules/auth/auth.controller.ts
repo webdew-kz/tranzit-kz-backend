@@ -56,6 +56,7 @@ export class AuthController {
         const res = await this.authService.isExistingUser(login);
         return { isExistingUser: res };
     }
+
     @HttpCode(200)
     @Post("is-existing-user-for-email")
     async isExistingUserForEmail(@Body() { email }: { email: string }) {
@@ -65,6 +66,8 @@ export class AuthController {
     @HttpCode(200)
     @Post("is-existing-user-for-email-reset")
     async isExistingUserForEmailReset(@Body() { email }: { email: string }) {
+        console.log("email", email);
+
         return await this.authService.isExistingUserForEmailReset(email);
     }
 }
