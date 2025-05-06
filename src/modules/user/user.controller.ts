@@ -74,8 +74,11 @@ export class UserController {
 
     @Auth()
     @Patch()
-    async update(@CurrentUser() user: User, @Body() dto: UpdateUserDto) {
-        return this.userService.update(user.id, dto);
+    async update(
+        @CurrentUser("id") userId: string,
+        @Body() dto: UpdateUserDto
+    ) {
+        return this.userService.update(userId, dto);
     }
 
     @Auth()

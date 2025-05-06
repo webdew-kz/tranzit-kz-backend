@@ -187,7 +187,7 @@ export class AuthService {
         res.cookie("accessToken", "", {
             httpOnly: true,
             sameSite: "lax",
-            secure: false,
+            secure: true,
             expires: new Date(0),
             // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
@@ -196,7 +196,7 @@ export class AuthService {
     private removeRefreshToken(res: Response) {
         res.cookie(this.REFRESH_TOKEN_NAME, "", {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "lax",
             expires: new Date(0),
             // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
