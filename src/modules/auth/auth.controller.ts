@@ -24,11 +24,7 @@ export class AuthController {
     @HttpCode(200)
     @Post("logout")
     logout(@Res({ passthrough: true }) res: Response) {
-        res.clearCookie("accessToken", {
-            httpOnly: true,
-            sameSite: "lax",
-            secure: true,
-        });
+        res.clearCookie("accessToken");
 
         res.clearCookie("userId"); // если хочешь, даже если не httpOnly
 
