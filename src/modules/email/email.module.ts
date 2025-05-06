@@ -9,20 +9,14 @@ import { EmailService } from "./email.service";
     imports: [
         ConfigModule,
         MailerModule.forRootAsync({
-            imports: [ConfigModule],
-            inject: [ConfigService],
-            useFactory: (config: ConfigService) => ({
+            useFactory: () => ({
                 transport: {
                     host: "live.smtp.mailtrap.io",
                     port: 587,
-                    secure: false,
                     auth: {
-                        user: config.getOrThrow("MAILTRAP_USER"),
-                        pass: config.getOrThrow("MAILTRAP_PASS"),
+                        user: "api",
+                        pass: "677da084c2403bbc6797f6ecd3cec408",
                     },
-                },
-                defaults: {
-                    from: '"Tranzit" <noreply@itranzit.kz>',
                 },
             }),
         }),
