@@ -60,6 +60,7 @@ export class AuthController {
     @HttpCode(200)
     @Post("is-existing-user-for-email")
     async isExistingUserForEmail(@Body() { email }: { email: string }) {
+        console.log("EMAIL FROM REQUEST:", email);
         return await this.authService.isExistingUserForEmail(email);
     }
 
