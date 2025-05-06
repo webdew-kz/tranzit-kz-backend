@@ -14,7 +14,10 @@ async function bootstrap() {
     app.use(cookieParser());
 
     app.enableCors({
-        origin: config.getOrThrow<string>("CLIENT_URL"),
+        origin: [
+            config.getOrThrow<string>("CLIENT_URL"),
+            "https://tranzit-frontend-s9teaf-bd036b-45-82-14-189.traefik.me/",
+        ],
         credentials: true,
         exposedHeaders: ["set-cookie"],
     });
