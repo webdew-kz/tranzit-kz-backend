@@ -42,7 +42,25 @@ export class AuthService {
         const tokens = this.issueTokens(user.id);
 
         this.setRefreshToken(tokens.refreshToken, res);
-        // this.setAccessToken(tokens.accessToken, res);
+        this.setAccessToken(tokens.accessToken, res);
+
+        // res.cookie("accessToken", tokens.accessToken, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     sameSite: "lax",
+        //     path: "/",
+        //     maxAge: 1000 * 60 * 60 * 24,
+        //     domain: `.${this.config.get("COOKIE_DOMAIN")}`,
+        // });
+
+        res.cookie("userId", user.id, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+            path: "/",
+            maxAge: 1000 * 60 * 60 * 24,
+            domain: `.${this.config.get("COOKIE_DOMAIN")}`,
+        });
 
         return {
             user,
@@ -168,7 +186,7 @@ export class AuthService {
             secure: true,
             sameSite: "lax",
             expires: expiresIn,
-            // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
+            domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
     }
 
@@ -179,7 +197,7 @@ export class AuthService {
             sameSite: "lax",
             secure: true, // true в проде
             maxAge: 60 * 60 * 24 * 1000, // 1 день
-            // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
+            domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
     }
 
