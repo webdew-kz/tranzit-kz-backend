@@ -24,9 +24,21 @@ export class AuthController {
     @HttpCode(200)
     @Post("logout")
     logout(@Res({ passthrough: true }) res: Response) {
-        res.clearCookie("accessToken");
+        res.clearCookie("accessToken", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+            domain: ".itranzit.kz",
+            path: "/",
+        });
 
-        res.clearCookie("userId"); // если хочешь, даже если не httpOnly
+        res.clearCookie("userId", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+            domain: ".itranzit.kz",
+            path: "/",
+        });
 
         return this.authService.logout(res);
     }
