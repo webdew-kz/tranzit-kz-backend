@@ -165,7 +165,7 @@ export class AuthService {
 
         res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: "lax",
             expires: expiresIn,
             // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
@@ -177,7 +177,7 @@ export class AuthService {
             httpOnly: true,
             path: "/",
             sameSite: "lax",
-            secure: false, // true в проде
+            secure: true, // true в проде
             maxAge: 60 * 60 * 24 * 1000, // 1 день
             // domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });

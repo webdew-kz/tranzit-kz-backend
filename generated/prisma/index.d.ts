@@ -2974,6 +2974,10 @@ export namespace Prisma {
     userId: string | null
     userName: string | null
     userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     viewsId: string | null
   }
 
@@ -3012,6 +3016,10 @@ export namespace Prisma {
     userId: string | null
     userName: string | null
     userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     viewsId: string | null
   }
 
@@ -3061,6 +3069,10 @@ export namespace Prisma {
     userId: number
     userName: number
     userPhone: number
+    whatsapp: number
+    telegram: number
+    viber: number
+    skype: number
     viewsId: number
     _all: number
   }
@@ -3119,6 +3131,10 @@ export namespace Prisma {
     userId?: true
     userName?: true
     userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     viewsId?: true
   }
 
@@ -3157,6 +3173,10 @@ export namespace Prisma {
     userId?: true
     userName?: true
     userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     viewsId?: true
   }
 
@@ -3206,6 +3226,10 @@ export namespace Prisma {
     userId?: true
     userName?: true
     userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     viewsId?: true
     _all?: true
   }
@@ -3342,6 +3366,10 @@ export namespace Prisma {
     userId: string | null
     userName: string | null
     userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     viewsId: string | null
     _count: CargoCountAggregateOutputType | null
     _avg: CargoAvgAggregateOutputType | null
@@ -3410,6 +3438,10 @@ export namespace Prisma {
     userId?: boolean
     userName?: boolean
     userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     viewsId?: boolean
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
@@ -3463,6 +3495,10 @@ export namespace Prisma {
     userId?: boolean
     userName?: boolean
     userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     viewsId?: boolean
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
@@ -3514,6 +3550,10 @@ export namespace Prisma {
     userId?: boolean
     userName?: boolean
     userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     viewsId?: boolean
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
@@ -3565,10 +3605,14 @@ export namespace Prisma {
     userId?: boolean
     userName?: boolean
     userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     viewsId?: boolean
   }
 
-  export type CargoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "title" | "price" | "currency" | "note" | "placesLoading" | "placesUnloading" | "distance" | "tariff" | "routeLink" | "weight" | "volume" | "periodDays" | "startDate" | "endDate" | "isArchived" | "archivedDate" | "truckType" | "loadingType" | "paymentMethod" | "paymentPeriod" | "paymentOther" | "paymentPrepaymentPercent" | "paymentDeferredDays" | "optionDocuments" | "optionDocumentsAdr" | "optionLoadings" | "optionLoadingsTimeLoading" | "optionLoadingsTimeUnloading" | "optionLoadingsDateUnloading" | "optionLoadingsPlaceLoading" | "optionLoadingsPlaceUnloading" | "optionLoadingsBigBag" | "optionTerms" | "optionTermsTemperature" | "optionTermsQtyPallets" | "optionTermsCorners" | "optionTermsBelts" | "optionTermsPalletsType" | "optionAdditionally" | "userId" | "userName" | "userPhone" | "viewsId", ExtArgs["result"]["cargo"]>
+  export type CargoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "title" | "price" | "currency" | "note" | "placesLoading" | "placesUnloading" | "distance" | "tariff" | "routeLink" | "weight" | "volume" | "periodDays" | "startDate" | "endDate" | "isArchived" | "archivedDate" | "truckType" | "loadingType" | "paymentMethod" | "paymentPeriod" | "paymentOther" | "paymentPrepaymentPercent" | "paymentDeferredDays" | "optionDocuments" | "optionDocumentsAdr" | "optionLoadings" | "optionLoadingsTimeLoading" | "optionLoadingsTimeUnloading" | "optionLoadingsDateUnloading" | "optionLoadingsPlaceLoading" | "optionLoadingsPlaceUnloading" | "optionLoadingsBigBag" | "optionTerms" | "optionTermsTemperature" | "optionTermsQtyPallets" | "optionTermsCorners" | "optionTermsBelts" | "optionTermsPalletsType" | "optionAdditionally" | "userId" | "userName" | "userPhone" | "whatsapp" | "telegram" | "viber" | "skype" | "viewsId", ExtArgs["result"]["cargo"]>
   export type CargoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Cargo$userArgs<ExtArgs>
     views?: boolean | Cargo$viewsArgs<ExtArgs>
@@ -3637,6 +3681,10 @@ export namespace Prisma {
       userId: string | null
       userName: string | null
       userPhone: string | null
+      whatsapp: string | null
+      telegram: string | null
+      viber: string | null
+      skype: string | null
       viewsId: string | null
     }, ExtArgs["result"]["cargo"]>
     composites: {}
@@ -4109,6 +4157,10 @@ export namespace Prisma {
     readonly userId: FieldRef<"Cargo", 'String'>
     readonly userName: FieldRef<"Cargo", 'String'>
     readonly userPhone: FieldRef<"Cargo", 'String'>
+    readonly whatsapp: FieldRef<"Cargo", 'String'>
+    readonly telegram: FieldRef<"Cargo", 'String'>
+    readonly viber: FieldRef<"Cargo", 'String'>
+    readonly skype: FieldRef<"Cargo", 'String'>
     readonly viewsId: FieldRef<"Cargo", 'String'>
   }
     
@@ -7863,6 +7915,10 @@ export namespace Prisma {
     userId: 'userId',
     userName: 'userName',
     userPhone: 'userPhone',
+    whatsapp: 'whatsapp',
+    telegram: 'telegram',
+    viber: 'viber',
+    skype: 'skype',
     viewsId: 'viewsId'
   };
 
@@ -8365,6 +8421,10 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Cargo"> | string | null
     userName?: StringNullableFilter<"Cargo"> | string | null
     userPhone?: StringNullableFilter<"Cargo"> | string | null
+    whatsapp?: StringNullableFilter<"Cargo"> | string | null
+    telegram?: StringNullableFilter<"Cargo"> | string | null
+    viber?: StringNullableFilter<"Cargo"> | string | null
+    skype?: StringNullableFilter<"Cargo"> | string | null
     viewsId?: StringNullableFilter<"Cargo"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
@@ -8417,6 +8477,10 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     userName?: SortOrderInput | SortOrder
     userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
     viewsId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     views?: ViewsOrderByWithRelationInput
@@ -8472,6 +8536,10 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Cargo"> | string | null
     userName?: StringNullableFilter<"Cargo"> | string | null
     userPhone?: StringNullableFilter<"Cargo"> | string | null
+    whatsapp?: StringNullableFilter<"Cargo"> | string | null
+    telegram?: StringNullableFilter<"Cargo"> | string | null
+    viber?: StringNullableFilter<"Cargo"> | string | null
+    skype?: StringNullableFilter<"Cargo"> | string | null
     viewsId?: StringNullableFilter<"Cargo"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
@@ -8524,6 +8592,10 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     userName?: SortOrderInput | SortOrder
     userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
     viewsId?: SortOrderInput | SortOrder
     _count?: CargoCountOrderByAggregateInput
     _avg?: CargoAvgOrderByAggregateInput
@@ -8581,6 +8653,10 @@ export namespace Prisma {
     userId?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
     userName?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
     userPhone?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
+    whatsapp?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
+    telegram?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
+    viber?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
+    skype?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
     viewsId?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
   }
 
@@ -8968,6 +9044,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     user?: UserCreateNestedOneWithoutCargosInput
     views?: ViewsCreateNestedOneWithoutCargoInput
     wishList?: WishListCreateNestedManyWithoutCargoInput
@@ -9019,6 +9099,10 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     viewsId?: string | null
     wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
@@ -9068,6 +9152,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutCargosNestedInput
     views?: ViewsUpdateOneWithoutCargoNestedInput
     wishList?: WishListUpdateManyWithoutCargoNestedInput
@@ -9119,6 +9207,10 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
@@ -9169,6 +9261,10 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     viewsId?: string | null
   }
 
@@ -9217,6 +9313,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CargoUncheckedUpdateManyInput = {
@@ -9265,6 +9365,10 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -9862,6 +9966,10 @@ export namespace Prisma {
     userId?: SortOrder
     userName?: SortOrder
     userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     viewsId?: SortOrder
   }
 
@@ -9909,6 +10017,10 @@ export namespace Prisma {
     userId?: SortOrder
     userName?: SortOrder
     userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     viewsId?: SortOrder
   }
 
@@ -9947,6 +10059,10 @@ export namespace Prisma {
     userId?: SortOrder
     userName?: SortOrder
     userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     viewsId?: SortOrder
   }
 
@@ -10854,6 +10970,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     views?: ViewsCreateNestedOneWithoutCargoInput
     wishList?: WishListCreateNestedManyWithoutCargoInput
   }
@@ -10903,6 +11023,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     viewsId?: string | null
     wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
@@ -11006,6 +11130,10 @@ export namespace Prisma {
     userId?: StringNullableFilter<"Cargo"> | string | null
     userName?: StringNullableFilter<"Cargo"> | string | null
     userPhone?: StringNullableFilter<"Cargo"> | string | null
+    whatsapp?: StringNullableFilter<"Cargo"> | string | null
+    telegram?: StringNullableFilter<"Cargo"> | string | null
+    viber?: StringNullableFilter<"Cargo"> | string | null
+    skype?: StringNullableFilter<"Cargo"> | string | null
     viewsId?: StringNullableFilter<"Cargo"> | string | null
   }
 
@@ -11281,6 +11409,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     user?: UserCreateNestedOneWithoutCargosInput
     wishList?: WishListCreateNestedManyWithoutCargoInput
   }
@@ -11331,6 +11463,10 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     wishList?: WishListUncheckedCreateNestedManyWithoutCargoInput
   }
 
@@ -11460,6 +11596,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     user?: UserCreateNestedOneWithoutCargosInput
     views?: ViewsCreateNestedOneWithoutCargoInput
   }
@@ -11510,6 +11650,10 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     viewsId?: string | null
   }
 
@@ -11635,6 +11779,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutCargosNestedInput
     views?: ViewsUpdateOneWithoutCargoNestedInput
   }
@@ -11685,6 +11833,10 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -11733,6 +11885,10 @@ export namespace Prisma {
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     viewsId?: string | null
   }
 
@@ -11788,6 +11944,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     views?: ViewsUpdateOneWithoutCargoNestedInput
     wishList?: WishListUpdateManyWithoutCargoNestedInput
   }
@@ -11837,6 +11997,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
@@ -11886,6 +12050,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -11984,6 +12152,10 @@ export namespace Prisma {
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
   }
 
   export type CargoUpdateWithoutViewsInput = {
@@ -12031,6 +12203,10 @@ export namespace Prisma {
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneWithoutCargosNestedInput
     wishList?: WishListUpdateManyWithoutCargoNestedInput
   }
@@ -12081,6 +12257,10 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     wishList?: WishListUncheckedUpdateManyWithoutCargoNestedInput
   }
 
@@ -12130,6 +12310,10 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

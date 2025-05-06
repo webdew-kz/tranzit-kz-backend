@@ -123,9 +123,6 @@ export class UserService {
             throw new BadRequestException("Пользователи не найдены");
         }
 
-        console.log("Найдено пользователей:", users.length);
-        console.log(users);
-
         return users;
     }
 
@@ -187,8 +184,6 @@ export class UserService {
     }
 
     async update(id: string, dto: UpdateUserDto) {
-        console.log("Обновление пользователя с id:", id, "и данными:", dto);
-
         const user = await this.prisma.user.findUnique({ where: { id } });
 
         if (!user) {

@@ -12,12 +12,14 @@ import { ConfigService } from "@nestjs/config";
 import { UpdateCargoDto } from "./dto/update-cargo.dto";
 import { SearchCargoDto } from "./dto/search-cargo.dto";
 import { Prisma } from "generated/prisma";
+import { UserService } from "../user/user.service";
 
 @Injectable()
 export class CargoService {
     constructor(
         private readonly prisma: PrismaService,
-        private readonly config: ConfigService
+        private readonly config: ConfigService,
+        private readonly userService: UserService
     ) {}
 
     async create(dto: CreateCargoDto, userId: string) {
@@ -27,6 +29,10 @@ export class CargoService {
             price,
             startDate,
             periodDays = 5,
+            whatsapp,
+            telegram,
+            viber,
+            skype,
         } = dto;
 
         const distance = await this.calculateTotalDistanceForTruck(
@@ -57,6 +63,13 @@ export class CargoService {
                 endDate,
                 viewsId: views.id, // ✅ единственно поддерживаемый способ
             } as Prisma.CargoUncheckedCreateInput, // 👈 обязательно!
+        });
+
+        await this.userService.update(userId, {
+            whatsapp,
+            telegram,
+            viber,
+            skype,
         });
 
         return { message: "Груз успешно добавлен" };

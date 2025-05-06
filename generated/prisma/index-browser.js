@@ -190,6 +190,10 @@ exports.Prisma.CargoScalarFieldEnum = {
   userId: 'userId',
   userName: 'userName',
   userPhone: 'userPhone',
+  whatsapp: 'whatsapp',
+  telegram: 'telegram',
+  viber: 'viber',
+  skype: 'skype',
   viewsId: 'viewsId'
 };
 

@@ -203,4 +203,20 @@ export class CreateCargoDto {
     @IsOptional()
     @IsString()
     userPhone?: string;
+
+    @IsOptional()
+    @IsString()
+    whatsapp?: string;
+
+    @IsOptional()
+    @IsString()
+    telegram?: string;
+
+    @IsOptional()
+    @IsString()
+    viber?: string;
+
+    @IsOptional()
+    @IsString()
+    skype?: string;
 }

@@ -50,27 +50,22 @@ export class UpdateUserDto {
     @IsOptional()
     @IsArray()
     @IsString({ each: true })
-    whatsappNumbers?: string[];
+    whatsapp?: string;
 
     @IsOptional()
     @IsArray()
     @IsString({ each: true })
-    telegramNumbers?: string[];
+    telegram?: string;
 
     @IsOptional()
     @IsArray()
     @IsString({ each: true })
-    viberNumbers?: string[];
+    viber?: string;
 
     @IsOptional()
     @IsArray()
     @IsString({ each: true })
-    skypeNumbers?: string[];
-
-    @IsOptional()
-    @IsArray()
-    @IsString({ each: true })
-    otherNumbers?: string[];
+    skype?: string;
 
     @IsOptional()
     @IsDate()
