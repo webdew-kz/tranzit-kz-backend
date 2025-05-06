@@ -3,28 +3,26 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MailerModule } from "@nestjs-modules/mailer";
-import { HandlebarsAdapter } from "@nestjs-modules/mailer/dist/adapters/handlebars.adapter";
 import { EmailService } from "./email.service";
-import { join } from "path";
 
 @Module({
     imports: [
-        ConfigModule, // обязательно
+        ConfigModule,
         MailerModule.forRootAsync({
             imports: [ConfigModule],
             inject: [ConfigService],
             useFactory: (config: ConfigService) => ({
                 transport: {
                     host: "live.smtp.mailtrap.io",
-                    port: 587,
-                    secure: false, // Mailtrap на 587 не требует SSL
+                    port: 2525,
+                    secure: false,
                     auth: {
                         user: config.getOrThrow("MAILTRAP_USER"),
                         pass: config.getOrThrow("MAILTRAP_PASS"),
                     },
                 },
                 defaults: {
-                    from: `"Tranzit" <noreply@tranzit.kz>`, // или любой валидный email
+                    from: '"Tranzit" <noreply@tranzit.kz>',
                 },
             }),
         }),
