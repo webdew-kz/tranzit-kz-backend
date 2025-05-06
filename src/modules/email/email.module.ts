@@ -27,7 +27,7 @@ import { join } from "path";
                     from: `"Tranzit" <${config.getOrThrow<string>("GOOGLE_SMTP_LOGIN")}>`,
                 },
                 template: {
-                    dir: join(__dirname, "..", "..", "..", "templates"),
+                    dir: join(__dirname, "templates"),
                     adapter: new HandlebarsAdapter(),
                     options: { strict: true },
                 },

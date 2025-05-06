@@ -24,11 +24,10 @@ model User {
     avatar  String? @default("/uploads/no-avatar.png")
     role    Role    @default(USER)
 
-    whatsappNumbers String[] @default([])
-    telegramNumbers String[] @default([])
-    viberNumbers    String[] @default([])
-    skypeNumbers    String[] @default([])
-    otherNumbers    String[] @default([])
+    whatsapp String?
+    telegram String?
+    viber    String?
+    skype    String?
 
     subscriptionStartDate DateTime? // дата начала подписки
     subscriptionEndDate   DateTime? // дата окончания подписки

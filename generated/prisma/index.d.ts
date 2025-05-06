@@ -1629,6 +1629,10 @@ export namespace Prisma {
     city: string | null
     avatar: string | null
     role: $Enums.Role | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     subscriptionStartDate: Date | null
     subscriptionEndDate: Date | null
     subscriptionStatus: boolean | null
@@ -1648,6 +1652,10 @@ export namespace Prisma {
     city: string | null
     avatar: string | null
     role: $Enums.Role | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     subscriptionStartDate: Date | null
     subscriptionEndDate: Date | null
     subscriptionStatus: boolean | null
@@ -1667,11 +1675,10 @@ export namespace Prisma {
     city: number
     avatar: number
     role: number
-    whatsappNumbers: number
-    telegramNumbers: number
-    viberNumbers: number
-    skypeNumbers: number
-    otherNumbers: number
+    whatsapp: number
+    telegram: number
+    viber: number
+    skype: number
     subscriptionStartDate: number
     subscriptionEndDate: number
     subscriptionStatus: number
@@ -1694,6 +1701,10 @@ export namespace Prisma {
     city?: true
     avatar?: true
     role?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     subscriptionStartDate?: true
     subscriptionEndDate?: true
     subscriptionStatus?: true
@@ -1713,6 +1724,10 @@ export namespace Prisma {
     city?: true
     avatar?: true
     role?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     subscriptionStartDate?: true
     subscriptionEndDate?: true
     subscriptionStatus?: true
@@ -1732,11 +1747,10 @@ export namespace Prisma {
     city?: true
     avatar?: true
     role?: true
-    whatsappNumbers?: true
-    telegramNumbers?: true
-    viberNumbers?: true
-    skypeNumbers?: true
-    otherNumbers?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
     subscriptionStartDate?: true
     subscriptionEndDate?: true
     subscriptionStatus?: true
@@ -1830,11 +1844,10 @@ export namespace Prisma {
     city: string | null
     avatar: string | null
     role: $Enums.Role
-    whatsappNumbers: string[]
-    telegramNumbers: string[]
-    viberNumbers: string[]
-    skypeNumbers: string[]
-    otherNumbers: string[]
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
     subscriptionStartDate: Date | null
     subscriptionEndDate: Date | null
     subscriptionStatus: boolean | null
@@ -1872,11 +1885,10 @@ export namespace Prisma {
     city?: boolean
     avatar?: boolean
     role?: boolean
-    whatsappNumbers?: boolean
-    telegramNumbers?: boolean
-    viberNumbers?: boolean
-    skypeNumbers?: boolean
-    otherNumbers?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     subscriptionStartDate?: boolean
     subscriptionEndDate?: boolean
     subscriptionStatus?: boolean
@@ -1900,11 +1912,10 @@ export namespace Prisma {
     city?: boolean
     avatar?: boolean
     role?: boolean
-    whatsappNumbers?: boolean
-    telegramNumbers?: boolean
-    viberNumbers?: boolean
-    skypeNumbers?: boolean
-    otherNumbers?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     subscriptionStartDate?: boolean
     subscriptionEndDate?: boolean
     subscriptionStatus?: boolean
@@ -1925,11 +1936,10 @@ export namespace Prisma {
     city?: boolean
     avatar?: boolean
     role?: boolean
-    whatsappNumbers?: boolean
-    telegramNumbers?: boolean
-    viberNumbers?: boolean
-    skypeNumbers?: boolean
-    otherNumbers?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     subscriptionStartDate?: boolean
     subscriptionEndDate?: boolean
     subscriptionStatus?: boolean
@@ -1950,11 +1960,10 @@ export namespace Prisma {
     city?: boolean
     avatar?: boolean
     role?: boolean
-    whatsappNumbers?: boolean
-    telegramNumbers?: boolean
-    viberNumbers?: boolean
-    skypeNumbers?: boolean
-    otherNumbers?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
     subscriptionStartDate?: boolean
     subscriptionEndDate?: boolean
     subscriptionStatus?: boolean
@@ -1963,7 +1972,7 @@ export namespace Prisma {
     documents?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "email" | "phone" | "hash" | "name" | "surname" | "city" | "avatar" | "role" | "whatsappNumbers" | "telegramNumbers" | "viberNumbers" | "skypeNumbers" | "otherNumbers" | "subscriptionStartDate" | "subscriptionEndDate" | "subscriptionStatus" | "isVerified" | "isBlocked" | "documents", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "email" | "phone" | "hash" | "name" | "surname" | "city" | "avatar" | "role" | "whatsapp" | "telegram" | "viber" | "skype" | "subscriptionStartDate" | "subscriptionEndDate" | "subscriptionStatus" | "isVerified" | "isBlocked" | "documents", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | User$cargosArgs<ExtArgs>
     wishList?: boolean | User$wishListArgs<ExtArgs>
@@ -1990,11 +1999,10 @@ export namespace Prisma {
       city: string | null
       avatar: string | null
       role: $Enums.Role
-      whatsappNumbers: string[]
-      telegramNumbers: string[]
-      viberNumbers: string[]
-      skypeNumbers: string[]
-      otherNumbers: string[]
+      whatsapp: string | null
+      telegram: string | null
+      viber: string | null
+      skype: string | null
       subscriptionStartDate: Date | null
       subscriptionEndDate: Date | null
       subscriptionStatus: boolean | null
@@ -2437,11 +2445,10 @@ export namespace Prisma {
     readonly city: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
-    readonly whatsappNumbers: FieldRef<"User", 'String[]'>
-    readonly telegramNumbers: FieldRef<"User", 'String[]'>
-    readonly viberNumbers: FieldRef<"User", 'String[]'>
-    readonly skypeNumbers: FieldRef<"User", 'String[]'>
-    readonly otherNumbers: FieldRef<"User", 'String[]'>
+    readonly whatsapp: FieldRef<"User", 'String'>
+    readonly telegram: FieldRef<"User", 'String'>
+    readonly viber: FieldRef<"User", 'String'>
+    readonly skype: FieldRef<"User", 'String'>
     readonly subscriptionStartDate: FieldRef<"User", 'DateTime'>
     readonly subscriptionEndDate: FieldRef<"User", 'DateTime'>
     readonly subscriptionStatus: FieldRef<"User", 'Boolean'>
@@ -7795,11 +7802,10 @@ export namespace Prisma {
     city: 'city',
     avatar: 'avatar',
     role: 'role',
-    whatsappNumbers: 'whatsappNumbers',
-    telegramNumbers: 'telegramNumbers',
-    viberNumbers: 'viberNumbers',
-    skypeNumbers: 'skypeNumbers',
-    otherNumbers: 'otherNumbers',
+    whatsapp: 'whatsapp',
+    telegram: 'telegram',
+    viber: 'viber',
+    skype: 'skype',
     subscriptionStartDate: 'subscriptionStartDate',
     subscriptionEndDate: 'subscriptionEndDate',
     subscriptionStatus: 'subscriptionStatus',
@@ -8187,11 +8193,10 @@ export namespace Prisma {
     city?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
-    whatsappNumbers?: StringNullableListFilter<"User">
-    telegramNumbers?: StringNullableListFilter<"User">
-    viberNumbers?: StringNullableListFilter<"User">
-    skypeNumbers?: StringNullableListFilter<"User">
-    otherNumbers?: StringNullableListFilter<"User">
+    whatsapp?: StringNullableFilter<"User"> | string | null
+    telegram?: StringNullableFilter<"User"> | string | null
+    viber?: StringNullableFilter<"User"> | string | null
+    skype?: StringNullableFilter<"User"> | string | null
     subscriptionStartDate?: DateTimeNullableFilter<"User"> | Date | string | null
     subscriptionEndDate?: DateTimeNullableFilter<"User"> | Date | string | null
     subscriptionStatus?: BoolNullableFilter<"User"> | boolean | null
@@ -8214,11 +8219,10 @@ export namespace Prisma {
     city?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     role?: SortOrder
-    whatsappNumbers?: SortOrder
-    telegramNumbers?: SortOrder
-    viberNumbers?: SortOrder
-    skypeNumbers?: SortOrder
-    otherNumbers?: SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
     subscriptionStartDate?: SortOrderInput | SortOrder
     subscriptionEndDate?: SortOrderInput | SortOrder
     subscriptionStatus?: SortOrderInput | SortOrder
@@ -8244,11 +8248,10 @@ export namespace Prisma {
     city?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
-    whatsappNumbers?: StringNullableListFilter<"User">
-    telegramNumbers?: StringNullableListFilter<"User">
-    viberNumbers?: StringNullableListFilter<"User">
-    skypeNumbers?: StringNullableListFilter<"User">
-    otherNumbers?: StringNullableListFilter<"User">
+    whatsapp?: StringNullableFilter<"User"> | string | null
+    telegram?: StringNullableFilter<"User"> | string | null
+    viber?: StringNullableFilter<"User"> | string | null
+    skype?: StringNullableFilter<"User"> | string | null
     subscriptionStartDate?: DateTimeNullableFilter<"User"> | Date | string | null
     subscriptionEndDate?: DateTimeNullableFilter<"User"> | Date | string | null
     subscriptionStatus?: BoolNullableFilter<"User"> | boolean | null
@@ -8271,11 +8274,10 @@ export namespace Prisma {
     city?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     role?: SortOrder
-    whatsappNumbers?: SortOrder
-    telegramNumbers?: SortOrder
-    viberNumbers?: SortOrder
-    skypeNumbers?: SortOrder
-    otherNumbers?: SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
     subscriptionStartDate?: SortOrderInput | SortOrder
     subscriptionEndDate?: SortOrderInput | SortOrder
     subscriptionStatus?: SortOrderInput | SortOrder
@@ -8302,11 +8304,10 @@ export namespace Prisma {
     city?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
-    whatsappNumbers?: StringNullableListFilter<"User">
-    telegramNumbers?: StringNullableListFilter<"User">
-    viberNumbers?: StringNullableListFilter<"User">
-    skypeNumbers?: StringNullableListFilter<"User">
-    otherNumbers?: StringNullableListFilter<"User">
+    whatsapp?: StringNullableWithAggregatesFilter<"User"> | string | null
+    telegram?: StringNullableWithAggregatesFilter<"User"> | string | null
+    viber?: StringNullableWithAggregatesFilter<"User"> | string | null
+    skype?: StringNullableWithAggregatesFilter<"User"> | string | null
     subscriptionStartDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     subscriptionEndDate?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     subscriptionStatus?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
@@ -8758,11 +8759,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -8785,11 +8785,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -8812,11 +8811,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -8839,11 +8837,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -8866,11 +8863,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -8891,11 +8887,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -8916,11 +8911,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -9485,14 +9479,6 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
-  }
-
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -9507,6 +9493,14 @@ export namespace Prisma {
   export type BoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
   export type CargoListRelationFilter = {
@@ -9546,11 +9540,10 @@ export namespace Prisma {
     city?: SortOrder
     avatar?: SortOrder
     role?: SortOrder
-    whatsappNumbers?: SortOrder
-    telegramNumbers?: SortOrder
-    viberNumbers?: SortOrder
-    skypeNumbers?: SortOrder
-    otherNumbers?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     subscriptionStartDate?: SortOrder
     subscriptionEndDate?: SortOrder
     subscriptionStatus?: SortOrder
@@ -9571,6 +9564,10 @@ export namespace Prisma {
     city?: SortOrder
     avatar?: SortOrder
     role?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     subscriptionStartDate?: SortOrder
     subscriptionEndDate?: SortOrder
     subscriptionStatus?: SortOrder
@@ -9590,6 +9587,10 @@ export namespace Prisma {
     city?: SortOrder
     avatar?: SortOrder
     role?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
     subscriptionStartDate?: SortOrder
     subscriptionEndDate?: SortOrder
     subscriptionStatus?: SortOrder
@@ -10123,26 +10124,6 @@ export namespace Prisma {
     rate?: SortOrder
   }
 
-  export type UserCreatewhatsappNumbersInput = {
-    set: string[]
-  }
-
-  export type UserCreatetelegramNumbersInput = {
-    set: string[]
-  }
-
-  export type UserCreateviberNumbersInput = {
-    set: string[]
-  }
-
-  export type UserCreateskypeNumbersInput = {
-    set: string[]
-  }
-
-  export type UserCreateotherNumbersInput = {
-    set: string[]
-  }
-
   export type UserCreatedocumentsInput = {
     set: string[]
   }
@@ -10189,31 +10170,6 @@ export namespace Prisma {
 
   export type EnumRoleFieldUpdateOperationsInput = {
     set?: $Enums.Role
-  }
-
-  export type UserUpdatewhatsappNumbersInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdatetelegramNumbersInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdateviberNumbersInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdateskypeNumbersInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
-  export type UserUpdateotherNumbersInput = {
-    set?: string[]
-    push?: string | string[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -11092,11 +11048,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -11118,11 +11073,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -11203,11 +11157,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -11229,11 +11182,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -11420,11 +11372,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -11446,11 +11397,10 @@ export namespace Prisma {
     city?: string | null
     avatar?: string | null
     role?: $Enums.Role
-    whatsappNumbers?: UserCreatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserCreatetelegramNumbersInput | string[]
-    viberNumbers?: UserCreateviberNumbersInput | string[]
-    skypeNumbers?: UserCreateskypeNumbersInput | string[]
-    otherNumbers?: UserCreateotherNumbersInput | string[]
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
     subscriptionStartDate?: Date | string | null
     subscriptionEndDate?: Date | string | null
     subscriptionStatus?: boolean | null
@@ -11591,11 +11541,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
@@ -11617,11 +11566,10 @@ export namespace Prisma {
     city?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    whatsappNumbers?: UserUpdatewhatsappNumbersInput | string[]
-    telegramNumbers?: UserUpdatetelegramNumbersInput | string[]
-    viberNumbers?: UserUpdateviberNumbersInput | string[]
-    skypeNumbers?: UserUpdateskypeNumbersInput | string[]
-    otherNumbers?: UserUpdateotherNumbersInput | string[]
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
     subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
