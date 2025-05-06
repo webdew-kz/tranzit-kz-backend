@@ -29,7 +29,7 @@ import { join } from "path";
                 template: {
                     dir: join(
                         process.cwd(),
-                        "src",
+                        "dist",
                         "modules",
                         "email",
                         "templates"

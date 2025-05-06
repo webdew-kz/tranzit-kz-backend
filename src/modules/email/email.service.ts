@@ -37,17 +37,4 @@ export class EmailService {
         //     );
         // }
     }
-
-    private generateHtmlTemplate(code: string): string {
-        return `
-        <div style="font-family: Arial, sans-serif; padding: 20px;">
-            <h2 style="color: #333;">Подтверждение Email</h2>
-            <p>Ваш код подтверждения:</p>
-            <div style="font-size: 32px; font-weight: bold; margin: 10px 0;">${code}</div>
-            <p style="color: #555;">Срок действия: <strong>5 минут</strong></p>
-            <hr />
-            <p style="font-size: 12px; color: #aaa;">Если вы не запрашивали код, просто проигнорируйте это письмо.</p>
-        </div>
-        `;
-    }
 }
