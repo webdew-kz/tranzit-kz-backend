@@ -22,7 +22,7 @@ import { EmailService } from "./email.service";
                     },
                 },
                 defaults: {
-                    from: '"Tranzit" <noreply@tranzit.kz>',
+                    from: '"Tranzit" <noreply@itranzit.kz>',
                 },
             }),
         }),

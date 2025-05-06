@@ -80,14 +80,18 @@ export class AuthService {
     }
 
     async isExistingUserForEmail(email: string): Promise<string> {
+        console.log("EMAIL service:", email);
+
         const user = await this.prisma.user.findFirst({
             where: { email },
         });
 
         if (user) {
-            throw new ConflictException(
-                "Пользователь с таким email уже существует"
-            );
+            // throw new ConflictException(
+            //     "Пользователь с таким email уже существует"
+            // );
+
+            return "Пользователь с таким email уже существует";
         }
 
         return await this.sendVerificationCode(email);
@@ -158,6 +162,8 @@ export class AuthService {
     }
 
     private async sendVerificationCode(email: string) {
+        console.log("EMAIL send:", email);
+
         const code = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit code
         await this.emailService.sendVerificationCode(email, code);
         return code;
