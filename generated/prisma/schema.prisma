@@ -194,7 +194,6 @@ enum TruckType {
   ANY // любой
   TENT // тент
   ISOTHERM // изотерм
-  METAL // цельномет.
   REFRIGERATOR // рефрижератор
   PASSENGER_BUS // автобус грузопас.
   LUXURY_BUS // автобус люкс
@@ -238,6 +237,9 @@ enum TruckType {
   WOOD_CHIP_TRUCK // щеповоз
   TOW_TRUCK // эвакуатор
   EXCAVATOR // экскаватор
+  SQUARE // площадка
+  GAZELLE // газель
+  FIVE_TON_TRUCK // 5-тонник
 }
 
 enum LoadingType {
@@ -249,17 +251,27 @@ enum LoadingType {
 }
 
 enum Documents {
-  CMR
-  TIR
-  T1
-  T2
-  EKMT
-  SAN_PASSPORT
-  SAN_BOOK
-  CUSTOMS_CERT
-  CUSTOMS_CONTROL
-  COVID_TEST
-  COVID_CERT
+  CMR // международная товарно-транспортная накладная
+  TIR // книжка МДП
+  T1 // транзитная декларация T1
+  T2 // транзитная декларация T2
+  EKMT // разрешение ЕКМТ
+  SAN_PASSPORT // санпаспорт
+  SAN_BOOK // санитарная книжка
+  CUSTOMS_CERT // таможенный сертификат
+  CUSTOMS_CONTROL // отметка о прохождении таможни
+
+  // Новые документы
+  DOZVOL // дозвол
+  OVERSIZE_SPECIAL_PERMIT // спец. разрешение на негабарит
+  CATEGORY_C // водительская категория C
+  CATEGORY_D // водительская категория D
+  EORI_CODE // ЕОРИ код
+  REGISTRATION_CARD // учётный талон
+  E_QUEUE // электронная очередь
+  VISA // виза
+  POWER_OF_ATTORNEY // доверенность
+  CARRIER_STAMP // печать перевозчика
 }
 
 enum DocumentsAdr {
