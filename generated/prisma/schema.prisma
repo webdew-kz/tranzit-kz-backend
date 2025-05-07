@@ -260,8 +260,6 @@ enum Documents {
   SAN_BOOK // санитарная книжка
   CUSTOMS_CERT // таможенный сертификат
   CUSTOMS_CONTROL // отметка о прохождении таможни
-
-  // Новые документы
   DOZVOL // дозвол
   OVERSIZE_SPECIAL_PERMIT // спец. разрешение на негабарит
   CATEGORY_C // водительская категория C
