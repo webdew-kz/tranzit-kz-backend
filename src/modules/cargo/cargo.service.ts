@@ -605,14 +605,113 @@ export class CargoService {
         return !!wishListItem;
     }
 
-    private async calculateTotalDistanceForTruck(
+    // private async calculateTotalDistanceForTruck(
+    //     placesLoading: string[],
+    //     placesUnloading: string[]
+    // ): Promise<number> {
+    //     const apiKey = this.config.getOrThrow<string>("GOOGLE_API_KEY");
+
+    //     const route = [...placesLoading, ...placesUnloading]; // порядок строго сохраняется
+
+    //     let totalDistance = 0;
+
+    //     for (let i = 0; i < route.length - 1; i++) {
+    //         const origin = route[i];
+    //         const destination = route[i + 1];
+
+    //         try {
+    //             const response = await axios.get(
+    //                 "https://maps.googleapis.com/maps/api/distancematrix/json",
+    //                 {
+    //                     params: {
+    //                         origins: origin,
+    //                         destinations: destination,
+    //                         key: apiKey,
+    //                         units: "metric",
+    //                         language: "ru",
+    //                     },
+    //                 }
+    //             );
+
+    //             interface DistanceMatrixResponse {
+    //                 rows: {
+    //                     elements: {
+    //                         status: string;
+    //                         distance: { value: number };
+    //                     }[];
+    //                 }[];
+    //             }
+
+    //             const data = response.data as DistanceMatrixResponse;
+    //             const element = data.rows[0].elements[0];
+
+    //             if (element.status === "OK") {
+    //                 totalDistance += element.distance.value; // метры
+    //             } else {
+    //                 console.warn(
+    //                     `Ошибка получения расстояния: ${origin} → ${destination}`,
+    //                     element.status
+    //                 );
+    //             }
+    //         } catch (error) {
+    //             if (error instanceof Error) {
+    //                 console.error("Ошибка запроса к Google API", error.message);
+    //             } else {
+    //                 console.error("Ошибка запроса к Google API", error);
+    //             }
+    //         }
+    //     }
+
+    //     return Math.round(totalDistance / 1000); // километры
+    // }
+
+    private async getCoordinates(
+        address: string
+    ): Promise<{ lat: number; lng: number } | null> {
+        const apiKey = this.config.getOrThrow<string>("GOOGLE_API_KEY");
+
+        const response = await fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`
+        );
+
+        const data = await response.json();
+
+        if (data.status === "OK" && data.results.length > 0) {
+            return data.results[0].geometry.location;
+        }
+
+        console.warn(`Не удалось получить координаты: ${address}`);
+        return null;
+    }
+
+    private haversineDistance(
+        coord1: { lat: number; lng: number },
+        coord2: { lat: number; lng: number }
+    ): number {
+        const R = 6371; // радиус Земли в км
+        const toRad = (deg: number) => (deg * Math.PI) / 180;
+
+        const dLat = toRad(coord2.lat - coord1.lat);
+        const dLng = toRad(coord2.lng - coord1.lng);
+
+        const a =
+            Math.sin(dLat / 2) ** 2 +
+            Math.cos(toRad(coord1.lat)) *
+                Math.cos(toRad(coord2.lat)) *
+                Math.sin(dLng / 2) ** 2;
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return R * c;
+    }
+
+    public async calculateTotalDistanceForTruck(
         placesLoading: string[],
         placesUnloading: string[]
     ): Promise<number> {
         const apiKey = this.config.getOrThrow<string>("GOOGLE_API_KEY");
 
-        const route = [...placesLoading, ...placesUnloading]; // порядок строго сохраняется
-
+        const route = [...placesLoading, ...placesUnloading];
         let totalDistance = 0;
 
         for (let i = 0; i < route.length - 1; i++) {
@@ -620,45 +719,49 @@ export class CargoService {
             const destination = route[i + 1];
 
             try {
-                const response = await axios.get(
-                    "https://maps.googleapis.com/maps/api/distancematrix/json",
-                    {
-                        params: {
-                            origins: origin,
-                            destinations: destination,
-                            key: apiKey,
-                            units: "metric",
-                            language: "ru",
-                        },
-                    }
+                const response = await fetch(
+                    `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(
+                        origin
+                    )}&destinations=${encodeURIComponent(destination)}&key=${apiKey}&units=metric&language=ru`
                 );
 
-                interface DistanceMatrixResponse {
-                    rows: {
-                        elements: {
-                            status: string;
-                            distance: { value: number };
-                        }[];
-                    }[];
-                }
+                const data = await response.json();
+                const element = data.rows[0]?.elements[0];
 
-                const data = response.data as DistanceMatrixResponse;
-                const element = data.rows[0].elements[0];
+                if (element?.status === "OK") {
+                    totalDistance += element.distance.value;
+                } else if (element?.status === "ZERO_RESULTS") {
+                    console.warn(
+                        `Нет маршрута: ${origin} → ${destination}. Использую Haversine.`
+                    );
 
-                if (element.status === "OK") {
-                    totalDistance += element.distance.value; // метры
+                    const [coord1, coord2] = await Promise.all([
+                        this.getCoordinates(origin),
+                        this.getCoordinates(destination),
+                    ]);
+
+                    if (coord1 && coord2) {
+                        const fallbackDistance = this.haversineDistance(
+                            coord1,
+                            coord2
+                        );
+                        totalDistance += fallbackDistance * 1000; // перевести в метры
+                    } else {
+                        console.warn(
+                            `Невозможно рассчитать расстояние: ${origin} → ${destination}`
+                        );
+                    }
                 } else {
                     console.warn(
-                        `Ошибка получения расстояния: ${origin} → ${destination}`,
-                        element.status
+                        `Ошибка маршрута: ${origin} → ${destination}`,
+                        element?.status
                     );
                 }
             } catch (error) {
-                if (error instanceof Error) {
-                    console.error("Ошибка запроса к Google API", error.message);
-                } else {
-                    console.error("Ошибка запроса к Google API", error);
-                }
+                console.error(
+                    `Ошибка запроса Google API: ${origin} → ${destination}`,
+                    error
+                );
             }
         }
 
