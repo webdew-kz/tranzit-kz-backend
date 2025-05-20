@@ -197,6 +197,34 @@ exports.Prisma.CargoScalarFieldEnum = {
   viewsId: 'viewsId'
 };
 
+exports.Prisma.TransportScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  note: 'note',
+  placesLoading: 'placesLoading',
+  placesUnloading: 'placesUnloading',
+  weight: 'weight',
+  volume: 'volume',
+  periodDays: 'periodDays',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  isArchived: 'isArchived',
+  archivedDate: 'archivedDate',
+  truckType: 'truckType',
+  loadingType: 'loadingType',
+  optionDocuments: 'optionDocuments',
+  optionDocumentsAdr: 'optionDocumentsAdr',
+  userId: 'userId',
+  userName: 'userName',
+  userPhone: 'userPhone',
+  whatsapp: 'whatsapp',
+  telegram: 'telegram',
+  viber: 'viber',
+  skype: 'skype',
+  viewsId: 'viewsId'
+};
+
 exports.Prisma.ViewsScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
@@ -209,7 +237,8 @@ exports.Prisma.WishListScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId',
-  cargoId: 'cargoId'
+  cargoId: 'cargoId',
+  transportId: 'transportId'
 };
 
 exports.Prisma.CurrencyRateScalarFieldEnum = {
@@ -424,6 +453,7 @@ exports.Additionally = exports.$Enums.Additionally = {
 exports.Prisma.ModelName = {
   User: 'User',
   Cargo: 'Cargo',
+  Transport: 'Transport',
   Views: 'Views',
   WishList: 'WishList',
   CurrencyRate: 'CurrencyRate'

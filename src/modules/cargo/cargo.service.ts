@@ -553,6 +553,9 @@ export class CargoService {
         await this.prisma.wishList.deleteMany({
             where: {
                 userId,
+                cargoId: {
+                    not: null, // только записи, связанные с грузами
+                },
             },
         });
 

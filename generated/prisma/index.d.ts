@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Cargo = $Result.DefaultSelection<Prisma.$CargoPayload>
 /**
+ * Model Transport
+ * 
+ */
+export type Transport = $Result.DefaultSelection<Prisma.$TransportPayload>
+/**
  * Model Views
  * 
  */
@@ -466,6 +471,16 @@ export class PrismaClient<
     * ```
     */
   get cargo(): Prisma.CargoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transport`: Exposes CRUD operations for the **Transport** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transports
+    * const transports = await prisma.transport.findMany()
+    * ```
+    */
+  get transport(): Prisma.TransportDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.views`: Exposes CRUD operations for the **Views** model.
@@ -938,6 +953,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Cargo: 'Cargo',
+    Transport: 'Transport',
     Views: 'Views',
     WishList: 'WishList',
     CurrencyRate: 'CurrencyRate'
@@ -959,7 +975,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cargo" | "views" | "wishList" | "currencyRate"
+      modelProps: "user" | "cargo" | "transport" | "views" | "wishList" | "currencyRate"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1108,6 +1124,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CargoCountArgs<ExtArgs>
             result: $Utils.Optional<CargoCountAggregateOutputType> | number
+          }
+        }
+      }
+      Transport: {
+        payload: Prisma.$TransportPayload<ExtArgs>
+        fields: Prisma.TransportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransportFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransportFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          findFirst: {
+            args: Prisma.TransportFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransportFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          findMany: {
+            args: Prisma.TransportFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>[]
+          }
+          create: {
+            args: Prisma.TransportCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          createMany: {
+            args: Prisma.TransportCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransportCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>[]
+          }
+          delete: {
+            args: Prisma.TransportDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          update: {
+            args: Prisma.TransportUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransportDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransportUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TransportUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>[]
+          }
+          upsert: {
+            args: Prisma.TransportUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransportPayload>
+          }
+          aggregate: {
+            args: Prisma.TransportAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransport>
+          }
+          groupBy: {
+            args: Prisma.TransportGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransportCountArgs<ExtArgs>
+            result: $Utils.Optional<TransportCountAggregateOutputType> | number
           }
         }
       }
@@ -1419,6 +1509,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     cargo?: CargoOmit
+    transport?: TransportOmit
     views?: ViewsOmit
     wishList?: WishListOmit
     currencyRate?: CurrencyRateOmit
@@ -1518,11 +1609,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     cargos: number
     wishList: number
+    transport: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | UserCountOutputTypeCountCargosArgs
     wishList?: boolean | UserCountOutputTypeCountWishListArgs
+    transport?: boolean | UserCountOutputTypeCountTransportArgs
   }
 
   // Custom InputTypes
@@ -1548,6 +1641,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountWishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WishListWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTransportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransportWhereInput
   }
 
 
@@ -1583,15 +1683,48 @@ export namespace Prisma {
 
 
   /**
+   * Count Type TransportCountOutputType
+   */
+
+  export type TransportCountOutputType = {
+    wishList: number
+  }
+
+  export type TransportCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    wishList?: boolean | TransportCountOutputTypeCountWishListArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TransportCountOutputType without action
+   */
+  export type TransportCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransportCountOutputType
+     */
+    select?: TransportCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TransportCountOutputType without action
+   */
+  export type TransportCountOutputTypeCountWishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishListWhereInput
+  }
+
+
+  /**
    * Count Type ViewsCountOutputType
    */
 
   export type ViewsCountOutputType = {
     cargo: number
+    transport: number
   }
 
   export type ViewsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargo?: boolean | ViewsCountOutputTypeCountCargoArgs
+    transport?: boolean | ViewsCountOutputTypeCountTransportArgs
   }
 
   // Custom InputTypes
@@ -1610,6 +1743,13 @@ export namespace Prisma {
    */
   export type ViewsCountOutputTypeCountCargoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CargoWhereInput
+  }
+
+  /**
+   * ViewsCountOutputType without action
+   */
+  export type ViewsCountOutputTypeCountTransportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransportWhereInput
   }
 
 
@@ -1907,6 +2047,7 @@ export namespace Prisma {
     documents?: boolean
     cargos?: boolean | User$cargosArgs<ExtArgs>
     wishList?: boolean | User$wishListArgs<ExtArgs>
+    transport?: boolean | User$transportArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1986,6 +2127,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | User$cargosArgs<ExtArgs>
     wishList?: boolean | User$wishListArgs<ExtArgs>
+    transport?: boolean | User$transportArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1996,6 +2138,7 @@ export namespace Prisma {
     objects: {
       cargos: Prisma.$CargoPayload<ExtArgs>[]
       wishList: Prisma.$WishListPayload<ExtArgs>[]
+      transport: Prisma.$TransportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2415,6 +2558,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cargos<T extends User$cargosArgs<ExtArgs> = {}>(args?: Subset<T, User$cargosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     wishList<T extends User$wishListArgs<ExtArgs> = {}>(args?: Subset<T, User$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transport<T extends User$transportArgs<ExtArgs> = {}>(args?: Subset<T, User$transportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2898,6 +3042,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * User.transport
+   */
+  export type User$transportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    where?: TransportWhereInput
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    cursor?: TransportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
   }
 
   /**
@@ -4649,6 +4817,1422 @@ export namespace Prisma {
 
 
   /**
+   * Model Transport
+   */
+
+  export type AggregateTransport = {
+    _count: TransportCountAggregateOutputType | null
+    _avg: TransportAvgAggregateOutputType | null
+    _sum: TransportSumAggregateOutputType | null
+    _min: TransportMinAggregateOutputType | null
+    _max: TransportMaxAggregateOutputType | null
+  }
+
+  export type TransportAvgAggregateOutputType = {
+    weight: number | null
+    volume: number | null
+    periodDays: number | null
+  }
+
+  export type TransportSumAggregateOutputType = {
+    weight: number | null
+    volume: number | null
+    periodDays: number | null
+  }
+
+  export type TransportMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    note: string | null
+    weight: number | null
+    volume: number | null
+    periodDays: number | null
+    startDate: Date | null
+    endDate: Date | null
+    isArchived: boolean | null
+    archivedDate: Date | null
+    optionDocumentsAdr: $Enums.DocumentsAdr | null
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+  }
+
+  export type TransportMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    note: string | null
+    weight: number | null
+    volume: number | null
+    periodDays: number | null
+    startDate: Date | null
+    endDate: Date | null
+    isArchived: boolean | null
+    archivedDate: Date | null
+    optionDocumentsAdr: $Enums.DocumentsAdr | null
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+  }
+
+  export type TransportCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    note: number
+    placesLoading: number
+    placesUnloading: number
+    weight: number
+    volume: number
+    periodDays: number
+    startDate: number
+    endDate: number
+    isArchived: number
+    archivedDate: number
+    truckType: number
+    loadingType: number
+    optionDocuments: number
+    optionDocumentsAdr: number
+    userId: number
+    userName: number
+    userPhone: number
+    whatsapp: number
+    telegram: number
+    viber: number
+    skype: number
+    viewsId: number
+    _all: number
+  }
+
+
+  export type TransportAvgAggregateInputType = {
+    weight?: true
+    volume?: true
+    periodDays?: true
+  }
+
+  export type TransportSumAggregateInputType = {
+    weight?: true
+    volume?: true
+    periodDays?: true
+  }
+
+  export type TransportMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    note?: true
+    weight?: true
+    volume?: true
+    periodDays?: true
+    startDate?: true
+    endDate?: true
+    isArchived?: true
+    archivedDate?: true
+    optionDocumentsAdr?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+  }
+
+  export type TransportMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    note?: true
+    weight?: true
+    volume?: true
+    periodDays?: true
+    startDate?: true
+    endDate?: true
+    isArchived?: true
+    archivedDate?: true
+    optionDocumentsAdr?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+  }
+
+  export type TransportCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    note?: true
+    placesLoading?: true
+    placesUnloading?: true
+    weight?: true
+    volume?: true
+    periodDays?: true
+    startDate?: true
+    endDate?: true
+    isArchived?: true
+    archivedDate?: true
+    truckType?: true
+    loadingType?: true
+    optionDocuments?: true
+    optionDocumentsAdr?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+    _all?: true
+  }
+
+  export type TransportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transport to aggregate.
+     */
+    where?: TransportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transports to fetch.
+     */
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Transports
+    **/
+    _count?: true | TransportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransportAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransportSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransportMaxAggregateInputType
+  }
+
+  export type GetTransportAggregateType<T extends TransportAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransport[P]>
+      : GetScalarType<T[P], AggregateTransport[P]>
+  }
+
+
+
+
+  export type TransportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransportWhereInput
+    orderBy?: TransportOrderByWithAggregationInput | TransportOrderByWithAggregationInput[]
+    by: TransportScalarFieldEnum[] | TransportScalarFieldEnum
+    having?: TransportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransportCountAggregateInputType | true
+    _avg?: TransportAvgAggregateInputType
+    _sum?: TransportSumAggregateInputType
+    _min?: TransportMinAggregateInputType
+    _max?: TransportMaxAggregateInputType
+  }
+
+  export type TransportGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    note: string | null
+    placesLoading: string[]
+    placesUnloading: string[]
+    weight: number
+    volume: number
+    periodDays: number
+    startDate: Date
+    endDate: Date | null
+    isArchived: boolean | null
+    archivedDate: Date | null
+    truckType: $Enums.TruckType[]
+    loadingType: $Enums.LoadingType[]
+    optionDocuments: $Enums.Documents[]
+    optionDocumentsAdr: $Enums.DocumentsAdr | null
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+    _count: TransportCountAggregateOutputType | null
+    _avg: TransportAvgAggregateOutputType | null
+    _sum: TransportSumAggregateOutputType | null
+    _min: TransportMinAggregateOutputType | null
+    _max: TransportMaxAggregateOutputType | null
+  }
+
+  type GetTransportGroupByPayload<T extends TransportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransportGroupByOutputType[P]>
+            : GetScalarType<T[P], TransportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    note?: boolean
+    placesLoading?: boolean
+    placesUnloading?: boolean
+    weight?: boolean
+    volume?: boolean
+    periodDays?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    isArchived?: boolean
+    archivedDate?: boolean
+    truckType?: boolean
+    loadingType?: boolean
+    optionDocuments?: boolean
+    optionDocumentsAdr?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+    wishList?: boolean | Transport$wishListArgs<ExtArgs>
+    _count?: boolean | TransportCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transport"]>
+
+  export type TransportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    note?: boolean
+    placesLoading?: boolean
+    placesUnloading?: boolean
+    weight?: boolean
+    volume?: boolean
+    periodDays?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    isArchived?: boolean
+    archivedDate?: boolean
+    truckType?: boolean
+    loadingType?: boolean
+    optionDocuments?: boolean
+    optionDocumentsAdr?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+  }, ExtArgs["result"]["transport"]>
+
+  export type TransportSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    note?: boolean
+    placesLoading?: boolean
+    placesUnloading?: boolean
+    weight?: boolean
+    volume?: boolean
+    periodDays?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    isArchived?: boolean
+    archivedDate?: boolean
+    truckType?: boolean
+    loadingType?: boolean
+    optionDocuments?: boolean
+    optionDocumentsAdr?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+  }, ExtArgs["result"]["transport"]>
+
+  export type TransportSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    note?: boolean
+    placesLoading?: boolean
+    placesUnloading?: boolean
+    weight?: boolean
+    volume?: boolean
+    periodDays?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    isArchived?: boolean
+    archivedDate?: boolean
+    truckType?: boolean
+    loadingType?: boolean
+    optionDocuments?: boolean
+    optionDocumentsAdr?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+  }
+
+  export type TransportOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "note" | "placesLoading" | "placesUnloading" | "weight" | "volume" | "periodDays" | "startDate" | "endDate" | "isArchived" | "archivedDate" | "truckType" | "loadingType" | "optionDocuments" | "optionDocumentsAdr" | "userId" | "userName" | "userPhone" | "whatsapp" | "telegram" | "viber" | "skype" | "viewsId", ExtArgs["result"]["transport"]>
+  export type TransportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+    wishList?: boolean | Transport$wishListArgs<ExtArgs>
+    _count?: boolean | TransportCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TransportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+  }
+  export type TransportIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Transport$userArgs<ExtArgs>
+    views?: boolean | Transport$viewsArgs<ExtArgs>
+  }
+
+  export type $TransportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Transport"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      views: Prisma.$ViewsPayload<ExtArgs> | null
+      wishList: Prisma.$WishListPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      note: string | null
+      placesLoading: string[]
+      placesUnloading: string[]
+      weight: number
+      volume: number
+      periodDays: number
+      startDate: Date
+      endDate: Date | null
+      isArchived: boolean | null
+      archivedDate: Date | null
+      truckType: $Enums.TruckType[]
+      loadingType: $Enums.LoadingType[]
+      optionDocuments: $Enums.Documents[]
+      optionDocumentsAdr: $Enums.DocumentsAdr | null
+      userId: string | null
+      userName: string | null
+      userPhone: string | null
+      whatsapp: string | null
+      telegram: string | null
+      viber: string | null
+      skype: string | null
+      viewsId: string | null
+    }, ExtArgs["result"]["transport"]>
+    composites: {}
+  }
+
+  type TransportGetPayload<S extends boolean | null | undefined | TransportDefaultArgs> = $Result.GetResult<Prisma.$TransportPayload, S>
+
+  type TransportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransportFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransportCountAggregateInputType | true
+    }
+
+  export interface TransportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transport'], meta: { name: 'Transport' } }
+    /**
+     * Find zero or one Transport that matches the filter.
+     * @param {TransportFindUniqueArgs} args - Arguments to find a Transport
+     * @example
+     * // Get one Transport
+     * const transport = await prisma.transport.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransportFindUniqueArgs>(args: SelectSubset<T, TransportFindUniqueArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transport that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransportFindUniqueOrThrowArgs} args - Arguments to find a Transport
+     * @example
+     * // Get one Transport
+     * const transport = await prisma.transport.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransportFindUniqueOrThrowArgs>(args: SelectSubset<T, TransportFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transport that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportFindFirstArgs} args - Arguments to find a Transport
+     * @example
+     * // Get one Transport
+     * const transport = await prisma.transport.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransportFindFirstArgs>(args?: SelectSubset<T, TransportFindFirstArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transport that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportFindFirstOrThrowArgs} args - Arguments to find a Transport
+     * @example
+     * // Get one Transport
+     * const transport = await prisma.transport.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransportFindFirstOrThrowArgs>(args?: SelectSubset<T, TransportFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transports
+     * const transports = await prisma.transport.findMany()
+     * 
+     * // Get first 10 Transports
+     * const transports = await prisma.transport.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transportWithIdOnly = await prisma.transport.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransportFindManyArgs>(args?: SelectSubset<T, TransportFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transport.
+     * @param {TransportCreateArgs} args - Arguments to create a Transport.
+     * @example
+     * // Create one Transport
+     * const Transport = await prisma.transport.create({
+     *   data: {
+     *     // ... data to create a Transport
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransportCreateArgs>(args: SelectSubset<T, TransportCreateArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transports.
+     * @param {TransportCreateManyArgs} args - Arguments to create many Transports.
+     * @example
+     * // Create many Transports
+     * const transport = await prisma.transport.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransportCreateManyArgs>(args?: SelectSubset<T, TransportCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Transports and returns the data saved in the database.
+     * @param {TransportCreateManyAndReturnArgs} args - Arguments to create many Transports.
+     * @example
+     * // Create many Transports
+     * const transport = await prisma.transport.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Transports and only return the `id`
+     * const transportWithIdOnly = await prisma.transport.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransportCreateManyAndReturnArgs>(args?: SelectSubset<T, TransportCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Transport.
+     * @param {TransportDeleteArgs} args - Arguments to delete one Transport.
+     * @example
+     * // Delete one Transport
+     * const Transport = await prisma.transport.delete({
+     *   where: {
+     *     // ... filter to delete one Transport
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransportDeleteArgs>(args: SelectSubset<T, TransportDeleteArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transport.
+     * @param {TransportUpdateArgs} args - Arguments to update one Transport.
+     * @example
+     * // Update one Transport
+     * const transport = await prisma.transport.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransportUpdateArgs>(args: SelectSubset<T, TransportUpdateArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transports.
+     * @param {TransportDeleteManyArgs} args - Arguments to filter Transports to delete.
+     * @example
+     * // Delete a few Transports
+     * const { count } = await prisma.transport.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransportDeleteManyArgs>(args?: SelectSubset<T, TransportDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transports
+     * const transport = await prisma.transport.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransportUpdateManyArgs>(args: SelectSubset<T, TransportUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transports and returns the data updated in the database.
+     * @param {TransportUpdateManyAndReturnArgs} args - Arguments to update many Transports.
+     * @example
+     * // Update many Transports
+     * const transport = await prisma.transport.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Transports and only return the `id`
+     * const transportWithIdOnly = await prisma.transport.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TransportUpdateManyAndReturnArgs>(args: SelectSubset<T, TransportUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Transport.
+     * @param {TransportUpsertArgs} args - Arguments to update or create a Transport.
+     * @example
+     * // Update or create a Transport
+     * const transport = await prisma.transport.upsert({
+     *   create: {
+     *     // ... data to create a Transport
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transport we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransportUpsertArgs>(args: SelectSubset<T, TransportUpsertArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportCountArgs} args - Arguments to filter Transports to count.
+     * @example
+     * // Count the number of Transports
+     * const count = await prisma.transport.count({
+     *   where: {
+     *     // ... the filter for the Transports we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransportCountArgs>(
+      args?: Subset<T, TransportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransportAggregateArgs>(args: Subset<T, TransportAggregateArgs>): Prisma.PrismaPromise<GetTransportAggregateType<T>>
+
+    /**
+     * Group by Transport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransportGroupByArgs['orderBy'] }
+        : { orderBy?: TransportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Transport model
+   */
+  readonly fields: TransportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Transport.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends Transport$userArgs<ExtArgs> = {}>(args?: Subset<T, Transport$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    views<T extends Transport$viewsArgs<ExtArgs> = {}>(args?: Subset<T, Transport$viewsArgs<ExtArgs>>): Prisma__ViewsClient<$Result.GetResult<Prisma.$ViewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    wishList<T extends Transport$wishListArgs<ExtArgs> = {}>(args?: Subset<T, Transport$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Transport model
+   */
+  interface TransportFieldRefs {
+    readonly id: FieldRef<"Transport", 'String'>
+    readonly createdAt: FieldRef<"Transport", 'DateTime'>
+    readonly updatedAt: FieldRef<"Transport", 'DateTime'>
+    readonly note: FieldRef<"Transport", 'String'>
+    readonly placesLoading: FieldRef<"Transport", 'String[]'>
+    readonly placesUnloading: FieldRef<"Transport", 'String[]'>
+    readonly weight: FieldRef<"Transport", 'Float'>
+    readonly volume: FieldRef<"Transport", 'Float'>
+    readonly periodDays: FieldRef<"Transport", 'Int'>
+    readonly startDate: FieldRef<"Transport", 'DateTime'>
+    readonly endDate: FieldRef<"Transport", 'DateTime'>
+    readonly isArchived: FieldRef<"Transport", 'Boolean'>
+    readonly archivedDate: FieldRef<"Transport", 'DateTime'>
+    readonly truckType: FieldRef<"Transport", 'TruckType[]'>
+    readonly loadingType: FieldRef<"Transport", 'LoadingType[]'>
+    readonly optionDocuments: FieldRef<"Transport", 'Documents[]'>
+    readonly optionDocumentsAdr: FieldRef<"Transport", 'DocumentsAdr'>
+    readonly userId: FieldRef<"Transport", 'String'>
+    readonly userName: FieldRef<"Transport", 'String'>
+    readonly userPhone: FieldRef<"Transport", 'String'>
+    readonly whatsapp: FieldRef<"Transport", 'String'>
+    readonly telegram: FieldRef<"Transport", 'String'>
+    readonly viber: FieldRef<"Transport", 'String'>
+    readonly skype: FieldRef<"Transport", 'String'>
+    readonly viewsId: FieldRef<"Transport", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Transport findUnique
+   */
+  export type TransportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter, which Transport to fetch.
+     */
+    where: TransportWhereUniqueInput
+  }
+
+  /**
+   * Transport findUniqueOrThrow
+   */
+  export type TransportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter, which Transport to fetch.
+     */
+    where: TransportWhereUniqueInput
+  }
+
+  /**
+   * Transport findFirst
+   */
+  export type TransportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter, which Transport to fetch.
+     */
+    where?: TransportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transports to fetch.
+     */
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transports.
+     */
+    cursor?: TransportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transports.
+     */
+    distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
+  }
+
+  /**
+   * Transport findFirstOrThrow
+   */
+  export type TransportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter, which Transport to fetch.
+     */
+    where?: TransportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transports to fetch.
+     */
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Transports.
+     */
+    cursor?: TransportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transports.
+     */
+    distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
+  }
+
+  /**
+   * Transport findMany
+   */
+  export type TransportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter, which Transports to fetch.
+     */
+    where?: TransportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Transports to fetch.
+     */
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Transports.
+     */
+    cursor?: TransportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Transports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Transports.
+     */
+    skip?: number
+    distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
+  }
+
+  /**
+   * Transport create
+   */
+  export type TransportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Transport.
+     */
+    data: XOR<TransportCreateInput, TransportUncheckedCreateInput>
+  }
+
+  /**
+   * Transport createMany
+   */
+  export type TransportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Transports.
+     */
+    data: TransportCreateManyInput | TransportCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Transport createManyAndReturn
+   */
+  export type TransportCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * The data used to create many Transports.
+     */
+    data: TransportCreateManyInput | TransportCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transport update
+   */
+  export type TransportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Transport.
+     */
+    data: XOR<TransportUpdateInput, TransportUncheckedUpdateInput>
+    /**
+     * Choose, which Transport to update.
+     */
+    where: TransportWhereUniqueInput
+  }
+
+  /**
+   * Transport updateMany
+   */
+  export type TransportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Transports.
+     */
+    data: XOR<TransportUpdateManyMutationInput, TransportUncheckedUpdateManyInput>
+    /**
+     * Filter which Transports to update
+     */
+    where?: TransportWhereInput
+    /**
+     * Limit how many Transports to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transport updateManyAndReturn
+   */
+  export type TransportUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * The data used to update Transports.
+     */
+    data: XOR<TransportUpdateManyMutationInput, TransportUncheckedUpdateManyInput>
+    /**
+     * Filter which Transports to update
+     */
+    where?: TransportWhereInput
+    /**
+     * Limit how many Transports to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Transport upsert
+   */
+  export type TransportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Transport to update in case it exists.
+     */
+    where: TransportWhereUniqueInput
+    /**
+     * In case the Transport found by the `where` argument doesn't exist, create a new Transport with this data.
+     */
+    create: XOR<TransportCreateInput, TransportUncheckedCreateInput>
+    /**
+     * In case the Transport was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransportUpdateInput, TransportUncheckedUpdateInput>
+  }
+
+  /**
+   * Transport delete
+   */
+  export type TransportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    /**
+     * Filter which Transport to delete.
+     */
+    where: TransportWhereUniqueInput
+  }
+
+  /**
+   * Transport deleteMany
+   */
+  export type TransportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Transports to delete
+     */
+    where?: TransportWhereInput
+    /**
+     * Limit how many Transports to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Transport.user
+   */
+  export type Transport$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Transport.views
+   */
+  export type Transport$viewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Views
+     */
+    select?: ViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Views
+     */
+    omit?: ViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewsInclude<ExtArgs> | null
+    where?: ViewsWhereInput
+  }
+
+  /**
+   * Transport.wishList
+   */
+  export type Transport$wishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    where?: WishListWhereInput
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    cursor?: WishListWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * Transport without action
+   */
+  export type TransportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Views
    */
 
@@ -4839,6 +6423,7 @@ export namespace Prisma {
     updatedAt?: boolean
     count?: boolean
     cargo?: boolean | Views$cargoArgs<ExtArgs>
+    transport?: boolean | Views$transportArgs<ExtArgs>
     _count?: boolean | ViewsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["views"]>
 
@@ -4866,6 +6451,7 @@ export namespace Prisma {
   export type ViewsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "count", ExtArgs["result"]["views"]>
   export type ViewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargo?: boolean | Views$cargoArgs<ExtArgs>
+    transport?: boolean | Views$transportArgs<ExtArgs>
     _count?: boolean | ViewsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ViewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4875,6 +6461,7 @@ export namespace Prisma {
     name: "Views"
     objects: {
       cargo: Prisma.$CargoPayload<ExtArgs>[]
+      transport: Prisma.$TransportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5276,6 +6863,7 @@ export namespace Prisma {
   export interface Prisma__ViewsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cargo<T extends Views$cargoArgs<ExtArgs> = {}>(args?: Subset<T, Views$cargoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transport<T extends Views$transportArgs<ExtArgs> = {}>(args?: Subset<T, Views$transportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5721,6 +7309,30 @@ export namespace Prisma {
   }
 
   /**
+   * Views.transport
+   */
+  export type Views$transportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    where?: TransportWhereInput
+    orderBy?: TransportOrderByWithRelationInput | TransportOrderByWithRelationInput[]
+    cursor?: TransportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
+  }
+
+  /**
    * Views without action
    */
   export type ViewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5755,6 +7367,7 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     cargoId: string | null
+    transportId: string | null
   }
 
   export type WishListMaxAggregateOutputType = {
@@ -5763,6 +7376,7 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     cargoId: string | null
+    transportId: string | null
   }
 
   export type WishListCountAggregateOutputType = {
@@ -5771,6 +7385,7 @@ export namespace Prisma {
     updatedAt: number
     userId: number
     cargoId: number
+    transportId: number
     _all: number
   }
 
@@ -5781,6 +7396,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     cargoId?: true
+    transportId?: true
   }
 
   export type WishListMaxAggregateInputType = {
@@ -5789,6 +7405,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     cargoId?: true
+    transportId?: true
   }
 
   export type WishListCountAggregateInputType = {
@@ -5797,6 +7414,7 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     cargoId?: true
+    transportId?: true
     _all?: true
   }
 
@@ -5878,6 +7496,7 @@ export namespace Prisma {
     updatedAt: Date
     userId: string | null
     cargoId: string | null
+    transportId: string | null
     _count: WishListCountAggregateOutputType | null
     _min: WishListMinAggregateOutputType | null
     _max: WishListMaxAggregateOutputType | null
@@ -5903,8 +7522,10 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     cargoId?: boolean
+    transportId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5913,8 +7534,10 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     cargoId?: boolean
+    transportId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5923,8 +7546,10 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     cargoId?: boolean
+    transportId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectScalar = {
@@ -5933,20 +7558,24 @@ export namespace Prisma {
     updatedAt?: boolean
     userId?: boolean
     cargoId?: boolean
+    transportId?: boolean
   }
 
-  export type WishListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "cargoId", ExtArgs["result"]["wishList"]>
+  export type WishListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "cargoId" | "transportId", ExtArgs["result"]["wishList"]>
   export type WishListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }
   export type WishListIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }
   export type WishListIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
+    transport?: boolean | WishList$transportArgs<ExtArgs>
   }
 
   export type $WishListPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5954,6 +7583,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs> | null
       cargo: Prisma.$CargoPayload<ExtArgs> | null
+      transport: Prisma.$TransportPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5961,6 +7591,7 @@ export namespace Prisma {
       updatedAt: Date
       userId: string | null
       cargoId: string | null
+      transportId: string | null
     }, ExtArgs["result"]["wishList"]>
     composites: {}
   }
@@ -6357,6 +7988,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends WishList$userArgs<ExtArgs> = {}>(args?: Subset<T, WishList$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     cargo<T extends WishList$cargoArgs<ExtArgs> = {}>(args?: Subset<T, WishList$cargoArgs<ExtArgs>>): Prisma__CargoClient<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    transport<T extends WishList$transportArgs<ExtArgs> = {}>(args?: Subset<T, WishList$transportArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6391,6 +8023,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"WishList", 'DateTime'>
     readonly userId: FieldRef<"WishList", 'String'>
     readonly cargoId: FieldRef<"WishList", 'String'>
+    readonly transportId: FieldRef<"WishList", 'String'>
   }
     
 
@@ -6822,6 +8455,25 @@ export namespace Prisma {
      */
     include?: CargoInclude<ExtArgs> | null
     where?: CargoWhereInput
+  }
+
+  /**
+   * WishList.transport
+   */
+  export type WishList$transportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transport
+     */
+    select?: TransportSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transport
+     */
+    omit?: TransportOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransportInclude<ExtArgs> | null
+    where?: TransportWhereInput
   }
 
   /**
@@ -7935,6 +9587,37 @@ export namespace Prisma {
   export type CargoScalarFieldEnum = (typeof CargoScalarFieldEnum)[keyof typeof CargoScalarFieldEnum]
 
 
+  export const TransportScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    note: 'note',
+    placesLoading: 'placesLoading',
+    placesUnloading: 'placesUnloading',
+    weight: 'weight',
+    volume: 'volume',
+    periodDays: 'periodDays',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    isArchived: 'isArchived',
+    archivedDate: 'archivedDate',
+    truckType: 'truckType',
+    loadingType: 'loadingType',
+    optionDocuments: 'optionDocuments',
+    optionDocumentsAdr: 'optionDocumentsAdr',
+    userId: 'userId',
+    userName: 'userName',
+    userPhone: 'userPhone',
+    whatsapp: 'whatsapp',
+    telegram: 'telegram',
+    viber: 'viber',
+    skype: 'skype',
+    viewsId: 'viewsId'
+  };
+
+  export type TransportScalarFieldEnum = (typeof TransportScalarFieldEnum)[keyof typeof TransportScalarFieldEnum]
+
+
   export const ViewsScalarFieldEnum: {
     id: 'id',
     createdAt: 'createdAt',
@@ -7950,7 +9633,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     userId: 'userId',
-    cargoId: 'cargoId'
+    cargoId: 'cargoId',
+    transportId: 'transportId'
   };
 
   export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
@@ -8271,6 +9955,7 @@ export namespace Prisma {
     documents?: StringNullableListFilter<"User">
     cargos?: CargoListRelationFilter
     wishList?: WishListListRelationFilter
+    transport?: TransportListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8297,6 +9982,7 @@ export namespace Prisma {
     documents?: SortOrder
     cargos?: CargoOrderByRelationAggregateInput
     wishList?: WishListOrderByRelationAggregateInput
+    transport?: TransportOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8326,6 +10012,7 @@ export namespace Prisma {
     documents?: StringNullableListFilter<"User">
     cargos?: CargoListRelationFilter
     wishList?: WishListListRelationFilter
+    transport?: TransportListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -8670,6 +10357,169 @@ export namespace Prisma {
     viewsId?: StringNullableWithAggregatesFilter<"Cargo"> | string | null
   }
 
+  export type TransportWhereInput = {
+    AND?: TransportWhereInput | TransportWhereInput[]
+    OR?: TransportWhereInput[]
+    NOT?: TransportWhereInput | TransportWhereInput[]
+    id?: StringFilter<"Transport"> | string
+    createdAt?: DateTimeFilter<"Transport"> | Date | string
+    updatedAt?: DateTimeFilter<"Transport"> | Date | string
+    note?: StringNullableFilter<"Transport"> | string | null
+    placesLoading?: StringNullableListFilter<"Transport">
+    placesUnloading?: StringNullableListFilter<"Transport">
+    weight?: FloatFilter<"Transport"> | number
+    volume?: FloatFilter<"Transport"> | number
+    periodDays?: IntFilter<"Transport"> | number
+    startDate?: DateTimeFilter<"Transport"> | Date | string
+    endDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    isArchived?: BoolNullableFilter<"Transport"> | boolean | null
+    archivedDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    truckType?: EnumTruckTypeNullableListFilter<"Transport">
+    loadingType?: EnumLoadingTypeNullableListFilter<"Transport">
+    optionDocuments?: EnumDocumentsNullableListFilter<"Transport">
+    optionDocumentsAdr?: EnumDocumentsAdrNullableFilter<"Transport"> | $Enums.DocumentsAdr | null
+    userId?: StringNullableFilter<"Transport"> | string | null
+    userName?: StringNullableFilter<"Transport"> | string | null
+    userPhone?: StringNullableFilter<"Transport"> | string | null
+    whatsapp?: StringNullableFilter<"Transport"> | string | null
+    telegram?: StringNullableFilter<"Transport"> | string | null
+    viber?: StringNullableFilter<"Transport"> | string | null
+    skype?: StringNullableFilter<"Transport"> | string | null
+    viewsId?: StringNullableFilter<"Transport"> | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
+  }
+
+  export type TransportOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    note?: SortOrderInput | SortOrder
+    placesLoading?: SortOrder
+    placesUnloading?: SortOrder
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    isArchived?: SortOrderInput | SortOrder
+    archivedDate?: SortOrderInput | SortOrder
+    truckType?: SortOrder
+    loadingType?: SortOrder
+    optionDocuments?: SortOrder
+    optionDocumentsAdr?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    userName?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
+    viewsId?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    views?: ViewsOrderByWithRelationInput
+    wishList?: WishListOrderByRelationAggregateInput
+  }
+
+  export type TransportWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TransportWhereInput | TransportWhereInput[]
+    OR?: TransportWhereInput[]
+    NOT?: TransportWhereInput | TransportWhereInput[]
+    createdAt?: DateTimeFilter<"Transport"> | Date | string
+    updatedAt?: DateTimeFilter<"Transport"> | Date | string
+    note?: StringNullableFilter<"Transport"> | string | null
+    placesLoading?: StringNullableListFilter<"Transport">
+    placesUnloading?: StringNullableListFilter<"Transport">
+    weight?: FloatFilter<"Transport"> | number
+    volume?: FloatFilter<"Transport"> | number
+    periodDays?: IntFilter<"Transport"> | number
+    startDate?: DateTimeFilter<"Transport"> | Date | string
+    endDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    isArchived?: BoolNullableFilter<"Transport"> | boolean | null
+    archivedDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    truckType?: EnumTruckTypeNullableListFilter<"Transport">
+    loadingType?: EnumLoadingTypeNullableListFilter<"Transport">
+    optionDocuments?: EnumDocumentsNullableListFilter<"Transport">
+    optionDocumentsAdr?: EnumDocumentsAdrNullableFilter<"Transport"> | $Enums.DocumentsAdr | null
+    userId?: StringNullableFilter<"Transport"> | string | null
+    userName?: StringNullableFilter<"Transport"> | string | null
+    userPhone?: StringNullableFilter<"Transport"> | string | null
+    whatsapp?: StringNullableFilter<"Transport"> | string | null
+    telegram?: StringNullableFilter<"Transport"> | string | null
+    viber?: StringNullableFilter<"Transport"> | string | null
+    skype?: StringNullableFilter<"Transport"> | string | null
+    viewsId?: StringNullableFilter<"Transport"> | string | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
+  }, "id">
+
+  export type TransportOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    note?: SortOrderInput | SortOrder
+    placesLoading?: SortOrder
+    placesUnloading?: SortOrder
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    isArchived?: SortOrderInput | SortOrder
+    archivedDate?: SortOrderInput | SortOrder
+    truckType?: SortOrder
+    loadingType?: SortOrder
+    optionDocuments?: SortOrder
+    optionDocumentsAdr?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    userName?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
+    viewsId?: SortOrderInput | SortOrder
+    _count?: TransportCountOrderByAggregateInput
+    _avg?: TransportAvgOrderByAggregateInput
+    _max?: TransportMaxOrderByAggregateInput
+    _min?: TransportMinOrderByAggregateInput
+    _sum?: TransportSumOrderByAggregateInput
+  }
+
+  export type TransportScalarWhereWithAggregatesInput = {
+    AND?: TransportScalarWhereWithAggregatesInput | TransportScalarWhereWithAggregatesInput[]
+    OR?: TransportScalarWhereWithAggregatesInput[]
+    NOT?: TransportScalarWhereWithAggregatesInput | TransportScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Transport"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Transport"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Transport"> | Date | string
+    note?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    placesLoading?: StringNullableListFilter<"Transport">
+    placesUnloading?: StringNullableListFilter<"Transport">
+    weight?: FloatWithAggregatesFilter<"Transport"> | number
+    volume?: FloatWithAggregatesFilter<"Transport"> | number
+    periodDays?: IntWithAggregatesFilter<"Transport"> | number
+    startDate?: DateTimeWithAggregatesFilter<"Transport"> | Date | string
+    endDate?: DateTimeNullableWithAggregatesFilter<"Transport"> | Date | string | null
+    isArchived?: BoolNullableWithAggregatesFilter<"Transport"> | boolean | null
+    archivedDate?: DateTimeNullableWithAggregatesFilter<"Transport"> | Date | string | null
+    truckType?: EnumTruckTypeNullableListFilter<"Transport">
+    loadingType?: EnumLoadingTypeNullableListFilter<"Transport">
+    optionDocuments?: EnumDocumentsNullableListFilter<"Transport">
+    optionDocumentsAdr?: EnumDocumentsAdrNullableWithAggregatesFilter<"Transport"> | $Enums.DocumentsAdr | null
+    userId?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    userName?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    userPhone?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    whatsapp?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    telegram?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    viber?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    skype?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+    viewsId?: StringNullableWithAggregatesFilter<"Transport"> | string | null
+  }
+
   export type ViewsWhereInput = {
     AND?: ViewsWhereInput | ViewsWhereInput[]
     OR?: ViewsWhereInput[]
@@ -8679,6 +10529,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Views"> | Date | string
     count?: IntFilter<"Views"> | number
     cargo?: CargoListRelationFilter
+    transport?: TransportListRelationFilter
   }
 
   export type ViewsOrderByWithRelationInput = {
@@ -8687,6 +10538,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     count?: SortOrder
     cargo?: CargoOrderByRelationAggregateInput
+    transport?: TransportOrderByRelationAggregateInput
   }
 
   export type ViewsWhereUniqueInput = Prisma.AtLeast<{
@@ -8698,6 +10550,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Views"> | Date | string
     count?: IntFilter<"Views"> | number
     cargo?: CargoListRelationFilter
+    transport?: TransportListRelationFilter
   }, "id">
 
   export type ViewsOrderByWithAggregationInput = {
@@ -8731,8 +10584,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"WishList"> | Date | string
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
+    transportId?: StringNullableFilter<"WishList"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
+    transport?: XOR<TransportNullableScalarRelationFilter, TransportWhereInput> | null
   }
 
   export type WishListOrderByWithRelationInput = {
@@ -8741,13 +10596,16 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     cargoId?: SortOrderInput | SortOrder
+    transportId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     cargo?: CargoOrderByWithRelationInput
+    transport?: TransportOrderByWithRelationInput
   }
 
   export type WishListWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     userId_cargoId?: WishListUserIdCargoIdCompoundUniqueInput
+    userId_transportId?: WishListUserIdTransportIdCompoundUniqueInput
     AND?: WishListWhereInput | WishListWhereInput[]
     OR?: WishListWhereInput[]
     NOT?: WishListWhereInput | WishListWhereInput[]
@@ -8755,9 +10613,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"WishList"> | Date | string
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
+    transportId?: StringNullableFilter<"WishList"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
-  }, "id" | "userId_cargoId">
+    transport?: XOR<TransportNullableScalarRelationFilter, TransportWhereInput> | null
+  }, "id" | "userId_cargoId" | "userId_transportId">
 
   export type WishListOrderByWithAggregationInput = {
     id?: SortOrder
@@ -8765,6 +10625,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     cargoId?: SortOrderInput | SortOrder
+    transportId?: SortOrderInput | SortOrder
     _count?: WishListCountOrderByAggregateInput
     _max?: WishListMaxOrderByAggregateInput
     _min?: WishListMinOrderByAggregateInput
@@ -8779,6 +10640,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"WishList"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
     cargoId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
+    transportId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
   }
 
   export type CurrencyRateWhereInput = {
@@ -8857,6 +10719,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoCreateNestedManyWithoutUserInput
     wishList?: WishListCreateNestedManyWithoutUserInput
+    transport?: TransportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8883,6 +10746,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
     wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
+    transport?: TransportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -8909,6 +10773,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUpdateManyWithoutUserNestedInput
     wishList?: WishListUpdateManyWithoutUserNestedInput
+    transport?: TransportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8935,6 +10800,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
     wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9382,12 +11248,211 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type TransportCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    user?: UserCreateNestedOneWithoutTransportInput
+    views?: ViewsCreateNestedOneWithoutTransportInput
+    wishList?: WishListCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutTransportNestedInput
+    views?: ViewsUpdateOneWithoutTransportNestedInput
+    wishList?: WishListUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+  }
+
+  export type TransportUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransportUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type ViewsCreateInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     count?: number
     cargo?: CargoCreateNestedManyWithoutViewsInput
+    transport?: TransportCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUncheckedCreateInput = {
@@ -9396,6 +11461,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     count?: number
     cargo?: CargoUncheckedCreateNestedManyWithoutViewsInput
+    transport?: TransportUncheckedCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUpdateInput = {
@@ -9404,6 +11470,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUpdateManyWithoutViewsNestedInput
+    transport?: TransportUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsUncheckedUpdateInput = {
@@ -9412,6 +11479,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUncheckedUpdateManyWithoutViewsNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsCreateManyInput = {
@@ -9441,6 +11509,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutWishListInput
     cargo?: CargoCreateNestedOneWithoutWishListInput
+    transport?: TransportCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateInput = {
@@ -9449,6 +11518,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId?: string | null
     cargoId?: string | null
+    transportId?: string | null
   }
 
   export type WishListUpdateInput = {
@@ -9457,6 +11527,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutWishListNestedInput
     cargo?: CargoUpdateOneWithoutWishListNestedInput
+    transport?: TransportUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateInput = {
@@ -9465,6 +11536,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListCreateManyInput = {
@@ -9473,6 +11545,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId?: string | null
     cargoId?: string | null
+    transportId?: string | null
   }
 
   export type WishListUpdateManyMutationInput = {
@@ -9487,6 +11560,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CurrencyRateCreateInput = {
@@ -9629,6 +11703,12 @@ export namespace Prisma {
     none?: WishListWhereInput
   }
 
+  export type TransportListRelationFilter = {
+    every?: TransportWhereInput
+    some?: TransportWhereInput
+    none?: TransportWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9639,6 +11719,10 @@ export namespace Prisma {
   }
 
   export type WishListOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TransportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10163,6 +12247,92 @@ export namespace Prisma {
     _max?: NestedEnumTermsPalletsTypeNullableFilter<$PrismaModel>
   }
 
+  export type TransportCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    note?: SortOrder
+    placesLoading?: SortOrder
+    placesUnloading?: SortOrder
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    isArchived?: SortOrder
+    archivedDate?: SortOrder
+    truckType?: SortOrder
+    loadingType?: SortOrder
+    optionDocuments?: SortOrder
+    optionDocumentsAdr?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+  }
+
+  export type TransportAvgOrderByAggregateInput = {
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+  }
+
+  export type TransportMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    note?: SortOrder
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    isArchived?: SortOrder
+    archivedDate?: SortOrder
+    optionDocumentsAdr?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+  }
+
+  export type TransportMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    note?: SortOrder
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    isArchived?: SortOrder
+    archivedDate?: SortOrder
+    optionDocumentsAdr?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+  }
+
+  export type TransportSumOrderByAggregateInput = {
+    weight?: SortOrder
+    volume?: SortOrder
+    periodDays?: SortOrder
+  }
+
   export type ViewsCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
@@ -10197,9 +12367,19 @@ export namespace Prisma {
     isNot?: CargoWhereInput | null
   }
 
+  export type TransportNullableScalarRelationFilter = {
+    is?: TransportWhereInput | null
+    isNot?: TransportWhereInput | null
+  }
+
   export type WishListUserIdCargoIdCompoundUniqueInput = {
     userId: string
     cargoId: string
+  }
+
+  export type WishListUserIdTransportIdCompoundUniqueInput = {
+    userId: string
+    transportId: string
   }
 
   export type WishListCountOrderByAggregateInput = {
@@ -10208,6 +12388,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     cargoId?: SortOrder
+    transportId?: SortOrder
   }
 
   export type WishListMaxOrderByAggregateInput = {
@@ -10216,6 +12397,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     cargoId?: SortOrder
+    transportId?: SortOrder
   }
 
   export type WishListMinOrderByAggregateInput = {
@@ -10224,6 +12406,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     cargoId?: SortOrder
+    transportId?: SortOrder
   }
 
   export type CurrencyRateCountOrderByAggregateInput = {
@@ -10268,6 +12451,13 @@ export namespace Prisma {
     connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
   }
 
+  export type TransportCreateNestedManyWithoutUserInput = {
+    create?: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput> | TransportCreateWithoutUserInput[] | TransportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutUserInput | TransportCreateOrConnectWithoutUserInput[]
+    createMany?: TransportCreateManyUserInputEnvelope
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+  }
+
   export type CargoUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
@@ -10280,6 +12470,13 @@ export namespace Prisma {
     connectOrCreate?: WishListCreateOrConnectWithoutUserInput | WishListCreateOrConnectWithoutUserInput[]
     createMany?: WishListCreateManyUserInputEnvelope
     connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type TransportUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput> | TransportCreateWithoutUserInput[] | TransportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutUserInput | TransportCreateOrConnectWithoutUserInput[]
+    createMany?: TransportCreateManyUserInputEnvelope
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10339,6 +12536,20 @@ export namespace Prisma {
     deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
   }
 
+  export type TransportUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput> | TransportCreateWithoutUserInput[] | TransportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutUserInput | TransportCreateOrConnectWithoutUserInput[]
+    upsert?: TransportUpsertWithWhereUniqueWithoutUserInput | TransportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TransportCreateManyUserInputEnvelope
+    set?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    disconnect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    delete?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    update?: TransportUpdateWithWhereUniqueWithoutUserInput | TransportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TransportUpdateManyWithWhereWithoutUserInput | TransportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
+  }
+
   export type CargoUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
@@ -10365,6 +12576,20 @@ export namespace Prisma {
     update?: WishListUpdateWithWhereUniqueWithoutUserInput | WishListUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: WishListUpdateManyWithWhereWithoutUserInput | WishListUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
+  export type TransportUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput> | TransportCreateWithoutUserInput[] | TransportUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutUserInput | TransportCreateOrConnectWithoutUserInput[]
+    upsert?: TransportUpsertWithWhereUniqueWithoutUserInput | TransportUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TransportCreateManyUserInputEnvelope
+    set?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    disconnect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    delete?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    update?: TransportUpdateWithWhereUniqueWithoutUserInput | TransportUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TransportUpdateManyWithWhereWithoutUserInput | TransportUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
   }
 
   export type CargoCreateplacesLoadingInput = {
@@ -10576,6 +12801,125 @@ export namespace Prisma {
     deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
   }
 
+  export type TransportCreateplacesLoadingInput = {
+    set: string[]
+  }
+
+  export type TransportCreateplacesUnloadingInput = {
+    set: string[]
+  }
+
+  export type TransportCreatetruckTypeInput = {
+    set: $Enums.TruckType[]
+  }
+
+  export type TransportCreateloadingTypeInput = {
+    set: $Enums.LoadingType[]
+  }
+
+  export type TransportCreateoptionDocumentsInput = {
+    set: $Enums.Documents[]
+  }
+
+  export type UserCreateNestedOneWithoutTransportInput = {
+    create?: XOR<UserCreateWithoutTransportInput, UserUncheckedCreateWithoutTransportInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransportInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ViewsCreateNestedOneWithoutTransportInput = {
+    create?: XOR<ViewsCreateWithoutTransportInput, ViewsUncheckedCreateWithoutTransportInput>
+    connectOrCreate?: ViewsCreateOrConnectWithoutTransportInput
+    connect?: ViewsWhereUniqueInput
+  }
+
+  export type WishListCreateNestedManyWithoutTransportInput = {
+    create?: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput> | WishListCreateWithoutTransportInput[] | WishListUncheckedCreateWithoutTransportInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTransportInput | WishListCreateOrConnectWithoutTransportInput[]
+    createMany?: WishListCreateManyTransportInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type WishListUncheckedCreateNestedManyWithoutTransportInput = {
+    create?: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput> | WishListCreateWithoutTransportInput[] | WishListUncheckedCreateWithoutTransportInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTransportInput | WishListCreateOrConnectWithoutTransportInput[]
+    createMany?: WishListCreateManyTransportInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type TransportUpdateplacesLoadingInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type TransportUpdateplacesUnloadingInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type TransportUpdatetruckTypeInput = {
+    set?: $Enums.TruckType[]
+    push?: $Enums.TruckType | $Enums.TruckType[]
+  }
+
+  export type TransportUpdateloadingTypeInput = {
+    set?: $Enums.LoadingType[]
+    push?: $Enums.LoadingType | $Enums.LoadingType[]
+  }
+
+  export type TransportUpdateoptionDocumentsInput = {
+    set?: $Enums.Documents[]
+    push?: $Enums.Documents | $Enums.Documents[]
+  }
+
+  export type UserUpdateOneWithoutTransportNestedInput = {
+    create?: XOR<UserCreateWithoutTransportInput, UserUncheckedCreateWithoutTransportInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransportInput
+    upsert?: UserUpsertWithoutTransportInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransportInput, UserUpdateWithoutTransportInput>, UserUncheckedUpdateWithoutTransportInput>
+  }
+
+  export type ViewsUpdateOneWithoutTransportNestedInput = {
+    create?: XOR<ViewsCreateWithoutTransportInput, ViewsUncheckedCreateWithoutTransportInput>
+    connectOrCreate?: ViewsCreateOrConnectWithoutTransportInput
+    upsert?: ViewsUpsertWithoutTransportInput
+    disconnect?: ViewsWhereInput | boolean
+    delete?: ViewsWhereInput | boolean
+    connect?: ViewsWhereUniqueInput
+    update?: XOR<XOR<ViewsUpdateToOneWithWhereWithoutTransportInput, ViewsUpdateWithoutTransportInput>, ViewsUncheckedUpdateWithoutTransportInput>
+  }
+
+  export type WishListUpdateManyWithoutTransportNestedInput = {
+    create?: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput> | WishListCreateWithoutTransportInput[] | WishListUncheckedCreateWithoutTransportInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTransportInput | WishListCreateOrConnectWithoutTransportInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutTransportInput | WishListUpsertWithWhereUniqueWithoutTransportInput[]
+    createMany?: WishListCreateManyTransportInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutTransportInput | WishListUpdateWithWhereUniqueWithoutTransportInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutTransportInput | WishListUpdateManyWithWhereWithoutTransportInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
+  export type WishListUncheckedUpdateManyWithoutTransportNestedInput = {
+    create?: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput> | WishListCreateWithoutTransportInput[] | WishListUncheckedCreateWithoutTransportInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTransportInput | WishListCreateOrConnectWithoutTransportInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutTransportInput | WishListUpsertWithWhereUniqueWithoutTransportInput[]
+    createMany?: WishListCreateManyTransportInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutTransportInput | WishListUpdateWithWhereUniqueWithoutTransportInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutTransportInput | WishListUpdateManyWithWhereWithoutTransportInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
   export type CargoCreateNestedManyWithoutViewsInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
@@ -10583,11 +12927,25 @@ export namespace Prisma {
     connect?: CargoWhereUniqueInput | CargoWhereUniqueInput[]
   }
 
+  export type TransportCreateNestedManyWithoutViewsInput = {
+    create?: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput> | TransportCreateWithoutViewsInput[] | TransportUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutViewsInput | TransportCreateOrConnectWithoutViewsInput[]
+    createMany?: TransportCreateManyViewsInputEnvelope
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+  }
+
   export type CargoUncheckedCreateNestedManyWithoutViewsInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
     createMany?: CargoCreateManyViewsInputEnvelope
     connect?: CargoWhereUniqueInput | CargoWhereUniqueInput[]
+  }
+
+  export type TransportUncheckedCreateNestedManyWithoutViewsInput = {
+    create?: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput> | TransportCreateWithoutViewsInput[] | TransportUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutViewsInput | TransportCreateOrConnectWithoutViewsInput[]
+    createMany?: TransportCreateManyViewsInputEnvelope
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
   }
 
   export type CargoUpdateManyWithoutViewsNestedInput = {
@@ -10604,6 +12962,20 @@ export namespace Prisma {
     deleteMany?: CargoScalarWhereInput | CargoScalarWhereInput[]
   }
 
+  export type TransportUpdateManyWithoutViewsNestedInput = {
+    create?: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput> | TransportCreateWithoutViewsInput[] | TransportUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutViewsInput | TransportCreateOrConnectWithoutViewsInput[]
+    upsert?: TransportUpsertWithWhereUniqueWithoutViewsInput | TransportUpsertWithWhereUniqueWithoutViewsInput[]
+    createMany?: TransportCreateManyViewsInputEnvelope
+    set?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    disconnect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    delete?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    update?: TransportUpdateWithWhereUniqueWithoutViewsInput | TransportUpdateWithWhereUniqueWithoutViewsInput[]
+    updateMany?: TransportUpdateManyWithWhereWithoutViewsInput | TransportUpdateManyWithWhereWithoutViewsInput[]
+    deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
+  }
+
   export type CargoUncheckedUpdateManyWithoutViewsNestedInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
@@ -10618,6 +12990,20 @@ export namespace Prisma {
     deleteMany?: CargoScalarWhereInput | CargoScalarWhereInput[]
   }
 
+  export type TransportUncheckedUpdateManyWithoutViewsNestedInput = {
+    create?: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput> | TransportCreateWithoutViewsInput[] | TransportUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TransportCreateOrConnectWithoutViewsInput | TransportCreateOrConnectWithoutViewsInput[]
+    upsert?: TransportUpsertWithWhereUniqueWithoutViewsInput | TransportUpsertWithWhereUniqueWithoutViewsInput[]
+    createMany?: TransportCreateManyViewsInputEnvelope
+    set?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    disconnect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    delete?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+    update?: TransportUpdateWithWhereUniqueWithoutViewsInput | TransportUpdateWithWhereUniqueWithoutViewsInput[]
+    updateMany?: TransportUpdateManyWithWhereWithoutViewsInput | TransportUpdateManyWithWhereWithoutViewsInput[]
+    deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutWishListInput = {
     create?: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
     connectOrCreate?: UserCreateOrConnectWithoutWishListInput
@@ -10628,6 +13014,12 @@ export namespace Prisma {
     create?: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
     connectOrCreate?: CargoCreateOrConnectWithoutWishListInput
     connect?: CargoWhereUniqueInput
+  }
+
+  export type TransportCreateNestedOneWithoutWishListInput = {
+    create?: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: TransportCreateOrConnectWithoutWishListInput
+    connect?: TransportWhereUniqueInput
   }
 
   export type UserUpdateOneWithoutWishListNestedInput = {
@@ -10648,6 +13040,16 @@ export namespace Prisma {
     delete?: CargoWhereInput | boolean
     connect?: CargoWhereUniqueInput
     update?: XOR<XOR<CargoUpdateToOneWithWhereWithoutWishListInput, CargoUpdateWithoutWishListInput>, CargoUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type TransportUpdateOneWithoutWishListNestedInput = {
+    create?: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: TransportCreateOrConnectWithoutWishListInput
+    upsert?: TransportUpsertWithoutWishListInput
+    disconnect?: TransportWhereInput | boolean
+    delete?: TransportWhereInput | boolean
+    connect?: TransportWhereUniqueInput
+    update?: XOR<XOR<TransportUpdateToOneWithWhereWithoutWishListInput, TransportUpdateWithoutWishListInput>, TransportUncheckedUpdateWithoutWishListInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11056,6 +13458,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     cargo?: CargoCreateNestedOneWithoutWishListInput
+    transport?: TransportCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateWithoutUserInput = {
@@ -11063,6 +13466,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     cargoId?: string | null
+    transportId?: string | null
   }
 
   export type WishListCreateOrConnectWithoutUserInput = {
@@ -11072,6 +13476,72 @@ export namespace Prisma {
 
   export type WishListCreateManyUserInputEnvelope = {
     data: WishListCreateManyUserInput | WishListCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TransportCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    views?: ViewsCreateNestedOneWithoutTransportInput
+    wishList?: WishListCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportUncheckedCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportCreateOrConnectWithoutUserInput = {
+    where: TransportWhereUniqueInput
+    create: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput>
+  }
+
+  export type TransportCreateManyUserInputEnvelope = {
+    data: TransportCreateManyUserInput | TransportCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -11172,6 +13642,54 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"WishList"> | Date | string
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
+    transportId?: StringNullableFilter<"WishList"> | string | null
+  }
+
+  export type TransportUpsertWithWhereUniqueWithoutUserInput = {
+    where: TransportWhereUniqueInput
+    update: XOR<TransportUpdateWithoutUserInput, TransportUncheckedUpdateWithoutUserInput>
+    create: XOR<TransportCreateWithoutUserInput, TransportUncheckedCreateWithoutUserInput>
+  }
+
+  export type TransportUpdateWithWhereUniqueWithoutUserInput = {
+    where: TransportWhereUniqueInput
+    data: XOR<TransportUpdateWithoutUserInput, TransportUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TransportUpdateManyWithWhereWithoutUserInput = {
+    where: TransportScalarWhereInput
+    data: XOR<TransportUpdateManyMutationInput, TransportUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TransportScalarWhereInput = {
+    AND?: TransportScalarWhereInput | TransportScalarWhereInput[]
+    OR?: TransportScalarWhereInput[]
+    NOT?: TransportScalarWhereInput | TransportScalarWhereInput[]
+    id?: StringFilter<"Transport"> | string
+    createdAt?: DateTimeFilter<"Transport"> | Date | string
+    updatedAt?: DateTimeFilter<"Transport"> | Date | string
+    note?: StringNullableFilter<"Transport"> | string | null
+    placesLoading?: StringNullableListFilter<"Transport">
+    placesUnloading?: StringNullableListFilter<"Transport">
+    weight?: FloatFilter<"Transport"> | number
+    volume?: FloatFilter<"Transport"> | number
+    periodDays?: IntFilter<"Transport"> | number
+    startDate?: DateTimeFilter<"Transport"> | Date | string
+    endDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    isArchived?: BoolNullableFilter<"Transport"> | boolean | null
+    archivedDate?: DateTimeNullableFilter<"Transport"> | Date | string | null
+    truckType?: EnumTruckTypeNullableListFilter<"Transport">
+    loadingType?: EnumLoadingTypeNullableListFilter<"Transport">
+    optionDocuments?: EnumDocumentsNullableListFilter<"Transport">
+    optionDocumentsAdr?: EnumDocumentsAdrNullableFilter<"Transport"> | $Enums.DocumentsAdr | null
+    userId?: StringNullableFilter<"Transport"> | string | null
+    userName?: StringNullableFilter<"Transport"> | string | null
+    userPhone?: StringNullableFilter<"Transport"> | string | null
+    whatsapp?: StringNullableFilter<"Transport"> | string | null
+    telegram?: StringNullableFilter<"Transport"> | string | null
+    viber?: StringNullableFilter<"Transport"> | string | null
+    skype?: StringNullableFilter<"Transport"> | string | null
+    viewsId?: StringNullableFilter<"Transport"> | string | null
   }
 
   export type UserCreateWithoutCargosInput = {
@@ -11197,6 +13715,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     wishList?: WishListCreateNestedManyWithoutUserInput
+    transport?: TransportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCargosInput = {
@@ -11222,6 +13741,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
+    transport?: TransportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCargosInput = {
@@ -11234,6 +13754,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     count?: number
+    transport?: TransportCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUncheckedCreateWithoutCargoInput = {
@@ -11241,6 +13762,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     count?: number
+    transport?: TransportUncheckedCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsCreateOrConnectWithoutCargoInput = {
@@ -11253,6 +13775,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutWishListInput
+    transport?: TransportCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateWithoutCargoInput = {
@@ -11260,6 +13783,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
+    transportId?: string | null
   }
 
   export type WishListCreateOrConnectWithoutCargoInput = {
@@ -11306,6 +13830,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     wishList?: WishListUpdateManyWithoutUserNestedInput
+    transport?: TransportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCargosInput = {
@@ -11331,6 +13856,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ViewsUpsertWithoutCargoInput = {
@@ -11349,6 +13875,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
+    transport?: TransportUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsUncheckedUpdateWithoutCargoInput = {
@@ -11356,6 +13883,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
+    transport?: TransportUncheckedUpdateManyWithoutViewsNestedInput
   }
 
   export type WishListUpsertWithWhereUniqueWithoutCargoInput = {
@@ -11372,6 +13900,216 @@ export namespace Prisma {
   export type WishListUpdateManyWithWhereWithoutCargoInput = {
     where: WishListScalarWhereInput
     data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyWithoutCargoInput>
+  }
+
+  export type UserCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoCreateNestedManyWithoutUserInput
+    wishList?: WishListCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
+    wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTransportInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTransportInput, UserUncheckedCreateWithoutTransportInput>
+  }
+
+  export type ViewsCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    count?: number
+    cargo?: CargoCreateNestedManyWithoutViewsInput
+  }
+
+  export type ViewsUncheckedCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    count?: number
+    cargo?: CargoUncheckedCreateNestedManyWithoutViewsInput
+  }
+
+  export type ViewsCreateOrConnectWithoutTransportInput = {
+    where: ViewsWhereUniqueInput
+    create: XOR<ViewsCreateWithoutTransportInput, ViewsUncheckedCreateWithoutTransportInput>
+  }
+
+  export type WishListCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutWishListInput
+    cargo?: CargoCreateNestedOneWithoutWishListInput
+  }
+
+  export type WishListUncheckedCreateWithoutTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+  }
+
+  export type WishListCreateOrConnectWithoutTransportInput = {
+    where: WishListWhereUniqueInput
+    create: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput>
+  }
+
+  export type WishListCreateManyTransportInputEnvelope = {
+    data: WishListCreateManyTransportInput | WishListCreateManyTransportInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutTransportInput = {
+    update: XOR<UserUpdateWithoutTransportInput, UserUncheckedUpdateWithoutTransportInput>
+    create: XOR<UserCreateWithoutTransportInput, UserUncheckedCreateWithoutTransportInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTransportInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTransportInput, UserUncheckedUpdateWithoutTransportInput>
+  }
+
+  export type UserUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUpdateManyWithoutUserNestedInput
+    wishList?: WishListUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
+    wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ViewsUpsertWithoutTransportInput = {
+    update: XOR<ViewsUpdateWithoutTransportInput, ViewsUncheckedUpdateWithoutTransportInput>
+    create: XOR<ViewsCreateWithoutTransportInput, ViewsUncheckedCreateWithoutTransportInput>
+    where?: ViewsWhereInput
+  }
+
+  export type ViewsUpdateToOneWithWhereWithoutTransportInput = {
+    where?: ViewsWhereInput
+    data: XOR<ViewsUpdateWithoutTransportInput, ViewsUncheckedUpdateWithoutTransportInput>
+  }
+
+  export type ViewsUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    cargo?: CargoUpdateManyWithoutViewsNestedInput
+  }
+
+  export type ViewsUncheckedUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    cargo?: CargoUncheckedUpdateManyWithoutViewsNestedInput
+  }
+
+  export type WishListUpsertWithWhereUniqueWithoutTransportInput = {
+    where: WishListWhereUniqueInput
+    update: XOR<WishListUpdateWithoutTransportInput, WishListUncheckedUpdateWithoutTransportInput>
+    create: XOR<WishListCreateWithoutTransportInput, WishListUncheckedCreateWithoutTransportInput>
+  }
+
+  export type WishListUpdateWithWhereUniqueWithoutTransportInput = {
+    where: WishListWhereUniqueInput
+    data: XOR<WishListUpdateWithoutTransportInput, WishListUncheckedUpdateWithoutTransportInput>
+  }
+
+  export type WishListUpdateManyWithWhereWithoutTransportInput = {
+    where: WishListScalarWhereInput
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyWithoutTransportInput>
   }
 
   export type CargoCreateWithoutViewsInput = {
@@ -11490,6 +14228,72 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TransportCreateWithoutViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    user?: UserCreateNestedOneWithoutTransportInput
+    wishList?: WishListCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportUncheckedCreateWithoutViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTransportInput
+  }
+
+  export type TransportCreateOrConnectWithoutViewsInput = {
+    where: TransportWhereUniqueInput
+    create: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput>
+  }
+
+  export type TransportCreateManyViewsInputEnvelope = {
+    data: TransportCreateManyViewsInput | TransportCreateManyViewsInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CargoUpsertWithWhereUniqueWithoutViewsInput = {
     where: CargoWhereUniqueInput
     update: XOR<CargoUpdateWithoutViewsInput, CargoUncheckedUpdateWithoutViewsInput>
@@ -11504,6 +14308,22 @@ export namespace Prisma {
   export type CargoUpdateManyWithWhereWithoutViewsInput = {
     where: CargoScalarWhereInput
     data: XOR<CargoUpdateManyMutationInput, CargoUncheckedUpdateManyWithoutViewsInput>
+  }
+
+  export type TransportUpsertWithWhereUniqueWithoutViewsInput = {
+    where: TransportWhereUniqueInput
+    update: XOR<TransportUpdateWithoutViewsInput, TransportUncheckedUpdateWithoutViewsInput>
+    create: XOR<TransportCreateWithoutViewsInput, TransportUncheckedCreateWithoutViewsInput>
+  }
+
+  export type TransportUpdateWithWhereUniqueWithoutViewsInput = {
+    where: TransportWhereUniqueInput
+    data: XOR<TransportUpdateWithoutViewsInput, TransportUncheckedUpdateWithoutViewsInput>
+  }
+
+  export type TransportUpdateManyWithWhereWithoutViewsInput = {
+    where: TransportScalarWhereInput
+    data: XOR<TransportUpdateManyMutationInput, TransportUncheckedUpdateManyWithoutViewsInput>
   }
 
   export type UserCreateWithoutWishListInput = {
@@ -11529,6 +14349,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoCreateNestedManyWithoutUserInput
+    transport?: TransportCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWishListInput = {
@@ -11554,6 +14375,7 @@ export namespace Prisma {
     isBlocked?: boolean | null
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
+    transport?: TransportUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWishListInput = {
@@ -11672,6 +14494,67 @@ export namespace Prisma {
     create: XOR<CargoCreateWithoutWishListInput, CargoUncheckedCreateWithoutWishListInput>
   }
 
+  export type TransportCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    user?: UserCreateNestedOneWithoutTransportInput
+    views?: ViewsCreateNestedOneWithoutTransportInput
+  }
+
+  export type TransportUncheckedCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+  }
+
+  export type TransportCreateOrConnectWithoutWishListInput = {
+    where: TransportWhereUniqueInput
+    create: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
+  }
+
   export type UserUpsertWithoutWishListInput = {
     update: XOR<UserUpdateWithoutWishListInput, UserUncheckedUpdateWithoutWishListInput>
     create: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
@@ -11706,6 +14589,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUpdateManyWithoutUserNestedInput
+    transport?: TransportUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWishListInput = {
@@ -11731,6 +14615,7 @@ export namespace Prisma {
     isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CargoUpsertWithoutWishListInput = {
@@ -11850,6 +14735,73 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type TransportUpsertWithoutWishListInput = {
+    update: XOR<TransportUpdateWithoutWishListInput, TransportUncheckedUpdateWithoutWishListInput>
+    create: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
+    where?: TransportWhereInput
+  }
+
+  export type TransportUpdateToOneWithWhereWithoutWishListInput = {
+    where?: TransportWhereInput
+    data: XOR<TransportUpdateWithoutWishListInput, TransportUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type TransportUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutTransportNestedInput
+    views?: ViewsUpdateOneWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type CargoCreateManyUserInput = {
     id?: string
     createdAt?: Date | string
@@ -11907,6 +14859,34 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     cargoId?: string | null
+    transportId?: string | null
+  }
+
+  export type TransportCreateManyUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
   }
 
   export type CargoUpdateWithoutUserInput = {
@@ -12072,6 +15052,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargo?: CargoUpdateOneWithoutWishListNestedInput
+    transport?: TransportUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateWithoutUserInput = {
@@ -12079,6 +15060,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListUncheckedUpdateManyWithoutUserInput = {
@@ -12086,6 +15068,90 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransportUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: ViewsUpdateOneWithoutTransportNestedInput
+    wishList?: WishListUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListCreateManyCargoInput = {
@@ -12093,6 +15159,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
+    transportId?: string | null
   }
 
   export type WishListUpdateWithoutCargoInput = {
@@ -12100,6 +15167,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutWishListNestedInput
+    transport?: TransportUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateWithoutCargoInput = {
@@ -12107,6 +15175,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListUncheckedUpdateManyWithoutCargoInput = {
@@ -12114,6 +15183,39 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListCreateManyTransportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+  }
+
+  export type WishListUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutWishListNestedInput
+    cargo?: CargoUpdateOneWithoutWishListNestedInput
+  }
+
+  export type WishListUncheckedUpdateWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListUncheckedUpdateManyWithoutTransportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CargoCreateManyViewsInput = {
@@ -12159,6 +15261,33 @@ export namespace Prisma {
     optionTermsBelts?: string | null
     optionTermsPalletsType?: $Enums.TermsPalletsType | null
     optionAdditionally?: CargoCreateoptionAdditionallyInput | $Enums.Additionally[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+  }
+
+  export type TransportCreateManyViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    note?: string | null
+    placesLoading?: TransportCreateplacesLoadingInput | string[]
+    placesUnloading?: TransportCreateplacesUnloadingInput | string[]
+    weight: number
+    volume: number
+    periodDays?: number
+    startDate: Date | string
+    endDate?: Date | string | null
+    isArchived?: boolean | null
+    archivedDate?: Date | string | null
+    truckType?: TransportCreatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportCreateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportCreateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: $Enums.DocumentsAdr | null
     userId?: string | null
     userName?: string | null
     userPhone?: string | null
@@ -12317,6 +15446,89 @@ export namespace Prisma {
     optionTermsBelts?: NullableStringFieldUpdateOperationsInput | string | null
     optionTermsPalletsType?: NullableEnumTermsPalletsTypeFieldUpdateOperationsInput | $Enums.TermsPalletsType | null
     optionAdditionally?: CargoUpdateoptionAdditionallyInput | $Enums.Additionally[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransportUpdateWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneWithoutTransportNestedInput
+    wishList?: WishListUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    wishList?: WishListUncheckedUpdateManyWithoutTransportNestedInput
+  }
+
+  export type TransportUncheckedUpdateManyWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    placesLoading?: TransportUpdateplacesLoadingInput | string[]
+    placesUnloading?: TransportUpdateplacesUnloadingInput | string[]
+    weight?: FloatFieldUpdateOperationsInput | number
+    volume?: FloatFieldUpdateOperationsInput | number
+    periodDays?: IntFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    archivedDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    truckType?: TransportUpdatetruckTypeInput | $Enums.TruckType[]
+    loadingType?: TransportUpdateloadingTypeInput | $Enums.LoadingType[]
+    optionDocuments?: TransportUpdateoptionDocumentsInput | $Enums.Documents[]
+    optionDocumentsAdr?: NullableEnumDocumentsAdrFieldUpdateOperationsInput | $Enums.DocumentsAdr | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     userName?: NullableStringFieldUpdateOperationsInput | string | null
     userPhone?: NullableStringFieldUpdateOperationsInput | string | null

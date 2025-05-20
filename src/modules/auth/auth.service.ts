@@ -16,7 +16,7 @@ import {
     CreateUserWithEmailDto,
 } from "../user/dto/create-user.dto";
 import { compare } from "bcrypt";
-import { Response } from "express";
+import { Request, Response } from "express";
 import { ConfigService } from "@nestjs/config";
 import { PrismaService } from "src/prisma/prisma.service";
 import { EmailService } from "../email/email.service";
@@ -31,7 +31,7 @@ export class AuthService {
         private readonly emailService: EmailService
     ) {}
 
-    EXPIRE_DAY_REFRESH_TOKEN = 1;
+    EXPIRE_DAY_REFRESH_TOKEN = 10 * 365 * 24 * 60 * 60 * 1000;
     REFRESH_TOKEN_NAME = "refreshToken";
 
     async login(dto: LoginDto, res: Response) {
@@ -161,6 +161,24 @@ export class AuthService {
         };
     }
 
+    async isAuthenticated(req: Request) {
+        const refreshToken = req.cookies[this.REFRESH_TOKEN_NAME];
+        if (!refreshToken) {
+            throw new UnauthorizedException("Refresh token not found");
+        }
+
+        const userId = this.jwt.verify(refreshToken, {
+            secret: this.config.get("JWT_SECRET"),
+        }).id;
+
+        const user = await this.userService.findById(userId);
+        if (!user) {
+            throw new UnauthorizedException("User not found");
+        }
+
+        return user;
+    }
+
     private async sendVerificationCode(email: string) {
         console.log("EMAIL send:", email);
 
@@ -183,6 +201,14 @@ export class AuthService {
         return { accessToken, refreshToken };
     }
 
+    // private getRefreshTokenFromCookie(req: Request) {
+    // 	const refreshToken = req.cookies[this.REFRESH_TOKEN_NAME];
+    // 	if (!refreshToken) {
+    // 		throw new UnauthorizedException("Refresh token not found");
+    // 	}
+    // 	return refreshToken;
+    // }
+
     private setRefreshToken(refreshToken: string, res: Response) {
         const expiresIn = new Date();
         expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_REFRESH_TOKEN);
@@ -191,7 +217,7 @@ export class AuthService {
             httpOnly: true,
             secure: true,
             sameSite: "lax",
-            expires: expiresIn,
+            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
             domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
     }
@@ -202,7 +228,7 @@ export class AuthService {
             path: "/",
             sameSite: "lax",
             secure: true, // true в проде
-            maxAge: 60 * 60 * 24 * 1000, // 1 день
+            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
             domain: this.config.getOrThrow<string>("COOKIE_DOMAIN"),
         });
     }
