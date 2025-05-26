@@ -6,10 +6,14 @@ import { LoginDto } from "./dto/login.dto";
 import { RegisterDto } from "./dto/register.dto";
 import { Auth } from "./decorators/auth.decorator";
 import { Response } from "express";
+import { ConfigService } from "@nestjs/config";
 
 @Controller("auth")
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
+    constructor(
+        private readonly authService: AuthService,
+        private readonly config: ConfigService
+    ) {}
 
     @HttpCode(200)
     @Post("login")
@@ -22,8 +26,9 @@ export class AuthController {
             httpOnly: true,
             sameSite: "lax", // или 'strict'
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
-            secure: true, // Используйте true в production
-            domain: `.itranzit.kz`, // Если нужно
+            secure: this.config.get("NODE_ENV") === "production", // Используйте true в production
+            domain: `.${this.config.get("COOKIE_DOMAIN")}`, // Если нужно
+            path: "/", // Важно указать path, чтобы совпадал с кукой
         });
         return response;
     }
@@ -35,10 +40,9 @@ export class AuthController {
         res.clearCookie("accessToken", {
             httpOnly: true,
             sameSite: "lax", // или 'strict'
-            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
-            secure: true, // Используйте true в production
-            domain: `.itranzit.kz`, // Если нужно
-            path: "/", // Важно указать path, чтобы совпадал с кукой
+            secure: this.config.get("NODE_ENV") === "production",
+            domain: `.${this.config.get("COOKIE_DOMAIN")}`, // если устанавливали с доменом
+            path: "/", // должен точно совпадать
         });
 
         return this.authService.logout(res);
@@ -55,8 +59,9 @@ export class AuthController {
             httpOnly: true,
             sameSite: "lax", // или 'strict'
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
-            secure: true, // Используйте true в production
-            domain: `.itranzit.kz`, // Если нужно
+            secure: this.config.get("NODE_ENV") === "production", // Используйте true в production
+            domain: `.${this.config.get("COOKIE_DOMAIN")}`, // Если нужно
+            path: "/", // Важно указать path, чтобы совпадал с кукой
         });
         return response;
     }
