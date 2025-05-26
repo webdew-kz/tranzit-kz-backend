@@ -227,6 +227,26 @@ model CurrencyRate {
     @@map("currency_rate")
 }
 
+// model Truck {
+//     id        String   @id @default(uuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     type  TruckTypeTrade // тип грузовика
+//     brand String // марка
+//     model String // модель
+//     year  String // год выпуска
+
+//     @@map("truck")
+// }
+
+// enum TruckTypeTrade {
+// 	//автовоз
+// 	//автоцистерна
+// 	//бортовой
+// 	//
+// }
+
 enum Role {
     ADMIN // админ
     USER // юзер

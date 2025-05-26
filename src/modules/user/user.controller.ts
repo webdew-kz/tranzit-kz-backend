@@ -74,7 +74,7 @@ export class UserController {
 
     @Auth()
     @Post("end-register")
-    async update(
+    async endRegister(
         @CurrentUser("id") userId: string,
         @Body() dto: UpdateUserDto
     ) {

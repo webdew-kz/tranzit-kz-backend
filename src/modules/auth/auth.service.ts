@@ -34,14 +34,19 @@ export class AuthService {
     EXPIRE_DAY_REFRESH_TOKEN = 10 * 365 * 24 * 60 * 60 * 1000;
     REFRESH_TOKEN_NAME = "refreshToken";
 
-    async login(dto: LoginDto, res: Response) {
-        const user = await this.validateUser(dto.login);
+    async login(dto: LoginDto) {
+        // const user = await this.validateUser(dto.login);
+        const user = await this.userService.findByLogin(dto.login);
+
+        if (!user) {
+            throw new NotFoundException("Пользователь не найден");
+        }
 
         await this.validatePassword(dto.password, user.hash);
 
-        const tokens = this.issueTokens(user.id);
+        // const tokens = this.issueTokens(user.id);
 
-        this.setRefreshToken(tokens.refreshToken, res);
+        // this.setRefreshToken(tokens.refreshToken, res);
         // this.setAccessToken(tokens.accessToken, res);
 
         // res.cookie("accessToken", tokens.accessToken, {
@@ -61,12 +66,9 @@ export class AuthService {
         //     maxAge: 1000 * 60 * 60 * 24,
         //     // domain: `.${this.config.get("COOKIE_DOMAIN")}`,
         // });
+        const token = this.signToken(user);
 
-        return {
-            user,
-            accessToken: tokens.accessToken,
-            message: "Успешный вход",
-        };
+        return { token, user, message: "Успешный вход" };
     }
 
     async isExistingUser(login: string): Promise<boolean> {
@@ -111,7 +113,7 @@ export class AuthService {
         return await this.sendVerificationCode(email);
     }
 
-    async register(dto: RegisterDto, res: Response) {
+    async register(dto: RegisterDto) {
         const { login, password } = dto;
 
         const loginType = this.detectLoginType(login);
@@ -122,18 +124,22 @@ export class AuthService {
                 password,
             };
 
-            await this.userService.createUserWithEmail(data);
+            const user = await this.userService.createUserWithEmail(data);
 
-            return await this.login({ login, password }, res);
+            const token = this.signToken(user);
+
+            return { token, user, message: "Успешный вход" };
         } else if (loginType && loginType == "phone") {
             const data: CreateAdminWithPhoneDto = {
                 phone: login,
                 password,
             };
 
-            await this.userService.createUserWithPhone(data);
+            const user = await this.userService.createUserWithPhone(data);
 
-            return await this.login({ login, password }, res);
+            const token = this.signToken(user);
+
+            return { token, user, message: "Успешный вход" };
         }
     }
 
@@ -177,6 +183,11 @@ export class AuthService {
         }
 
         return user;
+    }
+
+    signToken(user: any) {
+        const payload = { id: user.id, email: user.email };
+        return this.jwt.sign(payload);
     }
 
     private async sendVerificationCode(email: string) {
@@ -264,7 +275,7 @@ export class AuthService {
     private async validatePassword(password: string, hash: string) {
         const isPasswordValid: boolean = await compare(password, hash);
         if (!isPasswordValid) {
-            throw new UnauthorizedException("Неверный логин или пароль");
+            throw new UnauthorizedException("Неверный пароль");
         }
     }
 

@@ -207,7 +207,7 @@ export class UserService {
 
             if (exists) {
                 throw new ConflictException(
-                    "Такой номер телефона уже используется"
+                    "Пользователь с таким телефоном уже существует"
                 );
             }
         }

@@ -17,7 +17,14 @@ export class AuthController {
         @Body() dto: LoginDto,
         @Res({ passthrough: true }) res: Response
     ) {
-        return this.authService.login(dto, res);
+        const response = await this.authService.login(dto);
+        res.cookie("accessToken", response.token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax", // или 'strict'
+            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
+        });
+        return response;
     }
 
     @Auth()
@@ -26,18 +33,9 @@ export class AuthController {
     logout(@Res({ passthrough: true }) res: Response) {
         res.clearCookie("accessToken", {
             httpOnly: true,
-            secure: true,
+            secure: process.env.NODE_ENV === "production",
             sameSite: "lax",
-            domain: ".itranzit.kz",
-            path: "/",
-        });
-
-        res.clearCookie("userId", {
-            httpOnly: true,
-            secure: true,
-            sameSite: "lax",
-            domain: ".itranzit.kz",
-            path: "/",
+            path: "/", // Важно указать path, чтобы совпадал с кукой
         });
 
         return this.authService.logout(res);
@@ -49,7 +47,14 @@ export class AuthController {
         @Body() dto: RegisterDto,
         @Res({ passthrough: true }) res: Response
     ) {
-        return this.authService.register(dto, res);
+        const response = await this.authService.register(dto);
+        res.cookie("accessToken", response?.token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax", // или 'strict'
+            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
+        });
+        return response;
     }
 
     @HttpCode(200)
@@ -68,14 +73,14 @@ export class AuthController {
     @HttpCode(200)
     @Post("is-existing-user-for-email")
     async isExistingUserForEmail(@Body() { email }: { email: string }) {
-        console.log("EMAIL FROM REQUEST:", email);
+        // console.log("EMAIL FROM REQUEST:", email);
         return await this.authService.isExistingUserForEmail(email);
     }
 
     @HttpCode(200)
     @Post("is-existing-user-for-email-reset")
     async isExistingUserForEmailReset(@Body() { email }: { email: string }) {
-        console.log("email", email);
+        // console.log("email", email);
 
         return await this.authService.isExistingUserForEmailReset(email);
     }
