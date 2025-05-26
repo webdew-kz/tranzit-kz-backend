@@ -20,9 +20,10 @@ export class AuthController {
         const response = await this.authService.login(dto);
         res.cookie("accessToken", response.token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
             sameSite: "lax", // или 'strict'
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
+            secure: true, // Используйте true в production
+            domain: `.itranzit.kz`, // Если нужно
         });
         return response;
     }
@@ -33,8 +34,10 @@ export class AuthController {
     logout(@Res({ passthrough: true }) res: Response) {
         res.clearCookie("accessToken", {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
+            sameSite: "lax", // или 'strict'
+            maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
+            secure: true, // Используйте true в production
+            domain: `.itranzit.kz`, // Если нужно
             path: "/", // Важно указать path, чтобы совпадал с кукой
         });
 
@@ -50,9 +53,10 @@ export class AuthController {
         const response = await this.authService.register(dto);
         res.cookie("accessToken", response?.token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
             sameSite: "lax", // или 'strict'
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000, // 10 лет
+            secure: true, // Используйте true в production
+            domain: `.itranzit.kz`, // Если нужно
         });
         return response;
     }
