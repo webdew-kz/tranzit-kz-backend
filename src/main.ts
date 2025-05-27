@@ -14,7 +14,7 @@ async function bootstrap() {
     app.use(cookieParser());
 
     app.enableCors({
-        origin: true,
+        origin: config.get<string>("CLIENT_URL") ?? "https://itransit.kz",
         credentials: true,
     });
 
