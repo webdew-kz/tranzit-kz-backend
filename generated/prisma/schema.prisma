@@ -40,6 +40,7 @@ model User {
   cargos    Cargo[]
   wishList  WishList[]
   transport Transport[]
+  trade     Trade[]
 
   @@map("user")
 }
@@ -83,7 +84,7 @@ model Cargo {
   optionLoadings               Loadings[] @default([]) // погрузка
   optionLoadingsTimeLoading    String? // время погрузки
   optionLoadingsTimeUnloading  String? // время разгрузки
-  optionLoadingsDateUnloading  DateTime? // дата разгрузки 
+  optionLoadingsDateUnloading  DateTime? // дата разгрузки
   optionLoadingsPlaceLoading   String? // место погрузки
   optionLoadingsPlaceUnloading String? // место разгрузки
   optionLoadingsBigBag         String? // биг-бэг
@@ -99,8 +100,8 @@ model Cargo {
 
   user      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String?
-  userName  String? // имя юзера
-  userPhone String? // телефон юзера
+  userName  String?
+  userPhone String?
   whatsapp  String?
   telegram  String?
   viber     String?
@@ -193,6 +194,7 @@ model Views {
 
   cargo     Cargo[]
   transport Transport[]
+  trade     Trade[]
 
   @@map("views")
 }
@@ -211,8 +213,12 @@ model WishList {
   transport   Transport? @relation(fields: [transportId], references: [id], onDelete: Cascade)
   transportId String?
 
+  trade   Trade?  @relation(fields: [tradeId], references: [id], onDelete: Cascade)
+  tradeId String?
+
   @@unique([userId, cargoId])
   @@unique([userId, transportId])
+  @@unique([userId, tradeId])
   @@map("wish_list")
 }
 
@@ -225,6 +231,388 @@ model CurrencyRate {
   rate  String
 
   @@map("currency_rate")
+}
+
+model Trade {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  city String // Город
+
+  variant VariantEnum // Вариант: грузовик, прицеп, тягач	
+
+  typeTruck TypeTruckEnum? // Тип грузовика: автовоз, автоцистерна, бортовой
+
+  typeTechnic    TypeTechnicEnum? // Тип техники: прицеп, полуприцеп
+  typeTrailer    TypeTrailerEnum? // Тип прицепа: автовоз, автоцистерна, бортовой
+  qtyAxis        QtyAxisEnum? // Количество осей
+  typeSuspension TypeSuspensionEnum? // Тип подвески: пневмо, рессора, комбинированная
+  typeBrake      TypeBrakeEnum? // Тип тормозов: барабанные, дисковые, комбинированные
+
+  isArchived Boolean? @default(false) // статус архивирования
+
+  year         Int? // Год выпуска
+  weight       Float? // Вес в тоннах
+  price        Int // Цена в тенге
+  volumeEngine Float? // Объем двигателя в литрах
+  powerEngine  Int? // Л.с.
+  description  String? // Описание
+  mileage      Int? // Пробег в км
+  typeEngine   TypeEngineEnum? // Тип двигателя: дизель, газ, бензин,
+  status       StatusEnum? // Состояние: новый, б/у, любой
+  exist        ExistEnum? // Наличие: в наличии, под заказ, любой
+  drive        DriveEnum? // Привод
+  transmission TransmissionEnum? // Коробка передач
+  steering     SteeringEnum? // Рулевое управление
+
+  truckWheel TruckWheelEnum? //Колесная формула
+
+  tractorWheel TractorWheelEnum? // Колесная формула тягача
+
+  cabinSuspension CabinSuspensionEnum? // Подвеска кабины	
+
+  photos String[] // Ссылки на фото
+
+  user      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?
+  userName  String? // имя юзера
+  userPhone String? // телефон юзера
+  whatsapp  String?
+  telegram  String?
+  viber     String?
+  skype     String?
+
+  views   Views?  @relation(fields: [viewsId], references: [id], onDelete: Cascade)
+  viewsId String?
+
+  wishList WishList[]
+
+  trailerBrand TrailerBrandEnum? // Бренд прицепа
+
+  truckBrand TruckBrandEnum?
+
+  @@map("truck")
+}
+
+// model TruckBrand {
+//     id        String   @id @default(uuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     name TruckBrandEnum
+
+//     models TruckBrandModel[]
+
+//     trades Trade[]
+
+//     @@map("truck_brand")
+// }
+
+// model TruckBrandModel {
+//     id        String   @id @default(uuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     name String @unique // название модели грузовика
+
+//     brand   TruckBrand @relation(fields: [brandId], references: [id], onDelete: Cascade)
+//     brandId String
+
+//     trades Trade[]
+
+//     @@unique([name, brandId])
+//     @@map("truck_model")
+// }
+
+// model TrailerBrand {
+//     id        String   @id @default(uuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     name String @unique // название модели прицепа
+
+//     trades            Trade[]
+//     TrailerBrandModel TrailerBrandModel[]
+
+//     @@map("trailer_brand")
+// }
+
+// model TrailerBrandModel {
+//     id        String   @id @default(uuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     name String @unique // название модели грузовика
+
+//     brand   TrailerBrand @relation(fields: [brandId], references: [id], onDelete: Cascade)
+//     brandId String
+
+//     @@unique([name, brandId])
+//     @@map("trailer_model")
+// }
+
+enum QtyAxisEnum {
+  A1 // 1 ось
+  A2
+  A3
+  A4
+  A5
+  A6
+  A7
+  A8
+  A9
+  A10
+  MORE_10
+}
+
+enum TypeSuspensionEnum {
+  BALANCE // балансированная
+  RESSOR // рессора
+  PNEUMO // пневмо
+  HYDRAULIC // гидравлическая
+  SEMI_RESSOR // полурессора
+}
+
+enum CabinSuspensionEnum {
+  PNEUMATIC // пневматическая
+  MECHANICAL // механическая
+}
+
+enum TypeBrakeEnum {
+  DRUM // барабанные
+  DISC // дисковые
+  NO_BRAKE // без тормозов
+}
+
+enum VariantEnum {
+  TRUCK // грузовик
+  TRAILER // прицеп
+  TRACTOR // тягач
+}
+
+enum TruckBrandEnum {
+  OTHER
+  ASTRA
+  AVIA
+  BAW
+  BEIBEN_NORTH_BENZ
+  BMC
+  BYD
+  CAMC
+  CATERPILLAR
+  CHAMELEON
+  CHANGAN
+  CHEVROLET
+  CLW
+  DAF
+  DAEWOO
+  DAYUN
+  DAYUN_TRUCK
+  DESOTO
+  DERRY
+  DFAC
+  DONGFENG
+  EVM
+  FAW
+  FARIZON
+  FIAT
+  FIAT_PROFESSIONAL
+  FORD
+  FORLAND
+  FOTON
+  FREIGHTLINER
+  FUSO_MITSUBISHI
+  GAC
+  GEELY
+  GMC
+  GROZ
+  HINO
+  HONDA
+  HONGYAN
+  HOWO
+  HYUNDAI
+  HYVA
+  IFA
+  INTERNATIONAL
+  INTERNATIONAL_WORKSTAR
+  ISUZU
+  IVECO
+  IVECO_HONGYAN
+  JAC
+  JBC
+  JIEFANG
+  JINPENG
+  JMC
+  KAMA
+  KENWORTH
+  KIA
+  KYC
+  LADA
+  LGMG
+  MAN
+  MAZDA
+  MEILLER_KIPPER
+  MERCEDES_BENZ
+  MITSUBISHI
+  NISSAN
+  NORTH_BENZ
+  OPEL
+  PEUGEOT
+  RENAULT
+  ROBUR
+  SANY
+  SCANIA
+  SHAANXI
+  SHACMAN
+  SHACMAN_SHAANXI
+  SHANDONG_KAMA
+  SHINERAY
+  SINOTRUK
+  SINOTRUK_SITRAK
+  SITRAK
+  SSANGYONG
+  STAR
+  STEYR
+  TATA
+  TATRA
+  TONLY
+  TOYOTA
+  VOLKSWAGEN
+  VOLVO
+  WEICHAI
+  WULING
+  XCMG
+  XINFEIG
+  YUEJIN
+  YUTONG
+  ZOOMLION
+}
+
+enum TrailerBrandEnum {
+  AVIA
+  BAW
+  BEIBEN_NORTH_BENZ
+}
+
+// enum TruckBrandModelEnum {
+//     DAF
+//     ANY // любой
+// }
+
+enum StatusEnum {
+  NEW // новый
+  USED // б/у
+  ANY // любой
+}
+
+enum TypeTruckEnum {
+  AVTOVOZ // автовоз
+  AVTOCISTERNA // автоцистерна
+  BORTOVOI // бортовой
+  TERMOFURGON // термофургон
+  REFRIJERATOR // рефрижератор
+  SAMOSVAL // самосвал
+  TENT // тент
+  DRUGOI // другой
+}
+
+enum TypeTechnicEnum {
+  TRAILER // прицеп
+  SEMI_TRAILER // полуприцеп
+}
+
+enum TypeTrailerEnum {
+  AVTOVOZ // автовоз
+  AVTOCISTERNA // автоцистерна
+  BORTOVOI // бортовой
+  DLINNOMER // длинномер
+  EVROFURA // еврофура
+  KONTEINEROVOZ // контейнеровоз
+  KUNG // кунг
+  REFRIJERATOR // рефрижератор
+  SAMOSVAL // самосвал
+  TERMOFURGON // термофургон
+  TORGOVIY_FURGON // торговый фургон
+  TYAGACH // тягач
+  FURA // фура
+  FURGON // фургон
+  SHASSI // шасси
+  DRUGOI // другой
+  ANY // любой
+}
+
+enum ExistEnum {
+  IN_STOCK // в наличии
+  ON_ORDER // под заказ
+  ANY // любой
+}
+
+enum DriveEnum {
+  ALL_WHEEL_DRIVE // полный привод
+  FRONT_WHEEL_DRIVE // передний привод
+  REAR_WHEEL_DRIVE // задний привод
+  FULL_TIME_ALL_WHEEL_DRIVE // постоянный полный привод
+  PART_TIME_ALL_WHEEL_DRIVE // подключаемый полный привод
+  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL // задний привод с передним подключаемым
+  ANY // любой
+}
+
+enum TransmissionEnum {
+  AUTOMATIC // автомат
+  MECHANICAL // механика
+  SEMI_AUTOMATIC // полуавтомат
+  ANY // любой
+}
+
+enum TruckWheelEnum {
+  W4X2 // 4х2
+  W4X4 // 4х4
+  W6X2 // 6х2
+  W6X4 // 6х4
+  W6X6 // 6х6	
+  W8X2 // 8х2	
+  W8X4 // 8х4
+  W8X6 // 8х6
+  W8X8 // 8х8
+  W10X2 // 10х2
+  W10X4 // 10х4
+  W10X6 // 10х6
+  W10X8 // 10х8
+  w10X10 // 10х10
+  W12X4 // 12х4
+  W12X8 // 12х8	
+  OTHER // другой
+  ANY // любой
+}
+
+enum TractorWheelEnum {
+  W4X2 // 4х2
+  W4X4 // 4х4
+  W6X2 // 6х2
+  W6X4 // 6х4
+  W8X4 // 8х4
+  W8X6 // 8х6
+  W8X8 // 8х8
+  OTHER // другой
+  ANY // любой
+}
+
+enum TypeEngineEnum {
+  DIESEL // дизель
+  GAS // газ
+  GASOLINE // бензин
+  ELECTRIC // электрический
+  HYBRID // гибридный
+  DIESEL_ON_GAS // дизель на газу
+  GASOLINE_ON_GAS // бензин на газу
+  ANY // любой
+}
+
+enum SteeringEnum {
+  LEFT // левый
+  RIGHT // правый
+  ANY // любой
 }
 
 enum Role {

@@ -5,9 +5,11 @@ import { AppModule } from "./app.module";
 import { ConfigService } from "@nestjs/config";
 import * as cookieParser from "cookie-parser";
 import { ValidationPipe } from "@nestjs/common";
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { join } from "path";
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
     const config = app.get(ConfigService);
 
@@ -25,6 +27,10 @@ async function bootstrap() {
             transform: true,
         })
     );
+
+    app.useStaticAssets(join(__dirname, "..", "uploads"), {
+        prefix: "/uploads/",
+    });
 
     await app.listen(config.getOrThrow<string>("SERVER_PORT") ?? 3000, () => {
         console.log(

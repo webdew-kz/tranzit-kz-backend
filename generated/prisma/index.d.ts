@@ -43,12 +43,329 @@ export type WishList = $Result.DefaultSelection<Prisma.$WishListPayload>
  * 
  */
 export type CurrencyRate = $Result.DefaultSelection<Prisma.$CurrencyRatePayload>
+/**
+ * Model Trade
+ * 
+ */
+export type Trade = $Result.DefaultSelection<Prisma.$TradePayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const Role: {
+  export const QtyAxisEnum: {
+  A1: 'A1',
+  A2: 'A2',
+  A3: 'A3',
+  A4: 'A4',
+  A5: 'A5',
+  A6: 'A6',
+  A7: 'A7',
+  A8: 'A8',
+  A9: 'A9',
+  A10: 'A10',
+  MORE_10: 'MORE_10'
+};
+
+export type QtyAxisEnum = (typeof QtyAxisEnum)[keyof typeof QtyAxisEnum]
+
+
+export const TypeSuspensionEnum: {
+  BALANCE: 'BALANCE',
+  RESSOR: 'RESSOR',
+  PNEUMO: 'PNEUMO',
+  HYDRAULIC: 'HYDRAULIC',
+  SEMI_RESSOR: 'SEMI_RESSOR'
+};
+
+export type TypeSuspensionEnum = (typeof TypeSuspensionEnum)[keyof typeof TypeSuspensionEnum]
+
+
+export const CabinSuspensionEnum: {
+  PNEUMATIC: 'PNEUMATIC',
+  MECHANICAL: 'MECHANICAL'
+};
+
+export type CabinSuspensionEnum = (typeof CabinSuspensionEnum)[keyof typeof CabinSuspensionEnum]
+
+
+export const TypeBrakeEnum: {
+  DRUM: 'DRUM',
+  DISC: 'DISC',
+  NO_BRAKE: 'NO_BRAKE'
+};
+
+export type TypeBrakeEnum = (typeof TypeBrakeEnum)[keyof typeof TypeBrakeEnum]
+
+
+export const VariantEnum: {
+  TRUCK: 'TRUCK',
+  TRAILER: 'TRAILER',
+  TRACTOR: 'TRACTOR'
+};
+
+export type VariantEnum = (typeof VariantEnum)[keyof typeof VariantEnum]
+
+
+export const TruckBrandEnum: {
+  OTHER: 'OTHER',
+  ASTRA: 'ASTRA',
+  AVIA: 'AVIA',
+  BAW: 'BAW',
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ',
+  BMC: 'BMC',
+  BYD: 'BYD',
+  CAMC: 'CAMC',
+  CATERPILLAR: 'CATERPILLAR',
+  CHAMELEON: 'CHAMELEON',
+  CHANGAN: 'CHANGAN',
+  CHEVROLET: 'CHEVROLET',
+  CLW: 'CLW',
+  DAF: 'DAF',
+  DAEWOO: 'DAEWOO',
+  DAYUN: 'DAYUN',
+  DAYUN_TRUCK: 'DAYUN_TRUCK',
+  DESOTO: 'DESOTO',
+  DERRY: 'DERRY',
+  DFAC: 'DFAC',
+  DONGFENG: 'DONGFENG',
+  EVM: 'EVM',
+  FAW: 'FAW',
+  FARIZON: 'FARIZON',
+  FIAT: 'FIAT',
+  FIAT_PROFESSIONAL: 'FIAT_PROFESSIONAL',
+  FORD: 'FORD',
+  FORLAND: 'FORLAND',
+  FOTON: 'FOTON',
+  FREIGHTLINER: 'FREIGHTLINER',
+  FUSO_MITSUBISHI: 'FUSO_MITSUBISHI',
+  GAC: 'GAC',
+  GEELY: 'GEELY',
+  GMC: 'GMC',
+  GROZ: 'GROZ',
+  HINO: 'HINO',
+  HONDA: 'HONDA',
+  HONGYAN: 'HONGYAN',
+  HOWO: 'HOWO',
+  HYUNDAI: 'HYUNDAI',
+  HYVA: 'HYVA',
+  IFA: 'IFA',
+  INTERNATIONAL: 'INTERNATIONAL',
+  INTERNATIONAL_WORKSTAR: 'INTERNATIONAL_WORKSTAR',
+  ISUZU: 'ISUZU',
+  IVECO: 'IVECO',
+  IVECO_HONGYAN: 'IVECO_HONGYAN',
+  JAC: 'JAC',
+  JBC: 'JBC',
+  JIEFANG: 'JIEFANG',
+  JINPENG: 'JINPENG',
+  JMC: 'JMC',
+  KAMA: 'KAMA',
+  KENWORTH: 'KENWORTH',
+  KIA: 'KIA',
+  KYC: 'KYC',
+  LADA: 'LADA',
+  LGMG: 'LGMG',
+  MAN: 'MAN',
+  MAZDA: 'MAZDA',
+  MEILLER_KIPPER: 'MEILLER_KIPPER',
+  MERCEDES_BENZ: 'MERCEDES_BENZ',
+  MITSUBISHI: 'MITSUBISHI',
+  NISSAN: 'NISSAN',
+  NORTH_BENZ: 'NORTH_BENZ',
+  OPEL: 'OPEL',
+  PEUGEOT: 'PEUGEOT',
+  RENAULT: 'RENAULT',
+  ROBUR: 'ROBUR',
+  SANY: 'SANY',
+  SCANIA: 'SCANIA',
+  SHAANXI: 'SHAANXI',
+  SHACMAN: 'SHACMAN',
+  SHACMAN_SHAANXI: 'SHACMAN_SHAANXI',
+  SHANDONG_KAMA: 'SHANDONG_KAMA',
+  SHINERAY: 'SHINERAY',
+  SINOTRUK: 'SINOTRUK',
+  SINOTRUK_SITRAK: 'SINOTRUK_SITRAK',
+  SITRAK: 'SITRAK',
+  SSANGYONG: 'SSANGYONG',
+  STAR: 'STAR',
+  STEYR: 'STEYR',
+  TATA: 'TATA',
+  TATRA: 'TATRA',
+  TONLY: 'TONLY',
+  TOYOTA: 'TOYOTA',
+  VOLKSWAGEN: 'VOLKSWAGEN',
+  VOLVO: 'VOLVO',
+  WEICHAI: 'WEICHAI',
+  WULING: 'WULING',
+  XCMG: 'XCMG',
+  XINFEIG: 'XINFEIG',
+  YUEJIN: 'YUEJIN',
+  YUTONG: 'YUTONG',
+  ZOOMLION: 'ZOOMLION'
+};
+
+export type TruckBrandEnum = (typeof TruckBrandEnum)[keyof typeof TruckBrandEnum]
+
+
+export const TrailerBrandEnum: {
+  AVIA: 'AVIA',
+  BAW: 'BAW',
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ'
+};
+
+export type TrailerBrandEnum = (typeof TrailerBrandEnum)[keyof typeof TrailerBrandEnum]
+
+
+export const StatusEnum: {
+  NEW: 'NEW',
+  USED: 'USED',
+  ANY: 'ANY'
+};
+
+export type StatusEnum = (typeof StatusEnum)[keyof typeof StatusEnum]
+
+
+export const TypeTruckEnum: {
+  AVTOVOZ: 'AVTOVOZ',
+  AVTOCISTERNA: 'AVTOCISTERNA',
+  BORTOVOI: 'BORTOVOI',
+  TERMOFURGON: 'TERMOFURGON',
+  REFRIJERATOR: 'REFRIJERATOR',
+  SAMOSVAL: 'SAMOSVAL',
+  TENT: 'TENT',
+  DRUGOI: 'DRUGOI'
+};
+
+export type TypeTruckEnum = (typeof TypeTruckEnum)[keyof typeof TypeTruckEnum]
+
+
+export const TypeTechnicEnum: {
+  TRAILER: 'TRAILER',
+  SEMI_TRAILER: 'SEMI_TRAILER'
+};
+
+export type TypeTechnicEnum = (typeof TypeTechnicEnum)[keyof typeof TypeTechnicEnum]
+
+
+export const TypeTrailerEnum: {
+  AVTOVOZ: 'AVTOVOZ',
+  AVTOCISTERNA: 'AVTOCISTERNA',
+  BORTOVOI: 'BORTOVOI',
+  DLINNOMER: 'DLINNOMER',
+  EVROFURA: 'EVROFURA',
+  KONTEINEROVOZ: 'KONTEINEROVOZ',
+  KUNG: 'KUNG',
+  REFRIJERATOR: 'REFRIJERATOR',
+  SAMOSVAL: 'SAMOSVAL',
+  TERMOFURGON: 'TERMOFURGON',
+  TORGOVIY_FURGON: 'TORGOVIY_FURGON',
+  TYAGACH: 'TYAGACH',
+  FURA: 'FURA',
+  FURGON: 'FURGON',
+  SHASSI: 'SHASSI',
+  DRUGOI: 'DRUGOI',
+  ANY: 'ANY'
+};
+
+export type TypeTrailerEnum = (typeof TypeTrailerEnum)[keyof typeof TypeTrailerEnum]
+
+
+export const ExistEnum: {
+  IN_STOCK: 'IN_STOCK',
+  ON_ORDER: 'ON_ORDER',
+  ANY: 'ANY'
+};
+
+export type ExistEnum = (typeof ExistEnum)[keyof typeof ExistEnum]
+
+
+export const DriveEnum: {
+  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
+  FRONT_WHEEL_DRIVE: 'FRONT_WHEEL_DRIVE',
+  REAR_WHEEL_DRIVE: 'REAR_WHEEL_DRIVE',
+  FULL_TIME_ALL_WHEEL_DRIVE: 'FULL_TIME_ALL_WHEEL_DRIVE',
+  PART_TIME_ALL_WHEEL_DRIVE: 'PART_TIME_ALL_WHEEL_DRIVE',
+  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL',
+  ANY: 'ANY'
+};
+
+export type DriveEnum = (typeof DriveEnum)[keyof typeof DriveEnum]
+
+
+export const TransmissionEnum: {
+  AUTOMATIC: 'AUTOMATIC',
+  MECHANICAL: 'MECHANICAL',
+  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC',
+  ANY: 'ANY'
+};
+
+export type TransmissionEnum = (typeof TransmissionEnum)[keyof typeof TransmissionEnum]
+
+
+export const TruckWheelEnum: {
+  W4X2: 'W4X2',
+  W4X4: 'W4X4',
+  W6X2: 'W6X2',
+  W6X4: 'W6X4',
+  W6X6: 'W6X6',
+  W8X2: 'W8X2',
+  W8X4: 'W8X4',
+  W8X6: 'W8X6',
+  W8X8: 'W8X8',
+  W10X2: 'W10X2',
+  W10X4: 'W10X4',
+  W10X6: 'W10X6',
+  W10X8: 'W10X8',
+  w10X10: 'w10X10',
+  W12X4: 'W12X4',
+  W12X8: 'W12X8',
+  OTHER: 'OTHER',
+  ANY: 'ANY'
+};
+
+export type TruckWheelEnum = (typeof TruckWheelEnum)[keyof typeof TruckWheelEnum]
+
+
+export const TractorWheelEnum: {
+  W4X2: 'W4X2',
+  W4X4: 'W4X4',
+  W6X2: 'W6X2',
+  W6X4: 'W6X4',
+  W8X4: 'W8X4',
+  W8X6: 'W8X6',
+  W8X8: 'W8X8',
+  OTHER: 'OTHER',
+  ANY: 'ANY'
+};
+
+export type TractorWheelEnum = (typeof TractorWheelEnum)[keyof typeof TractorWheelEnum]
+
+
+export const TypeEngineEnum: {
+  DIESEL: 'DIESEL',
+  GAS: 'GAS',
+  GASOLINE: 'GASOLINE',
+  ELECTRIC: 'ELECTRIC',
+  HYBRID: 'HYBRID',
+  DIESEL_ON_GAS: 'DIESEL_ON_GAS',
+  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS',
+  ANY: 'ANY'
+};
+
+export type TypeEngineEnum = (typeof TypeEngineEnum)[keyof typeof TypeEngineEnum]
+
+
+export const SteeringEnum: {
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+  ANY: 'ANY'
+};
+
+export type SteeringEnum = (typeof SteeringEnum)[keyof typeof SteeringEnum]
+
+
+export const Role: {
   ADMIN: 'ADMIN',
   USER: 'USER'
 };
@@ -274,6 +591,78 @@ export const Additionally: {
 export type Additionally = (typeof Additionally)[keyof typeof Additionally]
 
 }
+
+export type QtyAxisEnum = $Enums.QtyAxisEnum
+
+export const QtyAxisEnum: typeof $Enums.QtyAxisEnum
+
+export type TypeSuspensionEnum = $Enums.TypeSuspensionEnum
+
+export const TypeSuspensionEnum: typeof $Enums.TypeSuspensionEnum
+
+export type CabinSuspensionEnum = $Enums.CabinSuspensionEnum
+
+export const CabinSuspensionEnum: typeof $Enums.CabinSuspensionEnum
+
+export type TypeBrakeEnum = $Enums.TypeBrakeEnum
+
+export const TypeBrakeEnum: typeof $Enums.TypeBrakeEnum
+
+export type VariantEnum = $Enums.VariantEnum
+
+export const VariantEnum: typeof $Enums.VariantEnum
+
+export type TruckBrandEnum = $Enums.TruckBrandEnum
+
+export const TruckBrandEnum: typeof $Enums.TruckBrandEnum
+
+export type TrailerBrandEnum = $Enums.TrailerBrandEnum
+
+export const TrailerBrandEnum: typeof $Enums.TrailerBrandEnum
+
+export type StatusEnum = $Enums.StatusEnum
+
+export const StatusEnum: typeof $Enums.StatusEnum
+
+export type TypeTruckEnum = $Enums.TypeTruckEnum
+
+export const TypeTruckEnum: typeof $Enums.TypeTruckEnum
+
+export type TypeTechnicEnum = $Enums.TypeTechnicEnum
+
+export const TypeTechnicEnum: typeof $Enums.TypeTechnicEnum
+
+export type TypeTrailerEnum = $Enums.TypeTrailerEnum
+
+export const TypeTrailerEnum: typeof $Enums.TypeTrailerEnum
+
+export type ExistEnum = $Enums.ExistEnum
+
+export const ExistEnum: typeof $Enums.ExistEnum
+
+export type DriveEnum = $Enums.DriveEnum
+
+export const DriveEnum: typeof $Enums.DriveEnum
+
+export type TransmissionEnum = $Enums.TransmissionEnum
+
+export const TransmissionEnum: typeof $Enums.TransmissionEnum
+
+export type TruckWheelEnum = $Enums.TruckWheelEnum
+
+export const TruckWheelEnum: typeof $Enums.TruckWheelEnum
+
+export type TractorWheelEnum = $Enums.TractorWheelEnum
+
+export const TractorWheelEnum: typeof $Enums.TractorWheelEnum
+
+export type TypeEngineEnum = $Enums.TypeEngineEnum
+
+export const TypeEngineEnum: typeof $Enums.TypeEngineEnum
+
+export type SteeringEnum = $Enums.SteeringEnum
+
+export const SteeringEnum: typeof $Enums.SteeringEnum
 
 export type Role = $Enums.Role
 
@@ -511,6 +900,16 @@ export class PrismaClient<
     * ```
     */
   get currencyRate(): Prisma.CurrencyRateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trade`: Exposes CRUD operations for the **Trade** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Trades
+    * const trades = await prisma.trade.findMany()
+    * ```
+    */
+  get trade(): Prisma.TradeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -956,7 +1355,8 @@ export namespace Prisma {
     Transport: 'Transport',
     Views: 'Views',
     WishList: 'WishList',
-    CurrencyRate: 'CurrencyRate'
+    CurrencyRate: 'CurrencyRate',
+    Trade: 'Trade'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -975,7 +1375,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cargo" | "transport" | "views" | "wishList" | "currencyRate"
+      modelProps: "user" | "cargo" | "transport" | "views" | "wishList" | "currencyRate" | "trade"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1423,6 +1823,80 @@ export namespace Prisma {
           }
         }
       }
+      Trade: {
+        payload: Prisma.$TradePayload<ExtArgs>
+        fields: Prisma.TradeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TradeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TradeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          findFirst: {
+            args: Prisma.TradeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TradeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          findMany: {
+            args: Prisma.TradeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>[]
+          }
+          create: {
+            args: Prisma.TradeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          createMany: {
+            args: Prisma.TradeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TradeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>[]
+          }
+          delete: {
+            args: Prisma.TradeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          update: {
+            args: Prisma.TradeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          deleteMany: {
+            args: Prisma.TradeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TradeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TradeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>[]
+          }
+          upsert: {
+            args: Prisma.TradeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TradePayload>
+          }
+          aggregate: {
+            args: Prisma.TradeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrade>
+          }
+          groupBy: {
+            args: Prisma.TradeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TradeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TradeCountArgs<ExtArgs>
+            result: $Utils.Optional<TradeCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1513,6 +1987,7 @@ export namespace Prisma {
     views?: ViewsOmit
     wishList?: WishListOmit
     currencyRate?: CurrencyRateOmit
+    trade?: TradeOmit
   }
 
   /* Types for Logging */
@@ -1610,12 +2085,14 @@ export namespace Prisma {
     cargos: number
     wishList: number
     transport: number
+    trade: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargos?: boolean | UserCountOutputTypeCountCargosArgs
     wishList?: boolean | UserCountOutputTypeCountWishListArgs
     transport?: boolean | UserCountOutputTypeCountTransportArgs
+    trade?: boolean | UserCountOutputTypeCountTradeArgs
   }
 
   // Custom InputTypes
@@ -1648,6 +2125,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTransportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransportWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TradeWhereInput
   }
 
 
@@ -1720,11 +2204,13 @@ export namespace Prisma {
   export type ViewsCountOutputType = {
     cargo: number
     transport: number
+    trade: number
   }
 
   export type ViewsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargo?: boolean | ViewsCountOutputTypeCountCargoArgs
     transport?: boolean | ViewsCountOutputTypeCountTransportArgs
+    trade?: boolean | ViewsCountOutputTypeCountTradeArgs
   }
 
   // Custom InputTypes
@@ -1750,6 +2236,44 @@ export namespace Prisma {
    */
   export type ViewsCountOutputTypeCountTransportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransportWhereInput
+  }
+
+  /**
+   * ViewsCountOutputType without action
+   */
+  export type ViewsCountOutputTypeCountTradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TradeWhereInput
+  }
+
+
+  /**
+   * Count Type TradeCountOutputType
+   */
+
+  export type TradeCountOutputType = {
+    wishList: number
+  }
+
+  export type TradeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    wishList?: boolean | TradeCountOutputTypeCountWishListArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TradeCountOutputType without action
+   */
+  export type TradeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TradeCountOutputType
+     */
+    select?: TradeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TradeCountOutputType without action
+   */
+  export type TradeCountOutputTypeCountWishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishListWhereInput
   }
 
 
@@ -2048,6 +2572,7 @@ export namespace Prisma {
     cargos?: boolean | User$cargosArgs<ExtArgs>
     wishList?: boolean | User$wishListArgs<ExtArgs>
     transport?: boolean | User$transportArgs<ExtArgs>
+    trade?: boolean | User$tradeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2128,6 +2653,7 @@ export namespace Prisma {
     cargos?: boolean | User$cargosArgs<ExtArgs>
     wishList?: boolean | User$wishListArgs<ExtArgs>
     transport?: boolean | User$transportArgs<ExtArgs>
+    trade?: boolean | User$tradeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2139,6 +2665,7 @@ export namespace Prisma {
       cargos: Prisma.$CargoPayload<ExtArgs>[]
       wishList: Prisma.$WishListPayload<ExtArgs>[]
       transport: Prisma.$TransportPayload<ExtArgs>[]
+      trade: Prisma.$TradePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2559,6 +3086,7 @@ export namespace Prisma {
     cargos<T extends User$cargosArgs<ExtArgs> = {}>(args?: Subset<T, User$cargosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     wishList<T extends User$wishListArgs<ExtArgs> = {}>(args?: Subset<T, User$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transport<T extends User$transportArgs<ExtArgs> = {}>(args?: Subset<T, User$transportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    trade<T extends User$tradeArgs<ExtArgs> = {}>(args?: Subset<T, User$tradeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3066,6 +3594,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TransportScalarFieldEnum | TransportScalarFieldEnum[]
+  }
+
+  /**
+   * User.trade
+   */
+  export type User$tradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    where?: TradeWhereInput
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    cursor?: TradeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TradeScalarFieldEnum | TradeScalarFieldEnum[]
   }
 
   /**
@@ -6424,6 +6976,7 @@ export namespace Prisma {
     count?: boolean
     cargo?: boolean | Views$cargoArgs<ExtArgs>
     transport?: boolean | Views$transportArgs<ExtArgs>
+    trade?: boolean | Views$tradeArgs<ExtArgs>
     _count?: boolean | ViewsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["views"]>
 
@@ -6452,6 +7005,7 @@ export namespace Prisma {
   export type ViewsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cargo?: boolean | Views$cargoArgs<ExtArgs>
     transport?: boolean | Views$transportArgs<ExtArgs>
+    trade?: boolean | Views$tradeArgs<ExtArgs>
     _count?: boolean | ViewsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ViewsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6462,6 +7016,7 @@ export namespace Prisma {
     objects: {
       cargo: Prisma.$CargoPayload<ExtArgs>[]
       transport: Prisma.$TransportPayload<ExtArgs>[]
+      trade: Prisma.$TradePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6864,6 +7419,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cargo<T extends Views$cargoArgs<ExtArgs> = {}>(args?: Subset<T, Views$cargoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     transport<T extends Views$transportArgs<ExtArgs> = {}>(args?: Subset<T, Views$transportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    trade<T extends Views$tradeArgs<ExtArgs> = {}>(args?: Subset<T, Views$tradeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7333,6 +7889,30 @@ export namespace Prisma {
   }
 
   /**
+   * Views.trade
+   */
+  export type Views$tradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    where?: TradeWhereInput
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    cursor?: TradeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TradeScalarFieldEnum | TradeScalarFieldEnum[]
+  }
+
+  /**
    * Views without action
    */
   export type ViewsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7368,6 +7948,7 @@ export namespace Prisma {
     userId: string | null
     cargoId: string | null
     transportId: string | null
+    tradeId: string | null
   }
 
   export type WishListMaxAggregateOutputType = {
@@ -7377,6 +7958,7 @@ export namespace Prisma {
     userId: string | null
     cargoId: string | null
     transportId: string | null
+    tradeId: string | null
   }
 
   export type WishListCountAggregateOutputType = {
@@ -7386,6 +7968,7 @@ export namespace Prisma {
     userId: number
     cargoId: number
     transportId: number
+    tradeId: number
     _all: number
   }
 
@@ -7397,6 +7980,7 @@ export namespace Prisma {
     userId?: true
     cargoId?: true
     transportId?: true
+    tradeId?: true
   }
 
   export type WishListMaxAggregateInputType = {
@@ -7406,6 +7990,7 @@ export namespace Prisma {
     userId?: true
     cargoId?: true
     transportId?: true
+    tradeId?: true
   }
 
   export type WishListCountAggregateInputType = {
@@ -7415,6 +8000,7 @@ export namespace Prisma {
     userId?: true
     cargoId?: true
     transportId?: true
+    tradeId?: true
     _all?: true
   }
 
@@ -7497,6 +8083,7 @@ export namespace Prisma {
     userId: string | null
     cargoId: string | null
     transportId: string | null
+    tradeId: string | null
     _count: WishListCountAggregateOutputType | null
     _min: WishListMinAggregateOutputType | null
     _max: WishListMaxAggregateOutputType | null
@@ -7523,9 +8110,11 @@ export namespace Prisma {
     userId?: boolean
     cargoId?: boolean
     transportId?: boolean
+    tradeId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7535,9 +8124,11 @@ export namespace Prisma {
     userId?: boolean
     cargoId?: boolean
     transportId?: boolean
+    tradeId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7547,9 +8138,11 @@ export namespace Prisma {
     userId?: boolean
     cargoId?: boolean
     transportId?: boolean
+    tradeId?: boolean
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }, ExtArgs["result"]["wishList"]>
 
   export type WishListSelectScalar = {
@@ -7559,23 +8152,27 @@ export namespace Prisma {
     userId?: boolean
     cargoId?: boolean
     transportId?: boolean
+    tradeId?: boolean
   }
 
-  export type WishListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "cargoId" | "transportId", ExtArgs["result"]["wishList"]>
+  export type WishListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "userId" | "cargoId" | "transportId" | "tradeId", ExtArgs["result"]["wishList"]>
   export type WishListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }
   export type WishListIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }
   export type WishListIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | WishList$userArgs<ExtArgs>
     cargo?: boolean | WishList$cargoArgs<ExtArgs>
     transport?: boolean | WishList$transportArgs<ExtArgs>
+    trade?: boolean | WishList$tradeArgs<ExtArgs>
   }
 
   export type $WishListPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7584,6 +8181,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs> | null
       cargo: Prisma.$CargoPayload<ExtArgs> | null
       transport: Prisma.$TransportPayload<ExtArgs> | null
+      trade: Prisma.$TradePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7592,6 +8190,7 @@ export namespace Prisma {
       userId: string | null
       cargoId: string | null
       transportId: string | null
+      tradeId: string | null
     }, ExtArgs["result"]["wishList"]>
     composites: {}
   }
@@ -7989,6 +8588,7 @@ export namespace Prisma {
     user<T extends WishList$userArgs<ExtArgs> = {}>(args?: Subset<T, WishList$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     cargo<T extends WishList$cargoArgs<ExtArgs> = {}>(args?: Subset<T, WishList$cargoArgs<ExtArgs>>): Prisma__CargoClient<$Result.GetResult<Prisma.$CargoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     transport<T extends WishList$transportArgs<ExtArgs> = {}>(args?: Subset<T, WishList$transportArgs<ExtArgs>>): Prisma__TransportClient<$Result.GetResult<Prisma.$TransportPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    trade<T extends WishList$tradeArgs<ExtArgs> = {}>(args?: Subset<T, WishList$tradeArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8024,6 +8624,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"WishList", 'String'>
     readonly cargoId: FieldRef<"WishList", 'String'>
     readonly transportId: FieldRef<"WishList", 'String'>
+    readonly tradeId: FieldRef<"WishList", 'String'>
   }
     
 
@@ -8474,6 +9075,25 @@ export namespace Prisma {
      */
     include?: TransportInclude<ExtArgs> | null
     where?: TransportWhereInput
+  }
+
+  /**
+   * WishList.trade
+   */
+  export type WishList$tradeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    where?: TradeWhereInput
   }
 
   /**
@@ -9491,6 +10111,1632 @@ export namespace Prisma {
 
 
   /**
+   * Model Trade
+   */
+
+  export type AggregateTrade = {
+    _count: TradeCountAggregateOutputType | null
+    _avg: TradeAvgAggregateOutputType | null
+    _sum: TradeSumAggregateOutputType | null
+    _min: TradeMinAggregateOutputType | null
+    _max: TradeMaxAggregateOutputType | null
+  }
+
+  export type TradeAvgAggregateOutputType = {
+    year: number | null
+    weight: number | null
+    price: number | null
+    volumeEngine: number | null
+    powerEngine: number | null
+    mileage: number | null
+  }
+
+  export type TradeSumAggregateOutputType = {
+    year: number | null
+    weight: number | null
+    price: number | null
+    volumeEngine: number | null
+    powerEngine: number | null
+    mileage: number | null
+  }
+
+  export type TradeMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    city: string | null
+    variant: $Enums.VariantEnum | null
+    typeTruck: $Enums.TypeTruckEnum | null
+    typeTechnic: $Enums.TypeTechnicEnum | null
+    typeTrailer: $Enums.TypeTrailerEnum | null
+    qtyAxis: $Enums.QtyAxisEnum | null
+    typeSuspension: $Enums.TypeSuspensionEnum | null
+    typeBrake: $Enums.TypeBrakeEnum | null
+    isArchived: boolean | null
+    year: number | null
+    weight: number | null
+    price: number | null
+    volumeEngine: number | null
+    powerEngine: number | null
+    description: string | null
+    mileage: number | null
+    typeEngine: $Enums.TypeEngineEnum | null
+    status: $Enums.StatusEnum | null
+    exist: $Enums.ExistEnum | null
+    drive: $Enums.DriveEnum | null
+    transmission: $Enums.TransmissionEnum | null
+    steering: $Enums.SteeringEnum | null
+    truckWheel: $Enums.TruckWheelEnum | null
+    tractorWheel: $Enums.TractorWheelEnum | null
+    cabinSuspension: $Enums.CabinSuspensionEnum | null
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+    trailerBrand: $Enums.TrailerBrandEnum | null
+    truckBrand: $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    city: string | null
+    variant: $Enums.VariantEnum | null
+    typeTruck: $Enums.TypeTruckEnum | null
+    typeTechnic: $Enums.TypeTechnicEnum | null
+    typeTrailer: $Enums.TypeTrailerEnum | null
+    qtyAxis: $Enums.QtyAxisEnum | null
+    typeSuspension: $Enums.TypeSuspensionEnum | null
+    typeBrake: $Enums.TypeBrakeEnum | null
+    isArchived: boolean | null
+    year: number | null
+    weight: number | null
+    price: number | null
+    volumeEngine: number | null
+    powerEngine: number | null
+    description: string | null
+    mileage: number | null
+    typeEngine: $Enums.TypeEngineEnum | null
+    status: $Enums.StatusEnum | null
+    exist: $Enums.ExistEnum | null
+    drive: $Enums.DriveEnum | null
+    transmission: $Enums.TransmissionEnum | null
+    steering: $Enums.SteeringEnum | null
+    truckWheel: $Enums.TruckWheelEnum | null
+    tractorWheel: $Enums.TractorWheelEnum | null
+    cabinSuspension: $Enums.CabinSuspensionEnum | null
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+    trailerBrand: $Enums.TrailerBrandEnum | null
+    truckBrand: $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    city: number
+    variant: number
+    typeTruck: number
+    typeTechnic: number
+    typeTrailer: number
+    qtyAxis: number
+    typeSuspension: number
+    typeBrake: number
+    isArchived: number
+    year: number
+    weight: number
+    price: number
+    volumeEngine: number
+    powerEngine: number
+    description: number
+    mileage: number
+    typeEngine: number
+    status: number
+    exist: number
+    drive: number
+    transmission: number
+    steering: number
+    truckWheel: number
+    tractorWheel: number
+    cabinSuspension: number
+    photos: number
+    userId: number
+    userName: number
+    userPhone: number
+    whatsapp: number
+    telegram: number
+    viber: number
+    skype: number
+    viewsId: number
+    trailerBrand: number
+    truckBrand: number
+    _all: number
+  }
+
+
+  export type TradeAvgAggregateInputType = {
+    year?: true
+    weight?: true
+    price?: true
+    volumeEngine?: true
+    powerEngine?: true
+    mileage?: true
+  }
+
+  export type TradeSumAggregateInputType = {
+    year?: true
+    weight?: true
+    price?: true
+    volumeEngine?: true
+    powerEngine?: true
+    mileage?: true
+  }
+
+  export type TradeMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    city?: true
+    variant?: true
+    typeTruck?: true
+    typeTechnic?: true
+    typeTrailer?: true
+    qtyAxis?: true
+    typeSuspension?: true
+    typeBrake?: true
+    isArchived?: true
+    year?: true
+    weight?: true
+    price?: true
+    volumeEngine?: true
+    powerEngine?: true
+    description?: true
+    mileage?: true
+    typeEngine?: true
+    status?: true
+    exist?: true
+    drive?: true
+    transmission?: true
+    steering?: true
+    truckWheel?: true
+    tractorWheel?: true
+    cabinSuspension?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+    trailerBrand?: true
+    truckBrand?: true
+  }
+
+  export type TradeMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    city?: true
+    variant?: true
+    typeTruck?: true
+    typeTechnic?: true
+    typeTrailer?: true
+    qtyAxis?: true
+    typeSuspension?: true
+    typeBrake?: true
+    isArchived?: true
+    year?: true
+    weight?: true
+    price?: true
+    volumeEngine?: true
+    powerEngine?: true
+    description?: true
+    mileage?: true
+    typeEngine?: true
+    status?: true
+    exist?: true
+    drive?: true
+    transmission?: true
+    steering?: true
+    truckWheel?: true
+    tractorWheel?: true
+    cabinSuspension?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+    trailerBrand?: true
+    truckBrand?: true
+  }
+
+  export type TradeCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    city?: true
+    variant?: true
+    typeTruck?: true
+    typeTechnic?: true
+    typeTrailer?: true
+    qtyAxis?: true
+    typeSuspension?: true
+    typeBrake?: true
+    isArchived?: true
+    year?: true
+    weight?: true
+    price?: true
+    volumeEngine?: true
+    powerEngine?: true
+    description?: true
+    mileage?: true
+    typeEngine?: true
+    status?: true
+    exist?: true
+    drive?: true
+    transmission?: true
+    steering?: true
+    truckWheel?: true
+    tractorWheel?: true
+    cabinSuspension?: true
+    photos?: true
+    userId?: true
+    userName?: true
+    userPhone?: true
+    whatsapp?: true
+    telegram?: true
+    viber?: true
+    skype?: true
+    viewsId?: true
+    trailerBrand?: true
+    truckBrand?: true
+    _all?: true
+  }
+
+  export type TradeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Trade to aggregate.
+     */
+    where?: TradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Trades to fetch.
+     */
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Trades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Trades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Trades
+    **/
+    _count?: true | TradeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TradeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TradeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TradeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TradeMaxAggregateInputType
+  }
+
+  export type GetTradeAggregateType<T extends TradeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrade]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrade[P]>
+      : GetScalarType<T[P], AggregateTrade[P]>
+  }
+
+
+
+
+  export type TradeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TradeWhereInput
+    orderBy?: TradeOrderByWithAggregationInput | TradeOrderByWithAggregationInput[]
+    by: TradeScalarFieldEnum[] | TradeScalarFieldEnum
+    having?: TradeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TradeCountAggregateInputType | true
+    _avg?: TradeAvgAggregateInputType
+    _sum?: TradeSumAggregateInputType
+    _min?: TradeMinAggregateInputType
+    _max?: TradeMaxAggregateInputType
+  }
+
+  export type TradeGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck: $Enums.TypeTruckEnum | null
+    typeTechnic: $Enums.TypeTechnicEnum | null
+    typeTrailer: $Enums.TypeTrailerEnum | null
+    qtyAxis: $Enums.QtyAxisEnum | null
+    typeSuspension: $Enums.TypeSuspensionEnum | null
+    typeBrake: $Enums.TypeBrakeEnum | null
+    isArchived: boolean | null
+    year: number | null
+    weight: number | null
+    price: number
+    volumeEngine: number | null
+    powerEngine: number | null
+    description: string | null
+    mileage: number | null
+    typeEngine: $Enums.TypeEngineEnum | null
+    status: $Enums.StatusEnum | null
+    exist: $Enums.ExistEnum | null
+    drive: $Enums.DriveEnum | null
+    transmission: $Enums.TransmissionEnum | null
+    steering: $Enums.SteeringEnum | null
+    truckWheel: $Enums.TruckWheelEnum | null
+    tractorWheel: $Enums.TractorWheelEnum | null
+    cabinSuspension: $Enums.CabinSuspensionEnum | null
+    photos: string[]
+    userId: string | null
+    userName: string | null
+    userPhone: string | null
+    whatsapp: string | null
+    telegram: string | null
+    viber: string | null
+    skype: string | null
+    viewsId: string | null
+    trailerBrand: $Enums.TrailerBrandEnum | null
+    truckBrand: $Enums.TruckBrandEnum | null
+    _count: TradeCountAggregateOutputType | null
+    _avg: TradeAvgAggregateOutputType | null
+    _sum: TradeSumAggregateOutputType | null
+    _min: TradeMinAggregateOutputType | null
+    _max: TradeMaxAggregateOutputType | null
+  }
+
+  type GetTradeGroupByPayload<T extends TradeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TradeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TradeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TradeGroupByOutputType[P]>
+            : GetScalarType<T[P], TradeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TradeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    city?: boolean
+    variant?: boolean
+    typeTruck?: boolean
+    typeTechnic?: boolean
+    typeTrailer?: boolean
+    qtyAxis?: boolean
+    typeSuspension?: boolean
+    typeBrake?: boolean
+    isArchived?: boolean
+    year?: boolean
+    weight?: boolean
+    price?: boolean
+    volumeEngine?: boolean
+    powerEngine?: boolean
+    description?: boolean
+    mileage?: boolean
+    typeEngine?: boolean
+    status?: boolean
+    exist?: boolean
+    drive?: boolean
+    transmission?: boolean
+    steering?: boolean
+    truckWheel?: boolean
+    tractorWheel?: boolean
+    cabinSuspension?: boolean
+    photos?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    trailerBrand?: boolean
+    truckBrand?: boolean
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+    wishList?: boolean | Trade$wishListArgs<ExtArgs>
+    _count?: boolean | TradeCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["trade"]>
+
+  export type TradeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    city?: boolean
+    variant?: boolean
+    typeTruck?: boolean
+    typeTechnic?: boolean
+    typeTrailer?: boolean
+    qtyAxis?: boolean
+    typeSuspension?: boolean
+    typeBrake?: boolean
+    isArchived?: boolean
+    year?: boolean
+    weight?: boolean
+    price?: boolean
+    volumeEngine?: boolean
+    powerEngine?: boolean
+    description?: boolean
+    mileage?: boolean
+    typeEngine?: boolean
+    status?: boolean
+    exist?: boolean
+    drive?: boolean
+    transmission?: boolean
+    steering?: boolean
+    truckWheel?: boolean
+    tractorWheel?: boolean
+    cabinSuspension?: boolean
+    photos?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    trailerBrand?: boolean
+    truckBrand?: boolean
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+  }, ExtArgs["result"]["trade"]>
+
+  export type TradeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    city?: boolean
+    variant?: boolean
+    typeTruck?: boolean
+    typeTechnic?: boolean
+    typeTrailer?: boolean
+    qtyAxis?: boolean
+    typeSuspension?: boolean
+    typeBrake?: boolean
+    isArchived?: boolean
+    year?: boolean
+    weight?: boolean
+    price?: boolean
+    volumeEngine?: boolean
+    powerEngine?: boolean
+    description?: boolean
+    mileage?: boolean
+    typeEngine?: boolean
+    status?: boolean
+    exist?: boolean
+    drive?: boolean
+    transmission?: boolean
+    steering?: boolean
+    truckWheel?: boolean
+    tractorWheel?: boolean
+    cabinSuspension?: boolean
+    photos?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    trailerBrand?: boolean
+    truckBrand?: boolean
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+  }, ExtArgs["result"]["trade"]>
+
+  export type TradeSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    city?: boolean
+    variant?: boolean
+    typeTruck?: boolean
+    typeTechnic?: boolean
+    typeTrailer?: boolean
+    qtyAxis?: boolean
+    typeSuspension?: boolean
+    typeBrake?: boolean
+    isArchived?: boolean
+    year?: boolean
+    weight?: boolean
+    price?: boolean
+    volumeEngine?: boolean
+    powerEngine?: boolean
+    description?: boolean
+    mileage?: boolean
+    typeEngine?: boolean
+    status?: boolean
+    exist?: boolean
+    drive?: boolean
+    transmission?: boolean
+    steering?: boolean
+    truckWheel?: boolean
+    tractorWheel?: boolean
+    cabinSuspension?: boolean
+    photos?: boolean
+    userId?: boolean
+    userName?: boolean
+    userPhone?: boolean
+    whatsapp?: boolean
+    telegram?: boolean
+    viber?: boolean
+    skype?: boolean
+    viewsId?: boolean
+    trailerBrand?: boolean
+    truckBrand?: boolean
+  }
+
+  export type TradeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "city" | "variant" | "typeTruck" | "typeTechnic" | "typeTrailer" | "qtyAxis" | "typeSuspension" | "typeBrake" | "isArchived" | "year" | "weight" | "price" | "volumeEngine" | "powerEngine" | "description" | "mileage" | "typeEngine" | "status" | "exist" | "drive" | "transmission" | "steering" | "truckWheel" | "tractorWheel" | "cabinSuspension" | "photos" | "userId" | "userName" | "userPhone" | "whatsapp" | "telegram" | "viber" | "skype" | "viewsId" | "trailerBrand" | "truckBrand", ExtArgs["result"]["trade"]>
+  export type TradeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+    wishList?: boolean | Trade$wishListArgs<ExtArgs>
+    _count?: boolean | TradeCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TradeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+  }
+  export type TradeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Trade$userArgs<ExtArgs>
+    views?: boolean | Trade$viewsArgs<ExtArgs>
+  }
+
+  export type $TradePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Trade"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+      views: Prisma.$ViewsPayload<ExtArgs> | null
+      wishList: Prisma.$WishListPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      city: string
+      variant: $Enums.VariantEnum
+      typeTruck: $Enums.TypeTruckEnum | null
+      typeTechnic: $Enums.TypeTechnicEnum | null
+      typeTrailer: $Enums.TypeTrailerEnum | null
+      qtyAxis: $Enums.QtyAxisEnum | null
+      typeSuspension: $Enums.TypeSuspensionEnum | null
+      typeBrake: $Enums.TypeBrakeEnum | null
+      isArchived: boolean | null
+      year: number | null
+      weight: number | null
+      price: number
+      volumeEngine: number | null
+      powerEngine: number | null
+      description: string | null
+      mileage: number | null
+      typeEngine: $Enums.TypeEngineEnum | null
+      status: $Enums.StatusEnum | null
+      exist: $Enums.ExistEnum | null
+      drive: $Enums.DriveEnum | null
+      transmission: $Enums.TransmissionEnum | null
+      steering: $Enums.SteeringEnum | null
+      truckWheel: $Enums.TruckWheelEnum | null
+      tractorWheel: $Enums.TractorWheelEnum | null
+      cabinSuspension: $Enums.CabinSuspensionEnum | null
+      photos: string[]
+      userId: string | null
+      userName: string | null
+      userPhone: string | null
+      whatsapp: string | null
+      telegram: string | null
+      viber: string | null
+      skype: string | null
+      viewsId: string | null
+      trailerBrand: $Enums.TrailerBrandEnum | null
+      truckBrand: $Enums.TruckBrandEnum | null
+    }, ExtArgs["result"]["trade"]>
+    composites: {}
+  }
+
+  type TradeGetPayload<S extends boolean | null | undefined | TradeDefaultArgs> = $Result.GetResult<Prisma.$TradePayload, S>
+
+  type TradeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TradeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TradeCountAggregateInputType | true
+    }
+
+  export interface TradeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Trade'], meta: { name: 'Trade' } }
+    /**
+     * Find zero or one Trade that matches the filter.
+     * @param {TradeFindUniqueArgs} args - Arguments to find a Trade
+     * @example
+     * // Get one Trade
+     * const trade = await prisma.trade.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TradeFindUniqueArgs>(args: SelectSubset<T, TradeFindUniqueArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Trade that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TradeFindUniqueOrThrowArgs} args - Arguments to find a Trade
+     * @example
+     * // Get one Trade
+     * const trade = await prisma.trade.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TradeFindUniqueOrThrowArgs>(args: SelectSubset<T, TradeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Trade that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeFindFirstArgs} args - Arguments to find a Trade
+     * @example
+     * // Get one Trade
+     * const trade = await prisma.trade.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TradeFindFirstArgs>(args?: SelectSubset<T, TradeFindFirstArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Trade that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeFindFirstOrThrowArgs} args - Arguments to find a Trade
+     * @example
+     * // Get one Trade
+     * const trade = await prisma.trade.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TradeFindFirstOrThrowArgs>(args?: SelectSubset<T, TradeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Trades that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Trades
+     * const trades = await prisma.trade.findMany()
+     * 
+     * // Get first 10 Trades
+     * const trades = await prisma.trade.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tradeWithIdOnly = await prisma.trade.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TradeFindManyArgs>(args?: SelectSubset<T, TradeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Trade.
+     * @param {TradeCreateArgs} args - Arguments to create a Trade.
+     * @example
+     * // Create one Trade
+     * const Trade = await prisma.trade.create({
+     *   data: {
+     *     // ... data to create a Trade
+     *   }
+     * })
+     * 
+     */
+    create<T extends TradeCreateArgs>(args: SelectSubset<T, TradeCreateArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Trades.
+     * @param {TradeCreateManyArgs} args - Arguments to create many Trades.
+     * @example
+     * // Create many Trades
+     * const trade = await prisma.trade.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TradeCreateManyArgs>(args?: SelectSubset<T, TradeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Trades and returns the data saved in the database.
+     * @param {TradeCreateManyAndReturnArgs} args - Arguments to create many Trades.
+     * @example
+     * // Create many Trades
+     * const trade = await prisma.trade.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Trades and only return the `id`
+     * const tradeWithIdOnly = await prisma.trade.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TradeCreateManyAndReturnArgs>(args?: SelectSubset<T, TradeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Trade.
+     * @param {TradeDeleteArgs} args - Arguments to delete one Trade.
+     * @example
+     * // Delete one Trade
+     * const Trade = await prisma.trade.delete({
+     *   where: {
+     *     // ... filter to delete one Trade
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TradeDeleteArgs>(args: SelectSubset<T, TradeDeleteArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Trade.
+     * @param {TradeUpdateArgs} args - Arguments to update one Trade.
+     * @example
+     * // Update one Trade
+     * const trade = await prisma.trade.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TradeUpdateArgs>(args: SelectSubset<T, TradeUpdateArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Trades.
+     * @param {TradeDeleteManyArgs} args - Arguments to filter Trades to delete.
+     * @example
+     * // Delete a few Trades
+     * const { count } = await prisma.trade.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TradeDeleteManyArgs>(args?: SelectSubset<T, TradeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Trades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Trades
+     * const trade = await prisma.trade.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TradeUpdateManyArgs>(args: SelectSubset<T, TradeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Trades and returns the data updated in the database.
+     * @param {TradeUpdateManyAndReturnArgs} args - Arguments to update many Trades.
+     * @example
+     * // Update many Trades
+     * const trade = await prisma.trade.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Trades and only return the `id`
+     * const tradeWithIdOnly = await prisma.trade.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TradeUpdateManyAndReturnArgs>(args: SelectSubset<T, TradeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Trade.
+     * @param {TradeUpsertArgs} args - Arguments to update or create a Trade.
+     * @example
+     * // Update or create a Trade
+     * const trade = await prisma.trade.upsert({
+     *   create: {
+     *     // ... data to create a Trade
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Trade we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TradeUpsertArgs>(args: SelectSubset<T, TradeUpsertArgs<ExtArgs>>): Prisma__TradeClient<$Result.GetResult<Prisma.$TradePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Trades.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeCountArgs} args - Arguments to filter Trades to count.
+     * @example
+     * // Count the number of Trades
+     * const count = await prisma.trade.count({
+     *   where: {
+     *     // ... the filter for the Trades we want to count
+     *   }
+     * })
+    **/
+    count<T extends TradeCountArgs>(
+      args?: Subset<T, TradeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TradeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Trade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TradeAggregateArgs>(args: Subset<T, TradeAggregateArgs>): Prisma.PrismaPromise<GetTradeAggregateType<T>>
+
+    /**
+     * Group by Trade.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TradeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TradeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TradeGroupByArgs['orderBy'] }
+        : { orderBy?: TradeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TradeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTradeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Trade model
+   */
+  readonly fields: TradeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Trade.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TradeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends Trade$userArgs<ExtArgs> = {}>(args?: Subset<T, Trade$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    views<T extends Trade$viewsArgs<ExtArgs> = {}>(args?: Subset<T, Trade$viewsArgs<ExtArgs>>): Prisma__ViewsClient<$Result.GetResult<Prisma.$ViewsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    wishList<T extends Trade$wishListArgs<ExtArgs> = {}>(args?: Subset<T, Trade$wishListArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Trade model
+   */
+  interface TradeFieldRefs {
+    readonly id: FieldRef<"Trade", 'String'>
+    readonly createdAt: FieldRef<"Trade", 'DateTime'>
+    readonly updatedAt: FieldRef<"Trade", 'DateTime'>
+    readonly city: FieldRef<"Trade", 'String'>
+    readonly variant: FieldRef<"Trade", 'VariantEnum'>
+    readonly typeTruck: FieldRef<"Trade", 'TypeTruckEnum'>
+    readonly typeTechnic: FieldRef<"Trade", 'TypeTechnicEnum'>
+    readonly typeTrailer: FieldRef<"Trade", 'TypeTrailerEnum'>
+    readonly qtyAxis: FieldRef<"Trade", 'QtyAxisEnum'>
+    readonly typeSuspension: FieldRef<"Trade", 'TypeSuspensionEnum'>
+    readonly typeBrake: FieldRef<"Trade", 'TypeBrakeEnum'>
+    readonly isArchived: FieldRef<"Trade", 'Boolean'>
+    readonly year: FieldRef<"Trade", 'Int'>
+    readonly weight: FieldRef<"Trade", 'Float'>
+    readonly price: FieldRef<"Trade", 'Int'>
+    readonly volumeEngine: FieldRef<"Trade", 'Float'>
+    readonly powerEngine: FieldRef<"Trade", 'Int'>
+    readonly description: FieldRef<"Trade", 'String'>
+    readonly mileage: FieldRef<"Trade", 'Int'>
+    readonly typeEngine: FieldRef<"Trade", 'TypeEngineEnum'>
+    readonly status: FieldRef<"Trade", 'StatusEnum'>
+    readonly exist: FieldRef<"Trade", 'ExistEnum'>
+    readonly drive: FieldRef<"Trade", 'DriveEnum'>
+    readonly transmission: FieldRef<"Trade", 'TransmissionEnum'>
+    readonly steering: FieldRef<"Trade", 'SteeringEnum'>
+    readonly truckWheel: FieldRef<"Trade", 'TruckWheelEnum'>
+    readonly tractorWheel: FieldRef<"Trade", 'TractorWheelEnum'>
+    readonly cabinSuspension: FieldRef<"Trade", 'CabinSuspensionEnum'>
+    readonly photos: FieldRef<"Trade", 'String[]'>
+    readonly userId: FieldRef<"Trade", 'String'>
+    readonly userName: FieldRef<"Trade", 'String'>
+    readonly userPhone: FieldRef<"Trade", 'String'>
+    readonly whatsapp: FieldRef<"Trade", 'String'>
+    readonly telegram: FieldRef<"Trade", 'String'>
+    readonly viber: FieldRef<"Trade", 'String'>
+    readonly skype: FieldRef<"Trade", 'String'>
+    readonly viewsId: FieldRef<"Trade", 'String'>
+    readonly trailerBrand: FieldRef<"Trade", 'TrailerBrandEnum'>
+    readonly truckBrand: FieldRef<"Trade", 'TruckBrandEnum'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Trade findUnique
+   */
+  export type TradeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Trade to fetch.
+     */
+    where: TradeWhereUniqueInput
+  }
+
+  /**
+   * Trade findUniqueOrThrow
+   */
+  export type TradeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Trade to fetch.
+     */
+    where: TradeWhereUniqueInput
+  }
+
+  /**
+   * Trade findFirst
+   */
+  export type TradeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Trade to fetch.
+     */
+    where?: TradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Trades to fetch.
+     */
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Trades.
+     */
+    cursor?: TradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Trades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Trades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Trades.
+     */
+    distinct?: TradeScalarFieldEnum | TradeScalarFieldEnum[]
+  }
+
+  /**
+   * Trade findFirstOrThrow
+   */
+  export type TradeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Trade to fetch.
+     */
+    where?: TradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Trades to fetch.
+     */
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Trades.
+     */
+    cursor?: TradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Trades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Trades.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Trades.
+     */
+    distinct?: TradeScalarFieldEnum | TradeScalarFieldEnum[]
+  }
+
+  /**
+   * Trade findMany
+   */
+  export type TradeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter, which Trades to fetch.
+     */
+    where?: TradeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Trades to fetch.
+     */
+    orderBy?: TradeOrderByWithRelationInput | TradeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Trades.
+     */
+    cursor?: TradeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Trades from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Trades.
+     */
+    skip?: number
+    distinct?: TradeScalarFieldEnum | TradeScalarFieldEnum[]
+  }
+
+  /**
+   * Trade create
+   */
+  export type TradeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Trade.
+     */
+    data: XOR<TradeCreateInput, TradeUncheckedCreateInput>
+  }
+
+  /**
+   * Trade createMany
+   */
+  export type TradeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Trades.
+     */
+    data: TradeCreateManyInput | TradeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Trade createManyAndReturn
+   */
+  export type TradeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Trades.
+     */
+    data: TradeCreateManyInput | TradeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Trade update
+   */
+  export type TradeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Trade.
+     */
+    data: XOR<TradeUpdateInput, TradeUncheckedUpdateInput>
+    /**
+     * Choose, which Trade to update.
+     */
+    where: TradeWhereUniqueInput
+  }
+
+  /**
+   * Trade updateMany
+   */
+  export type TradeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Trades.
+     */
+    data: XOR<TradeUpdateManyMutationInput, TradeUncheckedUpdateManyInput>
+    /**
+     * Filter which Trades to update
+     */
+    where?: TradeWhereInput
+    /**
+     * Limit how many Trades to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Trade updateManyAndReturn
+   */
+  export type TradeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * The data used to update Trades.
+     */
+    data: XOR<TradeUpdateManyMutationInput, TradeUncheckedUpdateManyInput>
+    /**
+     * Filter which Trades to update
+     */
+    where?: TradeWhereInput
+    /**
+     * Limit how many Trades to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Trade upsert
+   */
+  export type TradeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Trade to update in case it exists.
+     */
+    where: TradeWhereUniqueInput
+    /**
+     * In case the Trade found by the `where` argument doesn't exist, create a new Trade with this data.
+     */
+    create: XOR<TradeCreateInput, TradeUncheckedCreateInput>
+    /**
+     * In case the Trade was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TradeUpdateInput, TradeUncheckedUpdateInput>
+  }
+
+  /**
+   * Trade delete
+   */
+  export type TradeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+    /**
+     * Filter which Trade to delete.
+     */
+    where: TradeWhereUniqueInput
+  }
+
+  /**
+   * Trade deleteMany
+   */
+  export type TradeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Trades to delete
+     */
+    where?: TradeWhereInput
+    /**
+     * Limit how many Trades to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Trade.user
+   */
+  export type Trade$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * Trade.views
+   */
+  export type Trade$viewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Views
+     */
+    select?: ViewsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Views
+     */
+    omit?: ViewsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ViewsInclude<ExtArgs> | null
+    where?: ViewsWhereInput
+  }
+
+  /**
+   * Trade.wishList
+   */
+  export type Trade$wishListArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishList
+     */
+    select?: WishListSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishList
+     */
+    omit?: WishListOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishListInclude<ExtArgs> | null
+    where?: WishListWhereInput
+    orderBy?: WishListOrderByWithRelationInput | WishListOrderByWithRelationInput[]
+    cursor?: WishListWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishListScalarFieldEnum | WishListScalarFieldEnum[]
+  }
+
+  /**
+   * Trade without action
+   */
+  export type TradeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Trade
+     */
+    select?: TradeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Trade
+     */
+    omit?: TradeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TradeInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9634,7 +11880,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     userId: 'userId',
     cargoId: 'cargoId',
-    transportId: 'transportId'
+    transportId: 'transportId',
+    tradeId: 'tradeId'
   };
 
   export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
@@ -9649,6 +11896,51 @@ export namespace Prisma {
   };
 
   export type CurrencyRateScalarFieldEnum = (typeof CurrencyRateScalarFieldEnum)[keyof typeof CurrencyRateScalarFieldEnum]
+
+
+  export const TradeScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    city: 'city',
+    variant: 'variant',
+    typeTruck: 'typeTruck',
+    typeTechnic: 'typeTechnic',
+    typeTrailer: 'typeTrailer',
+    qtyAxis: 'qtyAxis',
+    typeSuspension: 'typeSuspension',
+    typeBrake: 'typeBrake',
+    isArchived: 'isArchived',
+    year: 'year',
+    weight: 'weight',
+    price: 'price',
+    volumeEngine: 'volumeEngine',
+    powerEngine: 'powerEngine',
+    description: 'description',
+    mileage: 'mileage',
+    typeEngine: 'typeEngine',
+    status: 'status',
+    exist: 'exist',
+    drive: 'drive',
+    transmission: 'transmission',
+    steering: 'steering',
+    truckWheel: 'truckWheel',
+    tractorWheel: 'tractorWheel',
+    cabinSuspension: 'cabinSuspension',
+    photos: 'photos',
+    userId: 'userId',
+    userName: 'userName',
+    userPhone: 'userPhone',
+    whatsapp: 'whatsapp',
+    telegram: 'telegram',
+    viber: 'viber',
+    skype: 'skype',
+    viewsId: 'viewsId',
+    trailerBrand: 'trailerBrand',
+    truckBrand: 'truckBrand'
+  };
+
+  export type TradeScalarFieldEnum = (typeof TradeScalarFieldEnum)[keyof typeof TradeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9923,6 +12215,258 @@ export namespace Prisma {
    */
   export type EnumAdditionallyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Additionally'>
     
+
+
+  /**
+   * Reference to a field of type 'VariantEnum'
+   */
+  export type EnumVariantEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VariantEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'VariantEnum[]'
+   */
+  export type ListEnumVariantEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VariantEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTruckEnum'
+   */
+  export type EnumTypeTruckEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTruckEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTruckEnum[]'
+   */
+  export type ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTruckEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTechnicEnum'
+   */
+  export type EnumTypeTechnicEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTechnicEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTechnicEnum[]'
+   */
+  export type ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTechnicEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTrailerEnum'
+   */
+  export type EnumTypeTrailerEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTrailerEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeTrailerEnum[]'
+   */
+  export type ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeTrailerEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'QtyAxisEnum'
+   */
+  export type EnumQtyAxisEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QtyAxisEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'QtyAxisEnum[]'
+   */
+  export type ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QtyAxisEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeSuspensionEnum'
+   */
+  export type EnumTypeSuspensionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeSuspensionEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeSuspensionEnum[]'
+   */
+  export type ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeSuspensionEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeBrakeEnum'
+   */
+  export type EnumTypeBrakeEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeBrakeEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeBrakeEnum[]'
+   */
+  export type ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeBrakeEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeEngineEnum'
+   */
+  export type EnumTypeEngineEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeEngineEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeEngineEnum[]'
+   */
+  export type ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeEngineEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusEnum'
+   */
+  export type EnumStatusEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusEnum[]'
+   */
+  export type ListEnumStatusEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ExistEnum'
+   */
+  export type EnumExistEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExistEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'ExistEnum[]'
+   */
+  export type ListEnumExistEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExistEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DriveEnum'
+   */
+  export type EnumDriveEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'DriveEnum[]'
+   */
+  export type ListEnumDriveEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransmissionEnum'
+   */
+  export type EnumTransmissionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransmissionEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TransmissionEnum[]'
+   */
+  export type ListEnumTransmissionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TransmissionEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'SteeringEnum'
+   */
+  export type EnumSteeringEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SteeringEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'SteeringEnum[]'
+   */
+  export type ListEnumSteeringEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SteeringEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TruckWheelEnum'
+   */
+  export type EnumTruckWheelEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TruckWheelEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TruckWheelEnum[]'
+   */
+  export type ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TruckWheelEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TractorWheelEnum'
+   */
+  export type EnumTractorWheelEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TractorWheelEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TractorWheelEnum[]'
+   */
+  export type ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TractorWheelEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CabinSuspensionEnum'
+   */
+  export type EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CabinSuspensionEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'CabinSuspensionEnum[]'
+   */
+  export type ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CabinSuspensionEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrailerBrandEnum'
+   */
+  export type EnumTrailerBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrailerBrandEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TrailerBrandEnum[]'
+   */
+  export type ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrailerBrandEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TruckBrandEnum'
+   */
+  export type EnumTruckBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TruckBrandEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TruckBrandEnum[]'
+   */
+  export type ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TruckBrandEnum[]'>
+    
   /**
    * Deep Input Types
    */
@@ -9956,6 +12500,7 @@ export namespace Prisma {
     cargos?: CargoListRelationFilter
     wishList?: WishListListRelationFilter
     transport?: TransportListRelationFilter
+    trade?: TradeListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9983,6 +12528,7 @@ export namespace Prisma {
     cargos?: CargoOrderByRelationAggregateInput
     wishList?: WishListOrderByRelationAggregateInput
     transport?: TransportOrderByRelationAggregateInput
+    trade?: TradeOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10013,6 +12559,7 @@ export namespace Prisma {
     cargos?: CargoListRelationFilter
     wishList?: WishListListRelationFilter
     transport?: TransportListRelationFilter
+    trade?: TradeListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
@@ -10530,6 +13077,7 @@ export namespace Prisma {
     count?: IntFilter<"Views"> | number
     cargo?: CargoListRelationFilter
     transport?: TransportListRelationFilter
+    trade?: TradeListRelationFilter
   }
 
   export type ViewsOrderByWithRelationInput = {
@@ -10539,6 +13087,7 @@ export namespace Prisma {
     count?: SortOrder
     cargo?: CargoOrderByRelationAggregateInput
     transport?: TransportOrderByRelationAggregateInput
+    trade?: TradeOrderByRelationAggregateInput
   }
 
   export type ViewsWhereUniqueInput = Prisma.AtLeast<{
@@ -10551,6 +13100,7 @@ export namespace Prisma {
     count?: IntFilter<"Views"> | number
     cargo?: CargoListRelationFilter
     transport?: TransportListRelationFilter
+    trade?: TradeListRelationFilter
   }, "id">
 
   export type ViewsOrderByWithAggregationInput = {
@@ -10585,9 +13135,11 @@ export namespace Prisma {
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
     transportId?: StringNullableFilter<"WishList"> | string | null
+    tradeId?: StringNullableFilter<"WishList"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
     transport?: XOR<TransportNullableScalarRelationFilter, TransportWhereInput> | null
+    trade?: XOR<TradeNullableScalarRelationFilter, TradeWhereInput> | null
   }
 
   export type WishListOrderByWithRelationInput = {
@@ -10597,15 +13149,18 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     cargoId?: SortOrderInput | SortOrder
     transportId?: SortOrderInput | SortOrder
+    tradeId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     cargo?: CargoOrderByWithRelationInput
     transport?: TransportOrderByWithRelationInput
+    trade?: TradeOrderByWithRelationInput
   }
 
   export type WishListWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     userId_cargoId?: WishListUserIdCargoIdCompoundUniqueInput
     userId_transportId?: WishListUserIdTransportIdCompoundUniqueInput
+    userId_tradeId?: WishListUserIdTradeIdCompoundUniqueInput
     AND?: WishListWhereInput | WishListWhereInput[]
     OR?: WishListWhereInput[]
     NOT?: WishListWhereInput | WishListWhereInput[]
@@ -10614,10 +13169,12 @@ export namespace Prisma {
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
     transportId?: StringNullableFilter<"WishList"> | string | null
+    tradeId?: StringNullableFilter<"WishList"> | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     cargo?: XOR<CargoNullableScalarRelationFilter, CargoWhereInput> | null
     transport?: XOR<TransportNullableScalarRelationFilter, TransportWhereInput> | null
-  }, "id" | "userId_cargoId" | "userId_transportId">
+    trade?: XOR<TradeNullableScalarRelationFilter, TradeWhereInput> | null
+  }, "id" | "userId_cargoId" | "userId_transportId" | "userId_tradeId">
 
   export type WishListOrderByWithAggregationInput = {
     id?: SortOrder
@@ -10626,6 +13183,7 @@ export namespace Prisma {
     userId?: SortOrderInput | SortOrder
     cargoId?: SortOrderInput | SortOrder
     transportId?: SortOrderInput | SortOrder
+    tradeId?: SortOrderInput | SortOrder
     _count?: WishListCountOrderByAggregateInput
     _max?: WishListMaxOrderByAggregateInput
     _min?: WishListMinOrderByAggregateInput
@@ -10641,6 +13199,7 @@ export namespace Prisma {
     userId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
     cargoId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
     transportId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
+    tradeId?: StringNullableWithAggregatesFilter<"WishList"> | string | null
   }
 
   export type CurrencyRateWhereInput = {
@@ -10695,6 +13254,239 @@ export namespace Prisma {
     rate?: StringWithAggregatesFilter<"CurrencyRate"> | string
   }
 
+  export type TradeWhereInput = {
+    AND?: TradeWhereInput | TradeWhereInput[]
+    OR?: TradeWhereInput[]
+    NOT?: TradeWhereInput | TradeWhereInput[]
+    id?: StringFilter<"Trade"> | string
+    createdAt?: DateTimeFilter<"Trade"> | Date | string
+    updatedAt?: DateTimeFilter<"Trade"> | Date | string
+    city?: StringFilter<"Trade"> | string
+    variant?: EnumVariantEnumFilter<"Trade"> | $Enums.VariantEnum
+    typeTruck?: EnumTypeTruckEnumNullableFilter<"Trade"> | $Enums.TypeTruckEnum | null
+    typeTechnic?: EnumTypeTechnicEnumNullableFilter<"Trade"> | $Enums.TypeTechnicEnum | null
+    typeTrailer?: EnumTypeTrailerEnumNullableFilter<"Trade"> | $Enums.TypeTrailerEnum | null
+    qtyAxis?: EnumQtyAxisEnumNullableFilter<"Trade"> | $Enums.QtyAxisEnum | null
+    typeSuspension?: EnumTypeSuspensionEnumNullableFilter<"Trade"> | $Enums.TypeSuspensionEnum | null
+    typeBrake?: EnumTypeBrakeEnumNullableFilter<"Trade"> | $Enums.TypeBrakeEnum | null
+    isArchived?: BoolNullableFilter<"Trade"> | boolean | null
+    year?: IntNullableFilter<"Trade"> | number | null
+    weight?: FloatNullableFilter<"Trade"> | number | null
+    price?: IntFilter<"Trade"> | number
+    volumeEngine?: FloatNullableFilter<"Trade"> | number | null
+    powerEngine?: IntNullableFilter<"Trade"> | number | null
+    description?: StringNullableFilter<"Trade"> | string | null
+    mileage?: IntNullableFilter<"Trade"> | number | null
+    typeEngine?: EnumTypeEngineEnumNullableFilter<"Trade"> | $Enums.TypeEngineEnum | null
+    status?: EnumStatusEnumNullableFilter<"Trade"> | $Enums.StatusEnum | null
+    exist?: EnumExistEnumNullableFilter<"Trade"> | $Enums.ExistEnum | null
+    drive?: EnumDriveEnumNullableFilter<"Trade"> | $Enums.DriveEnum | null
+    transmission?: EnumTransmissionEnumNullableFilter<"Trade"> | $Enums.TransmissionEnum | null
+    steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
+    truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
+    tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
+    photos?: StringNullableListFilter<"Trade">
+    userId?: StringNullableFilter<"Trade"> | string | null
+    userName?: StringNullableFilter<"Trade"> | string | null
+    userPhone?: StringNullableFilter<"Trade"> | string | null
+    whatsapp?: StringNullableFilter<"Trade"> | string | null
+    telegram?: StringNullableFilter<"Trade"> | string | null
+    viber?: StringNullableFilter<"Trade"> | string | null
+    skype?: StringNullableFilter<"Trade"> | string | null
+    viewsId?: StringNullableFilter<"Trade"> | string | null
+    trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
+    truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
+  }
+
+  export type TradeOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: SortOrder
+    variant?: SortOrder
+    typeTruck?: SortOrderInput | SortOrder
+    typeTechnic?: SortOrderInput | SortOrder
+    typeTrailer?: SortOrderInput | SortOrder
+    qtyAxis?: SortOrderInput | SortOrder
+    typeSuspension?: SortOrderInput | SortOrder
+    typeBrake?: SortOrderInput | SortOrder
+    isArchived?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
+    weight?: SortOrderInput | SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrderInput | SortOrder
+    powerEngine?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    mileage?: SortOrderInput | SortOrder
+    typeEngine?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    exist?: SortOrderInput | SortOrder
+    drive?: SortOrderInput | SortOrder
+    transmission?: SortOrderInput | SortOrder
+    steering?: SortOrderInput | SortOrder
+    truckWheel?: SortOrderInput | SortOrder
+    tractorWheel?: SortOrderInput | SortOrder
+    cabinSuspension?: SortOrderInput | SortOrder
+    photos?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    userName?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
+    viewsId?: SortOrderInput | SortOrder
+    trailerBrand?: SortOrderInput | SortOrder
+    truckBrand?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+    views?: ViewsOrderByWithRelationInput
+    wishList?: WishListOrderByRelationAggregateInput
+  }
+
+  export type TradeWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TradeWhereInput | TradeWhereInput[]
+    OR?: TradeWhereInput[]
+    NOT?: TradeWhereInput | TradeWhereInput[]
+    createdAt?: DateTimeFilter<"Trade"> | Date | string
+    updatedAt?: DateTimeFilter<"Trade"> | Date | string
+    city?: StringFilter<"Trade"> | string
+    variant?: EnumVariantEnumFilter<"Trade"> | $Enums.VariantEnum
+    typeTruck?: EnumTypeTruckEnumNullableFilter<"Trade"> | $Enums.TypeTruckEnum | null
+    typeTechnic?: EnumTypeTechnicEnumNullableFilter<"Trade"> | $Enums.TypeTechnicEnum | null
+    typeTrailer?: EnumTypeTrailerEnumNullableFilter<"Trade"> | $Enums.TypeTrailerEnum | null
+    qtyAxis?: EnumQtyAxisEnumNullableFilter<"Trade"> | $Enums.QtyAxisEnum | null
+    typeSuspension?: EnumTypeSuspensionEnumNullableFilter<"Trade"> | $Enums.TypeSuspensionEnum | null
+    typeBrake?: EnumTypeBrakeEnumNullableFilter<"Trade"> | $Enums.TypeBrakeEnum | null
+    isArchived?: BoolNullableFilter<"Trade"> | boolean | null
+    year?: IntNullableFilter<"Trade"> | number | null
+    weight?: FloatNullableFilter<"Trade"> | number | null
+    price?: IntFilter<"Trade"> | number
+    volumeEngine?: FloatNullableFilter<"Trade"> | number | null
+    powerEngine?: IntNullableFilter<"Trade"> | number | null
+    description?: StringNullableFilter<"Trade"> | string | null
+    mileage?: IntNullableFilter<"Trade"> | number | null
+    typeEngine?: EnumTypeEngineEnumNullableFilter<"Trade"> | $Enums.TypeEngineEnum | null
+    status?: EnumStatusEnumNullableFilter<"Trade"> | $Enums.StatusEnum | null
+    exist?: EnumExistEnumNullableFilter<"Trade"> | $Enums.ExistEnum | null
+    drive?: EnumDriveEnumNullableFilter<"Trade"> | $Enums.DriveEnum | null
+    transmission?: EnumTransmissionEnumNullableFilter<"Trade"> | $Enums.TransmissionEnum | null
+    steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
+    truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
+    tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
+    photos?: StringNullableListFilter<"Trade">
+    userId?: StringNullableFilter<"Trade"> | string | null
+    userName?: StringNullableFilter<"Trade"> | string | null
+    userPhone?: StringNullableFilter<"Trade"> | string | null
+    whatsapp?: StringNullableFilter<"Trade"> | string | null
+    telegram?: StringNullableFilter<"Trade"> | string | null
+    viber?: StringNullableFilter<"Trade"> | string | null
+    skype?: StringNullableFilter<"Trade"> | string | null
+    viewsId?: StringNullableFilter<"Trade"> | string | null
+    trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
+    truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
+    wishList?: WishListListRelationFilter
+  }, "id">
+
+  export type TradeOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: SortOrder
+    variant?: SortOrder
+    typeTruck?: SortOrderInput | SortOrder
+    typeTechnic?: SortOrderInput | SortOrder
+    typeTrailer?: SortOrderInput | SortOrder
+    qtyAxis?: SortOrderInput | SortOrder
+    typeSuspension?: SortOrderInput | SortOrder
+    typeBrake?: SortOrderInput | SortOrder
+    isArchived?: SortOrderInput | SortOrder
+    year?: SortOrderInput | SortOrder
+    weight?: SortOrderInput | SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrderInput | SortOrder
+    powerEngine?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    mileage?: SortOrderInput | SortOrder
+    typeEngine?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    exist?: SortOrderInput | SortOrder
+    drive?: SortOrderInput | SortOrder
+    transmission?: SortOrderInput | SortOrder
+    steering?: SortOrderInput | SortOrder
+    truckWheel?: SortOrderInput | SortOrder
+    tractorWheel?: SortOrderInput | SortOrder
+    cabinSuspension?: SortOrderInput | SortOrder
+    photos?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    userName?: SortOrderInput | SortOrder
+    userPhone?: SortOrderInput | SortOrder
+    whatsapp?: SortOrderInput | SortOrder
+    telegram?: SortOrderInput | SortOrder
+    viber?: SortOrderInput | SortOrder
+    skype?: SortOrderInput | SortOrder
+    viewsId?: SortOrderInput | SortOrder
+    trailerBrand?: SortOrderInput | SortOrder
+    truckBrand?: SortOrderInput | SortOrder
+    _count?: TradeCountOrderByAggregateInput
+    _avg?: TradeAvgOrderByAggregateInput
+    _max?: TradeMaxOrderByAggregateInput
+    _min?: TradeMinOrderByAggregateInput
+    _sum?: TradeSumOrderByAggregateInput
+  }
+
+  export type TradeScalarWhereWithAggregatesInput = {
+    AND?: TradeScalarWhereWithAggregatesInput | TradeScalarWhereWithAggregatesInput[]
+    OR?: TradeScalarWhereWithAggregatesInput[]
+    NOT?: TradeScalarWhereWithAggregatesInput | TradeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Trade"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Trade"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Trade"> | Date | string
+    city?: StringWithAggregatesFilter<"Trade"> | string
+    variant?: EnumVariantEnumWithAggregatesFilter<"Trade"> | $Enums.VariantEnum
+    typeTruck?: EnumTypeTruckEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeTruckEnum | null
+    typeTechnic?: EnumTypeTechnicEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeTechnicEnum | null
+    typeTrailer?: EnumTypeTrailerEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeTrailerEnum | null
+    qtyAxis?: EnumQtyAxisEnumNullableWithAggregatesFilter<"Trade"> | $Enums.QtyAxisEnum | null
+    typeSuspension?: EnumTypeSuspensionEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeSuspensionEnum | null
+    typeBrake?: EnumTypeBrakeEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeBrakeEnum | null
+    isArchived?: BoolNullableWithAggregatesFilter<"Trade"> | boolean | null
+    year?: IntNullableWithAggregatesFilter<"Trade"> | number | null
+    weight?: FloatNullableWithAggregatesFilter<"Trade"> | number | null
+    price?: IntWithAggregatesFilter<"Trade"> | number
+    volumeEngine?: FloatNullableWithAggregatesFilter<"Trade"> | number | null
+    powerEngine?: IntNullableWithAggregatesFilter<"Trade"> | number | null
+    description?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    mileage?: IntNullableWithAggregatesFilter<"Trade"> | number | null
+    typeEngine?: EnumTypeEngineEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeEngineEnum | null
+    status?: EnumStatusEnumNullableWithAggregatesFilter<"Trade"> | $Enums.StatusEnum | null
+    exist?: EnumExistEnumNullableWithAggregatesFilter<"Trade"> | $Enums.ExistEnum | null
+    drive?: EnumDriveEnumNullableWithAggregatesFilter<"Trade"> | $Enums.DriveEnum | null
+    transmission?: EnumTransmissionEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TransmissionEnum | null
+    steering?: EnumSteeringEnumNullableWithAggregatesFilter<"Trade"> | $Enums.SteeringEnum | null
+    truckWheel?: EnumTruckWheelEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TruckWheelEnum | null
+    tractorWheel?: EnumTractorWheelEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    cabinSuspension?: EnumCabinSuspensionEnumNullableWithAggregatesFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
+    photos?: StringNullableListFilter<"Trade">
+    userId?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    userName?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    userPhone?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    whatsapp?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    telegram?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    viber?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    skype?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    viewsId?: StringNullableWithAggregatesFilter<"Trade"> | string | null
+    trailerBrand?: EnumTrailerBrandEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TrailerBrandEnum | null
+    truckBrand?: EnumTruckBrandEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TruckBrandEnum | null
+  }
+
   export type UserCreateInput = {
     id?: string
     createdAt?: Date | string
@@ -10720,6 +13512,7 @@ export namespace Prisma {
     cargos?: CargoCreateNestedManyWithoutUserInput
     wishList?: WishListCreateNestedManyWithoutUserInput
     transport?: TransportCreateNestedManyWithoutUserInput
+    trade?: TradeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -10747,6 +13540,7 @@ export namespace Prisma {
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
     wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
     transport?: TransportUncheckedCreateNestedManyWithoutUserInput
+    trade?: TradeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -10774,6 +13568,7 @@ export namespace Prisma {
     cargos?: CargoUpdateManyWithoutUserNestedInput
     wishList?: WishListUpdateManyWithoutUserNestedInput
     transport?: TransportUpdateManyWithoutUserNestedInput
+    trade?: TradeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -10801,6 +13596,7 @@ export namespace Prisma {
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
     wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
     transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -11453,6 +14249,7 @@ export namespace Prisma {
     count?: number
     cargo?: CargoCreateNestedManyWithoutViewsInput
     transport?: TransportCreateNestedManyWithoutViewsInput
+    trade?: TradeCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUncheckedCreateInput = {
@@ -11462,6 +14259,7 @@ export namespace Prisma {
     count?: number
     cargo?: CargoUncheckedCreateNestedManyWithoutViewsInput
     transport?: TransportUncheckedCreateNestedManyWithoutViewsInput
+    trade?: TradeUncheckedCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUpdateInput = {
@@ -11471,6 +14269,7 @@ export namespace Prisma {
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUpdateManyWithoutViewsNestedInput
     transport?: TransportUpdateManyWithoutViewsNestedInput
+    trade?: TradeUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsUncheckedUpdateInput = {
@@ -11480,6 +14279,7 @@ export namespace Prisma {
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUncheckedUpdateManyWithoutViewsNestedInput
     transport?: TransportUncheckedUpdateManyWithoutViewsNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsCreateManyInput = {
@@ -11510,6 +14310,7 @@ export namespace Prisma {
     user?: UserCreateNestedOneWithoutWishListInput
     cargo?: CargoCreateNestedOneWithoutWishListInput
     transport?: TransportCreateNestedOneWithoutWishListInput
+    trade?: TradeCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateInput = {
@@ -11519,6 +14320,7 @@ export namespace Prisma {
     userId?: string | null
     cargoId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListUpdateInput = {
@@ -11528,6 +14330,7 @@ export namespace Prisma {
     user?: UserUpdateOneWithoutWishListNestedInput
     cargo?: CargoUpdateOneWithoutWishListNestedInput
     transport?: TransportUpdateOneWithoutWishListNestedInput
+    trade?: TradeUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateInput = {
@@ -11537,6 +14340,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListCreateManyInput = {
@@ -11546,6 +14350,7 @@ export namespace Prisma {
     userId?: string | null
     cargoId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListUpdateManyMutationInput = {
@@ -11561,6 +14366,7 @@ export namespace Prisma {
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CurrencyRateCreateInput = {
@@ -11617,6 +14423,302 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     title?: StringFieldUpdateOperationsInput | string
     rate?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TradeCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    user?: UserCreateNestedOneWithoutTradeInput
+    views?: ViewsCreateNestedOneWithoutTradeInput
+    wishList?: WishListCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    user?: UserUpdateOneWithoutTradeNestedInput
+    views?: ViewsUpdateOneWithoutTradeNestedInput
+    wishList?: WishListUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -11709,6 +14811,12 @@ export namespace Prisma {
     none?: TransportWhereInput
   }
 
+  export type TradeListRelationFilter = {
+    every?: TradeWhereInput
+    some?: TradeWhereInput
+    none?: TradeWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11723,6 +14831,10 @@ export namespace Prisma {
   }
 
   export type TransportOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TradeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12372,6 +15484,11 @@ export namespace Prisma {
     isNot?: TransportWhereInput | null
   }
 
+  export type TradeNullableScalarRelationFilter = {
+    is?: TradeWhereInput | null
+    isNot?: TradeWhereInput | null
+  }
+
   export type WishListUserIdCargoIdCompoundUniqueInput = {
     userId: string
     cargoId: string
@@ -12382,6 +15499,11 @@ export namespace Prisma {
     transportId: string
   }
 
+  export type WishListUserIdTradeIdCompoundUniqueInput = {
+    userId: string
+    tradeId: string
+  }
+
   export type WishListCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
@@ -12389,6 +15511,7 @@ export namespace Prisma {
     userId?: SortOrder
     cargoId?: SortOrder
     transportId?: SortOrder
+    tradeId?: SortOrder
   }
 
   export type WishListMaxOrderByAggregateInput = {
@@ -12398,6 +15521,7 @@ export namespace Prisma {
     userId?: SortOrder
     cargoId?: SortOrder
     transportId?: SortOrder
+    tradeId?: SortOrder
   }
 
   export type WishListMinOrderByAggregateInput = {
@@ -12407,6 +15531,7 @@ export namespace Prisma {
     userId?: SortOrder
     cargoId?: SortOrder
     transportId?: SortOrder
+    tradeId?: SortOrder
   }
 
   export type CurrencyRateCountOrderByAggregateInput = {
@@ -12431,6 +15556,481 @@ export namespace Prisma {
     updatedAt?: SortOrder
     title?: SortOrder
     rate?: SortOrder
+  }
+
+  export type EnumVariantEnumFilter<$PrismaModel = never> = {
+    equals?: $Enums.VariantEnum | EnumVariantEnumFieldRefInput<$PrismaModel>
+    in?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    not?: NestedEnumVariantEnumFilter<$PrismaModel> | $Enums.VariantEnum
+  }
+
+  export type EnumTypeTruckEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTruckEnum | EnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel> | $Enums.TypeTruckEnum | null
+  }
+
+  export type EnumTypeTechnicEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTechnicEnum | EnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel> | $Enums.TypeTechnicEnum | null
+  }
+
+  export type EnumTypeTrailerEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTrailerEnum | EnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel> | $Enums.TypeTrailerEnum | null
+  }
+
+  export type EnumQtyAxisEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.QtyAxisEnum | EnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel> | $Enums.QtyAxisEnum | null
+  }
+
+  export type EnumTypeSuspensionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeSuspensionEnum | EnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel> | $Enums.TypeSuspensionEnum | null
+  }
+
+  export type EnumTypeBrakeEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeBrakeEnum | EnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel> | $Enums.TypeBrakeEnum | null
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type EnumTypeEngineEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeEngineEnum | EnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel> | $Enums.TypeEngineEnum | null
+  }
+
+  export type EnumStatusEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusEnum | EnumStatusEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumStatusEnumNullableFilter<$PrismaModel> | $Enums.StatusEnum | null
+  }
+
+  export type EnumExistEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ExistEnum | EnumExistEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumExistEnumNullableFilter<$PrismaModel> | $Enums.ExistEnum | null
+  }
+
+  export type EnumDriveEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.DriveEnum | EnumDriveEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumDriveEnumNullableFilter<$PrismaModel> | $Enums.DriveEnum | null
+  }
+
+  export type EnumTransmissionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransmissionEnum | EnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel> | $Enums.TransmissionEnum | null
+  }
+
+  export type EnumSteeringEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SteeringEnum | EnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSteeringEnumNullableFilter<$PrismaModel> | $Enums.SteeringEnum | null
+  }
+
+  export type EnumTruckWheelEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckWheelEnum | EnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel> | $Enums.TruckWheelEnum | null
+  }
+
+  export type EnumTractorWheelEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorWheelEnum | EnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
+  }
+
+  export type EnumCabinSuspensionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel> | $Enums.CabinSuspensionEnum | null
+  }
+
+  export type EnumTrailerBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrailerBrandEnum | EnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel> | $Enums.TrailerBrandEnum | null
+  }
+
+  export type EnumTruckBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckBrandEnum | EnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: SortOrder
+    variant?: SortOrder
+    typeTruck?: SortOrder
+    typeTechnic?: SortOrder
+    typeTrailer?: SortOrder
+    qtyAxis?: SortOrder
+    typeSuspension?: SortOrder
+    typeBrake?: SortOrder
+    isArchived?: SortOrder
+    year?: SortOrder
+    weight?: SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrder
+    powerEngine?: SortOrder
+    description?: SortOrder
+    mileage?: SortOrder
+    typeEngine?: SortOrder
+    status?: SortOrder
+    exist?: SortOrder
+    drive?: SortOrder
+    transmission?: SortOrder
+    steering?: SortOrder
+    truckWheel?: SortOrder
+    tractorWheel?: SortOrder
+    cabinSuspension?: SortOrder
+    photos?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+    trailerBrand?: SortOrder
+    truckBrand?: SortOrder
+  }
+
+  export type TradeAvgOrderByAggregateInput = {
+    year?: SortOrder
+    weight?: SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrder
+    powerEngine?: SortOrder
+    mileage?: SortOrder
+  }
+
+  export type TradeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: SortOrder
+    variant?: SortOrder
+    typeTruck?: SortOrder
+    typeTechnic?: SortOrder
+    typeTrailer?: SortOrder
+    qtyAxis?: SortOrder
+    typeSuspension?: SortOrder
+    typeBrake?: SortOrder
+    isArchived?: SortOrder
+    year?: SortOrder
+    weight?: SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrder
+    powerEngine?: SortOrder
+    description?: SortOrder
+    mileage?: SortOrder
+    typeEngine?: SortOrder
+    status?: SortOrder
+    exist?: SortOrder
+    drive?: SortOrder
+    transmission?: SortOrder
+    steering?: SortOrder
+    truckWheel?: SortOrder
+    tractorWheel?: SortOrder
+    cabinSuspension?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+    trailerBrand?: SortOrder
+    truckBrand?: SortOrder
+  }
+
+  export type TradeMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    city?: SortOrder
+    variant?: SortOrder
+    typeTruck?: SortOrder
+    typeTechnic?: SortOrder
+    typeTrailer?: SortOrder
+    qtyAxis?: SortOrder
+    typeSuspension?: SortOrder
+    typeBrake?: SortOrder
+    isArchived?: SortOrder
+    year?: SortOrder
+    weight?: SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrder
+    powerEngine?: SortOrder
+    description?: SortOrder
+    mileage?: SortOrder
+    typeEngine?: SortOrder
+    status?: SortOrder
+    exist?: SortOrder
+    drive?: SortOrder
+    transmission?: SortOrder
+    steering?: SortOrder
+    truckWheel?: SortOrder
+    tractorWheel?: SortOrder
+    cabinSuspension?: SortOrder
+    userId?: SortOrder
+    userName?: SortOrder
+    userPhone?: SortOrder
+    whatsapp?: SortOrder
+    telegram?: SortOrder
+    viber?: SortOrder
+    skype?: SortOrder
+    viewsId?: SortOrder
+    trailerBrand?: SortOrder
+    truckBrand?: SortOrder
+  }
+
+  export type TradeSumOrderByAggregateInput = {
+    year?: SortOrder
+    weight?: SortOrder
+    price?: SortOrder
+    volumeEngine?: SortOrder
+    powerEngine?: SortOrder
+    mileage?: SortOrder
+  }
+
+  export type EnumVariantEnumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.VariantEnum | EnumVariantEnumFieldRefInput<$PrismaModel>
+    in?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    not?: NestedEnumVariantEnumWithAggregatesFilter<$PrismaModel> | $Enums.VariantEnum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumVariantEnumFilter<$PrismaModel>
+    _max?: NestedEnumVariantEnumFilter<$PrismaModel>
+  }
+
+  export type EnumTypeTruckEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTruckEnum | EnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTruckEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTruckEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTypeTechnicEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTechnicEnum | EnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTechnicEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTechnicEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTypeTrailerEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTrailerEnum | EnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTrailerEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTrailerEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumQtyAxisEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.QtyAxisEnum | EnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumQtyAxisEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.QtyAxisEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTypeSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeSuspensionEnum | EnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeSuspensionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeSuspensionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTypeBrakeEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeBrakeEnum | EnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeBrakeEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeBrakeEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTypeEngineEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeEngineEnum | EnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeEngineEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeEngineEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumStatusEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusEnum | EnumStatusEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumStatusEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.StatusEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumStatusEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumStatusEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumExistEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ExistEnum | EnumExistEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumExistEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.ExistEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumExistEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumExistEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumDriveEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DriveEnum | EnumDriveEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumDriveEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.DriveEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumDriveEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumDriveEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTransmissionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransmissionEnum | EnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransmissionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransmissionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumSteeringEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SteeringEnum | EnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSteeringEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.SteeringEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSteeringEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumSteeringEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTruckWheelEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckWheelEnum | EnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckWheelEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TruckWheelEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTractorWheelEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorWheelEnum | EnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorWheelEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.CabinSuspensionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTrailerBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrailerBrandEnum | EnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTrailerBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TrailerBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTruckBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckBrandEnum | EnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
   }
 
   export type UserCreatedocumentsInput = {
@@ -12458,6 +16058,13 @@ export namespace Prisma {
     connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
   }
 
+  export type TradeCreateNestedManyWithoutUserInput = {
+    create?: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput> | TradeCreateWithoutUserInput[] | TradeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutUserInput | TradeCreateOrConnectWithoutUserInput[]
+    createMany?: TradeCreateManyUserInputEnvelope
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+  }
+
   export type CargoUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
@@ -12477,6 +16084,13 @@ export namespace Prisma {
     connectOrCreate?: TransportCreateOrConnectWithoutUserInput | TransportCreateOrConnectWithoutUserInput[]
     createMany?: TransportCreateManyUserInputEnvelope
     connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+  }
+
+  export type TradeUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput> | TradeCreateWithoutUserInput[] | TradeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutUserInput | TradeCreateOrConnectWithoutUserInput[]
+    createMany?: TradeCreateManyUserInputEnvelope
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12550,6 +16164,20 @@ export namespace Prisma {
     deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
   }
 
+  export type TradeUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput> | TradeCreateWithoutUserInput[] | TradeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutUserInput | TradeCreateOrConnectWithoutUserInput[]
+    upsert?: TradeUpsertWithWhereUniqueWithoutUserInput | TradeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TradeCreateManyUserInputEnvelope
+    set?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    disconnect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    delete?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    update?: TradeUpdateWithWhereUniqueWithoutUserInput | TradeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TradeUpdateManyWithWhereWithoutUserInput | TradeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TradeScalarWhereInput | TradeScalarWhereInput[]
+  }
+
   export type CargoUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<CargoCreateWithoutUserInput, CargoUncheckedCreateWithoutUserInput> | CargoCreateWithoutUserInput[] | CargoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutUserInput | CargoCreateOrConnectWithoutUserInput[]
@@ -12590,6 +16218,20 @@ export namespace Prisma {
     update?: TransportUpdateWithWhereUniqueWithoutUserInput | TransportUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TransportUpdateManyWithWhereWithoutUserInput | TransportUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
+  }
+
+  export type TradeUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput> | TradeCreateWithoutUserInput[] | TradeUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutUserInput | TradeCreateOrConnectWithoutUserInput[]
+    upsert?: TradeUpsertWithWhereUniqueWithoutUserInput | TradeUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TradeCreateManyUserInputEnvelope
+    set?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    disconnect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    delete?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    update?: TradeUpdateWithWhereUniqueWithoutUserInput | TradeUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TradeUpdateManyWithWhereWithoutUserInput | TradeUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TradeScalarWhereInput | TradeScalarWhereInput[]
   }
 
   export type CargoCreateplacesLoadingInput = {
@@ -12934,6 +16576,13 @@ export namespace Prisma {
     connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
   }
 
+  export type TradeCreateNestedManyWithoutViewsInput = {
+    create?: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput> | TradeCreateWithoutViewsInput[] | TradeUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutViewsInput | TradeCreateOrConnectWithoutViewsInput[]
+    createMany?: TradeCreateManyViewsInputEnvelope
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+  }
+
   export type CargoUncheckedCreateNestedManyWithoutViewsInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
@@ -12946,6 +16595,13 @@ export namespace Prisma {
     connectOrCreate?: TransportCreateOrConnectWithoutViewsInput | TransportCreateOrConnectWithoutViewsInput[]
     createMany?: TransportCreateManyViewsInputEnvelope
     connect?: TransportWhereUniqueInput | TransportWhereUniqueInput[]
+  }
+
+  export type TradeUncheckedCreateNestedManyWithoutViewsInput = {
+    create?: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput> | TradeCreateWithoutViewsInput[] | TradeUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutViewsInput | TradeCreateOrConnectWithoutViewsInput[]
+    createMany?: TradeCreateManyViewsInputEnvelope
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
   }
 
   export type CargoUpdateManyWithoutViewsNestedInput = {
@@ -12976,6 +16632,20 @@ export namespace Prisma {
     deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
   }
 
+  export type TradeUpdateManyWithoutViewsNestedInput = {
+    create?: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput> | TradeCreateWithoutViewsInput[] | TradeUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutViewsInput | TradeCreateOrConnectWithoutViewsInput[]
+    upsert?: TradeUpsertWithWhereUniqueWithoutViewsInput | TradeUpsertWithWhereUniqueWithoutViewsInput[]
+    createMany?: TradeCreateManyViewsInputEnvelope
+    set?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    disconnect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    delete?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    update?: TradeUpdateWithWhereUniqueWithoutViewsInput | TradeUpdateWithWhereUniqueWithoutViewsInput[]
+    updateMany?: TradeUpdateManyWithWhereWithoutViewsInput | TradeUpdateManyWithWhereWithoutViewsInput[]
+    deleteMany?: TradeScalarWhereInput | TradeScalarWhereInput[]
+  }
+
   export type CargoUncheckedUpdateManyWithoutViewsNestedInput = {
     create?: XOR<CargoCreateWithoutViewsInput, CargoUncheckedCreateWithoutViewsInput> | CargoCreateWithoutViewsInput[] | CargoUncheckedCreateWithoutViewsInput[]
     connectOrCreate?: CargoCreateOrConnectWithoutViewsInput | CargoCreateOrConnectWithoutViewsInput[]
@@ -13004,6 +16674,20 @@ export namespace Prisma {
     deleteMany?: TransportScalarWhereInput | TransportScalarWhereInput[]
   }
 
+  export type TradeUncheckedUpdateManyWithoutViewsNestedInput = {
+    create?: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput> | TradeCreateWithoutViewsInput[] | TradeUncheckedCreateWithoutViewsInput[]
+    connectOrCreate?: TradeCreateOrConnectWithoutViewsInput | TradeCreateOrConnectWithoutViewsInput[]
+    upsert?: TradeUpsertWithWhereUniqueWithoutViewsInput | TradeUpsertWithWhereUniqueWithoutViewsInput[]
+    createMany?: TradeCreateManyViewsInputEnvelope
+    set?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    disconnect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    delete?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    connect?: TradeWhereUniqueInput | TradeWhereUniqueInput[]
+    update?: TradeUpdateWithWhereUniqueWithoutViewsInput | TradeUpdateWithWhereUniqueWithoutViewsInput[]
+    updateMany?: TradeUpdateManyWithWhereWithoutViewsInput | TradeUpdateManyWithWhereWithoutViewsInput[]
+    deleteMany?: TradeScalarWhereInput | TradeScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutWishListInput = {
     create?: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
     connectOrCreate?: UserCreateOrConnectWithoutWishListInput
@@ -13020,6 +16704,12 @@ export namespace Prisma {
     create?: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
     connectOrCreate?: TransportCreateOrConnectWithoutWishListInput
     connect?: TransportWhereUniqueInput
+  }
+
+  export type TradeCreateNestedOneWithoutWishListInput = {
+    create?: XOR<TradeCreateWithoutWishListInput, TradeUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: TradeCreateOrConnectWithoutWishListInput
+    connect?: TradeWhereUniqueInput
   }
 
   export type UserUpdateOneWithoutWishListNestedInput = {
@@ -13050,6 +16740,179 @@ export namespace Prisma {
     delete?: TransportWhereInput | boolean
     connect?: TransportWhereUniqueInput
     update?: XOR<XOR<TransportUpdateToOneWithWhereWithoutWishListInput, TransportUpdateWithoutWishListInput>, TransportUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type TradeUpdateOneWithoutWishListNestedInput = {
+    create?: XOR<TradeCreateWithoutWishListInput, TradeUncheckedCreateWithoutWishListInput>
+    connectOrCreate?: TradeCreateOrConnectWithoutWishListInput
+    upsert?: TradeUpsertWithoutWishListInput
+    disconnect?: TradeWhereInput | boolean
+    delete?: TradeWhereInput | boolean
+    connect?: TradeWhereUniqueInput
+    update?: XOR<XOR<TradeUpdateToOneWithWhereWithoutWishListInput, TradeUpdateWithoutWishListInput>, TradeUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type TradeCreatephotosInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutTradeInput = {
+    create?: XOR<UserCreateWithoutTradeInput, UserUncheckedCreateWithoutTradeInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTradeInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ViewsCreateNestedOneWithoutTradeInput = {
+    create?: XOR<ViewsCreateWithoutTradeInput, ViewsUncheckedCreateWithoutTradeInput>
+    connectOrCreate?: ViewsCreateOrConnectWithoutTradeInput
+    connect?: ViewsWhereUniqueInput
+  }
+
+  export type WishListCreateNestedManyWithoutTradeInput = {
+    create?: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput> | WishListCreateWithoutTradeInput[] | WishListUncheckedCreateWithoutTradeInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTradeInput | WishListCreateOrConnectWithoutTradeInput[]
+    createMany?: WishListCreateManyTradeInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type WishListUncheckedCreateNestedManyWithoutTradeInput = {
+    create?: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput> | WishListCreateWithoutTradeInput[] | WishListUncheckedCreateWithoutTradeInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTradeInput | WishListCreateOrConnectWithoutTradeInput[]
+    createMany?: WishListCreateManyTradeInputEnvelope
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+  }
+
+  export type EnumVariantEnumFieldUpdateOperationsInput = {
+    set?: $Enums.VariantEnum
+  }
+
+  export type NullableEnumTypeTruckEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeTruckEnum | null
+  }
+
+  export type NullableEnumTypeTechnicEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeTechnicEnum | null
+  }
+
+  export type NullableEnumTypeTrailerEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeTrailerEnum | null
+  }
+
+  export type NullableEnumQtyAxisEnumFieldUpdateOperationsInput = {
+    set?: $Enums.QtyAxisEnum | null
+  }
+
+  export type NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeSuspensionEnum | null
+  }
+
+  export type NullableEnumTypeBrakeEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeBrakeEnum | null
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableEnumTypeEngineEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeEngineEnum | null
+  }
+
+  export type NullableEnumStatusEnumFieldUpdateOperationsInput = {
+    set?: $Enums.StatusEnum | null
+  }
+
+  export type NullableEnumExistEnumFieldUpdateOperationsInput = {
+    set?: $Enums.ExistEnum | null
+  }
+
+  export type NullableEnumDriveEnumFieldUpdateOperationsInput = {
+    set?: $Enums.DriveEnum | null
+  }
+
+  export type NullableEnumTransmissionEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TransmissionEnum | null
+  }
+
+  export type NullableEnumSteeringEnumFieldUpdateOperationsInput = {
+    set?: $Enums.SteeringEnum | null
+  }
+
+  export type NullableEnumTruckWheelEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TruckWheelEnum | null
+  }
+
+  export type NullableEnumTractorWheelEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TractorWheelEnum | null
+  }
+
+  export type NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput = {
+    set?: $Enums.CabinSuspensionEnum | null
+  }
+
+  export type TradeUpdatephotosInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableEnumTrailerBrandEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TrailerBrandEnum | null
+  }
+
+  export type NullableEnumTruckBrandEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TruckBrandEnum | null
+  }
+
+  export type UserUpdateOneWithoutTradeNestedInput = {
+    create?: XOR<UserCreateWithoutTradeInput, UserUncheckedCreateWithoutTradeInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTradeInput
+    upsert?: UserUpsertWithoutTradeInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTradeInput, UserUpdateWithoutTradeInput>, UserUncheckedUpdateWithoutTradeInput>
+  }
+
+  export type ViewsUpdateOneWithoutTradeNestedInput = {
+    create?: XOR<ViewsCreateWithoutTradeInput, ViewsUncheckedCreateWithoutTradeInput>
+    connectOrCreate?: ViewsCreateOrConnectWithoutTradeInput
+    upsert?: ViewsUpsertWithoutTradeInput
+    disconnect?: ViewsWhereInput | boolean
+    delete?: ViewsWhereInput | boolean
+    connect?: ViewsWhereUniqueInput
+    update?: XOR<XOR<ViewsUpdateToOneWithWhereWithoutTradeInput, ViewsUpdateWithoutTradeInput>, ViewsUncheckedUpdateWithoutTradeInput>
+  }
+
+  export type WishListUpdateManyWithoutTradeNestedInput = {
+    create?: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput> | WishListCreateWithoutTradeInput[] | WishListUncheckedCreateWithoutTradeInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTradeInput | WishListCreateOrConnectWithoutTradeInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutTradeInput | WishListUpsertWithWhereUniqueWithoutTradeInput[]
+    createMany?: WishListCreateManyTradeInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutTradeInput | WishListUpdateWithWhereUniqueWithoutTradeInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutTradeInput | WishListUpdateManyWithWhereWithoutTradeInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
+  }
+
+  export type WishListUncheckedUpdateManyWithoutTradeNestedInput = {
+    create?: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput> | WishListCreateWithoutTradeInput[] | WishListUncheckedCreateWithoutTradeInput[]
+    connectOrCreate?: WishListCreateOrConnectWithoutTradeInput | WishListCreateOrConnectWithoutTradeInput[]
+    upsert?: WishListUpsertWithWhereUniqueWithoutTradeInput | WishListUpsertWithWhereUniqueWithoutTradeInput[]
+    createMany?: WishListCreateManyTradeInputEnvelope
+    set?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    disconnect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    delete?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    connect?: WishListWhereUniqueInput | WishListWhereUniqueInput[]
+    update?: WishListUpdateWithWhereUniqueWithoutTradeInput | WishListUpdateWithWhereUniqueWithoutTradeInput[]
+    updateMany?: WishListUpdateManyWithWhereWithoutTradeInput | WishListUpdateManyWithWhereWithoutTradeInput[]
+    deleteMany?: WishListScalarWhereInput | WishListScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13337,6 +17200,328 @@ export namespace Prisma {
     _max?: NestedEnumTermsPalletsTypeNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumVariantEnumFilter<$PrismaModel = never> = {
+    equals?: $Enums.VariantEnum | EnumVariantEnumFieldRefInput<$PrismaModel>
+    in?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    not?: NestedEnumVariantEnumFilter<$PrismaModel> | $Enums.VariantEnum
+  }
+
+  export type NestedEnumTypeTruckEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTruckEnum | EnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel> | $Enums.TypeTruckEnum | null
+  }
+
+  export type NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTechnicEnum | EnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel> | $Enums.TypeTechnicEnum | null
+  }
+
+  export type NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTrailerEnum | EnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel> | $Enums.TypeTrailerEnum | null
+  }
+
+  export type NestedEnumQtyAxisEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.QtyAxisEnum | EnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel> | $Enums.QtyAxisEnum | null
+  }
+
+  export type NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeSuspensionEnum | EnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel> | $Enums.TypeSuspensionEnum | null
+  }
+
+  export type NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeBrakeEnum | EnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel> | $Enums.TypeBrakeEnum | null
+  }
+
+  export type NestedEnumTypeEngineEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeEngineEnum | EnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel> | $Enums.TypeEngineEnum | null
+  }
+
+  export type NestedEnumStatusEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusEnum | EnumStatusEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumStatusEnumNullableFilter<$PrismaModel> | $Enums.StatusEnum | null
+  }
+
+  export type NestedEnumExistEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.ExistEnum | EnumExistEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumExistEnumNullableFilter<$PrismaModel> | $Enums.ExistEnum | null
+  }
+
+  export type NestedEnumDriveEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.DriveEnum | EnumDriveEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumDriveEnumNullableFilter<$PrismaModel> | $Enums.DriveEnum | null
+  }
+
+  export type NestedEnumTransmissionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransmissionEnum | EnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel> | $Enums.TransmissionEnum | null
+  }
+
+  export type NestedEnumSteeringEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SteeringEnum | EnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSteeringEnumNullableFilter<$PrismaModel> | $Enums.SteeringEnum | null
+  }
+
+  export type NestedEnumTruckWheelEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckWheelEnum | EnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel> | $Enums.TruckWheelEnum | null
+  }
+
+  export type NestedEnumTractorWheelEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorWheelEnum | EnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
+  }
+
+  export type NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel> | $Enums.CabinSuspensionEnum | null
+  }
+
+  export type NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrailerBrandEnum | EnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel> | $Enums.TrailerBrandEnum | null
+  }
+
+  export type NestedEnumTruckBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckBrandEnum | EnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+  }
+
+  export type NestedEnumVariantEnumWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.VariantEnum | EnumVariantEnumFieldRefInput<$PrismaModel>
+    in?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.VariantEnum[] | ListEnumVariantEnumFieldRefInput<$PrismaModel>
+    not?: NestedEnumVariantEnumWithAggregatesFilter<$PrismaModel> | $Enums.VariantEnum
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumVariantEnumFilter<$PrismaModel>
+    _max?: NestedEnumVariantEnumFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeTruckEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTruckEnum | EnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTruckEnum[] | ListEnumTypeTruckEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTruckEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTruckEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTruckEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeTechnicEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTechnicEnum | EnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTechnicEnum[] | ListEnumTypeTechnicEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTechnicEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTechnicEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTechnicEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeTrailerEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeTrailerEnum | EnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeTrailerEnum[] | ListEnumTypeTrailerEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeTrailerEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeTrailerEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeTrailerEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumQtyAxisEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.QtyAxisEnum | EnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.QtyAxisEnum[] | ListEnumQtyAxisEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumQtyAxisEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.QtyAxisEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumQtyAxisEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeSuspensionEnum | EnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeSuspensionEnum[] | ListEnumTypeSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeSuspensionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeSuspensionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeSuspensionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeBrakeEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeBrakeEnum | EnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeBrakeEnum[] | ListEnumTypeBrakeEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeBrakeEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeBrakeEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeBrakeEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTypeEngineEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeEngineEnum | EnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeEngineEnum[] | ListEnumTypeEngineEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeEngineEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeEngineEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeEngineEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusEnum | EnumStatusEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.StatusEnum[] | ListEnumStatusEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumStatusEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.StatusEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumStatusEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumStatusEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumExistEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ExistEnum | EnumExistEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.ExistEnum[] | ListEnumExistEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumExistEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.ExistEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumExistEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumExistEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumDriveEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.DriveEnum | EnumDriveEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.DriveEnum[] | ListEnumDriveEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumDriveEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.DriveEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumDriveEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumDriveEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTransmissionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TransmissionEnum | EnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TransmissionEnum[] | ListEnumTransmissionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTransmissionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TransmissionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTransmissionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSteeringEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SteeringEnum | EnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SteeringEnum[] | ListEnumSteeringEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSteeringEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.SteeringEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSteeringEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumSteeringEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTruckWheelEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckWheelEnum | EnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckWheelEnum[] | ListEnumTruckWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckWheelEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TruckWheelEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTruckWheelEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTractorWheelEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorWheelEnum | EnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorWheelEnum[] | ListEnumTractorWheelEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorWheelEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.CabinSuspensionEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTrailerBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TrailerBrandEnum | EnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TrailerBrandEnum[] | ListEnumTrailerBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTrailerBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TrailerBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTrailerBrandEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTruckBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TruckBrandEnum | EnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTruckBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
+  }
+
   export type CargoCreateWithoutUserInput = {
     id?: string
     createdAt?: Date | string
@@ -13459,6 +17644,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     cargo?: CargoCreateNestedOneWithoutWishListInput
     transport?: TransportCreateNestedOneWithoutWishListInput
+    trade?: TradeCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateWithoutUserInput = {
@@ -13467,6 +17653,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     cargoId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListCreateOrConnectWithoutUserInput = {
@@ -13542,6 +17729,100 @@ export namespace Prisma {
 
   export type TransportCreateManyUserInputEnvelope = {
     data: TransportCreateManyUserInput | TransportCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TradeCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    views?: ViewsCreateNestedOneWithoutTradeInput
+    wishList?: WishListCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeUncheckedCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeCreateOrConnectWithoutUserInput = {
+    where: TradeWhereUniqueInput
+    create: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput>
+  }
+
+  export type TradeCreateManyUserInputEnvelope = {
+    data: TradeCreateManyUserInput | TradeCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -13643,6 +17924,7 @@ export namespace Prisma {
     userId?: StringNullableFilter<"WishList"> | string | null
     cargoId?: StringNullableFilter<"WishList"> | string | null
     transportId?: StringNullableFilter<"WishList"> | string | null
+    tradeId?: StringNullableFilter<"WishList"> | string | null
   }
 
   export type TransportUpsertWithWhereUniqueWithoutUserInput = {
@@ -13692,6 +17974,67 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Transport"> | string | null
   }
 
+  export type TradeUpsertWithWhereUniqueWithoutUserInput = {
+    where: TradeWhereUniqueInput
+    update: XOR<TradeUpdateWithoutUserInput, TradeUncheckedUpdateWithoutUserInput>
+    create: XOR<TradeCreateWithoutUserInput, TradeUncheckedCreateWithoutUserInput>
+  }
+
+  export type TradeUpdateWithWhereUniqueWithoutUserInput = {
+    where: TradeWhereUniqueInput
+    data: XOR<TradeUpdateWithoutUserInput, TradeUncheckedUpdateWithoutUserInput>
+  }
+
+  export type TradeUpdateManyWithWhereWithoutUserInput = {
+    where: TradeScalarWhereInput
+    data: XOR<TradeUpdateManyMutationInput, TradeUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type TradeScalarWhereInput = {
+    AND?: TradeScalarWhereInput | TradeScalarWhereInput[]
+    OR?: TradeScalarWhereInput[]
+    NOT?: TradeScalarWhereInput | TradeScalarWhereInput[]
+    id?: StringFilter<"Trade"> | string
+    createdAt?: DateTimeFilter<"Trade"> | Date | string
+    updatedAt?: DateTimeFilter<"Trade"> | Date | string
+    city?: StringFilter<"Trade"> | string
+    variant?: EnumVariantEnumFilter<"Trade"> | $Enums.VariantEnum
+    typeTruck?: EnumTypeTruckEnumNullableFilter<"Trade"> | $Enums.TypeTruckEnum | null
+    typeTechnic?: EnumTypeTechnicEnumNullableFilter<"Trade"> | $Enums.TypeTechnicEnum | null
+    typeTrailer?: EnumTypeTrailerEnumNullableFilter<"Trade"> | $Enums.TypeTrailerEnum | null
+    qtyAxis?: EnumQtyAxisEnumNullableFilter<"Trade"> | $Enums.QtyAxisEnum | null
+    typeSuspension?: EnumTypeSuspensionEnumNullableFilter<"Trade"> | $Enums.TypeSuspensionEnum | null
+    typeBrake?: EnumTypeBrakeEnumNullableFilter<"Trade"> | $Enums.TypeBrakeEnum | null
+    isArchived?: BoolNullableFilter<"Trade"> | boolean | null
+    year?: IntNullableFilter<"Trade"> | number | null
+    weight?: FloatNullableFilter<"Trade"> | number | null
+    price?: IntFilter<"Trade"> | number
+    volumeEngine?: FloatNullableFilter<"Trade"> | number | null
+    powerEngine?: IntNullableFilter<"Trade"> | number | null
+    description?: StringNullableFilter<"Trade"> | string | null
+    mileage?: IntNullableFilter<"Trade"> | number | null
+    typeEngine?: EnumTypeEngineEnumNullableFilter<"Trade"> | $Enums.TypeEngineEnum | null
+    status?: EnumStatusEnumNullableFilter<"Trade"> | $Enums.StatusEnum | null
+    exist?: EnumExistEnumNullableFilter<"Trade"> | $Enums.ExistEnum | null
+    drive?: EnumDriveEnumNullableFilter<"Trade"> | $Enums.DriveEnum | null
+    transmission?: EnumTransmissionEnumNullableFilter<"Trade"> | $Enums.TransmissionEnum | null
+    steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
+    truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
+    tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
+    photos?: StringNullableListFilter<"Trade">
+    userId?: StringNullableFilter<"Trade"> | string | null
+    userName?: StringNullableFilter<"Trade"> | string | null
+    userPhone?: StringNullableFilter<"Trade"> | string | null
+    whatsapp?: StringNullableFilter<"Trade"> | string | null
+    telegram?: StringNullableFilter<"Trade"> | string | null
+    viber?: StringNullableFilter<"Trade"> | string | null
+    skype?: StringNullableFilter<"Trade"> | string | null
+    viewsId?: StringNullableFilter<"Trade"> | string | null
+    trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
+    truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+  }
+
   export type UserCreateWithoutCargosInput = {
     id?: string
     createdAt?: Date | string
@@ -13716,6 +18059,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     wishList?: WishListCreateNestedManyWithoutUserInput
     transport?: TransportCreateNestedManyWithoutUserInput
+    trade?: TradeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCargosInput = {
@@ -13742,6 +18086,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
     transport?: TransportUncheckedCreateNestedManyWithoutUserInput
+    trade?: TradeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCargosInput = {
@@ -13755,6 +18100,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     count?: number
     transport?: TransportCreateNestedManyWithoutViewsInput
+    trade?: TradeCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUncheckedCreateWithoutCargoInput = {
@@ -13763,6 +18109,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     count?: number
     transport?: TransportUncheckedCreateNestedManyWithoutViewsInput
+    trade?: TradeUncheckedCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsCreateOrConnectWithoutCargoInput = {
@@ -13776,6 +18123,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutWishListInput
     transport?: TransportCreateNestedOneWithoutWishListInput
+    trade?: TradeCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateWithoutCargoInput = {
@@ -13784,6 +18132,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListCreateOrConnectWithoutCargoInput = {
@@ -13831,6 +18180,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     wishList?: WishListUpdateManyWithoutUserNestedInput
     transport?: TransportUpdateManyWithoutUserNestedInput
+    trade?: TradeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCargosInput = {
@@ -13857,6 +18207,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
     transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ViewsUpsertWithoutCargoInput = {
@@ -13876,6 +18227,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     transport?: TransportUpdateManyWithoutViewsNestedInput
+    trade?: TradeUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsUncheckedUpdateWithoutCargoInput = {
@@ -13884,6 +18236,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     transport?: TransportUncheckedUpdateManyWithoutViewsNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutViewsNestedInput
   }
 
   export type WishListUpsertWithWhereUniqueWithoutCargoInput = {
@@ -13926,6 +18279,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoCreateNestedManyWithoutUserInput
     wishList?: WishListCreateNestedManyWithoutUserInput
+    trade?: TradeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTransportInput = {
@@ -13952,6 +18306,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
     wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
+    trade?: TradeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTransportInput = {
@@ -13965,6 +18320,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     count?: number
     cargo?: CargoCreateNestedManyWithoutViewsInput
+    trade?: TradeCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsUncheckedCreateWithoutTransportInput = {
@@ -13973,6 +18329,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     count?: number
     cargo?: CargoUncheckedCreateNestedManyWithoutViewsInput
+    trade?: TradeUncheckedCreateNestedManyWithoutViewsInput
   }
 
   export type ViewsCreateOrConnectWithoutTransportInput = {
@@ -13986,6 +18343,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user?: UserCreateNestedOneWithoutWishListInput
     cargo?: CargoCreateNestedOneWithoutWishListInput
+    trade?: TradeCreateNestedOneWithoutWishListInput
   }
 
   export type WishListUncheckedCreateWithoutTransportInput = {
@@ -13994,6 +18352,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId?: string | null
     cargoId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListCreateOrConnectWithoutTransportInput = {
@@ -14041,6 +18400,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUpdateManyWithoutUserNestedInput
     wishList?: WishListUpdateManyWithoutUserNestedInput
+    trade?: TradeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTransportInput = {
@@ -14067,6 +18427,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
     wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ViewsUpsertWithoutTransportInput = {
@@ -14086,6 +18447,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUpdateManyWithoutViewsNestedInput
+    trade?: TradeUpdateManyWithoutViewsNestedInput
   }
 
   export type ViewsUncheckedUpdateWithoutTransportInput = {
@@ -14094,6 +18456,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     count?: IntFieldUpdateOperationsInput | number
     cargo?: CargoUncheckedUpdateManyWithoutViewsNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutViewsNestedInput
   }
 
   export type WishListUpsertWithWhereUniqueWithoutTransportInput = {
@@ -14294,6 +18657,100 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TradeCreateWithoutViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    user?: UserCreateNestedOneWithoutTradeInput
+    wishList?: WishListCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeUncheckedCreateWithoutViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
+  }
+
+  export type TradeCreateOrConnectWithoutViewsInput = {
+    where: TradeWhereUniqueInput
+    create: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput>
+  }
+
+  export type TradeCreateManyViewsInputEnvelope = {
+    data: TradeCreateManyViewsInput | TradeCreateManyViewsInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CargoUpsertWithWhereUniqueWithoutViewsInput = {
     where: CargoWhereUniqueInput
     update: XOR<CargoUpdateWithoutViewsInput, CargoUncheckedUpdateWithoutViewsInput>
@@ -14326,6 +18783,22 @@ export namespace Prisma {
     data: XOR<TransportUpdateManyMutationInput, TransportUncheckedUpdateManyWithoutViewsInput>
   }
 
+  export type TradeUpsertWithWhereUniqueWithoutViewsInput = {
+    where: TradeWhereUniqueInput
+    update: XOR<TradeUpdateWithoutViewsInput, TradeUncheckedUpdateWithoutViewsInput>
+    create: XOR<TradeCreateWithoutViewsInput, TradeUncheckedCreateWithoutViewsInput>
+  }
+
+  export type TradeUpdateWithWhereUniqueWithoutViewsInput = {
+    where: TradeWhereUniqueInput
+    data: XOR<TradeUpdateWithoutViewsInput, TradeUncheckedUpdateWithoutViewsInput>
+  }
+
+  export type TradeUpdateManyWithWhereWithoutViewsInput = {
+    where: TradeScalarWhereInput
+    data: XOR<TradeUpdateManyMutationInput, TradeUncheckedUpdateManyWithoutViewsInput>
+  }
+
   export type UserCreateWithoutWishListInput = {
     id?: string
     createdAt?: Date | string
@@ -14350,6 +18823,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoCreateNestedManyWithoutUserInput
     transport?: TransportCreateNestedManyWithoutUserInput
+    trade?: TradeCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWishListInput = {
@@ -14376,6 +18850,7 @@ export namespace Prisma {
     documents?: UserCreatedocumentsInput | string[]
     cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
     transport?: TransportUncheckedCreateNestedManyWithoutUserInput
+    trade?: TradeUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWishListInput = {
@@ -14555,6 +19030,95 @@ export namespace Prisma {
     create: XOR<TransportCreateWithoutWishListInput, TransportUncheckedCreateWithoutWishListInput>
   }
 
+  export type TradeCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+    user?: UserCreateNestedOneWithoutTradeInput
+    views?: ViewsCreateNestedOneWithoutTradeInput
+  }
+
+  export type TradeUncheckedCreateWithoutWishListInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
+  }
+
+  export type TradeCreateOrConnectWithoutWishListInput = {
+    where: TradeWhereUniqueInput
+    create: XOR<TradeCreateWithoutWishListInput, TradeUncheckedCreateWithoutWishListInput>
+  }
+
   export type UserUpsertWithoutWishListInput = {
     update: XOR<UserUpdateWithoutWishListInput, UserUncheckedUpdateWithoutWishListInput>
     create: XOR<UserCreateWithoutWishListInput, UserUncheckedCreateWithoutWishListInput>
@@ -14590,6 +19154,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUpdateManyWithoutUserNestedInput
     transport?: TransportUpdateManyWithoutUserNestedInput
+    trade?: TradeUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWishListInput = {
@@ -14616,6 +19181,7 @@ export namespace Prisma {
     documents?: UserUpdatedocumentsInput | string[]
     cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
     transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
+    trade?: TradeUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CargoUpsertWithoutWishListInput = {
@@ -14802,6 +19368,321 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type TradeUpsertWithoutWishListInput = {
+    update: XOR<TradeUpdateWithoutWishListInput, TradeUncheckedUpdateWithoutWishListInput>
+    create: XOR<TradeCreateWithoutWishListInput, TradeUncheckedCreateWithoutWishListInput>
+    where?: TradeWhereInput
+  }
+
+  export type TradeUpdateToOneWithWhereWithoutWishListInput = {
+    where?: TradeWhereInput
+    data: XOR<TradeUpdateWithoutWishListInput, TradeUncheckedUpdateWithoutWishListInput>
+  }
+
+  export type TradeUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    user?: UserUpdateOneWithoutTradeNestedInput
+    views?: ViewsUpdateOneWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateWithoutWishListInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+  }
+
+  export type UserCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoCreateNestedManyWithoutUserInput
+    wishList?: WishListCreateNestedManyWithoutUserInput
+    transport?: TransportCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    email?: string | null
+    phone?: string | null
+    hash: string
+    name?: string | null
+    surname?: string | null
+    city?: string | null
+    avatar?: string | null
+    role?: $Enums.Role
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    subscriptionStartDate?: Date | string | null
+    subscriptionEndDate?: Date | string | null
+    subscriptionStatus?: boolean | null
+    isVerified?: boolean | null
+    isBlocked?: boolean | null
+    documents?: UserCreatedocumentsInput | string[]
+    cargos?: CargoUncheckedCreateNestedManyWithoutUserInput
+    wishList?: WishListUncheckedCreateNestedManyWithoutUserInput
+    transport?: TransportUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTradeInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTradeInput, UserUncheckedCreateWithoutTradeInput>
+  }
+
+  export type ViewsCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    count?: number
+    cargo?: CargoCreateNestedManyWithoutViewsInput
+    transport?: TransportCreateNestedManyWithoutViewsInput
+  }
+
+  export type ViewsUncheckedCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    count?: number
+    cargo?: CargoUncheckedCreateNestedManyWithoutViewsInput
+    transport?: TransportUncheckedCreateNestedManyWithoutViewsInput
+  }
+
+  export type ViewsCreateOrConnectWithoutTradeInput = {
+    where: ViewsWhereUniqueInput
+    create: XOR<ViewsCreateWithoutTradeInput, ViewsUncheckedCreateWithoutTradeInput>
+  }
+
+  export type WishListCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutWishListInput
+    cargo?: CargoCreateNestedOneWithoutWishListInput
+    transport?: TransportCreateNestedOneWithoutWishListInput
+  }
+
+  export type WishListUncheckedCreateWithoutTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+    transportId?: string | null
+  }
+
+  export type WishListCreateOrConnectWithoutTradeInput = {
+    where: WishListWhereUniqueInput
+    create: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput>
+  }
+
+  export type WishListCreateManyTradeInputEnvelope = {
+    data: WishListCreateManyTradeInput | WishListCreateManyTradeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutTradeInput = {
+    update: XOR<UserUpdateWithoutTradeInput, UserUncheckedUpdateWithoutTradeInput>
+    create: XOR<UserCreateWithoutTradeInput, UserUncheckedCreateWithoutTradeInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTradeInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTradeInput, UserUncheckedUpdateWithoutTradeInput>
+  }
+
+  export type UserUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUpdateManyWithoutUserNestedInput
+    wishList?: WishListUpdateManyWithoutUserNestedInput
+    transport?: TransportUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    hash?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    surname?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    subscriptionStartDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionEndDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subscriptionStatus?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isVerified?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isBlocked?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    documents?: UserUpdatedocumentsInput | string[]
+    cargos?: CargoUncheckedUpdateManyWithoutUserNestedInput
+    wishList?: WishListUncheckedUpdateManyWithoutUserNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ViewsUpsertWithoutTradeInput = {
+    update: XOR<ViewsUpdateWithoutTradeInput, ViewsUncheckedUpdateWithoutTradeInput>
+    create: XOR<ViewsCreateWithoutTradeInput, ViewsUncheckedCreateWithoutTradeInput>
+    where?: ViewsWhereInput
+  }
+
+  export type ViewsUpdateToOneWithWhereWithoutTradeInput = {
+    where?: ViewsWhereInput
+    data: XOR<ViewsUpdateWithoutTradeInput, ViewsUncheckedUpdateWithoutTradeInput>
+  }
+
+  export type ViewsUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    cargo?: CargoUpdateManyWithoutViewsNestedInput
+    transport?: TransportUpdateManyWithoutViewsNestedInput
+  }
+
+  export type ViewsUncheckedUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    count?: IntFieldUpdateOperationsInput | number
+    cargo?: CargoUncheckedUpdateManyWithoutViewsNestedInput
+    transport?: TransportUncheckedUpdateManyWithoutViewsNestedInput
+  }
+
+  export type WishListUpsertWithWhereUniqueWithoutTradeInput = {
+    where: WishListWhereUniqueInput
+    update: XOR<WishListUpdateWithoutTradeInput, WishListUncheckedUpdateWithoutTradeInput>
+    create: XOR<WishListCreateWithoutTradeInput, WishListUncheckedCreateWithoutTradeInput>
+  }
+
+  export type WishListUpdateWithWhereUniqueWithoutTradeInput = {
+    where: WishListWhereUniqueInput
+    data: XOR<WishListUpdateWithoutTradeInput, WishListUncheckedUpdateWithoutTradeInput>
+  }
+
+  export type WishListUpdateManyWithWhereWithoutTradeInput = {
+    where: WishListScalarWhereInput
+    data: XOR<WishListUpdateManyMutationInput, WishListUncheckedUpdateManyWithoutTradeInput>
+  }
+
   export type CargoCreateManyUserInput = {
     id?: string
     createdAt?: Date | string
@@ -14860,6 +19741,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     cargoId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type TransportCreateManyUserInput = {
@@ -14887,6 +19769,47 @@ export namespace Prisma {
     viber?: string | null
     skype?: string | null
     viewsId?: string | null
+  }
+
+  export type TradeCreateManyUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    viewsId?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
   }
 
   export type CargoUpdateWithoutUserInput = {
@@ -15053,6 +19976,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargo?: CargoUpdateOneWithoutWishListNestedInput
     transport?: TransportUpdateOneWithoutWishListNestedInput
+    trade?: TradeUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateWithoutUserInput = {
@@ -15061,6 +19985,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListUncheckedUpdateManyWithoutUserInput = {
@@ -15069,6 +19994,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TransportUpdateWithoutUserInput = {
@@ -15154,12 +20080,138 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type TradeUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    views?: ViewsUpdateOneWithoutTradeNestedInput
+    wishList?: WishListUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    viewsId?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+  }
+
   export type WishListCreateManyCargoInput = {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     userId?: string | null
     transportId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListUpdateWithoutCargoInput = {
@@ -15168,6 +20220,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutWishListNestedInput
     transport?: TransportUpdateOneWithoutWishListNestedInput
+    trade?: TradeUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateWithoutCargoInput = {
@@ -15176,6 +20229,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListUncheckedUpdateManyWithoutCargoInput = {
@@ -15184,6 +20238,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     transportId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListCreateManyTransportInput = {
@@ -15192,6 +20247,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId?: string | null
     cargoId?: string | null
+    tradeId?: string | null
   }
 
   export type WishListUpdateWithoutTransportInput = {
@@ -15200,6 +20256,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutWishListNestedInput
     cargo?: CargoUpdateOneWithoutWishListNestedInput
+    trade?: TradeUpdateOneWithoutWishListNestedInput
   }
 
   export type WishListUncheckedUpdateWithoutTransportInput = {
@@ -15208,6 +20265,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WishListUncheckedUpdateManyWithoutTransportInput = {
@@ -15216,6 +20274,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tradeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CargoCreateManyViewsInput = {
@@ -15295,6 +20354,47 @@ export namespace Prisma {
     telegram?: string | null
     viber?: string | null
     skype?: string | null
+  }
+
+  export type TradeCreateManyViewsInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    city: string
+    variant: $Enums.VariantEnum
+    typeTruck?: $Enums.TypeTruckEnum | null
+    typeTechnic?: $Enums.TypeTechnicEnum | null
+    typeTrailer?: $Enums.TypeTrailerEnum | null
+    qtyAxis?: $Enums.QtyAxisEnum | null
+    typeSuspension?: $Enums.TypeSuspensionEnum | null
+    typeBrake?: $Enums.TypeBrakeEnum | null
+    isArchived?: boolean | null
+    year?: number | null
+    weight?: number | null
+    price: number
+    volumeEngine?: number | null
+    powerEngine?: number | null
+    description?: string | null
+    mileage?: number | null
+    typeEngine?: $Enums.TypeEngineEnum | null
+    status?: $Enums.StatusEnum | null
+    exist?: $Enums.ExistEnum | null
+    drive?: $Enums.DriveEnum | null
+    transmission?: $Enums.TransmissionEnum | null
+    steering?: $Enums.SteeringEnum | null
+    truckWheel?: $Enums.TruckWheelEnum | null
+    tractorWheel?: $Enums.TractorWheelEnum | null
+    cabinSuspension?: $Enums.CabinSuspensionEnum | null
+    photos?: TradeCreatephotosInput | string[]
+    userId?: string | null
+    userName?: string | null
+    userPhone?: string | null
+    whatsapp?: string | null
+    telegram?: string | null
+    viber?: string | null
+    skype?: string | null
+    trailerBrand?: $Enums.TrailerBrandEnum | null
+    truckBrand?: $Enums.TruckBrandEnum | null
   }
 
   export type CargoUpdateWithoutViewsInput = {
@@ -15536,6 +20636,167 @@ export namespace Prisma {
     telegram?: NullableStringFieldUpdateOperationsInput | string | null
     viber?: NullableStringFieldUpdateOperationsInput | string | null
     skype?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TradeUpdateWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    user?: UserUpdateOneWithoutTradeNestedInput
+    wishList?: WishListUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
+  }
+
+  export type TradeUncheckedUpdateManyWithoutViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    city?: StringFieldUpdateOperationsInput | string
+    variant?: EnumVariantEnumFieldUpdateOperationsInput | $Enums.VariantEnum
+    typeTruck?: NullableEnumTypeTruckEnumFieldUpdateOperationsInput | $Enums.TypeTruckEnum | null
+    typeTechnic?: NullableEnumTypeTechnicEnumFieldUpdateOperationsInput | $Enums.TypeTechnicEnum | null
+    typeTrailer?: NullableEnumTypeTrailerEnumFieldUpdateOperationsInput | $Enums.TypeTrailerEnum | null
+    qtyAxis?: NullableEnumQtyAxisEnumFieldUpdateOperationsInput | $Enums.QtyAxisEnum | null
+    typeSuspension?: NullableEnumTypeSuspensionEnumFieldUpdateOperationsInput | $Enums.TypeSuspensionEnum | null
+    typeBrake?: NullableEnumTypeBrakeEnumFieldUpdateOperationsInput | $Enums.TypeBrakeEnum | null
+    isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    weight?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
+    powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    mileage?: NullableIntFieldUpdateOperationsInput | number | null
+    typeEngine?: NullableEnumTypeEngineEnumFieldUpdateOperationsInput | $Enums.TypeEngineEnum | null
+    status?: NullableEnumStatusEnumFieldUpdateOperationsInput | $Enums.StatusEnum | null
+    exist?: NullableEnumExistEnumFieldUpdateOperationsInput | $Enums.ExistEnum | null
+    drive?: NullableEnumDriveEnumFieldUpdateOperationsInput | $Enums.DriveEnum | null
+    transmission?: NullableEnumTransmissionEnumFieldUpdateOperationsInput | $Enums.TransmissionEnum | null
+    steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
+    truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
+    tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
+    photos?: TradeUpdatephotosInput | string[]
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    userName?: NullableStringFieldUpdateOperationsInput | string | null
+    userPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    telegram?: NullableStringFieldUpdateOperationsInput | string | null
+    viber?: NullableStringFieldUpdateOperationsInput | string | null
+    skype?: NullableStringFieldUpdateOperationsInput | string | null
+    trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
+    truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+  }
+
+  export type WishListCreateManyTradeInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId?: string | null
+    cargoId?: string | null
+    transportId?: string | null
+  }
+
+  export type WishListUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutWishListNestedInput
+    cargo?: CargoUpdateOneWithoutWishListNestedInput
+    transport?: TransportUpdateOneWithoutWishListNestedInput
+  }
+
+  export type WishListUncheckedUpdateWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type WishListUncheckedUpdateManyWithoutTradeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    cargoId?: NullableStringFieldUpdateOperationsInput | string | null
+    transportId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

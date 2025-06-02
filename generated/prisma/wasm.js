@@ -238,7 +238,8 @@ exports.Prisma.WishListScalarFieldEnum = {
   updatedAt: 'updatedAt',
   userId: 'userId',
   cargoId: 'cargoId',
-  transportId: 'transportId'
+  transportId: 'transportId',
+  tradeId: 'tradeId'
 };
 
 exports.Prisma.CurrencyRateScalarFieldEnum = {
@@ -247,6 +248,48 @@ exports.Prisma.CurrencyRateScalarFieldEnum = {
   updatedAt: 'updatedAt',
   title: 'title',
   rate: 'rate'
+};
+
+exports.Prisma.TradeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  city: 'city',
+  variant: 'variant',
+  typeTruck: 'typeTruck',
+  typeTechnic: 'typeTechnic',
+  typeTrailer: 'typeTrailer',
+  qtyAxis: 'qtyAxis',
+  typeSuspension: 'typeSuspension',
+  typeBrake: 'typeBrake',
+  isArchived: 'isArchived',
+  year: 'year',
+  weight: 'weight',
+  price: 'price',
+  volumeEngine: 'volumeEngine',
+  powerEngine: 'powerEngine',
+  description: 'description',
+  mileage: 'mileage',
+  typeEngine: 'typeEngine',
+  status: 'status',
+  exist: 'exist',
+  drive: 'drive',
+  transmission: 'transmission',
+  steering: 'steering',
+  truckWheel: 'truckWheel',
+  tractorWheel: 'tractorWheel',
+  cabinSuspension: 'cabinSuspension',
+  photos: 'photos',
+  userId: 'userId',
+  userName: 'userName',
+  userPhone: 'userPhone',
+  whatsapp: 'whatsapp',
+  telegram: 'telegram',
+  viber: 'viber',
+  skype: 'skype',
+  viewsId: 'viewsId',
+  trailerBrand: 'trailerBrand',
+  truckBrand: 'truckBrand'
 };
 
 exports.Prisma.SortOrder = {
@@ -450,13 +493,272 @@ exports.Additionally = exports.$Enums.Additionally = {
   THERMAL_RECORDER: 'THERMAL_RECORDER'
 };
 
+exports.VariantEnum = exports.$Enums.VariantEnum = {
+  TRUCK: 'TRUCK',
+  TRAILER: 'TRAILER',
+  TRACTOR: 'TRACTOR'
+};
+
+exports.TypeTruckEnum = exports.$Enums.TypeTruckEnum = {
+  AVTOVOZ: 'AVTOVOZ',
+  AVTOCISTERNA: 'AVTOCISTERNA',
+  BORTOVOI: 'BORTOVOI',
+  TERMOFURGON: 'TERMOFURGON',
+  REFRIJERATOR: 'REFRIJERATOR',
+  SAMOSVAL: 'SAMOSVAL',
+  TENT: 'TENT',
+  DRUGOI: 'DRUGOI'
+};
+
+exports.TypeTechnicEnum = exports.$Enums.TypeTechnicEnum = {
+  TRAILER: 'TRAILER',
+  SEMI_TRAILER: 'SEMI_TRAILER'
+};
+
+exports.TypeTrailerEnum = exports.$Enums.TypeTrailerEnum = {
+  AVTOVOZ: 'AVTOVOZ',
+  AVTOCISTERNA: 'AVTOCISTERNA',
+  BORTOVOI: 'BORTOVOI',
+  DLINNOMER: 'DLINNOMER',
+  EVROFURA: 'EVROFURA',
+  KONTEINEROVOZ: 'KONTEINEROVOZ',
+  KUNG: 'KUNG',
+  REFRIJERATOR: 'REFRIJERATOR',
+  SAMOSVAL: 'SAMOSVAL',
+  TERMOFURGON: 'TERMOFURGON',
+  TORGOVIY_FURGON: 'TORGOVIY_FURGON',
+  TYAGACH: 'TYAGACH',
+  FURA: 'FURA',
+  FURGON: 'FURGON',
+  SHASSI: 'SHASSI',
+  DRUGOI: 'DRUGOI',
+  ANY: 'ANY'
+};
+
+exports.QtyAxisEnum = exports.$Enums.QtyAxisEnum = {
+  A1: 'A1',
+  A2: 'A2',
+  A3: 'A3',
+  A4: 'A4',
+  A5: 'A5',
+  A6: 'A6',
+  A7: 'A7',
+  A8: 'A8',
+  A9: 'A9',
+  A10: 'A10',
+  MORE_10: 'MORE_10'
+};
+
+exports.TypeSuspensionEnum = exports.$Enums.TypeSuspensionEnum = {
+  BALANCE: 'BALANCE',
+  RESSOR: 'RESSOR',
+  PNEUMO: 'PNEUMO',
+  HYDRAULIC: 'HYDRAULIC',
+  SEMI_RESSOR: 'SEMI_RESSOR'
+};
+
+exports.TypeBrakeEnum = exports.$Enums.TypeBrakeEnum = {
+  DRUM: 'DRUM',
+  DISC: 'DISC',
+  NO_BRAKE: 'NO_BRAKE'
+};
+
+exports.TypeEngineEnum = exports.$Enums.TypeEngineEnum = {
+  DIESEL: 'DIESEL',
+  GAS: 'GAS',
+  GASOLINE: 'GASOLINE',
+  ELECTRIC: 'ELECTRIC',
+  HYBRID: 'HYBRID',
+  DIESEL_ON_GAS: 'DIESEL_ON_GAS',
+  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS',
+  ANY: 'ANY'
+};
+
+exports.StatusEnum = exports.$Enums.StatusEnum = {
+  NEW: 'NEW',
+  USED: 'USED',
+  ANY: 'ANY'
+};
+
+exports.ExistEnum = exports.$Enums.ExistEnum = {
+  IN_STOCK: 'IN_STOCK',
+  ON_ORDER: 'ON_ORDER',
+  ANY: 'ANY'
+};
+
+exports.DriveEnum = exports.$Enums.DriveEnum = {
+  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
+  FRONT_WHEEL_DRIVE: 'FRONT_WHEEL_DRIVE',
+  REAR_WHEEL_DRIVE: 'REAR_WHEEL_DRIVE',
+  FULL_TIME_ALL_WHEEL_DRIVE: 'FULL_TIME_ALL_WHEEL_DRIVE',
+  PART_TIME_ALL_WHEEL_DRIVE: 'PART_TIME_ALL_WHEEL_DRIVE',
+  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL',
+  ANY: 'ANY'
+};
+
+exports.TransmissionEnum = exports.$Enums.TransmissionEnum = {
+  AUTOMATIC: 'AUTOMATIC',
+  MECHANICAL: 'MECHANICAL',
+  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC',
+  ANY: 'ANY'
+};
+
+exports.SteeringEnum = exports.$Enums.SteeringEnum = {
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+  ANY: 'ANY'
+};
+
+exports.TruckWheelEnum = exports.$Enums.TruckWheelEnum = {
+  W4X2: 'W4X2',
+  W4X4: 'W4X4',
+  W6X2: 'W6X2',
+  W6X4: 'W6X4',
+  W6X6: 'W6X6',
+  W8X2: 'W8X2',
+  W8X4: 'W8X4',
+  W8X6: 'W8X6',
+  W8X8: 'W8X8',
+  W10X2: 'W10X2',
+  W10X4: 'W10X4',
+  W10X6: 'W10X6',
+  W10X8: 'W10X8',
+  w10X10: 'w10X10',
+  W12X4: 'W12X4',
+  W12X8: 'W12X8',
+  OTHER: 'OTHER',
+  ANY: 'ANY'
+};
+
+exports.TractorWheelEnum = exports.$Enums.TractorWheelEnum = {
+  W4X2: 'W4X2',
+  W4X4: 'W4X4',
+  W6X2: 'W6X2',
+  W6X4: 'W6X4',
+  W8X4: 'W8X4',
+  W8X6: 'W8X6',
+  W8X8: 'W8X8',
+  OTHER: 'OTHER',
+  ANY: 'ANY'
+};
+
+exports.CabinSuspensionEnum = exports.$Enums.CabinSuspensionEnum = {
+  PNEUMATIC: 'PNEUMATIC',
+  MECHANICAL: 'MECHANICAL'
+};
+
+exports.TrailerBrandEnum = exports.$Enums.TrailerBrandEnum = {
+  AVIA: 'AVIA',
+  BAW: 'BAW',
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ'
+};
+
+exports.TruckBrandEnum = exports.$Enums.TruckBrandEnum = {
+  OTHER: 'OTHER',
+  ASTRA: 'ASTRA',
+  AVIA: 'AVIA',
+  BAW: 'BAW',
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ',
+  BMC: 'BMC',
+  BYD: 'BYD',
+  CAMC: 'CAMC',
+  CATERPILLAR: 'CATERPILLAR',
+  CHAMELEON: 'CHAMELEON',
+  CHANGAN: 'CHANGAN',
+  CHEVROLET: 'CHEVROLET',
+  CLW: 'CLW',
+  DAF: 'DAF',
+  DAEWOO: 'DAEWOO',
+  DAYUN: 'DAYUN',
+  DAYUN_TRUCK: 'DAYUN_TRUCK',
+  DESOTO: 'DESOTO',
+  DERRY: 'DERRY',
+  DFAC: 'DFAC',
+  DONGFENG: 'DONGFENG',
+  EVM: 'EVM',
+  FAW: 'FAW',
+  FARIZON: 'FARIZON',
+  FIAT: 'FIAT',
+  FIAT_PROFESSIONAL: 'FIAT_PROFESSIONAL',
+  FORD: 'FORD',
+  FORLAND: 'FORLAND',
+  FOTON: 'FOTON',
+  FREIGHTLINER: 'FREIGHTLINER',
+  FUSO_MITSUBISHI: 'FUSO_MITSUBISHI',
+  GAC: 'GAC',
+  GEELY: 'GEELY',
+  GMC: 'GMC',
+  GROZ: 'GROZ',
+  HINO: 'HINO',
+  HONDA: 'HONDA',
+  HONGYAN: 'HONGYAN',
+  HOWO: 'HOWO',
+  HYUNDAI: 'HYUNDAI',
+  HYVA: 'HYVA',
+  IFA: 'IFA',
+  INTERNATIONAL: 'INTERNATIONAL',
+  INTERNATIONAL_WORKSTAR: 'INTERNATIONAL_WORKSTAR',
+  ISUZU: 'ISUZU',
+  IVECO: 'IVECO',
+  IVECO_HONGYAN: 'IVECO_HONGYAN',
+  JAC: 'JAC',
+  JBC: 'JBC',
+  JIEFANG: 'JIEFANG',
+  JINPENG: 'JINPENG',
+  JMC: 'JMC',
+  KAMA: 'KAMA',
+  KENWORTH: 'KENWORTH',
+  KIA: 'KIA',
+  KYC: 'KYC',
+  LADA: 'LADA',
+  LGMG: 'LGMG',
+  MAN: 'MAN',
+  MAZDA: 'MAZDA',
+  MEILLER_KIPPER: 'MEILLER_KIPPER',
+  MERCEDES_BENZ: 'MERCEDES_BENZ',
+  MITSUBISHI: 'MITSUBISHI',
+  NISSAN: 'NISSAN',
+  NORTH_BENZ: 'NORTH_BENZ',
+  OPEL: 'OPEL',
+  PEUGEOT: 'PEUGEOT',
+  RENAULT: 'RENAULT',
+  ROBUR: 'ROBUR',
+  SANY: 'SANY',
+  SCANIA: 'SCANIA',
+  SHAANXI: 'SHAANXI',
+  SHACMAN: 'SHACMAN',
+  SHACMAN_SHAANXI: 'SHACMAN_SHAANXI',
+  SHANDONG_KAMA: 'SHANDONG_KAMA',
+  SHINERAY: 'SHINERAY',
+  SINOTRUK: 'SINOTRUK',
+  SINOTRUK_SITRAK: 'SINOTRUK_SITRAK',
+  SITRAK: 'SITRAK',
+  SSANGYONG: 'SSANGYONG',
+  STAR: 'STAR',
+  STEYR: 'STEYR',
+  TATA: 'TATA',
+  TATRA: 'TATRA',
+  TONLY: 'TONLY',
+  TOYOTA: 'TOYOTA',
+  VOLKSWAGEN: 'VOLKSWAGEN',
+  VOLVO: 'VOLVO',
+  WEICHAI: 'WEICHAI',
+  WULING: 'WULING',
+  XCMG: 'XCMG',
+  XINFEIG: 'XINFEIG',
+  YUEJIN: 'YUEJIN',
+  YUTONG: 'YUTONG',
+  ZOOMLION: 'ZOOMLION'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Cargo: 'Cargo',
   Transport: 'Transport',
   Views: 'Views',
   WishList: 'WishList',
-  CurrencyRate: 'CurrencyRate'
+  CurrencyRate: 'CurrencyRate',
+  Trade: 'Trade'
 };
 
 /**

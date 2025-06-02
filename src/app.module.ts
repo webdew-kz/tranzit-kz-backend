@@ -9,6 +9,9 @@ import { ConfigModule } from "@nestjs/config";
 import { PrismaService } from "./prisma/prisma.service";
 import { EmailModule } from "./modules/email/email.module";
 import { CurrencyModule } from "./modules/currency/currency.module";
+import { TruckModule } from "./modules/truck/truck.module";
+import { TrailerModule } from "./modules/trailer/trailer.module";
+import { TractorModule } from "./modules/tractor/tractor.module";
 
 @Module({
     imports: [
@@ -22,6 +25,9 @@ import { CurrencyModule } from "./modules/currency/currency.module";
         TransportModule,
         EmailModule,
         CurrencyModule,
+        TruckModule,
+        TrailerModule,
+        TractorModule,
     ],
     controllers: [],
     providers: [PrismaService],

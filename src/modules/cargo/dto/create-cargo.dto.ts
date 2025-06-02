@@ -33,6 +33,7 @@ export class CreateCargoDto {
     title: string;
 
     @IsInt()
+    @IsPositive()
     price: number;
 
     @IsEnum(Currency)
