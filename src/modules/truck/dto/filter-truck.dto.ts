@@ -18,6 +18,7 @@ import {
     StatusEnum,
     SteeringEnum,
     TransmissionEnum,
+    TruckBrandEnum,
     TruckWheelEnum,
     TypeEngineEnum,
     TypeTruckEnum,
@@ -29,9 +30,12 @@ export class FilterTruckDto {
     @IsString()
     city: string;
 
-    @IsOptional()
     @Equals(VariantEnum.TRUCK)
     variant: VariantEnum;
+
+    @IsOptional()
+    @IsEnum(TruckBrandEnum)
+    truckBrand: TruckBrandEnum;
 
     @IsOptional()
     @IsString()

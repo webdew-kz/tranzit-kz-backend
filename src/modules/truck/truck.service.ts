@@ -78,6 +78,7 @@ export class TruckService {
     ) {
         let oldPhotos: string[] = [];
 
+        // Приводим oldPhotos к массиву строк
         if (Array.isArray(dto.oldPhotos)) {
             oldPhotos = dto.oldPhotos;
         } else if (typeof dto.oldPhotos === "string") {
@@ -85,8 +86,32 @@ export class TruckService {
         }
 
         const { oldPhotos: _, ...cleanDto } = dto;
-        const photoPaths: string[] = [...oldPhotos];
+        const photoPaths: string[] = [];
 
+        // Копируем старые фото
+        for (const oldPhotoPath of oldPhotos) {
+            try {
+                const absoluteOldPath = path.join(process.cwd(), oldPhotoPath);
+                const { name } = path.parse(oldPhotoPath);
+                const timestamp = Date.now();
+                const newFileName = `${name}-${timestamp}.webp`;
+                const newRelativePath = `/uploads/trucks/${newFileName}`;
+                const newAbsolutePath = path.join(
+                    process.cwd(),
+                    newRelativePath
+                );
+
+                await fs.promises.copyFile(absoluteOldPath, newAbsolutePath);
+                photoPaths.push(newRelativePath);
+            } catch (err) {
+                console.warn(
+                    `⚠️ Не удалось скопировать файл: ${oldPhotoPath}`,
+                    err
+                );
+            }
+        }
+
+        // Обрабатываем новые загруженные фото
         if (files?.photos?.length) {
             for (const file of files.photos) {
                 const filePath = path.join(file.destination, file.filename);
@@ -95,23 +120,28 @@ export class TruckService {
 
                 await sharp(filePath)
                     .resize({ width: 600 })
-                    .toFormat("webp", { quality: 50 }) // это достаточно
+                    .toFormat("webp", { quality: 50 })
                     .toFile(resizedPath);
 
                 photoPaths.push(`/uploads/trucks/resized-${name}.webp`);
 
-                await deleteFile(filePath);
+                await deleteFile(filePath); // удаляем оригинал
             }
+        }
+
+        // Если вообще нет фото — ошибка
+        if (photoPaths.length === 0) {
+            throw new BadRequestException(
+                "Необходимо загрузить хотя бы одно фото грузовика"
+            );
         }
 
         const data = {
             ...cleanDto,
-            ...(photoPaths.length ? { photos: photoPaths } : { photos: [] }),
+            photos: photoPaths,
         };
 
-        const views = await this.prisma.views.create({
-            data: {},
-        });
+        const views = await this.prisma.views.create({ data: {} });
 
         const truck = await this.prisma.trade.create({
             data: {
@@ -264,7 +294,7 @@ export class TruckService {
         });
 
         if (!trucks.length) {
-            return { message: "Грузовики не найдены" };
+            return { message: "Грузовики не найдены", trucks: [] };
         }
 
         return {
@@ -274,37 +304,54 @@ export class TruckService {
     }
 
     async findAllArchivedByUserId(userId: string, page = 1, perPage = 5) {
-        const currentPage = Math.max(1, Number(page));
-        const limit = Math.max(1, Number(perPage));
-        const offset = (currentPage - 1) * limit;
+        // const currentPage = Math.max(1, Number(page));
+        // const limit = Math.max(1, Number(perPage));
+        // const offset = (currentPage - 1) * limit;
 
-        const [trucks, total] = await this.prisma.$transaction([
-            this.prisma.trade.findMany({
-                where: {
-                    userId,
-                    isArchived: true,
-                },
-                orderBy: {
-                    updatedAt: "desc",
-                },
-                skip: offset,
-                take: limit,
-                include: {
-                    views: true,
-                },
-            }),
-            this.prisma.trade.count({
-                where: {
-                    userId,
-                    isArchived: true,
-                },
-            }),
-        ]);
+        // const [trucks, total] = await this.prisma.$transaction([
+        //     this.prisma.trade.findMany({
+        //         where: {
+        //             userId,
+        //             isArchived: true,
+        //         },
+        //         orderBy: {
+        //             updatedAt: "desc",
+        //         },
+        //         skip: offset,
+        //         take: limit,
+        //         include: {
+        //             views: true,
+        //         },
+        //     }),
+        //     this.prisma.trade.count({
+        //         where: {
+        //             userId,
+        //             isArchived: true,
+        //         },
+        //     }),
+        // ]);
+
+        const trucks = await this.prisma.trade.findMany({
+            where: {
+                userId,
+                isArchived: true,
+            },
+            orderBy: {
+                updatedAt: "desc",
+            },
+            include: {
+                views: true,
+                user: true,
+            },
+        });
+
+        if (!trucks.length) {
+            return { message: "Грузовики не найдены", trucks: [] };
+        }
 
         return {
             trucks,
-            hasMore: currentPage * limit < total,
-            total,
+            message: `Найдено ${trucks.length} грузовиков`,
         };
     }
 
@@ -554,7 +601,7 @@ export class TruckService {
         return { message: "Все грузовики удалены из избранного" };
     }
 
-    async getWishList(userId: string) {
+    async getWishlist(userId: string) {
         const trucks = await this.prisma.wishList.findMany({
             where: { userId },
             include: {
@@ -577,11 +624,21 @@ export class TruckService {
         };
     }
 
+    async isInWishlist(tradeId: string, userId: string) {
+        const wishListItem = await this.prisma.wishList.findFirst({
+            where: {
+                userId,
+                tradeId,
+            },
+        });
+
+        return !!wishListItem;
+    }
+
     async findByFilter(dto: FilterTruckDto) {
         const {
             city,
-            truckBrandId,
-            truckBrandModelId,
+            truckBrand,
             typeTruck,
             typeEngine,
             status,
@@ -598,13 +655,16 @@ export class TruckService {
             maxWeight,
             minMileage,
             maxMileage,
+            minPowerEngine,
+            maxPowerEngine,
+            minVolumeEngine,
+            maxVolumeEngine,
         } = dto;
 
         const where: any = {
             isArchived: false,
             ...(city && { city }),
-            ...(truckBrandId && { truckBrandId }),
-            ...(truckBrandModelId && { truckBrandModelId }),
+            ...(truckBrand && { truckBrand }),
             ...(typeTruck && { typeTruck }),
             ...(typeEngine && { typeEngine }),
             ...(status && { status }),
@@ -625,6 +685,15 @@ export class TruckService {
             ...(this.rangeFilter(minMileage, maxMileage) && {
                 mileage: this.rangeFilter(minMileage, maxMileage),
             }),
+            ...(this.rangeFilter(minPowerEngine, maxPowerEngine) && {
+                powerEngine: this.rangeFilter(minPowerEngine, maxPowerEngine),
+            }),
+            ...(this.rangeFilter(minVolumeEngine, maxVolumeEngine) && {
+                volumeEngine: this.rangeFilter(
+                    minVolumeEngine,
+                    maxVolumeEngine
+                ),
+            }),
         };
 
         const trucks = await this.prisma.trade.findMany({
@@ -639,10 +708,16 @@ export class TruckService {
         });
 
         if (!trucks.length) {
-            throw new NotFoundException("Грузовики не найдены по фильтру");
+            return {
+                trucks: [],
+                message: "По вашему запросу грузовики не найдены",
+            };
         }
 
-        return trucks;
+        return {
+            trucks,
+            message: `Найдено ${trucks.length} грузовиков`,
+        };
     }
 
     private rangeFilter(min?: number, max?: number) {

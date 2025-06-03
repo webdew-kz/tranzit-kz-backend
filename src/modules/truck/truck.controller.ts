@@ -46,11 +46,11 @@ export class TruckController {
 
     @Get("find-all-archived-by-user-id")
     async findAllArchivedByUserId(
-        @CurrentUser("id") userId: string,
-        @Query("page") page: string
+        @CurrentUser("id") userId: string
+        // @Query("page") page: string
     ) {
-        const currentPage = Number(page) || 1;
-        return this.truckService.findAllArchivedByUserId(userId, currentPage);
+        // const currentPage = Number(page) || 1;
+        return this.truckService.findAllArchivedByUserId(userId);
     }
 
     @Get("find-all")
@@ -59,7 +59,12 @@ export class TruckController {
         return this.truckService.findAll(currentPage);
     }
 
-    @Get("find-by-filter")
+    @Get("wishlist")
+    async getWishlist(@CurrentUser("id") userId: string) {
+        return this.truckService.getWishlist(userId);
+    }
+
+    @Post("find-by-filter")
     async findByFilter(@Body() dto: FilterTruckDto) {
         return this.truckService.findByFilter(dto);
     }
@@ -185,7 +190,7 @@ export class TruckController {
         return this.truckService.addView(id);
     }
 
-    @Post("add-to-wish-list/:id")
+    @Post("add-to-wishlist/:id")
     async addToWishlist(
         @CurrentUser("id") userId: string,
         @Param("id") truckId: string
@@ -193,7 +198,7 @@ export class TruckController {
         return this.truckService.addToWishlist(userId, truckId);
     }
 
-    @Post("remove-from-wish-list/:id")
+    @Post("remove-from-wishlist/:id")
     async removeFromWishlist(
         @CurrentUser("id") userId: string,
         @Param("id") truckId: string
@@ -204,5 +209,13 @@ export class TruckController {
     @Post("remove-all-from-wish-list")
     async removeAllFromWishlist(@CurrentUser("id") userId: string) {
         return this.truckService.removeAllFromWishlist(userId);
+    }
+
+    @Post("is-in-wishlist")
+    async isInWishlist(
+        @CurrentUser("id") userId: string,
+        @Body("truckId") truckId: string
+    ) {
+        return this.truckService.isInWishlist(truckId, userId);
     }
 }
