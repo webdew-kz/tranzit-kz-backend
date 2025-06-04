@@ -603,9 +603,14 @@ export class TruckService {
 
     async getWishlist(userId: string) {
         const trucks = await this.prisma.wishList.findMany({
-            where: { userId },
+            where: {
+                userId,
+            },
             include: {
                 trade: {
+                    where: {
+                        variant: "TRUCK",
+                    },
                     include: {
                         user: true,
                         views: true,
