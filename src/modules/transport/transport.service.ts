@@ -530,7 +530,7 @@ export class TransportService {
 
     async getWishList(userId: string) {
         const transports = await this.prisma.wishList.findMany({
-            where: { userId },
+            where: { userId, transportId: { not: null } },
             include: {
                 transport: {
                     include: {

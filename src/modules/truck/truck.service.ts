@@ -605,6 +605,7 @@ export class TruckService {
         const trucks = await this.prisma.wishList.findMany({
             where: {
                 userId,
+                tradeId: { not: null },
                 trade: {
                     variant: "TRUCK",
                 },

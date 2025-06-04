@@ -564,7 +564,7 @@ export class CargoService {
 
     async getWishList(userId: string) {
         const cargos = await this.prisma.wishList.findMany({
-            where: { userId },
+            where: { userId, cargoId: { not: null } }, // только записи, связанные с грузами
             include: {
                 cargo: {
                     include: {
