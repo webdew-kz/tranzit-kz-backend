@@ -261,9 +261,9 @@ model Trade {
   mileage      Int? // Пробег в км
   typeEngine   TypeEngineEnum? // Тип двигателя: дизель, газ, бензин,
   status       StatusEnum? // Состояние: новый, б/у, любой
-  exist        ExistEnum? // Наличие: в наличии, под заказ, любой
+  exist        ExistEnum? // Наличие: в наличии, под заказ, любой		
   drive        DriveEnum? // Привод
-  transmission TransmissionEnum? // Коробка передач
+  transmission TransmissionEnum? // Коробка передач	
   steering     SteeringEnum? // Рулевое управление
 
   truckWheel TruckWheelEnum? //Колесная формула
