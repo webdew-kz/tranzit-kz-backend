@@ -16,7 +16,7 @@ async function bootstrap() {
     app.use(cookieParser());
 
     app.enableCors({
-        origin: config.get<string>("CLIENT_URL") || "https://itranzit.kz",
+        origin: config.get<string>("CLIENT_URL"),
         credentials: true,
     });
 
