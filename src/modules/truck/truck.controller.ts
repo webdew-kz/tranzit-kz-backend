@@ -74,6 +74,8 @@ export class TruckController {
         FileFieldsInterceptor([{ name: "photos", maxCount: 4 }], {
             storage: diskStorage({
                 destination: (req, file, cb) => {
+                    console.log("Current working dir:", process.cwd());
+
                     const dir = path.join(process.cwd(), "uploads", "trucks");
                     if (!fs.existsSync(dir)) {
                         fs.mkdirSync(dir, { recursive: true });
