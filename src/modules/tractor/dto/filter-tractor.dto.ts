@@ -23,6 +23,9 @@ import {
     TypeEngineEnum,
     // TypeTractorEnum,
     VariantEnum,
+    TypeCabinEnum,
+    CabinSuspensionEnum,
+    TractorBrandEnum,
 } from "generated/prisma";
 
 export class FilterTractorDto {
@@ -33,9 +36,17 @@ export class FilterTractorDto {
     @Equals(VariantEnum.TRACTOR)
     variant: VariantEnum;
 
-    // @IsOptional()
-    // @IsEnum(TractorBrandEnum)
-    // tractorBrand: TractorBrandEnum;
+    @IsOptional()
+    @IsEnum(TractorBrandEnum)
+    tractorBrand: TractorBrandEnum;
+
+    @IsOptional()
+    @IsEnum(TypeCabinEnum)
+    typeCabin: TypeCabinEnum;
+
+    @IsOptional()
+    @IsEnum(CabinSuspensionEnum)
+    cabinSuspension: CabinSuspensionEnum;
 
     @IsOptional()
     @IsString()

@@ -254,7 +254,7 @@ model Trade {
 
     year         Int? // Год выпуска
     weight       Float? // Вес в тоннах
-    price        Int // Цена в тенге
+    price        Int? // Цена в тенге
     volumeEngine Float? // Объем двигателя в литрах
     powerEngine  Int? // Л.с.
     description  String? // Описание
@@ -270,6 +270,7 @@ model Trade {
 
     tractorWheel TractorWheelEnum? // Колесная формула тягача
 
+    typeCabin       TypeCabinEnum? // Тип кабины: одинарная, двойная, тройная
     cabinSuspension CabinSuspensionEnum? // Подвеска кабины	
 
     photos String[] // Ссылки на фото
@@ -292,65 +293,18 @@ model Trade {
 
     truckBrand TruckBrandEnum?
 
+    tractorBrand TractorBrandEnum?
+
     @@map("truck")
 }
 
-// model TruckBrand {
-//     id        String   @id @default(uuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-
-//     name TruckBrandEnum
-
-//     models TruckBrandModel[]
-
-//     trades Trade[]
-
-//     @@map("truck_brand")
-// }
-
-// model TruckBrandModel {
-//     id        String   @id @default(uuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-
-//     name String @unique // название модели грузовика
-
-//     brand   TruckBrand @relation(fields: [brandId], references: [id], onDelete: Cascade)
-//     brandId String
-
-//     trades Trade[]
-
-//     @@unique([name, brandId])
-//     @@map("truck_model")
-// }
-
-// model TrailerBrand {
-//     id        String   @id @default(uuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-
-//     name String @unique // название модели прицепа
-
-//     trades            Trade[]
-//     TrailerBrandModel TrailerBrandModel[]
-
-//     @@map("trailer_brand")
-// }
-
-// model TrailerBrandModel {
-//     id        String   @id @default(uuid())
-//     createdAt DateTime @default(now())
-//     updatedAt DateTime @updatedAt
-
-//     name String @unique // название модели грузовика
-
-//     brand   TrailerBrand @relation(fields: [brandId], references: [id], onDelete: Cascade)
-//     brandId String
-
-//     @@unique([name, brandId])
-//     @@map("trailer_model")
-// }
+enum TypeCabinEnum {
+    SEAT_2_WITHOUT_BED // 2-х местная без спального места
+    SEAT_2_WITH_1_BED // 2-х местная с 1 спальным местом
+    SEAT_2_WITH_2_BEDS // 2-х местная с 2 спальными местами
+    SEAT_3_WITHOUT_BED // 3-х местная без спального места
+    SEAT_3_WITH_1_BED // 3-х местная с 1 спальным местом
+}
 
 enum QtyAxisEnum {
     A1 // 1 ось
@@ -363,7 +317,6 @@ enum QtyAxisEnum {
     A8
     A9
     A10
-    MORE_10
 }
 
 enum TypeSuspensionEnum {
@@ -375,8 +328,11 @@ enum TypeSuspensionEnum {
 }
 
 enum CabinSuspensionEnum {
-    PNEUMATIC // пневматическая
-    MECHANICAL // механическая
+    BALANCE
+    RESSOR
+    PNEUMO
+    HYDRAULIC
+    SEMI_RESSOR
 }
 
 enum TypeBrakeEnum {
@@ -489,16 +445,190 @@ enum TruckBrandEnum {
     ZOOMLION
 }
 
-enum TrailerBrandEnum {
-    AVIA
-    BAW
+enum TractorBrandEnum {
+    AMT_NV
+    BAIC
     BEIBEN_NORTH_BENZ
+    CAMC
+    CHENGLONG
+    DAF
+    DAEWOO
+    DAYUN
+    DONGFENG
+    DOOSAN
+    ERF_MAN_TRUCK
+    FAW
+    FORD
+    FOTON
+    FREIGHTLINER
+    FUSO_MITSUBISHI
+    HINO
+    HOWO
+    HYUNDAI
+    IVECO
+    IVECO_HONGYAN
+    IVECO_LING_YE
+    INTERNATIONAL
+    ISUZU
+    IVECO_AMT
+    JAC
+    KALMAR
+    KENWORTH
+    MAN
+    MACK
+    MAGIRUS
+    MERCEDES_BENZ
+    NISSAN
+    PETERBILT
+    RENAULT
+    SANY
+    SCANIA
+    SHACMAN_SHAANXI
+    SINOTRUK_HANIA
+    SINOTRUK_SITRAK
+    SISU
+    SKODA_LIAZ
+    STERLING
+    STEYR
+    TATRA
+    TERBERG
+    TESLA
+    TIANHONG
+    RUSICH_KZKT
+    TONAR
+    URAL
+    YAROVIT_MOTORS
+    TITAN
+    VOLKSWAGEN
+    VOLVO
+    WESTERN_STAR
+    XCMG
+    YOUNGMAN
+    BZKT
+    VALDAY
+    GAZ
+    GK_MZSA
+    ZIL
+    KAMAZ
+    KRAZ
+    MAZ
+    MAZ_MAN
+    MZKT
 }
 
-// enum TruckBrandModelEnum {
-//     DAF
-//     ANY // любой
-// }
+enum TrailerBrandEnum {
+    OTHER // Другой
+    AMT_NV // AMT N.V.
+    ASIA // ASIA
+    AVIA // AVIA
+    BAW // BAW
+    BEIBEN_NORTH_BENZ // BEIBEN (NORTH BENZ)
+    BMC // BMC
+    BYD // BYD
+    CAMC // CAMC
+    CHANGAN // CHANGAN
+    CHEVROLET // CHEVROLET
+    CLW // CLW
+    DAEWOO // DAEWOO
+    DAF // DAF
+    DAYUN_TRUCK // DAYUN TRUCK
+    DERRY // DERRY
+    DESOTO // DESOTO
+    DFAC // DFAC
+    DFSK // DFSK
+    DONGFENG // DONGFENG
+    EVM // EVM
+    FARIZON // FARIZON
+    FAW // FAW
+    FIAT // FIAT
+    FIAT_PROFESSIONAL // FIAT PROFESSIONAL
+    FORD // FORD
+    FORLAND // FORLAND
+    FOTON // FOTON
+    FREIGHTLINER // FREIGHTLINER
+    FUSO_MITSUBISHI // FUSO (MITSUBISHI)
+    GAC // GAC
+    GEELY // GEELY
+    GMC // GMC
+    GROZ // GROZ
+    HINO // HINO
+    HKTC // HKTC
+    HONGYAN // HONGYAN
+    HOWO // HOWO
+    HYUNDAI // HYUNDAI
+    HYVA // HYVA
+    IFA // IFA
+    INTERNATIONAL // INTERNATIONAL
+    INTERNATIONAL_WORKSTAR // INTERNATIONAL WORKSTAR
+    ISUZU // ISUZU
+    IVECO // IVECO
+    IVECO_HONGYAN // IVECO-HONGYAN
+    IVECO_LING_YE // IVECO-LING YE
+    IVECO_AMT // IVECO-АМТ
+    JAC // JAC	
+    JBC // JBC
+    JIEFANG // JIEFANG
+    JMC // JMC	
+    KAMA // KAMA	
+    KENWORTH // KENWORTH
+    KIA // KIA
+    KYC // KYC
+    LADA_VAZ // LADA (ВАЗ)
+    LGMG
+    MAN
+    MAXUS
+    MAZDA
+    MERCEDES_BENZ
+    MITSUBISHI
+    NISSAN
+    NORTH_BENZ
+    PETERBILT
+    PEUGEOT
+    RENAULT
+    SANY
+    SCANIA
+    SHACMAN
+    SHACMAN_SHAANXI
+    SHANDONG_KAMA
+    SHINERAY
+    SINOTRUK
+    SINOTRUK_SITRAK
+    SISU
+    SITRAK
+    SSANGYONG
+    STAR
+    STEYR
+    TATA
+    TATRA
+    TONLY
+    TOYOTA
+    VOLKSWAGEN
+    VOLVO
+    WAW
+    WEICHAI
+    WULING
+    XCMG
+    XINFEIG
+    YUEJIN
+    YUTONG
+    ZOOMLION
+    ZUK
+    BELAZ
+    VALDAY
+    GAZ
+    GAZ_SAZ
+    GK_MZSA
+    ZIL
+    IZH
+    KAMAZ
+    KRAZ
+    MAZ
+    MAZ_MAN
+    MZKT
+    NEFAZ
+    UAZ
+    URAL
+}
 
 enum StatusEnum {
     NEW // новый
@@ -523,23 +653,29 @@ enum TypeTechnicEnum {
 }
 
 enum TypeTrailerEnum {
-    AVTOVOZ // автовоз
-    AVTOCISTERNA // автоцистерна
-    BORTOVOI // бортовой
-    DLINNOMER // длинномер
-    EVROFURA // еврофура
-    KONTEINEROVOZ // контейнеровоз
-    KUNG // кунг
-    REFRIJERATOR // рефрижератор
-    SAMOSVAL // самосвал
-    TERMOFURGON // термофургон
-    TORGOVIY_FURGON // торговый фургон
-    TYAGACH // тягач
-    FURA // фура
-    FURGON // фургон
-    SHASSI // шасси
-    DRUGOI // другой
-    ANY // любой
+    AVTOVOZ
+    BENZOVOZ
+    BITUMOVOZ
+    BORTOVOI
+    GAZOVOZ
+    LEGGOVOZ
+    ZERNOVOZ
+    TERMOFURGON
+    KTOVOZ
+    PANELEVOZ
+    PISECHEVAYA_CISTERNA
+    REFRIJERATOR
+    SAMOSVAL
+    TENT
+    TRACTOR
+    TRAL
+    CHIMICHESKAYA_CISTERNA
+    CELNOMETALLICHESKIY
+    CEMENTOVOZ
+    SHTORNO_BORTOVOI
+    SHTORNIY
+    SHCHEPOVOZ
+    DRUGOI
 }
 
 enum ExistEnum {

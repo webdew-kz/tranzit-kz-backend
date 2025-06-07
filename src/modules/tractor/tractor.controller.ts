@@ -91,7 +91,7 @@ export class TractorController {
     )
     async create(
         @UploadedFiles() files: { photos?: Express.Multer.File[] },
-        @Body() dto: CreateTractorDto,
+        @Body() dto: any,
         @CurrentUser("id") userId: string
     ) {
         return this.tractorService.create(dto, userId, files);
@@ -119,7 +119,7 @@ export class TractorController {
     )
     async createCopy(
         @UploadedFiles() files: { photos?: Express.Multer.File[] },
-        @Body() dto: CreateTractorDto,
+        @Body() dto: any,
         @CurrentUser("id") userId: string
     ) {
         return this.tractorService.createCopy(dto, userId, files);
@@ -148,7 +148,7 @@ export class TractorController {
     async update(
         @UploadedFiles() files: { photos?: Express.Multer.File[] },
         @Param("id") id: string,
-        @Body() dto: UpdateTractorDto
+        @Body() dto: any
     ) {
         return this.tractorService.update(dto, id, files);
     }

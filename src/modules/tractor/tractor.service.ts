@@ -44,12 +44,17 @@ export class TractorService {
             }
         } else {
             throw new BadRequestException(
-                "Необходимо загрузить хотя бы одно фото грузовика"
+                "Необходимо загрузить хотя бы одно фото тягача"
             );
         }
 
         const data = {
             ...dto,
+            price: Number(dto.price),
+            year: Number(dto.year),
+            mileage: Number(dto.year),
+            volumeEngine: Number(dto.volumeEngine),
+            powerEngine: Number(dto.powerEngine),
             photos: photoPaths, // ← это уже строки, как нужно
         };
 
@@ -67,7 +72,7 @@ export class TractorService {
 
         return {
             tractor,
-            message: "Грузовик успешно создан",
+            message: "Тягач успешно создан",
         };
     }
 
@@ -132,12 +137,17 @@ export class TractorService {
         // Если вообще нет фото — ошибка
         if (photoPaths.length === 0) {
             throw new BadRequestException(
-                "Необходимо загрузить хотя бы одно фото грузовика"
+                "Необходимо загрузить хотя бы одно фото тягача"
             );
         }
 
         const data = {
             ...cleanDto,
+            price: Number(dto.price),
+            year: Number(dto.year),
+            mileage: Number(dto.year),
+            volumeEngine: Number(dto.volumeEngine),
+            powerEngine: Number(dto.powerEngine),
             photos: photoPaths,
         };
 
@@ -153,7 +163,7 @@ export class TractorService {
 
         return {
             tractor,
-            message: "Грузовик успешно создан",
+            message: "Тягач успешно создан",
         };
     }
 
@@ -192,6 +202,11 @@ export class TractorService {
 
         const data: any = {
             ...cleanDto,
+            price: Number(dto.price),
+            year: Number(dto.year),
+            mileage: Number(dto.year),
+            volumeEngine: Number(dto.volumeEngine),
+            powerEngine: Number(dto.powerEngine),
             ...(photoPaths.length ? { photos: photoPaths } : { photos: [] }),
         };
 
@@ -202,7 +217,7 @@ export class TractorService {
 
         return {
             tractor,
-            message: "Грузовик успешно обновлен",
+            message: "Тягач успешно обновлен",
         };
     }
 
@@ -224,7 +239,7 @@ export class TractorService {
             where: { id },
         });
 
-        return { message: "Грузовик успешно удален" };
+        return { message: "Тягач успешно удален" };
     }
 
     async findById(id: string) {
@@ -237,7 +252,7 @@ export class TractorService {
         });
 
         if (!tractor) {
-            throw new NotFoundException("Грузовик не найден");
+            throw new NotFoundException("Тягач не найден");
         }
 
         return {
@@ -246,42 +261,10 @@ export class TractorService {
     }
 
     async findAllActiveByUserId(userId: string, page = 1, perPage = 5) {
-        // const currentPage = Math.max(1, Number(page));
-        // const limit = Math.max(1, Number(perPage));
-        // const offset = (currentPage - 1) * limit;
-
-        // const [tractors, total] = await this.prisma.$transaction([
-        //     this.prisma.trade.findMany({
-        //         where: {
-        //             userId,
-        //             isArchived: false,
-        //         },
-        //         orderBy: {
-        //             updatedAt: "desc",
-        //         },
-        //         skip: offset,
-        //         take: limit,
-        //         include: {
-        //             views: true,
-        //         },
-        //     }),
-        //     this.prisma.trade.count({
-        //         where: {
-        //             userId,
-        //             isArchived: false,
-        //         },
-        //     }),
-        // ]);
-
-        // return {
-        //     tractors,
-        //     hasMore: currentPage * limit < total,
-        //     total,
-        // };
-
         const tractors = await this.prisma.trade.findMany({
             where: {
                 userId,
+                variant: "TRACTOR",
                 isArchived: false,
             },
             orderBy: {
@@ -294,46 +277,20 @@ export class TractorService {
         });
 
         if (!tractors.length) {
-            return { message: "Грузовики не найдены", tractors: [] };
+            return { message: "Тягачи не найдены", tractors: [] };
         }
 
         return {
             tractors,
-            message: `Найдено ${tractors.length} грузовиков`,
+            message: `Найдено ${tractors.length} тягачов`,
         };
     }
 
     async findAllArchivedByUserId(userId: string, page = 1, perPage = 5) {
-        // const currentPage = Math.max(1, Number(page));
-        // const limit = Math.max(1, Number(perPage));
-        // const offset = (currentPage - 1) * limit;
-
-        // const [tractors, total] = await this.prisma.$transaction([
-        //     this.prisma.trade.findMany({
-        //         where: {
-        //             userId,
-        //             isArchived: true,
-        //         },
-        //         orderBy: {
-        //             updatedAt: "desc",
-        //         },
-        //         skip: offset,
-        //         take: limit,
-        //         include: {
-        //             views: true,
-        //         },
-        //     }),
-        //     this.prisma.trade.count({
-        //         where: {
-        //             userId,
-        //             isArchived: true,
-        //         },
-        //     }),
-        // ]);
-
         const tractors = await this.prisma.trade.findMany({
             where: {
                 userId,
+                variant: "TRACTOR",
                 isArchived: true,
             },
             orderBy: {
@@ -346,12 +303,12 @@ export class TractorService {
         });
 
         if (!tractors.length) {
-            return { message: "Грузовики не найдены", tractors: [] };
+            return { message: "Тягачи не найдены", tractors: [] };
         }
 
         return {
             tractors,
-            message: `Найдено ${tractors.length} грузовиков`,
+            message: `Найдено ${tractors.length} тягачов`,
         };
     }
 
@@ -363,6 +320,7 @@ export class TractorService {
         const [tractors, total] = await this.prisma.$transaction([
             this.prisma.trade.findMany({
                 where: {
+                    variant: "TRACTOR",
                     isArchived: false,
                 },
                 orderBy: {
@@ -376,6 +334,7 @@ export class TractorService {
             }),
             this.prisma.trade.count({
                 where: {
+                    variant: "TRACTOR",
                     isArchived: false,
                 },
             }),
@@ -395,12 +354,12 @@ export class TractorService {
         });
 
         if (!tractor) {
-            throw new NotFoundException("Грузовик не найден");
+            throw new NotFoundException("Тягач не найден");
         }
 
         return {
             tractor,
-            message: "Грузовик успешно архивирован",
+            message: "Тягач успешно архивирован",
         };
     }
 
@@ -411,7 +370,7 @@ export class TractorService {
         });
 
         if (!oldTractor) {
-            throw new NotFoundException("Грузовик не найден");
+            throw new NotFoundException("Тягач не найден");
         }
 
         const tractor = await this.prisma.trade.findUnique({
@@ -424,7 +383,7 @@ export class TractorService {
 
         return {
             tractor,
-            message: "Грузовик успешно активирован",
+            message: "Тягач успешно активирован",
         };
     }
 
@@ -434,7 +393,7 @@ export class TractorService {
         });
 
         if (!tractors.length) {
-            throw new NotFoundException("Грузовики не найдены");
+            throw new NotFoundException("Тягачи не найдены");
         }
 
         for (const tractor of tractors) {
@@ -458,7 +417,7 @@ export class TractorService {
         });
 
         return {
-            message: "Грузовики успешно удалены",
+            message: "Тягачи успешно удалены",
         };
     }
 
@@ -468,7 +427,7 @@ export class TractorService {
         });
 
         if (tractors.length === 0) {
-            throw new NotFoundException("Грузовики не найдены");
+            throw new NotFoundException("Тягачи не найдены");
         }
 
         await this.prisma.trade.updateMany({
@@ -477,7 +436,7 @@ export class TractorService {
         });
 
         return {
-            message: "Грузовики успешно архивированы",
+            message: "Тягачи успешно архивированы",
         };
     }
 
@@ -487,7 +446,7 @@ export class TractorService {
         });
 
         if (existsTractors.length === 0) {
-            throw new NotFoundException("Грузовики не найдены");
+            throw new NotFoundException("Тягачи не найдены");
         }
 
         await this.prisma.trade.updateMany({
@@ -505,7 +464,7 @@ export class TractorService {
 
         return {
             tractors,
-            message: "Грузовики успешно активированы",
+            message: "Тягачи успешно активированы",
         };
     }
 
@@ -535,7 +494,7 @@ export class TractorService {
     async addToWishlist(userId: string, tradeId: string) {
         if (!tradeId || !userId) {
             throw new BadRequestException(
-                "Не указаны id грузовика или пользователя"
+                "Не указаны id тягача или пользователя"
             );
         }
 
@@ -559,7 +518,7 @@ export class TractorService {
             },
         });
 
-        return { message: "Грузовик добавлен в избранное" };
+        return { message: "Тягач добавлен в избранное" };
     }
 
     async removeFromWishlist(userId: string, tradeId: string) {
@@ -585,7 +544,7 @@ export class TractorService {
             },
         });
 
-        return { message: "Грузовик удален из избранного" };
+        return { message: "Тягач удален из избранного" };
     }
 
     async removeAllFromWishlist(userId: string) {
@@ -598,12 +557,18 @@ export class TractorService {
             },
         });
 
-        return { message: "Все грузовики удалены из избранного" };
+        return { message: "Все тягачи удалены из избранного" };
     }
 
     async getWishlist(userId: string) {
         const tractors = await this.prisma.wishList.findMany({
-            where: { userId },
+            where: {
+                userId,
+                tradeId: { not: null },
+                trade: {
+                    variant: "TRACTOR",
+                },
+            },
             include: {
                 trade: {
                     include: {
@@ -638,8 +603,9 @@ export class TractorService {
     async findByFilter(dto: FilterTractorDto) {
         const {
             city,
-            // tractorBrand,
-            // typeTractor,
+            tractorBrand,
+            typeCabin,
+            cabinSuspension,
             typeEngine,
             status,
             exist,
@@ -663,9 +629,11 @@ export class TractorService {
 
         const where: any = {
             isArchived: false,
+            variant: "TRACTOR",
             ...(city && { city }),
-            // ...(tractorBrand && { tractorBrand }),
-            // ...(typeTractor && { typeTractor }),
+            ...(tractorBrand && { tractorBrand }),
+            ...(typeCabin && { typeCabin }),
+            ...(cabinSuspension && { cabinSuspension }),
             ...(typeEngine && { typeEngine }),
             ...(status && { status }),
             ...(exist && { exist }),
@@ -710,13 +678,13 @@ export class TractorService {
         if (!tractors.length) {
             return {
                 tractors: [],
-                message: "По вашему запросу грузовики не найдены",
+                message: "По вашему запросу тягачи не найдены",
             };
         }
 
         return {
             tractors,
-            message: `Найдено ${tractors.length} грузовиков`,
+            message: `Найдено тягачей: ${tractors.length}`,
         };
     }
 

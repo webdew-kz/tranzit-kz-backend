@@ -1,8 +1,6 @@
 /** @format */
 
-import { Type } from "class-transformer";
 import {
-    ArrayMinSize,
     Equals,
     IsArray,
     IsEnum,
@@ -13,7 +11,6 @@ import {
     IsString,
     Max,
     Min,
-    MinLength,
 } from "class-validator";
 import {
     DriveEnum,
@@ -21,70 +18,128 @@ import {
     StatusEnum,
     SteeringEnum,
     TransmissionEnum,
-    // TractorBrandEnum,
-    TractorWheelEnum,
     TypeEngineEnum,
-    // TypeTractorEnum,
     VariantEnum,
-    TypeCabinEnum,
-    CabinSuspensionEnum,
-    TractorBrandEnum,
+    TrailerBrandEnum,
+    TypeTechnicEnum,
+    TypeTrailerEnum,
+    QtyAxisEnum,
+    TypeSuspensionEnum,
+    TypeBrakeEnum,
 } from "generated/prisma";
 
-export class CreateTractorDto {
+export class FilterTrailerDto {
+    @IsOptional()
     @IsString()
     city: string;
 
-    @Equals(VariantEnum.TRACTOR)
+    @Equals(VariantEnum.TRAILER)
     variant: VariantEnum;
 
     @IsOptional()
-    oldPhotos?: string[];
+    @IsEnum(TrailerBrandEnum)
+    trailerBrand: TrailerBrandEnum;
 
     @IsOptional()
-    @IsEnum(TractorBrandEnum)
-    tractorBrand: TractorBrandEnum;
+    @IsEnum(TypeTechnicEnum)
+    typeTechnic: TypeTechnicEnum;
 
     @IsOptional()
-    @IsEnum(TypeCabinEnum)
-    typeCabin: TypeCabinEnum;
+    @IsEnum(TypeTrailerEnum)
+    typeTrailer: TypeTrailerEnum;
 
     @IsOptional()
-    @IsEnum(CabinSuspensionEnum)
-    cabinSuspension: CabinSuspensionEnum;
+    @IsEnum(QtyAxisEnum)
+    qtyAxis: QtyAxisEnum;
 
-    @Type(() => Number)
-    @IsInt()
     @IsOptional()
-    @IsPositive()
-    price: number;
+    @IsEnum(TypeTechnicEnum)
+    typeSuspension: TypeTechnicEnum;
 
-    @Type(() => Number)
-    @IsInt()
     @IsOptional()
-    @IsPositive()
-    @Min(1900)
-    @Max(2099)
-    year: number;
+    @IsEnum(TypeSuspensionEnum)
+    cabinSuspension: TypeSuspensionEnum;
+
+    @IsOptional()
+    @IsEnum(TypeBrakeEnum)
+    typeBrake: TypeBrakeEnum;
+
+    @IsOptional()
+    @IsArray()
+    @IsString({ each: true })
+    photos: string[];
+
+    // @IsOptional()
+    // @IsEnum(TypeTrailerEnum)
+    // typeTrailer: TypeTrailerEnum;
 
     @IsOptional()
     @IsString()
     description?: string;
 
-    @Type(() => Number)
     @IsOptional()
-    @IsInt()
-    mileage?: number;
+    @IsNumber()
+    @IsPositive()
+    minWeight: number;
 
     @IsOptional()
     @IsNumber()
     @IsPositive()
-    volumeEngine?: number;
+    maxWeight: number;
 
     @IsOptional()
     @IsInt()
     @IsPositive()
-    powerEngine?: number;
+    minPrice: number;
+
+    @IsOptional()
+    @IsInt()
+    @IsPositive()
+    maxPrice: number;
+
+    @IsOptional()
+    @IsInt()
+    @IsPositive()
+    @Min(1900)
+    @Max(2099)
+    minYear: number;
+
+    @IsOptional()
+    @IsInt()
+    @IsPositive()
+    @Min(1900)
+    @Max(2099)
+    maxYear: number;
+
+    @IsOptional()
+    @IsNumber()
+    @IsPositive()
+    minMileage?: number;
+
+    @IsOptional()
+    @IsNumber()
+    @IsPositive()
+    maxMileage?: number;
+
+    @IsOptional()
+    @IsNumber()
+    @IsPositive()
+    minVolumeEngine?: number;
+
+    @IsOptional()
+    @IsNumber()
+    @IsPositive()
+    maxVolumeEngine?: number;
+
+    @IsOptional()
+    @IsInt()
+    @IsPositive()
+    minPowerEngine?: number;
+
+    @IsOptional()
+    @IsInt()
+    @IsPositive()
+    maxPowerEngine?: number;
 
     @IsOptional()
     @IsEnum(TypeEngineEnum)
@@ -109,10 +164,6 @@ export class CreateTractorDto {
     @IsOptional()
     @IsEnum(SteeringEnum)
     steering?: SteeringEnum;
-
-    @IsOptional()
-    @IsEnum(TractorWheelEnum)
-    tractorWheel?: TractorWheelEnum;
 
     @IsOptional()
     @IsString()

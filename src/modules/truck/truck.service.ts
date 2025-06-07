@@ -246,41 +246,9 @@ export class TruckService {
     }
 
     async findAllActiveByUserId(userId: string, page = 1, perPage = 5) {
-        // const currentPage = Math.max(1, Number(page));
-        // const limit = Math.max(1, Number(perPage));
-        // const offset = (currentPage - 1) * limit;
-
-        // const [trucks, total] = await this.prisma.$transaction([
-        //     this.prisma.trade.findMany({
-        //         where: {
-        //             userId,
-        //             isArchived: false,
-        //         },
-        //         orderBy: {
-        //             updatedAt: "desc",
-        //         },
-        //         skip: offset,
-        //         take: limit,
-        //         include: {
-        //             views: true,
-        //         },
-        //     }),
-        //     this.prisma.trade.count({
-        //         where: {
-        //             userId,
-        //             isArchived: false,
-        //         },
-        //     }),
-        // ]);
-
-        // return {
-        //     trucks,
-        //     hasMore: currentPage * limit < total,
-        //     total,
-        // };
-
         const trucks = await this.prisma.trade.findMany({
             where: {
+                variant: "TRUCK",
                 userId,
                 isArchived: false,
             },
@@ -304,35 +272,9 @@ export class TruckService {
     }
 
     async findAllArchivedByUserId(userId: string, page = 1, perPage = 5) {
-        // const currentPage = Math.max(1, Number(page));
-        // const limit = Math.max(1, Number(perPage));
-        // const offset = (currentPage - 1) * limit;
-
-        // const [trucks, total] = await this.prisma.$transaction([
-        //     this.prisma.trade.findMany({
-        //         where: {
-        //             userId,
-        //             isArchived: true,
-        //         },
-        //         orderBy: {
-        //             updatedAt: "desc",
-        //         },
-        //         skip: offset,
-        //         take: limit,
-        //         include: {
-        //             views: true,
-        //         },
-        //     }),
-        //     this.prisma.trade.count({
-        //         where: {
-        //             userId,
-        //             isArchived: true,
-        //         },
-        //     }),
-        // ]);
-
         const trucks = await this.prisma.trade.findMany({
             where: {
+                variant: "TRUCK",
                 userId,
                 isArchived: true,
             },
@@ -363,6 +305,7 @@ export class TruckService {
         const [trucks, total] = await this.prisma.$transaction([
             this.prisma.trade.findMany({
                 where: {
+                    variant: "TRUCK",
                     isArchived: false,
                 },
                 orderBy: {
@@ -372,10 +315,12 @@ export class TruckService {
                 take: limit,
                 include: {
                     views: true,
+                    user: true,
                 },
             }),
             this.prisma.trade.count({
                 where: {
+                    variant: "TRUCK",
                     isArchived: false,
                 },
             }),
@@ -669,6 +614,7 @@ export class TruckService {
 
         const where: any = {
             isArchived: false,
+            variant: "TRUCK",
             ...(city && { city }),
             ...(truckBrand && { truckBrand }),
             ...(typeTruck && { typeTruck }),

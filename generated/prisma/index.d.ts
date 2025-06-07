@@ -53,7 +53,18 @@ export type Trade = $Result.DefaultSelection<Prisma.$TradePayload>
  * Enums
  */
 export namespace $Enums {
-  export const QtyAxisEnum: {
+  export const TypeCabinEnum: {
+  SEAT_2_WITHOUT_BED: 'SEAT_2_WITHOUT_BED',
+  SEAT_2_WITH_1_BED: 'SEAT_2_WITH_1_BED',
+  SEAT_2_WITH_2_BEDS: 'SEAT_2_WITH_2_BEDS',
+  SEAT_3_WITHOUT_BED: 'SEAT_3_WITHOUT_BED',
+  SEAT_3_WITH_1_BED: 'SEAT_3_WITH_1_BED'
+};
+
+export type TypeCabinEnum = (typeof TypeCabinEnum)[keyof typeof TypeCabinEnum]
+
+
+export const QtyAxisEnum: {
   A1: 'A1',
   A2: 'A2',
   A3: 'A3',
@@ -63,8 +74,7 @@ export namespace $Enums {
   A7: 'A7',
   A8: 'A8',
   A9: 'A9',
-  A10: 'A10',
-  MORE_10: 'MORE_10'
+  A10: 'A10'
 };
 
 export type QtyAxisEnum = (typeof QtyAxisEnum)[keyof typeof QtyAxisEnum]
@@ -82,8 +92,11 @@ export type TypeSuspensionEnum = (typeof TypeSuspensionEnum)[keyof typeof TypeSu
 
 
 export const CabinSuspensionEnum: {
-  PNEUMATIC: 'PNEUMATIC',
-  MECHANICAL: 'MECHANICAL'
+  BALANCE: 'BALANCE',
+  RESSOR: 'RESSOR',
+  PNEUMO: 'PNEUMO',
+  HYDRAULIC: 'HYDRAULIC',
+  SEMI_RESSOR: 'SEMI_RESSOR'
 };
 
 export type CabinSuspensionEnum = (typeof CabinSuspensionEnum)[keyof typeof CabinSuspensionEnum]
@@ -208,10 +221,192 @@ export const TruckBrandEnum: {
 export type TruckBrandEnum = (typeof TruckBrandEnum)[keyof typeof TruckBrandEnum]
 
 
+export const TractorBrandEnum: {
+  AMT_NV: 'AMT_NV',
+  BAIC: 'BAIC',
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ',
+  CAMC: 'CAMC',
+  CHENGLONG: 'CHENGLONG',
+  DAF: 'DAF',
+  DAEWOO: 'DAEWOO',
+  DAYUN: 'DAYUN',
+  DONGFENG: 'DONGFENG',
+  DOOSAN: 'DOOSAN',
+  ERF_MAN_TRUCK: 'ERF_MAN_TRUCK',
+  FAW: 'FAW',
+  FORD: 'FORD',
+  FOTON: 'FOTON',
+  FREIGHTLINER: 'FREIGHTLINER',
+  FUSO_MITSUBISHI: 'FUSO_MITSUBISHI',
+  HINO: 'HINO',
+  HOWO: 'HOWO',
+  HYUNDAI: 'HYUNDAI',
+  IVECO: 'IVECO',
+  IVECO_HONGYAN: 'IVECO_HONGYAN',
+  IVECO_LING_YE: 'IVECO_LING_YE',
+  INTERNATIONAL: 'INTERNATIONAL',
+  ISUZU: 'ISUZU',
+  IVECO_AMT: 'IVECO_AMT',
+  JAC: 'JAC',
+  KALMAR: 'KALMAR',
+  KENWORTH: 'KENWORTH',
+  MAN: 'MAN',
+  MACK: 'MACK',
+  MAGIRUS: 'MAGIRUS',
+  MERCEDES_BENZ: 'MERCEDES_BENZ',
+  NISSAN: 'NISSAN',
+  PETERBILT: 'PETERBILT',
+  RENAULT: 'RENAULT',
+  SANY: 'SANY',
+  SCANIA: 'SCANIA',
+  SHACMAN_SHAANXI: 'SHACMAN_SHAANXI',
+  SINOTRUK_HANIA: 'SINOTRUK_HANIA',
+  SINOTRUK_SITRAK: 'SINOTRUK_SITRAK',
+  SISU: 'SISU',
+  SKODA_LIAZ: 'SKODA_LIAZ',
+  STERLING: 'STERLING',
+  STEYR: 'STEYR',
+  TATRA: 'TATRA',
+  TERBERG: 'TERBERG',
+  TESLA: 'TESLA',
+  TIANHONG: 'TIANHONG',
+  RUSICH_KZKT: 'RUSICH_KZKT',
+  TONAR: 'TONAR',
+  URAL: 'URAL',
+  YAROVIT_MOTORS: 'YAROVIT_MOTORS',
+  TITAN: 'TITAN',
+  VOLKSWAGEN: 'VOLKSWAGEN',
+  VOLVO: 'VOLVO',
+  WESTERN_STAR: 'WESTERN_STAR',
+  XCMG: 'XCMG',
+  YOUNGMAN: 'YOUNGMAN',
+  BZKT: 'BZKT',
+  VALDAY: 'VALDAY',
+  GAZ: 'GAZ',
+  GK_MZSA: 'GK_MZSA',
+  ZIL: 'ZIL',
+  KAMAZ: 'KAMAZ',
+  KRAZ: 'KRAZ',
+  MAZ: 'MAZ',
+  MAZ_MAN: 'MAZ_MAN',
+  MZKT: 'MZKT'
+};
+
+export type TractorBrandEnum = (typeof TractorBrandEnum)[keyof typeof TractorBrandEnum]
+
+
 export const TrailerBrandEnum: {
+  OTHER: 'OTHER',
+  AMT_NV: 'AMT_NV',
+  ASIA: 'ASIA',
   AVIA: 'AVIA',
   BAW: 'BAW',
-  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ'
+  BEIBEN_NORTH_BENZ: 'BEIBEN_NORTH_BENZ',
+  BMC: 'BMC',
+  BYD: 'BYD',
+  CAMC: 'CAMC',
+  CHANGAN: 'CHANGAN',
+  CHEVROLET: 'CHEVROLET',
+  CLW: 'CLW',
+  DAEWOO: 'DAEWOO',
+  DAF: 'DAF',
+  DAYUN_TRUCK: 'DAYUN_TRUCK',
+  DERRY: 'DERRY',
+  DESOTO: 'DESOTO',
+  DFAC: 'DFAC',
+  DFSK: 'DFSK',
+  DONGFENG: 'DONGFENG',
+  EVM: 'EVM',
+  FARIZON: 'FARIZON',
+  FAW: 'FAW',
+  FIAT: 'FIAT',
+  FIAT_PROFESSIONAL: 'FIAT_PROFESSIONAL',
+  FORD: 'FORD',
+  FORLAND: 'FORLAND',
+  FOTON: 'FOTON',
+  FREIGHTLINER: 'FREIGHTLINER',
+  FUSO_MITSUBISHI: 'FUSO_MITSUBISHI',
+  GAC: 'GAC',
+  GEELY: 'GEELY',
+  GMC: 'GMC',
+  GROZ: 'GROZ',
+  HINO: 'HINO',
+  HKTC: 'HKTC',
+  HONGYAN: 'HONGYAN',
+  HOWO: 'HOWO',
+  HYUNDAI: 'HYUNDAI',
+  HYVA: 'HYVA',
+  IFA: 'IFA',
+  INTERNATIONAL: 'INTERNATIONAL',
+  INTERNATIONAL_WORKSTAR: 'INTERNATIONAL_WORKSTAR',
+  ISUZU: 'ISUZU',
+  IVECO: 'IVECO',
+  IVECO_HONGYAN: 'IVECO_HONGYAN',
+  IVECO_LING_YE: 'IVECO_LING_YE',
+  IVECO_AMT: 'IVECO_AMT',
+  JAC: 'JAC',
+  JBC: 'JBC',
+  JIEFANG: 'JIEFANG',
+  JMC: 'JMC',
+  KAMA: 'KAMA',
+  KENWORTH: 'KENWORTH',
+  KIA: 'KIA',
+  KYC: 'KYC',
+  LADA_VAZ: 'LADA_VAZ',
+  LGMG: 'LGMG',
+  MAN: 'MAN',
+  MAXUS: 'MAXUS',
+  MAZDA: 'MAZDA',
+  MERCEDES_BENZ: 'MERCEDES_BENZ',
+  MITSUBISHI: 'MITSUBISHI',
+  NISSAN: 'NISSAN',
+  NORTH_BENZ: 'NORTH_BENZ',
+  PETERBILT: 'PETERBILT',
+  PEUGEOT: 'PEUGEOT',
+  RENAULT: 'RENAULT',
+  SANY: 'SANY',
+  SCANIA: 'SCANIA',
+  SHACMAN: 'SHACMAN',
+  SHACMAN_SHAANXI: 'SHACMAN_SHAANXI',
+  SHANDONG_KAMA: 'SHANDONG_KAMA',
+  SHINERAY: 'SHINERAY',
+  SINOTRUK: 'SINOTRUK',
+  SINOTRUK_SITRAK: 'SINOTRUK_SITRAK',
+  SISU: 'SISU',
+  SITRAK: 'SITRAK',
+  SSANGYONG: 'SSANGYONG',
+  STAR: 'STAR',
+  STEYR: 'STEYR',
+  TATA: 'TATA',
+  TATRA: 'TATRA',
+  TONLY: 'TONLY',
+  TOYOTA: 'TOYOTA',
+  VOLKSWAGEN: 'VOLKSWAGEN',
+  VOLVO: 'VOLVO',
+  WAW: 'WAW',
+  WEICHAI: 'WEICHAI',
+  WULING: 'WULING',
+  XCMG: 'XCMG',
+  XINFEIG: 'XINFEIG',
+  YUEJIN: 'YUEJIN',
+  YUTONG: 'YUTONG',
+  ZOOMLION: 'ZOOMLION',
+  ZUK: 'ZUK',
+  BELAZ: 'BELAZ',
+  VALDAY: 'VALDAY',
+  GAZ: 'GAZ',
+  GAZ_SAZ: 'GAZ_SAZ',
+  GK_MZSA: 'GK_MZSA',
+  ZIL: 'ZIL',
+  IZH: 'IZH',
+  KAMAZ: 'KAMAZ',
+  KRAZ: 'KRAZ',
+  MAZ: 'MAZ',
+  MAZ_MAN: 'MAZ_MAN',
+  MZKT: 'MZKT',
+  NEFAZ: 'NEFAZ',
+  UAZ: 'UAZ',
+  URAL: 'URAL'
 };
 
 export type TrailerBrandEnum = (typeof TrailerBrandEnum)[keyof typeof TrailerBrandEnum]
@@ -250,22 +445,28 @@ export type TypeTechnicEnum = (typeof TypeTechnicEnum)[keyof typeof TypeTechnicE
 
 export const TypeTrailerEnum: {
   AVTOVOZ: 'AVTOVOZ',
-  AVTOCISTERNA: 'AVTOCISTERNA',
+  BENZOVOZ: 'BENZOVOZ',
+  BITUMOVOZ: 'BITUMOVOZ',
   BORTOVOI: 'BORTOVOI',
-  DLINNOMER: 'DLINNOMER',
-  EVROFURA: 'EVROFURA',
-  KONTEINEROVOZ: 'KONTEINEROVOZ',
-  KUNG: 'KUNG',
+  GAZOVOZ: 'GAZOVOZ',
+  LEGGOVOZ: 'LEGGOVOZ',
+  ZERNOVOZ: 'ZERNOVOZ',
+  TERMOFURGON: 'TERMOFURGON',
+  KTOVOZ: 'KTOVOZ',
+  PANELEVOZ: 'PANELEVOZ',
+  PISECHEVAYA_CISTERNA: 'PISECHEVAYA_CISTERNA',
   REFRIJERATOR: 'REFRIJERATOR',
   SAMOSVAL: 'SAMOSVAL',
-  TERMOFURGON: 'TERMOFURGON',
-  TORGOVIY_FURGON: 'TORGOVIY_FURGON',
-  TYAGACH: 'TYAGACH',
-  FURA: 'FURA',
-  FURGON: 'FURGON',
-  SHASSI: 'SHASSI',
-  DRUGOI: 'DRUGOI',
-  ANY: 'ANY'
+  TENT: 'TENT',
+  TRACTOR: 'TRACTOR',
+  TRAL: 'TRAL',
+  CHIMICHESKAYA_CISTERNA: 'CHIMICHESKAYA_CISTERNA',
+  CELNOMETALLICHESKIY: 'CELNOMETALLICHESKIY',
+  CEMENTOVOZ: 'CEMENTOVOZ',
+  SHTORNO_BORTOVOI: 'SHTORNO_BORTOVOI',
+  SHTORNIY: 'SHTORNIY',
+  SHCHEPOVOZ: 'SHCHEPOVOZ',
+  DRUGOI: 'DRUGOI'
 };
 
 export type TypeTrailerEnum = (typeof TypeTrailerEnum)[keyof typeof TypeTrailerEnum]
@@ -592,6 +793,10 @@ export type Additionally = (typeof Additionally)[keyof typeof Additionally]
 
 }
 
+export type TypeCabinEnum = $Enums.TypeCabinEnum
+
+export const TypeCabinEnum: typeof $Enums.TypeCabinEnum
+
 export type QtyAxisEnum = $Enums.QtyAxisEnum
 
 export const QtyAxisEnum: typeof $Enums.QtyAxisEnum
@@ -615,6 +820,10 @@ export const VariantEnum: typeof $Enums.VariantEnum
 export type TruckBrandEnum = $Enums.TruckBrandEnum
 
 export const TruckBrandEnum: typeof $Enums.TruckBrandEnum
+
+export type TractorBrandEnum = $Enums.TractorBrandEnum
+
+export const TractorBrandEnum: typeof $Enums.TractorBrandEnum
 
 export type TrailerBrandEnum = $Enums.TrailerBrandEnum
 
@@ -10168,6 +10377,7 @@ export namespace Prisma {
     steering: $Enums.SteeringEnum | null
     truckWheel: $Enums.TruckWheelEnum | null
     tractorWheel: $Enums.TractorWheelEnum | null
+    typeCabin: $Enums.TypeCabinEnum | null
     cabinSuspension: $Enums.CabinSuspensionEnum | null
     userId: string | null
     userName: string | null
@@ -10179,6 +10389,7 @@ export namespace Prisma {
     viewsId: string | null
     trailerBrand: $Enums.TrailerBrandEnum | null
     truckBrand: $Enums.TruckBrandEnum | null
+    tractorBrand: $Enums.TractorBrandEnum | null
   }
 
   export type TradeMaxAggregateOutputType = {
@@ -10209,6 +10420,7 @@ export namespace Prisma {
     steering: $Enums.SteeringEnum | null
     truckWheel: $Enums.TruckWheelEnum | null
     tractorWheel: $Enums.TractorWheelEnum | null
+    typeCabin: $Enums.TypeCabinEnum | null
     cabinSuspension: $Enums.CabinSuspensionEnum | null
     userId: string | null
     userName: string | null
@@ -10220,6 +10432,7 @@ export namespace Prisma {
     viewsId: string | null
     trailerBrand: $Enums.TrailerBrandEnum | null
     truckBrand: $Enums.TruckBrandEnum | null
+    tractorBrand: $Enums.TractorBrandEnum | null
   }
 
   export type TradeCountAggregateOutputType = {
@@ -10250,6 +10463,7 @@ export namespace Prisma {
     steering: number
     truckWheel: number
     tractorWheel: number
+    typeCabin: number
     cabinSuspension: number
     photos: number
     userId: number
@@ -10262,6 +10476,7 @@ export namespace Prisma {
     viewsId: number
     trailerBrand: number
     truckBrand: number
+    tractorBrand: number
     _all: number
   }
 
@@ -10312,6 +10527,7 @@ export namespace Prisma {
     steering?: true
     truckWheel?: true
     tractorWheel?: true
+    typeCabin?: true
     cabinSuspension?: true
     userId?: true
     userName?: true
@@ -10323,6 +10539,7 @@ export namespace Prisma {
     viewsId?: true
     trailerBrand?: true
     truckBrand?: true
+    tractorBrand?: true
   }
 
   export type TradeMaxAggregateInputType = {
@@ -10353,6 +10570,7 @@ export namespace Prisma {
     steering?: true
     truckWheel?: true
     tractorWheel?: true
+    typeCabin?: true
     cabinSuspension?: true
     userId?: true
     userName?: true
@@ -10364,6 +10582,7 @@ export namespace Prisma {
     viewsId?: true
     trailerBrand?: true
     truckBrand?: true
+    tractorBrand?: true
   }
 
   export type TradeCountAggregateInputType = {
@@ -10394,6 +10613,7 @@ export namespace Prisma {
     steering?: true
     truckWheel?: true
     tractorWheel?: true
+    typeCabin?: true
     cabinSuspension?: true
     photos?: true
     userId?: true
@@ -10406,6 +10626,7 @@ export namespace Prisma {
     viewsId?: true
     trailerBrand?: true
     truckBrand?: true
+    tractorBrand?: true
     _all?: true
   }
 
@@ -10510,7 +10731,7 @@ export namespace Prisma {
     isArchived: boolean | null
     year: number | null
     weight: number | null
-    price: number
+    price: number | null
     volumeEngine: number | null
     powerEngine: number | null
     description: string | null
@@ -10523,6 +10744,7 @@ export namespace Prisma {
     steering: $Enums.SteeringEnum | null
     truckWheel: $Enums.TruckWheelEnum | null
     tractorWheel: $Enums.TractorWheelEnum | null
+    typeCabin: $Enums.TypeCabinEnum | null
     cabinSuspension: $Enums.CabinSuspensionEnum | null
     photos: string[]
     userId: string | null
@@ -10535,6 +10757,7 @@ export namespace Prisma {
     viewsId: string | null
     trailerBrand: $Enums.TrailerBrandEnum | null
     truckBrand: $Enums.TruckBrandEnum | null
+    tractorBrand: $Enums.TractorBrandEnum | null
     _count: TradeCountAggregateOutputType | null
     _avg: TradeAvgAggregateOutputType | null
     _sum: TradeSumAggregateOutputType | null
@@ -10584,6 +10807,7 @@ export namespace Prisma {
     steering?: boolean
     truckWheel?: boolean
     tractorWheel?: boolean
+    typeCabin?: boolean
     cabinSuspension?: boolean
     photos?: boolean
     userId?: boolean
@@ -10596,6 +10820,7 @@ export namespace Prisma {
     viewsId?: boolean
     trailerBrand?: boolean
     truckBrand?: boolean
+    tractorBrand?: boolean
     user?: boolean | Trade$userArgs<ExtArgs>
     views?: boolean | Trade$viewsArgs<ExtArgs>
     wishList?: boolean | Trade$wishListArgs<ExtArgs>
@@ -10630,6 +10855,7 @@ export namespace Prisma {
     steering?: boolean
     truckWheel?: boolean
     tractorWheel?: boolean
+    typeCabin?: boolean
     cabinSuspension?: boolean
     photos?: boolean
     userId?: boolean
@@ -10642,6 +10868,7 @@ export namespace Prisma {
     viewsId?: boolean
     trailerBrand?: boolean
     truckBrand?: boolean
+    tractorBrand?: boolean
     user?: boolean | Trade$userArgs<ExtArgs>
     views?: boolean | Trade$viewsArgs<ExtArgs>
   }, ExtArgs["result"]["trade"]>
@@ -10674,6 +10901,7 @@ export namespace Prisma {
     steering?: boolean
     truckWheel?: boolean
     tractorWheel?: boolean
+    typeCabin?: boolean
     cabinSuspension?: boolean
     photos?: boolean
     userId?: boolean
@@ -10686,6 +10914,7 @@ export namespace Prisma {
     viewsId?: boolean
     trailerBrand?: boolean
     truckBrand?: boolean
+    tractorBrand?: boolean
     user?: boolean | Trade$userArgs<ExtArgs>
     views?: boolean | Trade$viewsArgs<ExtArgs>
   }, ExtArgs["result"]["trade"]>
@@ -10718,6 +10947,7 @@ export namespace Prisma {
     steering?: boolean
     truckWheel?: boolean
     tractorWheel?: boolean
+    typeCabin?: boolean
     cabinSuspension?: boolean
     photos?: boolean
     userId?: boolean
@@ -10730,9 +10960,10 @@ export namespace Prisma {
     viewsId?: boolean
     trailerBrand?: boolean
     truckBrand?: boolean
+    tractorBrand?: boolean
   }
 
-  export type TradeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "city" | "variant" | "typeTruck" | "typeTechnic" | "typeTrailer" | "qtyAxis" | "typeSuspension" | "typeBrake" | "isArchived" | "year" | "weight" | "price" | "volumeEngine" | "powerEngine" | "description" | "mileage" | "typeEngine" | "status" | "exist" | "drive" | "transmission" | "steering" | "truckWheel" | "tractorWheel" | "cabinSuspension" | "photos" | "userId" | "userName" | "userPhone" | "whatsapp" | "telegram" | "viber" | "skype" | "viewsId" | "trailerBrand" | "truckBrand", ExtArgs["result"]["trade"]>
+  export type TradeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "city" | "variant" | "typeTruck" | "typeTechnic" | "typeTrailer" | "qtyAxis" | "typeSuspension" | "typeBrake" | "isArchived" | "year" | "weight" | "price" | "volumeEngine" | "powerEngine" | "description" | "mileage" | "typeEngine" | "status" | "exist" | "drive" | "transmission" | "steering" | "truckWheel" | "tractorWheel" | "typeCabin" | "cabinSuspension" | "photos" | "userId" | "userName" | "userPhone" | "whatsapp" | "telegram" | "viber" | "skype" | "viewsId" | "trailerBrand" | "truckBrand" | "tractorBrand", ExtArgs["result"]["trade"]>
   export type TradeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Trade$userArgs<ExtArgs>
     views?: boolean | Trade$viewsArgs<ExtArgs>
@@ -10770,7 +11001,7 @@ export namespace Prisma {
       isArchived: boolean | null
       year: number | null
       weight: number | null
-      price: number
+      price: number | null
       volumeEngine: number | null
       powerEngine: number | null
       description: string | null
@@ -10783,6 +11014,7 @@ export namespace Prisma {
       steering: $Enums.SteeringEnum | null
       truckWheel: $Enums.TruckWheelEnum | null
       tractorWheel: $Enums.TractorWheelEnum | null
+      typeCabin: $Enums.TypeCabinEnum | null
       cabinSuspension: $Enums.CabinSuspensionEnum | null
       photos: string[]
       userId: string | null
@@ -10795,6 +11027,7 @@ export namespace Prisma {
       viewsId: string | null
       trailerBrand: $Enums.TrailerBrandEnum | null
       truckBrand: $Enums.TruckBrandEnum | null
+      tractorBrand: $Enums.TractorBrandEnum | null
     }, ExtArgs["result"]["trade"]>
     composites: {}
   }
@@ -11248,6 +11481,7 @@ export namespace Prisma {
     readonly steering: FieldRef<"Trade", 'SteeringEnum'>
     readonly truckWheel: FieldRef<"Trade", 'TruckWheelEnum'>
     readonly tractorWheel: FieldRef<"Trade", 'TractorWheelEnum'>
+    readonly typeCabin: FieldRef<"Trade", 'TypeCabinEnum'>
     readonly cabinSuspension: FieldRef<"Trade", 'CabinSuspensionEnum'>
     readonly photos: FieldRef<"Trade", 'String[]'>
     readonly userId: FieldRef<"Trade", 'String'>
@@ -11260,6 +11494,7 @@ export namespace Prisma {
     readonly viewsId: FieldRef<"Trade", 'String'>
     readonly trailerBrand: FieldRef<"Trade", 'TrailerBrandEnum'>
     readonly truckBrand: FieldRef<"Trade", 'TruckBrandEnum'>
+    readonly tractorBrand: FieldRef<"Trade", 'TractorBrandEnum'>
   }
     
 
@@ -11926,6 +12161,7 @@ export namespace Prisma {
     steering: 'steering',
     truckWheel: 'truckWheel',
     tractorWheel: 'tractorWheel',
+    typeCabin: 'typeCabin',
     cabinSuspension: 'cabinSuspension',
     photos: 'photos',
     userId: 'userId',
@@ -11937,7 +12173,8 @@ export namespace Prisma {
     skype: 'skype',
     viewsId: 'viewsId',
     trailerBrand: 'trailerBrand',
-    truckBrand: 'truckBrand'
+    truckBrand: 'truckBrand',
+    tractorBrand: 'tractorBrand'
   };
 
   export type TradeScalarFieldEnum = (typeof TradeScalarFieldEnum)[keyof typeof TradeScalarFieldEnum]
@@ -12428,6 +12665,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'TypeCabinEnum'
+   */
+  export type EnumTypeCabinEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeCabinEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TypeCabinEnum[]'
+   */
+  export type ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TypeCabinEnum[]'>
+    
+
+
+  /**
    * Reference to a field of type 'CabinSuspensionEnum'
    */
   export type EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CabinSuspensionEnum'>
@@ -12466,6 +12717,20 @@ export namespace Prisma {
    * Reference to a field of type 'TruckBrandEnum[]'
    */
   export type ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TruckBrandEnum[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TractorBrandEnum'
+   */
+  export type EnumTractorBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TractorBrandEnum'>
+    
+
+
+  /**
+   * Reference to a field of type 'TractorBrandEnum[]'
+   */
+  export type ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TractorBrandEnum[]'>
     
   /**
    * Deep Input Types
@@ -13272,7 +13537,7 @@ export namespace Prisma {
     isArchived?: BoolNullableFilter<"Trade"> | boolean | null
     year?: IntNullableFilter<"Trade"> | number | null
     weight?: FloatNullableFilter<"Trade"> | number | null
-    price?: IntFilter<"Trade"> | number
+    price?: IntNullableFilter<"Trade"> | number | null
     volumeEngine?: FloatNullableFilter<"Trade"> | number | null
     powerEngine?: IntNullableFilter<"Trade"> | number | null
     description?: StringNullableFilter<"Trade"> | string | null
@@ -13285,6 +13550,7 @@ export namespace Prisma {
     steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
     truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
     tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    typeCabin?: EnumTypeCabinEnumNullableFilter<"Trade"> | $Enums.TypeCabinEnum | null
     cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
     photos?: StringNullableListFilter<"Trade">
     userId?: StringNullableFilter<"Trade"> | string | null
@@ -13297,6 +13563,7 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Trade"> | string | null
     trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
     truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    tractorBrand?: EnumTractorBrandEnumNullableFilter<"Trade"> | $Enums.TractorBrandEnum | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
     wishList?: WishListListRelationFilter
@@ -13317,7 +13584,7 @@ export namespace Prisma {
     isArchived?: SortOrderInput | SortOrder
     year?: SortOrderInput | SortOrder
     weight?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     volumeEngine?: SortOrderInput | SortOrder
     powerEngine?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
@@ -13330,6 +13597,7 @@ export namespace Prisma {
     steering?: SortOrderInput | SortOrder
     truckWheel?: SortOrderInput | SortOrder
     tractorWheel?: SortOrderInput | SortOrder
+    typeCabin?: SortOrderInput | SortOrder
     cabinSuspension?: SortOrderInput | SortOrder
     photos?: SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13342,6 +13610,7 @@ export namespace Prisma {
     viewsId?: SortOrderInput | SortOrder
     trailerBrand?: SortOrderInput | SortOrder
     truckBrand?: SortOrderInput | SortOrder
+    tractorBrand?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     views?: ViewsOrderByWithRelationInput
     wishList?: WishListOrderByRelationAggregateInput
@@ -13365,7 +13634,7 @@ export namespace Prisma {
     isArchived?: BoolNullableFilter<"Trade"> | boolean | null
     year?: IntNullableFilter<"Trade"> | number | null
     weight?: FloatNullableFilter<"Trade"> | number | null
-    price?: IntFilter<"Trade"> | number
+    price?: IntNullableFilter<"Trade"> | number | null
     volumeEngine?: FloatNullableFilter<"Trade"> | number | null
     powerEngine?: IntNullableFilter<"Trade"> | number | null
     description?: StringNullableFilter<"Trade"> | string | null
@@ -13378,6 +13647,7 @@ export namespace Prisma {
     steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
     truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
     tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    typeCabin?: EnumTypeCabinEnumNullableFilter<"Trade"> | $Enums.TypeCabinEnum | null
     cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
     photos?: StringNullableListFilter<"Trade">
     userId?: StringNullableFilter<"Trade"> | string | null
@@ -13390,6 +13660,7 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Trade"> | string | null
     trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
     truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    tractorBrand?: EnumTractorBrandEnumNullableFilter<"Trade"> | $Enums.TractorBrandEnum | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     views?: XOR<ViewsNullableScalarRelationFilter, ViewsWhereInput> | null
     wishList?: WishListListRelationFilter
@@ -13410,7 +13681,7 @@ export namespace Prisma {
     isArchived?: SortOrderInput | SortOrder
     year?: SortOrderInput | SortOrder
     weight?: SortOrderInput | SortOrder
-    price?: SortOrder
+    price?: SortOrderInput | SortOrder
     volumeEngine?: SortOrderInput | SortOrder
     powerEngine?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
@@ -13423,6 +13694,7 @@ export namespace Prisma {
     steering?: SortOrderInput | SortOrder
     truckWheel?: SortOrderInput | SortOrder
     tractorWheel?: SortOrderInput | SortOrder
+    typeCabin?: SortOrderInput | SortOrder
     cabinSuspension?: SortOrderInput | SortOrder
     photos?: SortOrder
     userId?: SortOrderInput | SortOrder
@@ -13435,6 +13707,7 @@ export namespace Prisma {
     viewsId?: SortOrderInput | SortOrder
     trailerBrand?: SortOrderInput | SortOrder
     truckBrand?: SortOrderInput | SortOrder
+    tractorBrand?: SortOrderInput | SortOrder
     _count?: TradeCountOrderByAggregateInput
     _avg?: TradeAvgOrderByAggregateInput
     _max?: TradeMaxOrderByAggregateInput
@@ -13460,7 +13733,7 @@ export namespace Prisma {
     isArchived?: BoolNullableWithAggregatesFilter<"Trade"> | boolean | null
     year?: IntNullableWithAggregatesFilter<"Trade"> | number | null
     weight?: FloatNullableWithAggregatesFilter<"Trade"> | number | null
-    price?: IntWithAggregatesFilter<"Trade"> | number
+    price?: IntNullableWithAggregatesFilter<"Trade"> | number | null
     volumeEngine?: FloatNullableWithAggregatesFilter<"Trade"> | number | null
     powerEngine?: IntNullableWithAggregatesFilter<"Trade"> | number | null
     description?: StringNullableWithAggregatesFilter<"Trade"> | string | null
@@ -13473,6 +13746,7 @@ export namespace Prisma {
     steering?: EnumSteeringEnumNullableWithAggregatesFilter<"Trade"> | $Enums.SteeringEnum | null
     truckWheel?: EnumTruckWheelEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TruckWheelEnum | null
     tractorWheel?: EnumTractorWheelEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    typeCabin?: EnumTypeCabinEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TypeCabinEnum | null
     cabinSuspension?: EnumCabinSuspensionEnumNullableWithAggregatesFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
     photos?: StringNullableListFilter<"Trade">
     userId?: StringNullableWithAggregatesFilter<"Trade"> | string | null
@@ -13485,6 +13759,7 @@ export namespace Prisma {
     viewsId?: StringNullableWithAggregatesFilter<"Trade"> | string | null
     trailerBrand?: EnumTrailerBrandEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TrailerBrandEnum | null
     truckBrand?: EnumTruckBrandEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    tractorBrand?: EnumTractorBrandEnumNullableWithAggregatesFilter<"Trade"> | $Enums.TractorBrandEnum | null
   }
 
   export type UserCreateInput = {
@@ -14440,7 +14715,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -14453,6 +14728,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -14463,6 +14739,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     user?: UserCreateNestedOneWithoutTradeInput
     views?: ViewsCreateNestedOneWithoutTradeInput
     wishList?: WishListCreateNestedManyWithoutTradeInput
@@ -14483,7 +14760,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -14496,6 +14773,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userId?: string | null
@@ -14508,6 +14786,7 @@ export namespace Prisma {
     viewsId?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
   }
 
@@ -14526,7 +14805,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14539,6 +14818,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14549,6 +14829,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     user?: UserUpdateOneWithoutTradeNestedInput
     views?: ViewsUpdateOneWithoutTradeNestedInput
     wishList?: WishListUpdateManyWithoutTradeNestedInput
@@ -14569,7 +14850,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14582,6 +14863,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14594,6 +14876,7 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
   }
 
@@ -14612,7 +14895,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -14625,6 +14908,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userId?: string | null
@@ -14637,6 +14921,7 @@ export namespace Prisma {
     viewsId?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
   }
 
   export type TradeUpdateManyMutationInput = {
@@ -14654,7 +14939,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14667,6 +14952,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14677,6 +14963,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
   }
 
   export type TradeUncheckedUpdateManyInput = {
@@ -14694,7 +14981,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14707,6 +14994,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14719,6 +15007,7 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15674,6 +15963,13 @@ export namespace Prisma {
     not?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
   }
 
+  export type EnumTypeCabinEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeCabinEnum | EnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel> | $Enums.TypeCabinEnum | null
+  }
+
   export type EnumCabinSuspensionEnumNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
     in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
@@ -15693,6 +15989,13 @@ export namespace Prisma {
     in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
     not?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+  }
+
+  export type EnumTractorBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorBrandEnum | EnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel> | $Enums.TractorBrandEnum | null
   }
 
   export type TradeCountOrderByAggregateInput = {
@@ -15723,6 +16026,7 @@ export namespace Prisma {
     steering?: SortOrder
     truckWheel?: SortOrder
     tractorWheel?: SortOrder
+    typeCabin?: SortOrder
     cabinSuspension?: SortOrder
     photos?: SortOrder
     userId?: SortOrder
@@ -15735,6 +16039,7 @@ export namespace Prisma {
     viewsId?: SortOrder
     trailerBrand?: SortOrder
     truckBrand?: SortOrder
+    tractorBrand?: SortOrder
   }
 
   export type TradeAvgOrderByAggregateInput = {
@@ -15774,6 +16079,7 @@ export namespace Prisma {
     steering?: SortOrder
     truckWheel?: SortOrder
     tractorWheel?: SortOrder
+    typeCabin?: SortOrder
     cabinSuspension?: SortOrder
     userId?: SortOrder
     userName?: SortOrder
@@ -15785,6 +16091,7 @@ export namespace Prisma {
     viewsId?: SortOrder
     trailerBrand?: SortOrder
     truckBrand?: SortOrder
+    tractorBrand?: SortOrder
   }
 
   export type TradeMinOrderByAggregateInput = {
@@ -15815,6 +16122,7 @@ export namespace Prisma {
     steering?: SortOrder
     truckWheel?: SortOrder
     tractorWheel?: SortOrder
+    typeCabin?: SortOrder
     cabinSuspension?: SortOrder
     userId?: SortOrder
     userName?: SortOrder
@@ -15826,6 +16134,7 @@ export namespace Prisma {
     viewsId?: SortOrder
     trailerBrand?: SortOrder
     truckBrand?: SortOrder
+    tractorBrand?: SortOrder
   }
 
   export type TradeSumOrderByAggregateInput = {
@@ -16003,6 +16312,16 @@ export namespace Prisma {
     _max?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
   }
 
+  export type EnumTypeCabinEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeCabinEnum | EnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeCabinEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeCabinEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel>
+  }
+
   export type EnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
     in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
@@ -16031,6 +16350,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
     _max?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
+  }
+
+  export type EnumTractorBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorBrandEnum | EnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TractorBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel>
   }
 
   export type UserCreatedocumentsInput = {
@@ -16850,6 +17179,10 @@ export namespace Prisma {
     set?: $Enums.TractorWheelEnum | null
   }
 
+  export type NullableEnumTypeCabinEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TypeCabinEnum | null
+  }
+
   export type NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput = {
     set?: $Enums.CabinSuspensionEnum | null
   }
@@ -16865,6 +17198,10 @@ export namespace Prisma {
 
   export type NullableEnumTruckBrandEnumFieldUpdateOperationsInput = {
     set?: $Enums.TruckBrandEnum | null
+  }
+
+  export type NullableEnumTractorBrandEnumFieldUpdateOperationsInput = {
+    set?: $Enums.TractorBrandEnum | null
   }
 
   export type UserUpdateOneWithoutTradeNestedInput = {
@@ -17305,6 +17642,13 @@ export namespace Prisma {
     not?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel> | $Enums.TractorWheelEnum | null
   }
 
+  export type NestedEnumTypeCabinEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeCabinEnum | EnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel> | $Enums.TypeCabinEnum | null
+  }
+
   export type NestedEnumCabinSuspensionEnumNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
     in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
@@ -17324,6 +17668,13 @@ export namespace Prisma {
     in?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
     notIn?: $Enums.TruckBrandEnum[] | ListEnumTruckBrandEnumFieldRefInput<$PrismaModel> | null
     not?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel> | $Enums.TruckBrandEnum | null
+  }
+
+  export type NestedEnumTractorBrandEnumNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorBrandEnum | EnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel> | $Enums.TractorBrandEnum | null
   }
 
   export type NestedEnumVariantEnumWithAggregatesFilter<$PrismaModel = never> = {
@@ -17492,6 +17843,16 @@ export namespace Prisma {
     _max?: NestedEnumTractorWheelEnumNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumTypeCabinEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TypeCabinEnum | EnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TypeCabinEnum[] | ListEnumTypeCabinEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTypeCabinEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TypeCabinEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTypeCabinEnumNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumCabinSuspensionEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CabinSuspensionEnum | EnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
     in?: $Enums.CabinSuspensionEnum[] | ListEnumCabinSuspensionEnumFieldRefInput<$PrismaModel> | null
@@ -17520,6 +17881,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
     _max?: NestedEnumTruckBrandEnumNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTractorBrandEnumNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TractorBrandEnum | EnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    in?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.TractorBrandEnum[] | ListEnumTractorBrandEnumFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumTractorBrandEnumNullableWithAggregatesFilter<$PrismaModel> | $Enums.TractorBrandEnum | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel>
+    _max?: NestedEnumTractorBrandEnumNullableFilter<$PrismaModel>
   }
 
   export type CargoCreateWithoutUserInput = {
@@ -17747,7 +18118,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -17760,6 +18131,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -17770,6 +18142,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     views?: ViewsCreateNestedOneWithoutTradeInput
     wishList?: WishListCreateNestedManyWithoutTradeInput
   }
@@ -17789,7 +18162,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -17802,6 +18175,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -17813,6 +18187,7 @@ export namespace Prisma {
     viewsId?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
   }
 
@@ -18008,7 +18383,7 @@ export namespace Prisma {
     isArchived?: BoolNullableFilter<"Trade"> | boolean | null
     year?: IntNullableFilter<"Trade"> | number | null
     weight?: FloatNullableFilter<"Trade"> | number | null
-    price?: IntFilter<"Trade"> | number
+    price?: IntNullableFilter<"Trade"> | number | null
     volumeEngine?: FloatNullableFilter<"Trade"> | number | null
     powerEngine?: IntNullableFilter<"Trade"> | number | null
     description?: StringNullableFilter<"Trade"> | string | null
@@ -18021,6 +18396,7 @@ export namespace Prisma {
     steering?: EnumSteeringEnumNullableFilter<"Trade"> | $Enums.SteeringEnum | null
     truckWheel?: EnumTruckWheelEnumNullableFilter<"Trade"> | $Enums.TruckWheelEnum | null
     tractorWheel?: EnumTractorWheelEnumNullableFilter<"Trade"> | $Enums.TractorWheelEnum | null
+    typeCabin?: EnumTypeCabinEnumNullableFilter<"Trade"> | $Enums.TypeCabinEnum | null
     cabinSuspension?: EnumCabinSuspensionEnumNullableFilter<"Trade"> | $Enums.CabinSuspensionEnum | null
     photos?: StringNullableListFilter<"Trade">
     userId?: StringNullableFilter<"Trade"> | string | null
@@ -18033,6 +18409,7 @@ export namespace Prisma {
     viewsId?: StringNullableFilter<"Trade"> | string | null
     trailerBrand?: EnumTrailerBrandEnumNullableFilter<"Trade"> | $Enums.TrailerBrandEnum | null
     truckBrand?: EnumTruckBrandEnumNullableFilter<"Trade"> | $Enums.TruckBrandEnum | null
+    tractorBrand?: EnumTractorBrandEnumNullableFilter<"Trade"> | $Enums.TractorBrandEnum | null
   }
 
   export type UserCreateWithoutCargosInput = {
@@ -18672,7 +19049,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -18685,6 +19062,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -18695,6 +19073,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     user?: UserCreateNestedOneWithoutTradeInput
     wishList?: WishListCreateNestedManyWithoutTradeInput
   }
@@ -18714,7 +19093,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -18727,6 +19106,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userId?: string | null
@@ -18738,6 +19118,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedCreateNestedManyWithoutTradeInput
   }
 
@@ -19045,7 +19426,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -19058,6 +19439,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -19068,6 +19450,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
     user?: UserCreateNestedOneWithoutTradeInput
     views?: ViewsCreateNestedOneWithoutTradeInput
   }
@@ -19087,7 +19470,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -19100,6 +19483,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userId?: string | null
@@ -19112,6 +19496,7 @@ export namespace Prisma {
     viewsId?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
   }
 
   export type TradeCreateOrConnectWithoutWishListInput = {
@@ -19394,7 +19779,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19407,6 +19792,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19417,6 +19803,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     user?: UserUpdateOneWithoutTradeNestedInput
     views?: ViewsUpdateOneWithoutTradeNestedInput
   }
@@ -19436,7 +19823,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19449,6 +19836,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19461,6 +19849,7 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
   }
 
   export type UserCreateWithoutTradeInput = {
@@ -19786,7 +20175,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -19799,6 +20188,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userName?: string | null
@@ -19810,6 +20200,7 @@ export namespace Prisma {
     viewsId?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
   }
 
   export type CargoUpdateWithoutUserInput = {
@@ -20095,7 +20486,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20108,6 +20499,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20118,6 +20510,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     views?: ViewsUpdateOneWithoutTradeNestedInput
     wishList?: WishListUpdateManyWithoutTradeNestedInput
   }
@@ -20137,7 +20530,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20150,6 +20543,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20161,6 +20555,7 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
   }
 
@@ -20179,7 +20574,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20192,6 +20587,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20203,6 +20599,7 @@ export namespace Prisma {
     viewsId?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
   }
 
   export type WishListCreateManyCargoInput = {
@@ -20371,7 +20768,7 @@ export namespace Prisma {
     isArchived?: boolean | null
     year?: number | null
     weight?: number | null
-    price: number
+    price?: number | null
     volumeEngine?: number | null
     powerEngine?: number | null
     description?: string | null
@@ -20384,6 +20781,7 @@ export namespace Prisma {
     steering?: $Enums.SteeringEnum | null
     truckWheel?: $Enums.TruckWheelEnum | null
     tractorWheel?: $Enums.TractorWheelEnum | null
+    typeCabin?: $Enums.TypeCabinEnum | null
     cabinSuspension?: $Enums.CabinSuspensionEnum | null
     photos?: TradeCreatephotosInput | string[]
     userId?: string | null
@@ -20395,6 +20793,7 @@ export namespace Prisma {
     skype?: string | null
     trailerBrand?: $Enums.TrailerBrandEnum | null
     truckBrand?: $Enums.TruckBrandEnum | null
+    tractorBrand?: $Enums.TractorBrandEnum | null
   }
 
   export type CargoUpdateWithoutViewsInput = {
@@ -20653,7 +21052,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20666,6 +21065,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20676,6 +21076,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     user?: UserUpdateOneWithoutTradeNestedInput
     wishList?: WishListUpdateManyWithoutTradeNestedInput
   }
@@ -20695,7 +21096,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20708,6 +21109,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20719,6 +21121,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
     wishList?: WishListUncheckedUpdateManyWithoutTradeNestedInput
   }
 
@@ -20737,7 +21140,7 @@ export namespace Prisma {
     isArchived?: NullableBoolFieldUpdateOperationsInput | boolean | null
     year?: NullableIntFieldUpdateOperationsInput | number | null
     weight?: NullableFloatFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
+    price?: NullableIntFieldUpdateOperationsInput | number | null
     volumeEngine?: NullableFloatFieldUpdateOperationsInput | number | null
     powerEngine?: NullableIntFieldUpdateOperationsInput | number | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20750,6 +21153,7 @@ export namespace Prisma {
     steering?: NullableEnumSteeringEnumFieldUpdateOperationsInput | $Enums.SteeringEnum | null
     truckWheel?: NullableEnumTruckWheelEnumFieldUpdateOperationsInput | $Enums.TruckWheelEnum | null
     tractorWheel?: NullableEnumTractorWheelEnumFieldUpdateOperationsInput | $Enums.TractorWheelEnum | null
+    typeCabin?: NullableEnumTypeCabinEnumFieldUpdateOperationsInput | $Enums.TypeCabinEnum | null
     cabinSuspension?: NullableEnumCabinSuspensionEnumFieldUpdateOperationsInput | $Enums.CabinSuspensionEnum | null
     photos?: TradeUpdatephotosInput | string[]
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20761,6 +21165,7 @@ export namespace Prisma {
     skype?: NullableStringFieldUpdateOperationsInput | string | null
     trailerBrand?: NullableEnumTrailerBrandEnumFieldUpdateOperationsInput | $Enums.TrailerBrandEnum | null
     truckBrand?: NullableEnumTruckBrandEnumFieldUpdateOperationsInput | $Enums.TruckBrandEnum | null
+    tractorBrand?: NullableEnumTractorBrandEnumFieldUpdateOperationsInput | $Enums.TractorBrandEnum | null
   }
 
   export type WishListCreateManyTradeInput = {

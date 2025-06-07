@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
-import { TrailerService } from './trailer.service';
-import { TrailerController } from './trailer.controller';
+/** @format */
+
+import { Module } from "@nestjs/common";
+import { TrailerService } from "./trailer.service";
+import { TrailerController } from "./trailer.controller";
+import { UserModule } from "../user/user.module";
 
 @Module({
-  controllers: [TrailerController],
-  providers: [TrailerService],
+    imports: [UserModule],
+    controllers: [TrailerController],
+    providers: [TrailerService],
 })
 export class TrailerModule {}
