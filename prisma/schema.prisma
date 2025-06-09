@@ -518,63 +518,63 @@ enum TractorBrandEnum {
 }
 
 enum TrailerBrandEnum {
-    OTHER // Другой
-    AMT_NV // AMT N.V.
-    ASIA // ASIA
-    AVIA // AVIA
-    BAW // BAW
-    BEIBEN_NORTH_BENZ // BEIBEN (NORTH BENZ)
-    BMC // BMC
-    BYD // BYD
-    CAMC // CAMC
-    CHANGAN // CHANGAN
-    CHEVROLET // CHEVROLET
-    CLW // CLW
-    DAEWOO // DAEWOO
-    DAF // DAF
-    DAYUN_TRUCK // DAYUN TRUCK
-    DERRY // DERRY
-    DESOTO // DESOTO
-    DFAC // DFAC
-    DFSK // DFSK
-    DONGFENG // DONGFENG
-    EVM // EVM
-    FARIZON // FARIZON
-    FAW // FAW
-    FIAT // FIAT
-    FIAT_PROFESSIONAL // FIAT PROFESSIONAL
-    FORD // FORD
-    FORLAND // FORLAND
-    FOTON // FOTON
-    FREIGHTLINER // FREIGHTLINER
-    FUSO_MITSUBISHI // FUSO (MITSUBISHI)
-    GAC // GAC
-    GEELY // GEELY
-    GMC // GMC
-    GROZ // GROZ
-    HINO // HINO
-    HKTC // HKTC
-    HONGYAN // HONGYAN
-    HOWO // HOWO
-    HYUNDAI // HYUNDAI
-    HYVA // HYVA
-    IFA // IFA
-    INTERNATIONAL // INTERNATIONAL
-    INTERNATIONAL_WORKSTAR // INTERNATIONAL WORKSTAR
-    ISUZU // ISUZU
-    IVECO // IVECO
-    IVECO_HONGYAN // IVECO-HONGYAN
-    IVECO_LING_YE // IVECO-LING YE
-    IVECO_AMT // IVECO-АМТ
-    JAC // JAC	
-    JBC // JBC
-    JIEFANG // JIEFANG
-    JMC // JMC	
-    KAMA // KAMA	
-    KENWORTH // KENWORTH
-    KIA // KIA
-    KYC // KYC
-    LADA_VAZ // LADA (ВАЗ)
+    OTHER
+    AMT_NV
+    ASIA
+    AVIA
+    BAW
+    BEIBEN_NORTH_BENZ
+    BMC
+    BYD
+    CAMC
+    CHANGAN
+    CHEVROLET
+    CLW
+    DAEWOO
+    DAF
+    DAYUN_TRUCK
+    DERRY
+    DESOTO
+    DFAC
+    DFSK
+    DONGFENG
+    EVM
+    FARIZON
+    FAW
+    FIAT
+    FIAT_PROFESSIONAL
+    FORD
+    FORLAND
+    FOTON
+    FREIGHTLINER
+    FUSO_MITSUBISHI
+    GAC
+    GEELY
+    GMC
+    GROZ
+    HINO
+    HKTC
+    HONGYAN
+    HOWO
+    HYUNDAI
+    HYVA
+    IFA
+    INTERNATIONAL
+    INTERNATIONAL_WORKSTAR
+    ISUZU
+    IVECO
+    IVECO_HONGYAN
+    IVECO_LING_YE
+    IVECO_AMT
+    JAC
+    JBC
+    JIEFANG
+    JMC
+    KAMA
+    KENWORTH
+    KIA
+    KYC
+    LADA_VAZ
     LGMG
     MAN
     MAXUS
@@ -634,18 +634,17 @@ enum TrailerBrandEnum {
 enum StatusEnum {
     NEW // новый
     USED // б/у
-    ANY // любой
 }
 
 enum TypeTruckEnum {
-    AVTOVOZ // автовоз
-    AVTOCISTERNA // автоцистерна
-    BORTOVOI // бортовой
-    TERMOFURGON // термофургон
-    REFRIJERATOR // рефрижератор
-    SAMOSVAL // самосвал
-    TENT // тент
-    DRUGOI // другой
+    AVTOVOZ
+    AVTOCISTERNA
+    BORTOVOI
+    REFRIJERATOR
+    SAMOSVAL
+    TENT
+    TERMOFURGON
+    DRUGOI
 }
 
 enum TypeTechnicEnum {
