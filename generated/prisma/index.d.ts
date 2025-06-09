@@ -289,7 +289,8 @@ export const TractorBrandEnum: {
   KRAZ: 'KRAZ',
   MAZ: 'MAZ',
   MAZ_MAN: 'MAZ_MAN',
-  MZKT: 'MZKT'
+  MZKT: 'MZKT',
+  OTHER: 'OTHER'
 };
 
 export type TractorBrandEnum = (typeof TractorBrandEnum)[keyof typeof TractorBrandEnum]
@@ -414,8 +415,7 @@ export type TrailerBrandEnum = (typeof TrailerBrandEnum)[keyof typeof TrailerBra
 
 export const StatusEnum: {
   NEW: 'NEW',
-  USED: 'USED',
-  ANY: 'ANY'
+  USED: 'USED'
 };
 
 export type StatusEnum = (typeof StatusEnum)[keyof typeof StatusEnum]
@@ -425,10 +425,10 @@ export const TypeTruckEnum: {
   AVTOVOZ: 'AVTOVOZ',
   AVTOCISTERNA: 'AVTOCISTERNA',
   BORTOVOI: 'BORTOVOI',
-  TERMOFURGON: 'TERMOFURGON',
   REFRIJERATOR: 'REFRIJERATOR',
   SAMOSVAL: 'SAMOSVAL',
   TENT: 'TENT',
+  TERMOFURGON: 'TERMOFURGON',
   DRUGOI: 'DRUGOI'
 };
 
@@ -474,21 +474,19 @@ export type TypeTrailerEnum = (typeof TypeTrailerEnum)[keyof typeof TypeTrailerE
 
 export const ExistEnum: {
   IN_STOCK: 'IN_STOCK',
-  ON_ORDER: 'ON_ORDER',
-  ANY: 'ANY'
+  ON_ORDER: 'ON_ORDER'
 };
 
 export type ExistEnum = (typeof ExistEnum)[keyof typeof ExistEnum]
 
 
 export const DriveEnum: {
-  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
   FRONT_WHEEL_DRIVE: 'FRONT_WHEEL_DRIVE',
   REAR_WHEEL_DRIVE: 'REAR_WHEEL_DRIVE',
+  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
   FULL_TIME_ALL_WHEEL_DRIVE: 'FULL_TIME_ALL_WHEEL_DRIVE',
   PART_TIME_ALL_WHEEL_DRIVE: 'PART_TIME_ALL_WHEEL_DRIVE',
-  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL',
-  ANY: 'ANY'
+  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL'
 };
 
 export type DriveEnum = (typeof DriveEnum)[keyof typeof DriveEnum]
@@ -497,8 +495,7 @@ export type DriveEnum = (typeof DriveEnum)[keyof typeof DriveEnum]
 export const TransmissionEnum: {
   AUTOMATIC: 'AUTOMATIC',
   MECHANICAL: 'MECHANICAL',
-  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC',
-  ANY: 'ANY'
+  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC'
 };
 
 export type TransmissionEnum = (typeof TransmissionEnum)[keyof typeof TransmissionEnum]
@@ -521,8 +518,7 @@ export const TruckWheelEnum: {
   w10X10: 'w10X10',
   W12X4: 'W12X4',
   W12X8: 'W12X8',
-  OTHER: 'OTHER',
-  ANY: 'ANY'
+  OTHER: 'OTHER'
 };
 
 export type TruckWheelEnum = (typeof TruckWheelEnum)[keyof typeof TruckWheelEnum]
@@ -533,11 +529,11 @@ export const TractorWheelEnum: {
   W4X4: 'W4X4',
   W6X2: 'W6X2',
   W6X4: 'W6X4',
+  W8X2: 'W8X2',
   W8X4: 'W8X4',
   W8X6: 'W8X6',
   W8X8: 'W8X8',
-  OTHER: 'OTHER',
-  ANY: 'ANY'
+  OTHER: 'OTHER'
 };
 
 export type TractorWheelEnum = (typeof TractorWheelEnum)[keyof typeof TractorWheelEnum]
@@ -550,8 +546,7 @@ export const TypeEngineEnum: {
   ELECTRIC: 'ELECTRIC',
   HYBRID: 'HYBRID',
   DIESEL_ON_GAS: 'DIESEL_ON_GAS',
-  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS',
-  ANY: 'ANY'
+  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS'
 };
 
 export type TypeEngineEnum = (typeof TypeEngineEnum)[keyof typeof TypeEngineEnum]
@@ -559,8 +554,7 @@ export type TypeEngineEnum = (typeof TypeEngineEnum)[keyof typeof TypeEngineEnum
 
 export const SteeringEnum: {
   LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
-  ANY: 'ANY'
+  RIGHT: 'RIGHT'
 };
 
 export type SteeringEnum = (typeof SteeringEnum)[keyof typeof SteeringEnum]

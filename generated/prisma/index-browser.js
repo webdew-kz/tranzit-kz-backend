@@ -505,10 +505,10 @@ exports.TypeTruckEnum = exports.$Enums.TypeTruckEnum = {
   AVTOVOZ: 'AVTOVOZ',
   AVTOCISTERNA: 'AVTOCISTERNA',
   BORTOVOI: 'BORTOVOI',
-  TERMOFURGON: 'TERMOFURGON',
   REFRIJERATOR: 'REFRIJERATOR',
   SAMOSVAL: 'SAMOSVAL',
   TENT: 'TENT',
+  TERMOFURGON: 'TERMOFURGON',
   DRUGOI: 'DRUGOI'
 };
 
@@ -577,43 +577,37 @@ exports.TypeEngineEnum = exports.$Enums.TypeEngineEnum = {
   ELECTRIC: 'ELECTRIC',
   HYBRID: 'HYBRID',
   DIESEL_ON_GAS: 'DIESEL_ON_GAS',
-  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS',
-  ANY: 'ANY'
+  GASOLINE_ON_GAS: 'GASOLINE_ON_GAS'
 };
 
 exports.StatusEnum = exports.$Enums.StatusEnum = {
   NEW: 'NEW',
-  USED: 'USED',
-  ANY: 'ANY'
+  USED: 'USED'
 };
 
 exports.ExistEnum = exports.$Enums.ExistEnum = {
   IN_STOCK: 'IN_STOCK',
-  ON_ORDER: 'ON_ORDER',
-  ANY: 'ANY'
+  ON_ORDER: 'ON_ORDER'
 };
 
 exports.DriveEnum = exports.$Enums.DriveEnum = {
-  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
   FRONT_WHEEL_DRIVE: 'FRONT_WHEEL_DRIVE',
   REAR_WHEEL_DRIVE: 'REAR_WHEEL_DRIVE',
+  ALL_WHEEL_DRIVE: 'ALL_WHEEL_DRIVE',
   FULL_TIME_ALL_WHEEL_DRIVE: 'FULL_TIME_ALL_WHEEL_DRIVE',
   PART_TIME_ALL_WHEEL_DRIVE: 'PART_TIME_ALL_WHEEL_DRIVE',
-  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL',
-  ANY: 'ANY'
+  REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL: 'REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL'
 };
 
 exports.TransmissionEnum = exports.$Enums.TransmissionEnum = {
   AUTOMATIC: 'AUTOMATIC',
   MECHANICAL: 'MECHANICAL',
-  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC',
-  ANY: 'ANY'
+  SEMI_AUTOMATIC: 'SEMI_AUTOMATIC'
 };
 
 exports.SteeringEnum = exports.$Enums.SteeringEnum = {
   LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
-  ANY: 'ANY'
+  RIGHT: 'RIGHT'
 };
 
 exports.TruckWheelEnum = exports.$Enums.TruckWheelEnum = {
@@ -633,8 +627,7 @@ exports.TruckWheelEnum = exports.$Enums.TruckWheelEnum = {
   w10X10: 'w10X10',
   W12X4: 'W12X4',
   W12X8: 'W12X8',
-  OTHER: 'OTHER',
-  ANY: 'ANY'
+  OTHER: 'OTHER'
 };
 
 exports.TractorWheelEnum = exports.$Enums.TractorWheelEnum = {
@@ -642,11 +635,11 @@ exports.TractorWheelEnum = exports.$Enums.TractorWheelEnum = {
   W4X4: 'W4X4',
   W6X2: 'W6X2',
   W6X4: 'W6X4',
+  W8X2: 'W8X2',
   W8X4: 'W8X4',
   W8X6: 'W8X6',
   W8X8: 'W8X8',
-  OTHER: 'OTHER',
-  ANY: 'ANY'
+  OTHER: 'OTHER'
 };
 
 exports.TypeCabinEnum = exports.$Enums.TypeCabinEnum = {
@@ -945,7 +938,8 @@ exports.TractorBrandEnum = exports.$Enums.TractorBrandEnum = {
   KRAZ: 'KRAZ',
   MAZ: 'MAZ',
   MAZ_MAN: 'MAZ_MAN',
-  MZKT: 'MZKT'
+  MZKT: 'MZKT',
+  OTHER: 'OTHER'
 };
 
 exports.Prisma.ModelName = {
