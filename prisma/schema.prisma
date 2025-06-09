@@ -514,6 +514,7 @@ enum TractorBrandEnum {
     MAZ
     MAZ_MAN
     MZKT
+    OTHER
 }
 
 enum TrailerBrandEnum {
@@ -681,24 +682,21 @@ enum TypeTrailerEnum {
 enum ExistEnum {
     IN_STOCK // в наличии
     ON_ORDER // под заказ
-    ANY // любой
 }
 
 enum DriveEnum {
-    ALL_WHEEL_DRIVE // полный привод
-    FRONT_WHEEL_DRIVE // передний привод
-    REAR_WHEEL_DRIVE // задний привод
-    FULL_TIME_ALL_WHEEL_DRIVE // постоянный полный привод
-    PART_TIME_ALL_WHEEL_DRIVE // подключаемый полный привод
-    REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL // задний привод с передним подключаемым
-    ANY // любой
+    FRONT_WHEEL_DRIVE
+    REAR_WHEEL_DRIVE
+    ALL_WHEEL_DRIVE
+    FULL_TIME_ALL_WHEEL_DRIVE
+    PART_TIME_ALL_WHEEL_DRIVE
+    REAR_WHEEL_DRIVE_WITH_FRONT_WHEEL
 }
 
 enum TransmissionEnum {
-    AUTOMATIC // автомат
-    MECHANICAL // механика
-    SEMI_AUTOMATIC // полуавтомат
-    ANY // любой
+    AUTOMATIC
+    MECHANICAL
+    SEMI_AUTOMATIC
 }
 
 enum TruckWheelEnum {
@@ -719,36 +717,33 @@ enum TruckWheelEnum {
     W12X4 // 12х4
     W12X8 // 12х8	
     OTHER // другой
-    ANY // любой
 }
 
 enum TractorWheelEnum {
-    W4X2 // 4х2
-    W4X4 // 4х4
-    W6X2 // 6х2
-    W6X4 // 6х4
-    W8X4 // 8х4
-    W8X6 // 8х6
-    W8X8 // 8х8
-    OTHER // другой
-    ANY // любой
+    W4X2
+    W4X4
+    W6X2
+    W6X4
+    W8X2
+    W8X4
+    W8X6
+    W8X8
+    OTHER
 }
 
 enum TypeEngineEnum {
-    DIESEL // дизель
-    GAS // газ
-    GASOLINE // бензин
-    ELECTRIC // электрический
-    HYBRID // гибридный
-    DIESEL_ON_GAS // дизель на газу
-    GASOLINE_ON_GAS // бензин на газу
-    ANY // любой
+    DIESEL
+    GAS
+    GASOLINE
+    ELECTRIC
+    HYBRID
+    DIESEL_ON_GAS
+    GASOLINE_ON_GAS
 }
 
 enum SteeringEnum {
     LEFT // левый
     RIGHT // правый
-    ANY // любой
 }
 
 enum Role {
